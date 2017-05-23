@@ -1,0 +1,7 @@
+﻿https://code.google.com/p/lidgren-network-gen3/
+http://opensource.org/licenses/mit-license.php
+
+MIT License
+
+A short, permissive software license. 
+Basically, you can do whatever you want as long as you include the original copyright and license in their respective sources.

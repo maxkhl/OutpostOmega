@@ -1,0 +1,44 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(TargetPath)" #>
+<#@ assembly name="$(TargetDir)LuaInterface.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="OutpostOmega.Game.Lua" #>
+<#@ output extension=".txt" #>
+<#
+            var methods = typeof(Assembly).GetMethods(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            List<OutpostOmega.Game.Lua.LuaDocumentationAttr> Attributes = new List<OutpostOmega.Game.Lua.LuaDocumentationAttr>();
+            foreach(var method in methods)
+            {
+                var attributes = method.GetCustomAttributes(typeof(LuaDocumentationAttr), false);
+                if(attributes.Length == 1)
+                {
+                    ((LuaDocumentationAttr)attributes[0]).MethodInfo = method;
+                    Attributes.Add((LuaDocumentationAttr)attributes[0]);
+                }
+            }
+            Attributes = Attributes.OrderBy(o => o.Category).ToList();
+            string OldCategory = "";
+            string Output = "";
+            foreach(var attribute in Attributes)
+            {
+                if(OldCategory != attribute.Category)
+                {
+                    
+                    Output += "####" + new String('#', attribute.Category.Length) + "####" + Environment.NewLine;
+                    Output += "### " + attribute.Category + " ###" + Environment.NewLine;
+                    Output += "####" + new String('#', attribute.Category.Length) + "####" + Environment.NewLine; 
+                }
+                OldCategory = attribute.Category;
+
+                Output += attribute.MethodInfo.ToString() + Environment.NewLine;
+                Output += "Description: " + attribute.Description + Environment.NewLine;
+                Output += "Parameters: " + attribute.Parameters + Environment.NewLine;
+                Output += "Returns: " + attribute.Return + Environment.NewLine;
+                Output += Environment.NewLine;
+            }
+#>
+
+<#= Output #>

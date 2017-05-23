@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OutpostOmega.Launcher" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="launcherdaturl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://server.outpost-omega.com/launcher/Launcher.xml</Value>
+    </Setting>
+    <Setting Name="newsurl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.outpost-omega.com/launchnews.php</Value>
+    </Setting>
+    <Setting Name="version" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Initial</Value>
+    </Setting>
+    <Setting Name="launchfile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">game\OutpostOmega.exe</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

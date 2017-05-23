@@ -1,0 +1,11 @@
+﻿<Window x:Class="ProjectSpace.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StatusBar HorizontalAlignment="Left" Width="517" Height="26" VerticalAlignment="Bottom">
+            <Button x:Name="btn_launch_game" Content="Launch Game" Click="btn_launch_game_Click"/>
+        </StatusBar>
+
+    </Grid>
+</Window>

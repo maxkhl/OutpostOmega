@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<oo_mod name="defaultMod" version="1.0" author="MaxKhl">
+  <content>
+    <file name="HeadTexture" importer="Texture2D">Content\head_avatar.png</file>
+    <file name="CubeModel" importer="Model">Content\BoxUV.dae</file>
+    <file name="CubeTexture" importer="Texture2D">Content\BoxUV.png</file>
+    <file name="MainScreen" importer="UserInterface">Content\UI\Main.xml</file>
+    <file name="PDAModel" importer="Model">Content\PDA\PDA.dae</file>
+    <file name="PDATexture" importer="Texture2D">Content\PDA\PDA.png</file>
+    <file name="DisplayBigModel" importer="Model">Content\Display\display_big.dae</file>
+    <file name="DisplayBigTexture" importer="Texture2D">Content\Display\display_big.png</file>
+    <file name="VoidLogo" importer="Texture2D">Content\Display\Void_Industries_Logo.png</file>
+  </content>
+  <scripts>
+    <script hook="startup">RapeCube.lua</script>
+    <script hook="startup">PDA.lua</script>
+    <script hook="startup">DisplayBig.lua</script>
+  </scripts>
+</oo_mod>

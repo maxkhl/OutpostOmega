@@ -1,0 +1,3941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GameWorld cID="2" inst="Generic World">
+  <type>OutpostOmega.Game.World</type>
+  <data>
+    <Name>Generic World</Name>
+  </data>
+  <sub>
+    <ID cID="1" inst="41149443">
+      <type>System.String</type>
+      <data>
+        <string>Generic World</string>
+      </data>
+    </ID>
+    <AllGameObjects list="true">
+      <type>System.Collections.Generic.List`1[T]</type>
+      <AllGameObjects cID="3" inst="Wrench1">
+        <type>OutpostOmega.Game.GameObjects.Items.Tools.Wrench</type>
+        <sub>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="45523402">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="35287174">
+            <type>System.String</type>
+            <data>
+              <string>Wrench1</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="22597652">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="40644060">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="4" Y="-23.66552" Z="-2">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="47980820">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="54636159">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="0.249" Y="0.018" Z="0.071">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="42815147">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="63130991">
+            <type>System.Single</type>
+            <data>
+              <float>0.000318221981</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="22322349">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="spawner1">
+        <type>OutpostOmega.Game.GameObjects.Items.Devices.Spawner</type>
+        <sub>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="35113868">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="36620214">
+            <type>System.String</type>
+            <data>
+              <string>spawner1</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="28805302">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="21170186">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="5.313021" Y="1.113764" Z="-1.848442">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="-0.02625173 -0.9995135 -0.01684588 0.9623567 -0.02982892 0.2701479 -0.270519 -0.009119898 0.9626715">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="43994237">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="34868631">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" positions="56" triangles="28">
+            <type>Jitter.Collision.Shapes.TriangleMeshShape</type>
+            <positions>-0.01666098 -0.1142158 0.03676241 0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 -0.1148012 0.08147799 -0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.07538229 0.03799515 -0.01666098 0.07538229 0.03799515 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1148012 0.08147799 0.01666098 -0.1148012 0.08147799 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662</positions>
+            <triangles>20 6 9 40 4 0 3 16 2 7 29 5 23 32 11 42 45 13 48 50 15 34 25 52 39 35 30 36 46 33 47 37 55 17 19 21 24 43 27 53 28 44 8 20 9 38 40 0 1 3 2 18 7 5 10 23 11 12 42 13 14 48 15 54 34 52 41 39 30 31 36 33 51 47 55 26 17 21 22 24 27 49 53 44</triangles>
+          </Shape>
+          <IsPassable cID="1" inst="10454271">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="30607723">
+            <type>System.Single</type>
+            <data>
+              <float>0.0142891267</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="35170261">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="vendingmachine1">
+        <type>OutpostOmega.Game.GameObjects.Structures.Machines.Vendingmachine</type>
+        <sub>
+          <Type cID="1" inst="39157888">
+            <type>OutpostOmega.Game.GameObjects.Structures.Machines.Vendingmachine+machineType</type>
+            <data>
+              <machineType>GalaxPlus</machineType>
+            </data>
+          </Type>
+          <EnergyDrain cID="1" inst="5822459">
+            <type>System.Single</type>
+            <data>
+              <float>0</float>
+            </data>
+          </EnergyDrain>
+          <powerState cID="1" inst="60684095">
+            <type>OutpostOmega.Game.GameObjects.Structures.powerState</type>
+            <data>
+              <powerState>Enabled</powerState>
+            </data>
+          </powerState>
+          <Durability cID="1" inst="30923613">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="49385318">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="7746814">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="13062350" dX="1" dY="2" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGNkBAAoE8UvAgAAAA==</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="50934842">
+            <type>System.Int32</type>
+            <data>
+              <int>-3</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="10366524">
+            <type>System.Int32</type>
+            <data>
+              <int>1</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="63840421">
+            <type>System.Int32</type>
+            <data>
+              <int>-3</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="1" Z="0.35">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+            <sub>
+              <chunks list="true">
+                <type>System.Collections.Generic.List`1[T]</type>
+                <chunks cID="11" inst="1" X="-16" Y="0" Z="-16">
+                  <type>OutpostOmega.Game.turf.Chunk</type>
+                  <chunkData>H4sIAAAAAAAEAO3QMQ4AIAgDQPz/p50lGjcN4bo16cAR0Txjze9znoefn5+fn5+fv1v4D/78jm3P+3r/O/vz8Nb5+cv5J/sHtA4AEAAA</chunkData>
+                </chunks>
+                <chunks cID="11" inst="2" X="-16" Y="0" Z="0">
+                  <type>OutpostOmega.Game.turf.Chunk</type>
+                  <chunkData>H4sIAAAAAAAEAO3PMQoAIAwEwfj/T9uJCgFbudkqKa6YGme12s63/9p/UusPiZ+fn5+fn58/LX5+/lx/eBMkkOnJABAAAA==</chunkData>
+                </chunks>
+                <chunks cID="11" inst="3" X="0" Y="0" Z="-16">
+                  <type>OutpostOmega.Game.turf.Chunk</type>
+                  <chunkData>H4sIAAAAAAAEAO3RMQoAMAgEQf3/pwPpNGXwLG4XLAIWDonwLmvb58jDjx8/fvz48eN3C3/z3ykLz357K84c6/f/8bv7B44SdgACSYKKABAAAA==</chunkData>
+                </chunks>
+                <chunks cID="11" inst="4" X="0" Y="0" Z="0">
+                  <type>OutpostOmega.Game.turf.Chunk</type>
+                  <chunkData>H4sIAAAAAAAEAO3PIRIAIADDMPb/T6ORgIFb6iuSLI3dDpanyqX/9/j5+fn5+fn52+Ln5+/1tzcBDWt2twAQAAA=</chunkData>
+                </chunks>
+              </chunks>
+              <ID cID="1" inst="25181126">
+                <type>System.String</type>
+                <data>
+                  <string>Flat_x30</string>
+                </data>
+              </ID>
+              <Origin cID="6" X="0" Y="0" Z="0">
+                <type>Jitter.LinearMath.JVector</type>
+              </Origin>
+              <world cID="2" inst="Generic World">
+                <type>OutpostOmega.Game.World</type>
+              </world>
+              <Disposing cID="1" inst="56152722">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+            </sub>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="26847985">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="199777">
+            <type>System.String</type>
+            <data>
+              <string>vendingmachine1</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="-0.5" Y="-2" Z="-0.35">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="18262443">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="16503569">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="-2.5" Y="2" Z="-2.65">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-1" Z="-0.3499999">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="20876819">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="64083652">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="2" Z="0.7">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="47962264">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="17059405">
+            <type>System.Single</type>
+            <data>
+              <float>1.4</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="29475730">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Frame1">
+        <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+        <sub>
+          <Durability cID="1" inst="51339472">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="28574894">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="10801856">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="16321512" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="63379435">
+            <type>System.Int32</type>
+            <data>
+              <int>3</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="33502326">
+            <type>System.Int32</type>
+            <data>
+              <int>4</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="31209679">
+            <type>System.Int32</type>
+            <data>
+              <int>-4</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="42614420">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="38600745">
+            <type>System.String</type>
+            <data>
+              <string>Frame1</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="-0.5" Y="-1" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="48916090">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="53740413">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="3.5" Y="4.5" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="16001149">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="55855606">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="29167576">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="8541776">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="48835636">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Frame2">
+        <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+        <sub>
+          <Durability cID="1" inst="50119998">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="40807399">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="24393646">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="23972246" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="5009246">
+            <type>System.Int32</type>
+            <data>
+              <int>3</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="24089510">
+            <type>System.Int32</type>
+            <data>
+              <int>4</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="10286142">
+            <type>System.Int32</type>
+            <data>
+              <int>-3</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="15203380">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="13063473">
+            <type>System.String</type>
+            <data>
+              <string>Frame2</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="-0.5" Y="-1" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="31981697">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="29890231">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="3.5" Y="4.5" Z="-2.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="62068736">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="61398511">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="46369596">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="13133063">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="54116930">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Frame3">
+        <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+        <sub>
+          <Durability cID="1" inst="19342748">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="65117297">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="44597241">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="60718826" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="47992654">
+            <type>System.Int32</type>
+            <data>
+              <int>4</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="12185796">
+            <type>System.Int32</type>
+            <data>
+              <int>4</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="11489911">
+            <type>System.Int32</type>
+            <data>
+              <int>-4</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="52801053">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="27237168">
+            <type>System.String</type>
+            <data>
+              <string>Frame3</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="-0.5" Y="-1" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="32727789">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="63464403">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="4.5" Y="4.5" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="42971410">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="44018709">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="17314460">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="30955062">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="50800521">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Frame4">
+        <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+        <sub>
+          <Durability cID="1" inst="4322080">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="60275915">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="28061642">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="54814357" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="50726992">
+            <type>System.Int32</type>
+            <data>
+              <int>3</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="1013293">
+            <type>System.Int32</type>
+            <data>
+              <int>1</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="45598209">
+            <type>System.Int32</type>
+            <data>
+              <int>-4</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="24428686">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="25549067">
+            <type>System.String</type>
+            <data>
+              <string>Frame4</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="-0.5" Y="-1" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="18094558">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="8948761">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="3.5" Y="1.5" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="50697561">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="53108349">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="36007420">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="34799956">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="22494152">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Window1">
+        <type>OutpostOmega.Game.GameObjects.Structures.Window</type>
+        <sub>
+          <Durability cID="1" inst="5603890">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="50848483">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="6480373">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="23181364" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="36528427">
+            <type>System.Int32</type>
+            <data>
+              <int>3</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="33166512">
+            <type>System.Int32</type>
+            <data>
+              <int>2</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="16098066">
+            <type>System.Int32</type>
+            <data>
+              <int>-4</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="3648821">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="29979226">
+            <type>System.String</type>
+            <data>
+              <string>Window1</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="56456672">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="57522300">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="3.5" Y="2.5" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="62703914">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="5456238">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="43029267">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="26960646">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="5269548">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Frame5">
+        <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+        <sub>
+          <Durability cID="1" inst="35803110">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="527254">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="23726465">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="61058004" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="63255637">
+            <type>System.Int32</type>
+            <data>
+              <int>4</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="27931403">
+            <type>System.Int32</type>
+            <data>
+              <int>1</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="48953616">
+            <type>System.Int32</type>
+            <data>
+              <int>-4</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="37855919">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="25794785">
+            <type>System.String</type>
+            <data>
+              <string>Frame5</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="-0.5" Y="-1" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="61844338">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="31531813">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="4.5" Y="1.5" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="17814796">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="37503198">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="43851462">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="14185124">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="34350805">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Window2">
+        <type>OutpostOmega.Game.GameObjects.Structures.Window</type>
+        <sub>
+          <Durability cID="1" inst="2282372">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="35597876">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="58400548">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="10778996" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="15292788">
+            <type>System.Int32</type>
+            <data>
+              <int>4</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="17086828">
+            <type>System.Int32</type>
+            <data>
+              <int>2</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="30709776">
+            <type>System.Int32</type>
+            <data>
+              <int>-4</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="55855115">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="30452247">
+            <type>System.String</type>
+            <data>
+              <string>Window2</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="9490050">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="24399080">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="4.5" Y="2.5" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="16143157">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="7877106">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="46340781">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="21889970">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="45524559">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Frame6">
+        <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+        <sub>
+          <Durability cID="1" inst="35339263">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="46763000">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="23960260">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="4469890" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="66927325">
+            <type>System.Int32</type>
+            <data>
+              <int>4</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="58939632">
+            <type>System.Int32</type>
+            <data>
+              <int>3</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="35037785">
+            <type>System.Int32</type>
+            <data>
+              <int>-4</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="46890055">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="29677729">
+            <type>System.String</type>
+            <data>
+              <string>Frame6</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="-0.5" Y="-1" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="30116333">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="13057740">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="4.5" Y="3.5" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="11159819">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="50055298">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="27594380">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="44045158">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="35875097">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Frame7">
+        <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+        <sub>
+          <Durability cID="1" inst="3766656">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="35281811">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="44177654">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="41837403" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="3634967">
+            <type>System.Int32</type>
+            <data>
+              <int>5</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="29355815">
+            <type>System.Int32</type>
+            <data>
+              <int>2</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="45943265">
+            <type>System.Int32</type>
+            <data>
+              <int>-4</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="60682705">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="46367191">
+            <type>System.String</type>
+            <data>
+              <string>Frame7</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="-0.5" Y="-1" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="36205315">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="18626439">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="5.5" Y="2.5" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="23702691">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="15112338">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="843226">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="29811240">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="66437409">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="Frame8">
+        <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+        <sub>
+          <Durability cID="1" inst="36893403">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Durability>
+          <Hitpoints cID="1" inst="49590434">
+            <type>System.Single</type>
+            <data>
+              <float>100</float>
+            </data>
+          </Hitpoints>
+          <Anchored cID="1" inst="16977025">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Anchored>
+          <SpaceRequirement cID="14" inst="25768654" dX="1" dY="1" dZ="1">
+            <type>System.Boolean[,,]</type>
+            <data>H4sIAAAAAAAEAGMEABvfBaUBAAAA</data>
+          </SpaceRequirement>
+          <BlockX cID="1" inst="18738776">
+            <type>System.Int32</type>
+            <data>
+              <int>6</int>
+            </data>
+          </BlockX>
+          <BlockY cID="1" inst="37938573">
+            <type>System.Int32</type>
+            <data>
+              <int>1</int>
+            </data>
+          </BlockY>
+          <BlockZ cID="1" inst="29514189">
+            <type>System.Int32</type>
+            <data>
+              <int>-4</int>
+            </data>
+          </BlockZ>
+          <BlockOffset cID="6" X="0.5" Y="0.5" Z="0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </BlockOffset>
+          <ParentStructure cID="10" inst="Flat_x30">
+            <type>OutpostOmega.Game.turf.Structure</type>
+          </ParentStructure>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="25724423">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="16748349">
+            <type>System.String</type>
+            <data>
+              <string>Frame8</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="-0.5" Y="-1" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="3528959">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="24585471">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="6.5" Y="1.5" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="-0.5" Y="-0.5" Z="-0.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="30963268">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="20939737">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" X="1" Y="1" Z="1">
+            <type>Jitter.Collision.Shapes.BoxShape</type>
+          </Shape>
+          <IsPassable cID="1" inst="57274684">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="17119500">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="32180036">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="AirlockDoor1">
+        <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock+AirlockDoor</type>
+        <sub>
+          <Moving cID="1" inst="38815511">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Moving>
+          <IsUp cID="1" inst="1867570">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </IsUp>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="23733657">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="61381638">
+            <type>System.String</type>
+            <data>
+              <string>AirlockDoor1</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <Parent cID="3" inst="airlock1">
+            <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock</type>
+            <sub>
+              <UpDoor cID="3" inst="AirlockDoor1">
+                <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock+AirlockDoor</type>
+              </UpDoor>
+              <DownDoor cID="3" inst="AirlockDoor2">
+                <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock+AirlockDoor</type>
+                <sub>
+                  <Moving cID="1" inst="10710288">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Moving>
+                  <IsUp cID="1" inst="12200949">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </IsUp>
+                  <Move cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </Move>
+                  <CanInteract cID="1" inst="10860343">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </CanInteract>
+                  <ID cID="1" inst="18953398">
+                    <type>System.String</type>
+                    <data>
+                      <string>AirlockDoor2</string>
+                    </data>
+                  </ID>
+                  <World cID="2" inst="Generic World">
+                    <type>OutpostOmega.Game.World</type>
+                  </World>
+                  <Parent cID="3" inst="airlock1">
+                    <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock</type>
+                  </Parent>
+                  <localPosition cID="6" X="0" Y="-1" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </localPosition>
+                  <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </rigidBodyOffset>
+                  <Priority cID="1" inst="14693083">
+                    <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+                    <data>
+                      <ProcessPriority>Default</ProcessPriority>
+                    </data>
+                  </Priority>
+                  <Disposing cID="1" inst="57208978">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Disposing>
+                  <Position cID="6" X="0" Y="1" Z="-3.5">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </Position>
+                  <LastMove cID="6" X="14" Y="13" Z="17.5">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </LastMove>
+                  <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                    <type>Jitter.LinearMath.JMatrix</type>
+                  </Orientation>
+                  <Scale cID="1" inst="45302294">
+                    <type>System.Single</type>
+                    <data>
+                      <float>1</float>
+                    </data>
+                  </Scale>
+                  <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                    <type>Jitter.LinearMath.JMatrix</type>
+                  </localOrientation>
+                  <Visible cID="1" inst="66437411">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>true</boolean>
+                    </data>
+                  </Visible>
+                  <IsPassable cID="1" inst="36893500">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </IsPassable>
+                  <Mass cID="1" inst="49594800">
+                    <type>System.Single</type>
+                    <data>
+                      <float>0</float>
+                    </data>
+                  </Mass>
+                  <Static cID="1" inst="17173514">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Static>
+                </sub>
+              </DownDoor>
+              <IsOpen cID="1" inst="34610627">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </IsOpen>
+              <EnergyDrain cID="1" inst="13974362">
+                <type>System.Single</type>
+                <data>
+                  <float>0</float>
+                </data>
+              </EnergyDrain>
+              <powerState cID="1" inst="24866514">
+                <type>OutpostOmega.Game.GameObjects.Structures.powerState</type>
+                <data>
+                  <powerState>Enabled</powerState>
+                </data>
+              </powerState>
+              <Durability cID="1" inst="45251306">
+                <type>System.Single</type>
+                <data>
+                  <float>1</float>
+                </data>
+              </Durability>
+              <Hitpoints cID="1" inst="23042882">
+                <type>System.Single</type>
+                <data>
+                  <float>100</float>
+                </data>
+              </Hitpoints>
+              <Anchored cID="1" inst="30296746">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Anchored>
+              <SpaceRequirement cID="14" inst="21176298" dX="2" dY="2" dZ="1">
+                <type>System.Boolean[,,]</type>
+                <data>H4sIAAAAAAAEAGNkZGQEAJnTJvYEAAAA</data>
+              </SpaceRequirement>
+              <BlockX cID="1" inst="13409334">
+                <type>System.Int32</type>
+                <data>
+                  <int>0</int>
+                </data>
+              </BlockX>
+              <BlockY cID="1" inst="66549136">
+                <type>System.Int32</type>
+                <data>
+                  <int>1</int>
+                </data>
+              </BlockY>
+              <BlockZ cID="1" inst="41921117">
+                <type>System.Int32</type>
+                <data>
+                  <int>-4</int>
+                </data>
+              </BlockZ>
+              <BlockOffset cID="6" X="0" Y="1" Z="0.5">
+                <type>Jitter.LinearMath.JVector</type>
+              </BlockOffset>
+              <ParentStructure cID="10" inst="Flat_x30">
+                <type>OutpostOmega.Game.turf.Structure</type>
+              </ParentStructure>
+              <Move cID="6" X="0" Y="0" Z="0">
+                <type>Jitter.LinearMath.JVector</type>
+              </Move>
+              <CanInteract cID="1" inst="23955357">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </CanInteract>
+              <ID cID="1" inst="4249251">
+                <type>System.String</type>
+                <data>
+                  <string>airlock1</string>
+                </data>
+              </ID>
+              <World cID="2" inst="Generic World">
+                <type>OutpostOmega.Game.World</type>
+              </World>
+              <localPosition cID="6" X="0" Y="0" Z="0">
+                <type>Jitter.LinearMath.JVector</type>
+              </localPosition>
+              <rigidBodyOffset cID="6" X="0" Y="-2" Z="-0.5">
+                <type>Jitter.LinearMath.JVector</type>
+              </rigidBodyOffset>
+              <Priority cID="1" inst="62012249">
+                <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+                <data>
+                  <ProcessPriority>Default</ProcessPriority>
+                </data>
+              </Priority>
+              <Disposing cID="1" inst="39087788">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+              <Position cID="6" X="0" Y="2" Z="-3.5">
+                <type>Jitter.LinearMath.JVector</type>
+              </Position>
+              <LastMove cID="6" X="0" Y="-1" Z="-0.5">
+                <type>Jitter.LinearMath.JVector</type>
+              </LastMove>
+              <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                <type>Jitter.LinearMath.JMatrix</type>
+              </Orientation>
+              <Scale cID="1" inst="9462952">
+                <type>System.Single</type>
+                <data>
+                  <float>1</float>
+                </data>
+              </Scale>
+              <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                <type>Jitter.LinearMath.JMatrix</type>
+              </localOrientation>
+              <Visible cID="1" inst="36453459">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Visible>
+              <Shape cID="13" X="2" Y="2" Z="1">
+                <type>Jitter.Collision.Shapes.BoxShape</type>
+              </Shape>
+              <IsPassable cID="1" inst="65613256">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </IsPassable>
+              <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+                <type>Jitter.Dynamics.Material</type>
+              </Material>
+              <Mass cID="1" inst="58401797">
+                <type>System.Single</type>
+                <data>
+                  <float>4</float>
+                </data>
+              </Mass>
+              <Static cID="1" inst="10835206">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Static>
+            </sub>
+          </Parent>
+          <localPosition cID="6" X="0" Y="-1" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="52629315">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="19508958">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="0" Y="1" Z="-3.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="13" Y="12" Z="16.5">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="58518805">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="53436905">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <IsPassable cID="1" inst="55850527">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Mass cID="1" inst="30245787">
+            <type>System.Single</type>
+            <data>
+              <float>0</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="18883170">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="AirlockDoor2">
+        <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock+AirlockDoor</type>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="airlock1">
+        <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock</type>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="spawner2">
+        <type>OutpostOmega.Game.GameObjects.Items.Devices.Spawner</type>
+        <sub>
+          <Holder cID="3" inst="human1">
+            <type>OutpostOmega.Game.GameObjects.Mobs.CarbonBased.Human</type>
+            <sub>
+              <Name cID="1" inst="44436321">
+                <type>System.String</type>
+                <data>
+                  <string />
+                </data>
+              </Name>
+              <FlyMode cID="1" inst="53477406">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </FlyMode>
+              <SelectedQuickslot cID="1" inst="57673056">
+                <type>System.Int32</type>
+                <data>
+                  <int>0</int>
+                </data>
+              </SelectedQuickslot>
+              <Quickslot list="true">
+                <type>System.Collections.Generic.List`1[T]</type>
+                <Quickslot cID="3" inst="spawner2">
+                  <type>OutpostOmega.Game.GameObjects.Items.Devices.Spawner</type>
+                </Quickslot>
+                <Quickslot cID="3" inst="builder1">
+                  <type>OutpostOmega.Game.GameObjects.Items.Devices.Builder</type>
+                  <sub>
+                    <Move cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </Move>
+                    <CanInteract cID="1" inst="18516527">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </CanInteract>
+                    <ID cID="1" inst="27937384">
+                      <type>System.String</type>
+                      <data>
+                        <string>builder1</string>
+                      </data>
+                    </ID>
+                    <World cID="2" inst="Generic World">
+                      <type>OutpostOmega.Game.World</type>
+                    </World>
+                    <localPosition cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </localPosition>
+                    <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </rigidBodyOffset>
+                    <Priority cID="1" inst="19386821">
+                      <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+                      <data>
+                        <ProcessPriority>Default</ProcessPriority>
+                      </data>
+                    </Priority>
+                    <Disposing cID="1" inst="67100588">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </Disposing>
+                    <Position cID="6" X="17" Y="17" Z="17">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </Position>
+                    <LastMove cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </LastMove>
+                    <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                      <type>Jitter.LinearMath.JMatrix</type>
+                    </Orientation>
+                    <Scale cID="1" inst="24286620">
+                      <type>System.Single</type>
+                      <data>
+                        <float>1</float>
+                      </data>
+                    </Scale>
+                    <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                      <type>Jitter.LinearMath.JMatrix</type>
+                    </localOrientation>
+                    <Visible cID="1" inst="56718381">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </Visible>
+                    <Shape cID="13" positions="56" triangles="28">
+                      <type>Jitter.Collision.Shapes.TriangleMeshShape</type>
+                      <positions>-0.01666098 -0.1142158 0.03676241 0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 -0.1148012 0.08147799 -0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.07538229 0.03799515 -0.01666098 0.07538229 0.03799515 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1148012 0.08147799 0.01666098 -0.1148012 0.08147799 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662</positions>
+                      <triangles>20 6 9 40 4 0 3 16 2 7 29 5 23 32 11 42 45 13 48 50 15 34 25 52 39 35 30 36 46 33 47 37 55 17 19 21 24 43 27 53 28 44 8 20 9 38 40 0 1 3 2 18 7 5 10 23 11 12 42 13 14 48 15 54 34 52 41 39 30 31 36 33 51 47 55 26 17 21 22 24 27 49 53 44</triangles>
+                    </Shape>
+                    <IsPassable cID="1" inst="31456487">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </IsPassable>
+                    <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+                      <type>Jitter.Dynamics.Material</type>
+                    </Material>
+                    <Mass cID="1" inst="13074935">
+                      <type>System.Single</type>
+                      <data>
+                        <float>0.0142891267</float>
+                      </data>
+                    </Mass>
+                    <Static cID="1" inst="51501199">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </Static>
+                  </sub>
+                </Quickslot>
+                <Quickslot cID="3" inst="drawer1">
+                  <type>OutpostOmega.Game.GameObjects.Items.Devices.Drawer</type>
+                  <sub>
+                    <Move cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </Move>
+                    <CanInteract cID="1" inst="2754490">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </CanInteract>
+                    <ID cID="1" inst="56843205">
+                      <type>System.String</type>
+                      <data>
+                        <string>drawer1</string>
+                      </data>
+                    </ID>
+                    <World cID="2" inst="Generic World">
+                      <type>OutpostOmega.Game.World</type>
+                    </World>
+                    <localPosition cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </localPosition>
+                    <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </rigidBodyOffset>
+                    <Priority cID="1" inst="39387817">
+                      <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+                      <data>
+                        <ProcessPriority>Default</ProcessPriority>
+                      </data>
+                    </Priority>
+                    <Disposing cID="1" inst="27621317">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </Disposing>
+                    <Position cID="6" X="18" Y="18" Z="18">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </Position>
+                    <LastMove cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </LastMove>
+                    <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                      <type>Jitter.LinearMath.JMatrix</type>
+                    </Orientation>
+                    <Scale cID="1" inst="855848">
+                      <type>System.Single</type>
+                      <data>
+                        <float>1</float>
+                      </data>
+                    </Scale>
+                    <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                      <type>Jitter.LinearMath.JMatrix</type>
+                    </localOrientation>
+                    <Visible cID="1" inst="55371360">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </Visible>
+                    <Shape cID="13" positions="56" triangles="28">
+                      <type>Jitter.Collision.Shapes.TriangleMeshShape</type>
+                      <positions>-0.01666098 -0.1142158 0.03676241 0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 -0.1148012 0.08147799 -0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.07538229 0.03799515 -0.01666098 0.07538229 0.03799515 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1148012 0.08147799 0.01666098 -0.1148012 0.08147799 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662</positions>
+                      <triangles>20 6 9 40 4 0 3 16 2 7 29 5 23 32 11 42 45 13 48 50 15 34 25 52 39 35 30 36 46 33 47 37 55 17 19 21 24 43 27 53 28 44 8 20 9 38 40 0 1 3 2 18 7 5 10 23 11 12 42 13 14 48 15 54 34 52 41 39 30 31 36 33 51 47 55 26 17 21 22 24 27 49 53 44</triangles>
+                    </Shape>
+                    <IsPassable cID="1" inst="55201310">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </IsPassable>
+                    <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+                      <type>Jitter.Dynamics.Material</type>
+                    </Material>
+                    <Mass cID="1" inst="46395329">
+                      <type>System.Single</type>
+                      <data>
+                        <float>0.0142891267</float>
+                      </data>
+                    </Mass>
+                    <Static cID="1" inst="7415056">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </Static>
+                  </sub>
+                </Quickslot>
+                <Quickslot cID="3" inst="cableSpawner1">
+                  <type>OutpostOmega.Game.GameObjects.Items.Devices.CableSpawner</type>
+                  <sub>
+                    <Move cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </Move>
+                    <CanInteract cID="1" inst="50212076">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </CanInteract>
+                    <ID cID="1" inst="44950942">
+                      <type>System.String</type>
+                      <data>
+                        <string>cableSpawner1</string>
+                      </data>
+                    </ID>
+                    <World cID="2" inst="Generic World">
+                      <type>OutpostOmega.Game.World</type>
+                    </World>
+                    <localPosition cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </localPosition>
+                    <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </rigidBodyOffset>
+                    <Priority cID="1" inst="30900529">
+                      <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+                      <data>
+                        <ProcessPriority>Default</ProcessPriority>
+                      </data>
+                    </Priority>
+                    <Disposing cID="1" inst="48346534">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </Disposing>
+                    <Position cID="6" X="19" Y="19" Z="19">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </Position>
+                    <LastMove cID="6" X="0" Y="0" Z="0">
+                      <type>Jitter.LinearMath.JVector</type>
+                    </LastMove>
+                    <Orientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                      <type>Jitter.LinearMath.JMatrix</type>
+                    </Orientation>
+                    <Scale cID="1" inst="13863048">
+                      <type>System.Single</type>
+                      <data>
+                        <float>1</float>
+                      </data>
+                    </Scale>
+                    <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                      <type>Jitter.LinearMath.JMatrix</type>
+                    </localOrientation>
+                    <Visible cID="1" inst="21168757">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </Visible>
+                    <Shape cID="13" positions="56" triangles="28">
+                      <type>Jitter.Collision.Shapes.TriangleMeshShape</type>
+                      <positions>-0.01666098 -0.1142158 0.03676241 0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 -0.1148012 0.08147799 -0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.07538229 0.03799515 -0.01666098 0.07538229 0.03799515 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1148012 0.08147799 0.01666098 -0.1148012 0.08147799 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662</positions>
+                      <triangles>20 6 9 40 4 0 3 16 2 7 29 5 23 32 11 42 45 13 48 50 15 34 25 52 39 35 30 36 46 33 47 37 55 17 19 21 24 43 27 53 28 44 8 20 9 38 40 0 1 3 2 18 7 5 10 23 11 12 42 13 14 48 15 54 34 52 41 39 30 31 36 33 51 47 55 26 17 21 22 24 27 49 53 44</triangles>
+                    </Shape>
+                    <IsPassable cID="1" inst="51278326">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </IsPassable>
+                    <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+                      <type>Jitter.Dynamics.Material</type>
+                    </Material>
+                    <Mass cID="1" inst="21198618">
+                      <type>System.Single</type>
+                      <data>
+                        <float>0.0142891267</float>
+                      </data>
+                    </Mass>
+                    <Static cID="1" inst="14413736">
+                      <type>System.Boolean</type>
+                      <data>
+                        <boolean>false</boolean>
+                      </data>
+                    </Static>
+                  </sub>
+                </Quickslot>
+                <null />
+                <null />
+                <null />
+                <null />
+                <null />
+              </Quickslot>
+              <Mind cID="3" inst="mind1">
+                <type>OutpostOmega.Game.GameObjects.Mobs.Mind</type>
+                <sub>
+                  <Mob cID="3" inst="human1">
+                    <type>OutpostOmega.Game.GameObjects.Mobs.CarbonBased.Human</type>
+                  </Mob>
+                  <Username cID="1" inst="44638367">
+                    <type>System.String</type>
+                    <data>
+                      <string>P1</string>
+                    </data>
+                  </Username>
+                  <Group cID="1" inst="62569468">
+                    <type>OutpostOmega.Game.datums.UserGroup</type>
+                    <data>
+                      <UserGroup>User</UserGroup>
+                    </data>
+                  </Group>
+                  <SpawnDirection cID="1" inst="31063794">
+                    <type>System.Byte</type>
+                    <data>
+                      <unsignedByte>3</unsignedByte>
+                    </data>
+                  </SpawnDirection>
+                  <Lock cID="1" inst="55693485">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Lock>
+                  <Move cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </Move>
+                  <CanInteract cID="1" inst="36417377">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </CanInteract>
+                  <ID cID="1" inst="28169255">
+                    <type>System.String</type>
+                    <data>
+                      <string>mind1</string>
+                    </data>
+                  </ID>
+                  <World cID="2" inst="Generic World">
+                    <type>OutpostOmega.Game.World</type>
+                  </World>
+                  <Parent cID="3" inst="human1">
+                    <type>OutpostOmega.Game.GameObjects.Mobs.CarbonBased.Human</type>
+                  </Parent>
+                  <localPosition cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </localPosition>
+                  <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </rigidBodyOffset>
+                  <Priority cID="1" inst="9380827">
+                    <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+                    <data>
+                      <ProcessPriority>Default</ProcessPriority>
+                    </data>
+                  </Priority>
+                  <Disposing cID="1" inst="19484043">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Disposing>
+                  <Position cID="6" X="0" Y="1.05" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </Position>
+                  <LastMove cID="6" X="0" Y="-0.04999995" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </LastMove>
+                  <Orientation cID="7" dat="-1 0 0 0 1 -8.742278E-08 0 -8.742278E-08 -1">
+                    <type>Jitter.LinearMath.JMatrix</type>
+                  </Orientation>
+                  <Scale cID="1" inst="30112782">
+                    <type>System.Single</type>
+                    <data>
+                      <float>1</float>
+                    </data>
+                  </Scale>
+                  <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                    <type>Jitter.LinearMath.JMatrix</type>
+                  </localOrientation>
+                  <Visible cID="1" inst="43536272">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Visible>
+                  <IsPassable cID="1" inst="12975215">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </IsPassable>
+                  <Mass cID="1" inst="47013792">
+                    <type>System.Single</type>
+                    <data>
+                      <float>0</float>
+                    </data>
+                  </Mass>
+                  <Static cID="1" inst="35245880">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Static>
+                </sub>
+              </Mind>
+              <View cID="3" inst="View1">
+                <type>OutpostOmega.Game.GameObjects.Mobs.View</type>
+                <sub>
+                  <Blind cID="1" inst="42560756">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Blind>
+                  <Orientation cID="7" dat="-1 0 0 0 1 0 0 0 -1">
+                    <type>Jitter.LinearMath.JMatrix</type>
+                  </Orientation>
+                  <TargetHit cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </TargetHit>
+                  <TargetHitInside cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </TargetHitInside>
+                  <TargetHitNormal cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </TargetHitNormal>
+                  <MouseOrientation cID="6" X="0" Y="1">
+                    <type>Jitter.LinearMath.JVector2</type>
+                  </MouseOrientation>
+                  <Rotation cID="6" X="0" Y="0" Z="-1">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </Rotation>
+                  <Move cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </Move>
+                  <CanInteract cID="1" inst="41585520">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </CanInteract>
+                  <ID cID="1" inst="59409072">
+                    <type>System.String</type>
+                    <data>
+                      <string>View1</string>
+                    </data>
+                  </ID>
+                  <World cID="2" inst="Generic World">
+                    <type>OutpostOmega.Game.World</type>
+                  </World>
+                  <Parent cID="3" inst="human1">
+                    <type>OutpostOmega.Game.GameObjects.Mobs.CarbonBased.Human</type>
+                  </Parent>
+                  <localPosition cID="6" X="0" Y="1.5" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </localPosition>
+                  <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </rigidBodyOffset>
+                  <Priority cID="1" inst="46801512">
+                    <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+                    <data>
+                      <ProcessPriority>First</ProcessPriority>
+                    </data>
+                  </Priority>
+                  <Disposing cID="1" inst="25693276">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Disposing>
+                  <Position cID="6" X="0" Y="2.55" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </Position>
+                  <LastMove cID="6" X="0" Y="-0.04999995" Z="0">
+                    <type>Jitter.LinearMath.JVector</type>
+                  </LastMove>
+                  <Scale cID="1" inst="5765319">
+                    <type>System.Single</type>
+                    <data>
+                      <float>1</float>
+                    </data>
+                  </Scale>
+                  <localOrientation cID="7" dat="1 0 0 0 1 8.742278E-08 0 -8.742278E-08 1">
+                    <type>Jitter.LinearMath.JMatrix</type>
+                  </localOrientation>
+                  <Visible cID="1" inst="64939307">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Visible>
+                  <IsPassable cID="1" inst="36587673">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </IsPassable>
+                  <Mass cID="1" inst="35832574">
+                    <type>System.Single</type>
+                    <data>
+                      <float>0</float>
+                    </data>
+                  </Mass>
+                  <Static cID="1" inst="1853108">
+                    <type>System.Boolean</type>
+                    <data>
+                      <boolean>false</boolean>
+                    </data>
+                  </Static>
+                </sub>
+              </View>
+              <Height cID="1" inst="16281031">
+                <type>System.Single</type>
+                <data>
+                  <float>1.5</float>
+                </data>
+              </Height>
+              <Width cID="1" inst="61557762">
+                <type>System.Single</type>
+                <data>
+                  <float>0.6</float>
+                </data>
+              </Width>
+              <MovementSpeed cID="1" inst="18635899">
+                <type>System.Single</type>
+                <data>
+                  <float>0.07</float>
+                </data>
+              </MovementSpeed>
+              <MovementRunSpeed cID="1" inst="33309121">
+                <type>System.Single</type>
+                <data>
+                  <float>0.15</float>
+                </data>
+              </MovementRunSpeed>
+              <Move cID="6" X="0" Y="0" Z="0">
+                <type>Jitter.LinearMath.JVector</type>
+              </Move>
+              <CanInteract cID="1" inst="6562654">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </CanInteract>
+              <ID cID="1" inst="26884016">
+                <type>System.String</type>
+                <data>
+                  <string>human1</string>
+                </data>
+              </ID>
+              <World cID="2" inst="Generic World">
+                <type>OutpostOmega.Game.World</type>
+              </World>
+              <localPosition cID="6" X="0" Y="0" Z="0">
+                <type>Jitter.LinearMath.JVector</type>
+              </localPosition>
+              <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+                <type>Jitter.LinearMath.JVector</type>
+              </rigidBodyOffset>
+              <Priority cID="1" inst="64005086">
+                <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+                <data>
+                  <ProcessPriority>Second</ProcessPriority>
+                </data>
+              </Priority>
+              <Disposing cID="1" inst="61656587">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+              <Position cID="6" X="0" Y="1.05" Z="0">
+                <type>Jitter.LinearMath.JVector</type>
+              </Position>
+              <LastMove cID="6" X="0" Y="-0.04999995" Z="0">
+                <type>Jitter.LinearMath.JVector</type>
+              </LastMove>
+              <Orientation cID="7" dat="-1 0 0 0 1 -8.742278E-08 0 -8.742278E-08 -1">
+                <type>Jitter.LinearMath.JMatrix</type>
+              </Orientation>
+              <Scale cID="1" inst="47058942">
+                <type>System.Single</type>
+                <data>
+                  <float>1</float>
+                </data>
+              </Scale>
+              <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+                <type>Jitter.LinearMath.JMatrix</type>
+              </localOrientation>
+              <Visible cID="1" inst="66879692">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Visible>
+              <IsPassable cID="1" inst="56796165">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </IsPassable>
+              <Mass cID="1" inst="5690615">
+                <type>System.Single</type>
+                <data>
+                  <float>0</float>
+                </data>
+              </Mass>
+              <Static cID="1" inst="54751106">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Static>
+            </sub>
+          </Holder>
+          <Move cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </Move>
+          <CanInteract cID="1" inst="7146765">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </CanInteract>
+          <ID cID="1" inst="53168999">
+            <type>System.String</type>
+            <data>
+              <string>spawner2</string>
+            </data>
+          </ID>
+          <World cID="2" inst="Generic World">
+            <type>OutpostOmega.Game.World</type>
+          </World>
+          <localPosition cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </localPosition>
+          <rigidBodyOffset cID="6" X="0" Y="0" Z="0">
+            <type>Jitter.LinearMath.JVector</type>
+          </rigidBodyOffset>
+          <Priority cID="1" inst="33575416">
+            <type>OutpostOmega.Game.GameObject+ProcessPriority</type>
+            <data>
+              <ProcessPriority>Default</ProcessPriority>
+            </data>
+          </Priority>
+          <Disposing cID="1" inst="34498751">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Disposing>
+          <Position cID="6" X="-0.15" Y="2.45" Z="0.4">
+            <type>Jitter.LinearMath.JVector</type>
+          </Position>
+          <LastMove cID="6" X="0.3" Y="-0.05000019" Z="-0.8">
+            <type>Jitter.LinearMath.JVector</type>
+          </LastMove>
+          <Orientation cID="7" dat="-1 0 0 0 1 0 0 0 -1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </Orientation>
+          <Scale cID="1" inst="17586541">
+            <type>System.Single</type>
+            <data>
+              <float>1</float>
+            </data>
+          </Scale>
+          <localOrientation cID="7" dat="1 0 0 0 1 0 0 0 1">
+            <type>Jitter.LinearMath.JMatrix</type>
+          </localOrientation>
+          <Visible cID="1" inst="45049282">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>true</boolean>
+            </data>
+          </Visible>
+          <Shape cID="13" positions="56" triangles="28">
+            <type>Jitter.Collision.Shapes.TriangleMeshShape</type>
+            <positions>-0.01666098 -0.1142158 0.03676241 0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 -0.1148012 0.08147799 -0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1142158 0.03676241 -0.01666098 -0.1148012 0.08147799 -0.01666098 -0.1148012 0.08147799 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.03311854 0.07375675 -0.01666098 0.07538229 0.03799515 -0.01666098 0.07538229 0.03799515 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 -0.01666098 -0.02528542 -0.04165256 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.03311854 0.07375675 0.01666098 0.07538229 0.03799515 0.01666098 0.07538229 0.03799515 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.02528542 -0.04165256 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1142158 0.03676241 0.01666098 -0.1148012 0.08147799 0.01666098 -0.1148012 0.08147799 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 0.01666098 0.01510798 -0.1006942 -0.01666098 0.01510798 -0.1878662 -0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 0.01666098 0.01510798 -0.1878662 -0.01666098 -0.02043735 -0.1878662 -0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662 0.01666098 -0.02043735 -0.1878662</positions>
+            <triangles>20 6 9 40 4 0 3 16 2 7 29 5 23 32 11 42 45 13 48 50 15 34 25 52 39 35 30 36 46 33 47 37 55 17 19 21 24 43 27 53 28 44 8 20 9 38 40 0 1 3 2 18 7 5 10 23 11 12 42 13 14 48 15 54 34 52 41 39 30 31 36 33 51 47 55 26 17 21 22 24 27 49 53 44</triangles>
+          </Shape>
+          <IsPassable cID="1" inst="23851235">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </IsPassable>
+          <Material cID="12" kFrict="0.3" rest="0.1" sFrict="0.6">
+            <type>Jitter.Dynamics.Material</type>
+          </Material>
+          <Mass cID="1" inst="47478197">
+            <type>System.Single</type>
+            <data>
+              <float>0.0142891267</float>
+            </data>
+          </Mass>
+          <Static cID="1" inst="56144108">
+            <type>System.Boolean</type>
+            <data>
+              <boolean>false</boolean>
+            </data>
+          </Static>
+        </sub>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="builder1">
+        <type>OutpostOmega.Game.GameObjects.Items.Devices.Builder</type>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="drawer1">
+        <type>OutpostOmega.Game.GameObjects.Items.Devices.Drawer</type>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="cableSpawner1">
+        <type>OutpostOmega.Game.GameObjects.Items.Devices.CableSpawner</type>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="View1">
+        <type>OutpostOmega.Game.GameObjects.Mobs.View</type>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="human1">
+        <type>OutpostOmega.Game.GameObjects.Mobs.CarbonBased.Human</type>
+      </AllGameObjects>
+      <AllGameObjects cID="3" inst="mind1">
+        <type>OutpostOmega.Game.GameObjects.Mobs.Mind</type>
+      </AllGameObjects>
+    </AllGameObjects>
+    <ContentManager cID="18" inst="43456911">
+      <type>OutpostOmega.Game.Content.ContentManager</type>
+      <sub>
+        <LoadedContent list="true">
+          <type>System.Collections.Generic.List`1[T]</type>
+          <LoadedContent cID="19" inst="9403970" path="Content\Model\Items\Tools\Wrench.dae">
+            <type>OutpostOmega.Game.Content.Model</type>
+            <sub>
+              <Meshs list="true">
+                <type>System.Collections.Generic.Dictionary`2[TKey,TValue]</type>
+                <keys list="true">
+                  <type>System.Collections.Generic.Dictionary`2+KeyCollection[TKey,TValue]</type>
+                  <keys cID="1" inst="51232067">
+                    <type>System.String</type>
+                    <data>
+                      <string>Cube</string>
+                    </data>
+                  </keys>
+                </keys>
+                <values list="true">
+                  <type>System.Collections.Generic.Dictionary`2+ValueCollection[TKey,TValue]</type>
+                  <values cID="0" inst="61742061">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="51232067">
+                        <type>System.String</type>
+                        <data>
+                          <string>Cube</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="9403970" path="Content\Model\Items\Tools\Wrench.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="26929336">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Wrench1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Tools.Wrench</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="3860589">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                </values>
+              </Meshs>
+              <Path cID="1" inst="39508813">
+                <type>System.String</type>
+                <data>
+                  <string>Content\Model\Items\Tools\Wrench.dae</string>
+                </data>
+              </Path>
+              <Manager cID="18" inst="43456911">
+                <type>OutpostOmega.Game.Content.ContentManager</type>
+              </Manager>
+              <Loaded cID="1" inst="33066147">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Loaded>
+              <Disposing cID="1" inst="11581608">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+            </sub>
+          </LoadedContent>
+          <LoadedContent cID="19" inst="51410331" path="Content\Model\Items\Devices\Gun.dae">
+            <type>OutpostOmega.Game.Content.Model</type>
+            <sub>
+              <Meshs list="true">
+                <type>System.Collections.Generic.Dictionary`2[TKey,TValue]</type>
+                <keys list="true">
+                  <type>System.Collections.Generic.Dictionary`2+KeyCollection[TKey,TValue]</type>
+                  <keys cID="1" inst="20072211">
+                    <type>System.String</type>
+                    <data>
+                      <string>Gun</string>
+                    </data>
+                  </keys>
+                  <keys cID="1" inst="30834295">
+                    <type>System.String</type>
+                    <data>
+                      <string>Display</string>
+                    </data>
+                  </keys>
+                  <keys cID="1" inst="45366011">
+                    <type>System.String</type>
+                    <data>
+                      <string>Colission</string>
+                    </data>
+                  </keys>
+                </keys>
+                <values list="true">
+                  <type>System.Collections.Generic.Dictionary`2+ValueCollection[TKey,TValue]</type>
+                  <values cID="0" inst="61246703">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="20072211">
+                        <type>System.String</type>
+                        <data>
+                          <string>Gun</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="51410331" path="Content\Model\Items\Devices\Gun.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="4638229">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="spawner1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Spawner</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="7393726">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="spawner2">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Spawner</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="64282230">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="builder1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Builder</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="7019238">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="drawer1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Drawer</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="47430258">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="cableSpawner1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.CableSpawner</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="53986836">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                  <values cID="0" inst="13488541">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="30834295">
+                        <type>System.String</type>
+                        <data>
+                          <string>Display</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="51410331" path="Content\Model\Items\Devices\Gun.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="3004583">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="spawner1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Spawner</type>
+                            </gameObject>
+                            <Texture cID="19" inst="988542" path="Content\Model\Items\Devices\Spawner.png">
+                              <type>OutpostOmega.Game.Content.Texture</type>
+                              <sub>
+                                <Path cID="1" inst="44484397">
+                                  <type>System.String</type>
+                                  <data>
+                                    <string>Content\Model\Items\Devices\Spawner.png</string>
+                                  </data>
+                                </Path>
+                                <Manager cID="18" inst="43456911">
+                                  <type>OutpostOmega.Game.Content.ContentManager</type>
+                                </Manager>
+                                <Loaded cID="1" inst="55640842">
+                                  <type>System.Boolean</type>
+                                  <data>
+                                    <boolean>true</boolean>
+                                  </data>
+                                </Loaded>
+                                <Disposing cID="1" inst="20809956">
+                                  <type>System.Boolean</type>
+                                  <data>
+                                    <boolean>false</boolean>
+                                  </data>
+                                </Disposing>
+                              </sub>
+                            </Texture>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="64032809">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="spawner2">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Spawner</type>
+                            </gameObject>
+                            <Texture cID="19" inst="988542" path="Content\Model\Items\Devices\Spawner.png">
+                              <type>OutpostOmega.Game.Content.Texture</type>
+                            </Texture>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="62904121">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="builder1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Builder</type>
+                            </gameObject>
+                            <Texture cID="19" inst="988542" path="Content\Model\Items\Devices\Spawner.png">
+                              <type>OutpostOmega.Game.Content.Texture</type>
+                            </Texture>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="12113199">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="drawer1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Drawer</type>
+                            </gameObject>
+                            <Texture cID="19" inst="8223052" path="Content\Model\Items\Devices\Write.png">
+                              <type>OutpostOmega.Game.Content.Texture</type>
+                              <sub>
+                                <Path cID="1" inst="34493027">
+                                  <type>System.String</type>
+                                  <data>
+                                    <string>Content\Model\Items\Devices\Write.png</string>
+                                  </data>
+                                </Path>
+                                <Manager cID="18" inst="43456911">
+                                  <type>OutpostOmega.Game.Content.ContentManager</type>
+                                </Manager>
+                                <Loaded cID="1" inst="8682345">
+                                  <type>System.Boolean</type>
+                                  <data>
+                                    <boolean>true</boolean>
+                                  </data>
+                                </Loaded>
+                                <Disposing cID="1" inst="55161210">
+                                  <type>System.Boolean</type>
+                                  <data>
+                                    <boolean>false</boolean>
+                                  </data>
+                                </Disposing>
+                              </sub>
+                            </Texture>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="66335374">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="cableSpawner1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.CableSpawner</type>
+                            </gameObject>
+                            <Texture cID="19" inst="8223052" path="Content\Model\Items\Devices\Write.png">
+                              <type>OutpostOmega.Game.Content.Texture</type>
+                            </Texture>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="32301851">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                  <values cID="0" inst="44297195">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="45366011">
+                        <type>System.String</type>
+                        <data>
+                          <string>Colission</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="51410331" path="Content\Model\Items\Devices\Gun.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="47216733">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="spawner1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Spawner</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="44378204">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="spawner2">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Spawner</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="50862147">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="builder1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Builder</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="7095280">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="drawer1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.Drawer</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="50852166">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="cableSpawner1">
+                              <type>OutpostOmega.Game.GameObjects.Items.Devices.CableSpawner</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="6646117">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                </values>
+              </Meshs>
+              <Path cID="1" inst="30639818">
+                <type>System.String</type>
+                <data>
+                  <string>Content\Model\Items\Devices\Gun.dae</string>
+                </data>
+              </Path>
+              <Manager cID="18" inst="43456911">
+                <type>OutpostOmega.Game.Content.ContentManager</type>
+              </Manager>
+              <Loaded cID="1" inst="36614568">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Loaded>
+              <Disposing cID="1" inst="37042854">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+            </sub>
+          </LoadedContent>
+          <LoadedContent cID="19" inst="988542" path="Content\Model\Items\Devices\Spawner.png">
+            <type>OutpostOmega.Game.Content.Texture</type>
+          </LoadedContent>
+          <LoadedContent cID="19" inst="56315736" path="Content\Model\Vendingmachine\GalaxPlus.dae">
+            <type>OutpostOmega.Game.Content.Model</type>
+            <sub>
+              <Meshs list="true">
+                <type>System.Collections.Generic.Dictionary`2[TKey,TValue]</type>
+                <keys list="true">
+                  <type>System.Collections.Generic.Dictionary`2+KeyCollection[TKey,TValue]</type>
+                  <keys cID="1" inst="21407299">
+                    <type>System.String</type>
+                    <data>
+                      <string>Cube.010</string>
+                    </data>
+                  </keys>
+                </keys>
+                <values list="true">
+                  <type>System.Collections.Generic.Dictionary`2+ValueCollection[TKey,TValue]</type>
+                  <values cID="0" inst="64564967">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="21407299">
+                        <type>System.String</type>
+                        <data>
+                          <string>Cube.010</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="56315736" path="Content\Model\Vendingmachine\GalaxPlus.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="19742389">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="vendingmachine1">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Machines.Vendingmachine</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="15992306">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                </values>
+              </Meshs>
+              <Path cID="1" inst="48565132">
+                <type>System.String</type>
+                <data>
+                  <string>Content\Model\Vendingmachine\GalaxPlus.dae</string>
+                </data>
+              </Path>
+              <Manager cID="18" inst="43456911">
+                <type>OutpostOmega.Game.Content.ContentManager</type>
+              </Manager>
+              <Loaded cID="1" inst="37947329">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Loaded>
+              <Disposing cID="1" inst="29908217">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+            </sub>
+          </LoadedContent>
+          <LoadedContent cID="19" inst="3692515" path="Content\Model\Structure\Frame.dae">
+            <type>OutpostOmega.Game.Content.Model</type>
+            <sub>
+              <Meshs list="true">
+                <type>System.Collections.Generic.Dictionary`2[TKey,TValue]</type>
+                <keys list="true">
+                  <type>System.Collections.Generic.Dictionary`2+KeyCollection[TKey,TValue]</type>
+                  <keys cID="1" inst="28259477">
+                    <type>System.String</type>
+                    <data>
+                      <string>Cube</string>
+                    </data>
+                  </keys>
+                </keys>
+                <values list="true">
+                  <type>System.Collections.Generic.Dictionary`2+ValueCollection[TKey,TValue]</type>
+                  <values cID="0" inst="48690759">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="28259477">
+                        <type>System.String</type>
+                        <data>
+                          <string>Cube</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="3692515" path="Content\Model\Structure\Frame.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="43600526">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Frame1">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="15866645">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Frame2">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="42910414">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Frame3">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="51920462">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Frame4">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="54719442">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Frame5">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="46455792">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Frame6">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="10135871">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Frame7">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="53461032">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Frame8">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Frame</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="56936236">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                </values>
+              </Meshs>
+              <Path cID="1" inst="11993814">
+                <type>System.String</type>
+                <data>
+                  <string>Content\Model\Structure\Frame.dae</string>
+                </data>
+              </Path>
+              <Manager cID="18" inst="43456911">
+                <type>OutpostOmega.Game.Content.ContentManager</type>
+              </Manager>
+              <Loaded cID="1" inst="2850719">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Loaded>
+              <Disposing cID="1" inst="61173510">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+            </sub>
+          </LoadedContent>
+          <LoadedContent cID="19" inst="1344526" path="Content\Model\Structure\Window.dae">
+            <type>OutpostOmega.Game.Content.Model</type>
+            <sub>
+              <Meshs list="true">
+                <type>System.Collections.Generic.Dictionary`2[TKey,TValue]</type>
+                <keys list="true">
+                  <type>System.Collections.Generic.Dictionary`2+KeyCollection[TKey,TValue]</type>
+                  <keys cID="1" inst="38310622">
+                    <type>System.String</type>
+                    <data>
+                      <string>Cube</string>
+                    </data>
+                  </keys>
+                </keys>
+                <values list="true">
+                  <type>System.Collections.Generic.Dictionary`2+ValueCollection[TKey,TValue]</type>
+                  <values cID="0" inst="1163494">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="38310622">
+                        <type>System.String</type>
+                        <data>
+                          <string>Cube</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="1344526" path="Content\Model\Structure\Window.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="52357250">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Window1">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Window</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                        <gOTexPairs cID="0" inst="7266028">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="Window2">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Window</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="58535817">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                </values>
+              </Meshs>
+              <Path cID="1" inst="16866085">
+                <type>System.String</type>
+                <data>
+                  <string>Content\Model\Structure\Window.dae</string>
+                </data>
+              </Path>
+              <Manager cID="18" inst="43456911">
+                <type>OutpostOmega.Game.Content.ContentManager</type>
+              </Manager>
+              <Loaded cID="1" inst="20776361">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Loaded>
+              <Disposing cID="1" inst="62521017">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+            </sub>
+          </LoadedContent>
+          <LoadedContent cID="19" inst="61982351" path="Content\Model\Structure\Machinery\Doors\Airlock.dae">
+            <type>OutpostOmega.Game.Content.Model</type>
+            <sub>
+              <Meshs list="true">
+                <type>System.Collections.Generic.Dictionary`2[TKey,TValue]</type>
+                <keys list="true">
+                  <type>System.Collections.Generic.Dictionary`2+KeyCollection[TKey,TValue]</type>
+                  <keys cID="1" inst="20686234">
+                    <type>System.String</type>
+                    <data>
+                      <string>DoorFrame</string>
+                    </data>
+                  </keys>
+                  <keys cID="1" inst="58465333">
+                    <type>System.String</type>
+                    <data>
+                      <string>DoorUp</string>
+                    </data>
+                  </keys>
+                  <keys cID="1" inst="13694296">
+                    <type>System.String</type>
+                    <data>
+                      <string>DoorDown</string>
+                    </data>
+                  </keys>
+                </keys>
+                <values list="true">
+                  <type>System.Collections.Generic.Dictionary`2+ValueCollection[TKey,TValue]</type>
+                  <values cID="0" inst="14990087">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="20686234">
+                        <type>System.String</type>
+                        <data>
+                          <string>DoorFrame</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="61982351" path="Content\Model\Structure\Machinery\Doors\Airlock.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="3465296">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="airlock1">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="21720596">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                  <values cID="0" inst="37902766">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="58465333">
+                        <type>System.String</type>
+                        <data>
+                          <string>DoorUp</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="61982351" path="Content\Model\Structure\Machinery\Doors\Airlock.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="27902879">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="AirlockDoor1">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock+AirlockDoor</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="47670010">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                  <values cID="0" inst="64775668">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="13694296">
+                        <type>System.String</type>
+                        <data>
+                          <string>DoorDown</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="61982351" path="Content\Model\Structure\Machinery\Doors\Airlock.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="29223913">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="AirlockDoor2">
+                              <type>OutpostOmega.Game.GameObjects.Structures.Machines.Doors.Airlock+AirlockDoor</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="40007697">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                </values>
+              </Meshs>
+              <Path cID="1" inst="55515938">
+                <type>System.String</type>
+                <data>
+                  <string>Content\Model\Structure\Machinery\Doors\Airlock.dae</string>
+                </data>
+              </Path>
+              <Manager cID="18" inst="43456911">
+                <type>OutpostOmega.Game.Content.ContentManager</type>
+              </Manager>
+              <Loaded cID="1" inst="15189286">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Loaded>
+              <Disposing cID="1" inst="12429244">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+            </sub>
+          </LoadedContent>
+          <LoadedContent cID="19" inst="8223052" path="Content\Model\Items\Devices\Write.png">
+            <type>OutpostOmega.Game.Content.Texture</type>
+          </LoadedContent>
+          <LoadedContent cID="19" inst="22445071" path="Content\Model\Character\Human\Hooman.dae">
+            <type>OutpostOmega.Game.Content.Model</type>
+            <sub>
+              <Meshs list="true">
+                <type>System.Collections.Generic.Dictionary`2[TKey,TValue]</type>
+                <keys list="true">
+                  <type>System.Collections.Generic.Dictionary`2+KeyCollection[TKey,TValue]</type>
+                  <keys cID="1" inst="18568923">
+                    <type>System.String</type>
+                    <data>
+                      <string>Body</string>
+                    </data>
+                  </keys>
+                  <keys cID="1" inst="30295189">
+                    <type>System.String</type>
+                    <data>
+                      <string>Head</string>
+                    </data>
+                  </keys>
+                </keys>
+                <values list="true">
+                  <type>System.Collections.Generic.Dictionary`2+ValueCollection[TKey,TValue]</type>
+                  <values cID="0" inst="10257073">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="18568923">
+                        <type>System.String</type>
+                        <data>
+                          <string>Body</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="22445071" path="Content\Model\Character\Human\Hooman.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                        <gOTexPairs cID="0" inst="58915139">
+                          <type>OutpostOmega.Game.Content.Mesh+gOPair</type>
+                          <sub>
+                            <gameObject cID="3" inst="human1">
+                              <type>OutpostOmega.Game.GameObjects.Mobs.CarbonBased.Human</type>
+                            </gameObject>
+                          </sub>
+                        </gOTexPairs>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="33935589">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                  <values cID="0" inst="50706539">
+                    <type>OutpostOmega.Game.Content.Mesh</type>
+                    <sub>
+                      <Name cID="1" inst="30295189">
+                        <type>System.String</type>
+                        <data>
+                          <string>Head</string>
+                        </data>
+                      </Name>
+                      <Model cID="19" inst="22445071" path="Content\Model\Character\Human\Hooman.dae">
+                        <type>OutpostOmega.Game.Content.Model</type>
+                      </Model>
+                      <gOTexPairs list="true">
+                        <type>System.Collections.Generic.List`1[T]</type>
+                      </gOTexPairs>
+                      <Disposing cID="1" inst="92919">
+                        <type>System.Boolean</type>
+                        <data>
+                          <boolean>false</boolean>
+                        </data>
+                      </Disposing>
+                    </sub>
+                  </values>
+                </values>
+              </Meshs>
+              <Path cID="1" inst="4181390">
+                <type>System.String</type>
+                <data>
+                  <string>Content\Model\Character\Human\Hooman.dae</string>
+                </data>
+              </Path>
+              <Manager cID="18" inst="43456911">
+                <type>OutpostOmega.Game.Content.ContentManager</type>
+              </Manager>
+              <Loaded cID="1" inst="53944861">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>true</boolean>
+                </data>
+              </Loaded>
+              <Disposing cID="1" inst="11599658">
+                <type>System.Boolean</type>
+                <data>
+                  <boolean>false</boolean>
+                </data>
+              </Disposing>
+            </sub>
+          </LoadedContent>
+        </LoadedContent>
+      </sub>
+    </ContentManager>
+    <Datums list="true">
+      <type>System.Collections.Generic.List`1[T]</type>
+    </Datums>
+    <IDCounter list="true">
+      <type>System.Collections.Generic.Dictionary`2[TKey,TValue]</type>
+      <keys list="true">
+        <type>System.Collections.Generic.Dictionary`2+KeyCollection[TKey,TValue]</type>
+        <keys cID="1" inst="1206253">
+          <type>System.String</type>
+          <data>
+            <string>Wrench</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="54281387">
+          <type>System.String</type>
+          <data>
+            <string>spawner</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="26743348">
+          <type>System.String</type>
+          <data>
+            <string>vendingmachine</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="62599984">
+          <type>System.String</type>
+          <data>
+            <string>Frame</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="65535886">
+          <type>System.String</type>
+          <data>
+            <string>Window</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="63433729">
+          <type>System.String</type>
+          <data>
+            <string>airlock</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="35945528">
+          <type>System.String</type>
+          <data>
+            <string>AirlockDoor</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="6936067">
+          <type>System.String</type>
+          <data>
+            <string>mind</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="43687586">
+          <type>System.String</type>
+          <data>
+            <string>human</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="19784333">
+          <type>System.String</type>
+          <data>
+            <string>builder</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="17879784">
+          <type>System.String</type>
+          <data>
+            <string>drawer</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="66392805">
+          <type>System.String</type>
+          <data>
+            <string>cableSpawner</string>
+          </data>
+        </keys>
+        <keys cID="1" inst="34886233">
+          <type>System.String</type>
+          <data>
+            <string>View</string>
+          </data>
+        </keys>
+      </keys>
+      <values list="true">
+        <type>System.Collections.Generic.Dictionary`2+ValueCollection[TKey,TValue]</type>
+        <values cID="1" inst="46098163">
+          <type>System.String</type>
+          <data>
+            <string>1</string>
+          </data>
+        </values>
+        <values cID="1" inst="61151430">
+          <type>System.String</type>
+          <data>
+            <string>2</string>
+          </data>
+        </values>
+        <values cID="1" inst="46098163">
+          <type>System.String</type>
+          <data>
+            <string>1</string>
+          </data>
+        </values>
+        <values cID="1" inst="350947">
+          <type>System.String</type>
+          <data>
+            <string>8</string>
+          </data>
+        </values>
+        <values cID="1" inst="15792651">
+          <type>System.String</type>
+          <data>
+            <string>2</string>
+          </data>
+        </values>
+        <values cID="1" inst="46098163">
+          <type>System.String</type>
+          <data>
+            <string>1</string>
+          </data>
+        </values>
+        <values cID="1" inst="39580681">
+          <type>System.String</type>
+          <data>
+            <string>2</string>
+          </data>
+        </values>
+        <values cID="1" inst="46098163">
+          <type>System.String</type>
+          <data>
+            <string>1</string>
+          </data>
+        </values>
+        <values cID="1" inst="46098163">
+          <type>System.String</type>
+          <data>
+            <string>1</string>
+          </data>
+        </values>
+        <values cID="1" inst="46098163">
+          <type>System.String</type>
+          <data>
+            <string>1</string>
+          </data>
+        </values>
+        <values cID="1" inst="46098163">
+          <type>System.String</type>
+          <data>
+            <string>1</string>
+          </data>
+        </values>
+        <values cID="1" inst="46098163">
+          <type>System.String</type>
+          <data>
+            <string>1</string>
+          </data>
+        </values>
+        <values cID="1" inst="46098163">
+          <type>System.String</type>
+          <data>
+            <string>1</string>
+          </data>
+        </values>
+      </values>
+    </IDCounter>
+    <Player cID="3" inst="mind1">
+      <type>OutpostOmega.Game.GameObjects.Mobs.Mind</type>
+    </Player>
+    <Structures list="true">
+      <type>System.Collections.ObjectModel.ObservableCollection`1[T]</type>
+      <Structures cID="10" inst="Flat_x30">
+        <type>OutpostOmega.Game.turf.Structure</type>
+      </Structures>
+    </Structures>
+    <Debug cID="1" inst="36300182">
+      <type>System.Boolean</type>
+      <data>
+        <boolean>false</boolean>
+      </data>
+    </Debug>
+    <ClientMode cID="1" inst="22895473">
+      <type>System.Boolean</type>
+      <data>
+        <boolean>false</boolean>
+      </data>
+    </ClientMode>
+    <Mods list="true">
+      <type>System.Collections.Generic.List`1[T]</type>
+    </Mods>
+  </sub>
+</GameWorld>

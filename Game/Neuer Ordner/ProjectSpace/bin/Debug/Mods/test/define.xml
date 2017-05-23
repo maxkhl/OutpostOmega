@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<oo_mod name="testMod" version="1.0" author="MaxKhl">
+  <content>
+    <file name="HeadTexture" importer="Texture2D">Content\head_avatar.png</file>
+    <file name="HeadTexture" importer="Model">Content\head_avatar.png</file>
+  </content>
+  <scripts>
+    <script hook="startup">init.lua</script>
+  </scripts>
+</oo_mod>

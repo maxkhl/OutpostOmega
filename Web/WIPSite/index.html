@@ -1,0 +1,310 @@
+<html>
+<head>
+<title>Outpost Omega</title>
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="author" content="Maximilian K&ouml;hler (MaxKhl)">
+<meta name="description" content="Outpost Omega is a sandbox space station simulator.">
+<meta name="keywords" content="Outpost Omega, Space Station, 3D">
+<meta charset="utf-8">
+<link rel="shortcut icon" href="http://www.outpost-omega.com/favicon.ico" />
+<style type="text/css">
+	html, body {
+		margin: 0px;
+		padding: 0px;
+		height: 100%;
+	}
+	body {
+		padding: 10px;
+		background-color: #000000;
+		color: #FFFFFF;
+		font-family: Arial;
+		text-align: center;
+	}
+	div#head {
+		width: 100%;
+		height: 100%;
+		background-image: url(Head.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		margin-bottom: 20px;
+	}
+	div#headGlow {
+		width: 100%;
+		height: 100%;
+		background-image: url(HeadGlow.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		margin-bottom: 20px;
+		position: absolute;
+		top: 10px;
+		left: 0px;
+		opacity: 1;
+	}
+	h1 {
+		font-size: inherit;
+		font-weight: bold;
+		padding: 0px;
+		margin: 15px 0px 0px 0px;
+		color: #adff29;
+	}
+	p {
+		padding: 0px;
+		margin: 5px 0px 5px 15px;
+	}
+	a {
+		color: #FFFFFF;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	div#text {
+		position:absolute;
+		width:600px;
+		height:200px;
+		z-index:15;
+		top:100%;
+		left:50%;
+		margin:50 0 0 -300px;
+		font-size: 12;
+	}
+	div#devscreens {
+		position: absolute;
+		top: 75px;
+		right: 150px;
+		margin: 25px 25px 0px 0px;
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 341px;
+		height: 100%;
+		z-index: 20;
+		background-image: url(devscreens.png);
+		cursor: pointer;
+	}
+	div#aieye {
+		position: absolute;
+		top: 25px;
+		left: 150px;
+		margin: -200px 25px 0px 0px;
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 365px;
+		height: 100%;
+		z-index: 10;
+		background-image: url(aieye.png);
+	}
+	div#aieyetalk {
+		position: absolute;
+		top: 25px;
+		opacity: 0.0;
+		left: 150px;
+		margin: -200px 25px 0px 0px;
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 365px;
+		z-index: 11;
+		height: 100%;
+		background-image: url(aieyetalk1.png);
+	}
+	
+	
+	
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="jquery.easing.js"></script>
+
+
+<script type="text/javascript">
+	$( document ).ready(function() {
+		/*setTimeout(function() {
+			doflickshit();
+            },2000);*/
+		doflickshithead();
+	});
+	function doflickshithead()
+	{
+		var outam = Math.round(Math.random()*1000);
+	
+		if(outam < 10)
+		{
+			$( "#headGlow" ).animate({
+					opacity: 0.2,
+				}, 500, "linear", function() {
+					$( "#headGlow" ).animate({
+						opacity: 0,
+					}, 2500, "easeOutExpo", function() {
+						var waittime = Math.round(Math.random()*5000);
+						setTimeout(function() {
+							
+							trystart();
+							
+							},waittime);
+					});
+				});
+		}
+		else
+		{
+			var animtime = Math.round(Math.random()*120);
+			$( "#headGlow" ).animate({
+				opacity: 1,
+			}, 80, null, function() {
+				$( "#headGlow" ).animate({
+					opacity: 0.95,
+				}, 80, null, function() {
+					doflickshithead();
+					});
+			});
+		}
+	}
+	function trystart()
+	{
+		var stopprob = Math.round(Math.random()*1000);
+		if(stopprob < 150)
+			doflickshithead();
+		else
+		{
+			var animtime = Math.round(Math.random()*200);
+			var opac = Math.round(Math.random()*10)/12;
+			$( "#headGlow" ).animate({
+					opacity: opac,
+				}, animtime, null, function() {
+				
+					var animtimeoff = Math.round(Math.random()*200);
+					$( "#headGlow" ).animate({
+							opacity: 0,
+						}, animtimeoff, null, function() {
+							trystart()
+						});
+				
+				});
+		}
+	}
+	
+	function doflickshit()
+	{
+		var oldopac = $("div#aieyetalk").css("opacity");
+		
+		if(oldopac == 0)
+		{
+			var pic = Math.round(Math.random()*10)+1;
+			if(pic > 3) pic = 1;
+			$("div#aieyetalk").css("background-image", "url(aieyetalk" + pic + ".png)");
+		}
+	
+		var animtime = Math.round(Math.random()*1500);
+		if(animtime < 500) animtime = 500;
+		
+		var opac = Math.round(Math.random()*10)/10;
+		if(opac < 0.3) opac = 0.3;
+	
+		  $( "#aieyetalk" ).animate({
+			opacity: opac,
+		  }, animtime, null, function() {
+			var opacd = Math.round(Math.random()*10)/10;
+			if(opacd > opac) opacd = 0;
+			$( "#aieyetalk" ).animate({
+				opacity: opacd,
+				}, animtime, null, function() {
+					var wait = Math.round(Math.random()*10);
+					setTimeout(function() {
+						doflickshit();
+						},wait);
+				});
+			
+		  });
+	}
+</script>
+</head>
+<body>	
+<div id="devscreens" onclick="window.location.href = 'devscreens.html'"></div>
+<!--<div id="aieye"></div>
+<div id="aieyetalk"></div>-->
+
+<div id="head"></div>
+<div id="headGlow"></div>
+
+<div id="text">
+<h1>What is this shit?</h1>
+<p>Outpost Omega is a PC game I am currently working on.</p>
+
+<h1>What is the game about?</h1>
+<p>Ever heard about Space Station 13? No? Imagine a space station simulator that is played by up to 100 players over a network. Space Station 13 is played in a 2D-perspective. Outpost-Omega is pretty similar, but you play it in a first person 3D-perspective.</p>
+
+<h1>Sounds boring...</h1>
+<p>Well... yeah... it's not that boring actually. As a new player you have to choose a role on the station (f.e. Janitor, Quartermaster, Doctor, Scientist, Engineer, Security Officer, Barkeeper, Cook, Captain, AI). Every job is more or less complex and everyone needs to fulfill their tasks to keep the station going. The engineer needs to setup the engine and fix hull breaches, the doctor needs to treat patients, the officer has to catch criminals and so on.</p>
+
+<h1>There are criminals?</h1>
+<p>Yup, that’s the thing that brings the action into the game. New player got a chance to spawn as an antagonist. There are different types of <a href="http://en.wikipedia.org/wiki/Antagonist" target="_blank">antagonists</a> (f.e. Traitor, Mutineer, Changeling, Alien, etc...). Every antagonist has the main goal to ruin the peace on the station by fulfilling his personal goals that involve killing a person, stealing an item, destroying the station, and so on. But there are also gamemodes that don't contain any antagonist roles.</p>
+
+<h1>So it's a space mmo?</h1>
+<p>Nah. It’s round based. That means a round starts, everyone is doing their business, shit hits the fan, crew dead or evacuated, round over, new round.</p>
+
+<h1>Only round based multiplayer?</h1>
+<p>Nope. Outpost Omega will allow you to play a persistent game (everything gets saved). You will be able to play alone, with your friends, and online with strangers.</p>
+
+<h1>What's the point in playing alone?</h1>
+<p>It depends on your preferences. Maybe you want to mess with the atmosphere or other stuff. Maybe you want to build and design your own space station from scratch. Maybe you want to train for your next round as a traitor and find a good way to give the station some "freedom". That’s up to you.</p>
+
+<h1>Atmosphere?</h1>
+<p>Space Station 13 is known for its impressive atmosphere, power, chemical, medical, and clown simulation. I'm going to implement these ideas in Outpost Omega as well.</p>
+
+<h1>How does all that complex shit work in a 3D environment?</h1>
+<p>I would compare it to <a href="http://www.star-made.org" target="_blank">StarMade</a> or <a href="http://www.spaceengineersgame.com" target="_blank">Space Engineers</a>. The whole station is built out of blocks. Every block is 1 by 1 by 1 meter big (1 meter = 3 feet and 3 blah inches). Equipment, like doors and other stuff, can span multiple blocks. The atmosphere will work in blocks as well. Cables and pipes (you maybe know them from Space Station 13) will only be visible as a texture when you remove the floor tile (pretty much how Space Station 13 does it). In general, I'm going to try to do as much stuff in textures as possible to lower the amount of work.</p>
+
+<h1>Can I haz it?</h1>
+<p>Not yet. I still need to work a lot on the game. I have high goals and the game is going to be very complex. Once the game engine is done, I'm going to start a Kickstarter campaign and release a tech demo for everyone to mess around with all the neat features I'm working on right now.</p>
+
+<h1>When do you plan to release it?</h1>
+<p>No plan currently. I'm working my ass off on this game but I can't name a specific release date. I target this year to get to the tech demo stage.</p>
+
+<h1>What about graphics?</h1>
+<p>I focus mostly on content and gameplay, but the graphics won't look too shitty. I'll try my best to give the game a good style without fancy cutting edge graphics. But it's one of the later points on my todo-list.</p>
+
+<h1>What do you mean with "Good style"?</h1>
+<p>I want to make the game look like people in the 80/90's imagined the future. (f.e. <a href="http://en.wikipedia.org/wiki/The_Running_Man_(1987_film)" target="_blank">Running Man</a>) I really like the look of computer/terminals, robots, and armors in old sci-fi movies and I think I can make a decent looking game without spending too much time on graphics that way.</p>
+
+<h1>How are terminals going to work?</h1>
+<p>Pretty much how they should work. You look at the computer, see the display, and click with your crosshair on the screen. I'll use a technique I have already developed in the past for another game. I'm a big fan of immersive games. I want Outpost Omega to be as immersive as possible.</p>
+
+<h1>Only first person? What about the AI?</h1>
+<p>The game will only allow a first person view. I think that's the best way to give everyone an immersive gameplay experience. This way I don't have to fuck around with a 3rd person camera that gets stuck everywhere in small corridors and stuff. You will be able to examine your appearance in the character window. The AI will be in first person as well. The AI has a 3-dimensional wireframe model of the station that shows life signals, cameras, and other electronic equipment. From that station map it has the option to watch camera streams and control the electronic equipment. 
+I think it'll be challenging and cool to play the AI like that.</p>
+
+<h1>Will Outpost Omega be moddable?</h1>
+<p>Of course! It would be one of the most important things for me. The game has to be highly moddable to allow players and server admins to implement new features such as items and other stuff. Simple stuff will be easy to implement via XML files. You will also be able to write code using C#.</p>
+
+<h1>Can I host my own server and make my own space station?</h1>
+<p>Yes to both. The game files contain a dedicated server. A space station is pretty much an ordinary save file. You can create your own space station in single player or multiplayer, save it to a file, and put it on your server. Alternatively, you can create the space station on your server directly and then you can host it in round or persistent mode. There will be one or maybe more "official" stations that I'm going to build but you are not forced to use them.</p>
+
+<h1>More technical shit please</h1>
+<p>As you wish, Sir. Outpost Omega is running on a self-developed OpenGL Engine written in C#. It uses <a href="http://jitter-physics.com/" target="_blank">Jitter Physics</a> for the physical simulation, <a href="https://code.google.com/p/lidgren-network-gen3/" target="_blank">Lidgren</a> for network blah, <a href="http://www.opentk.com/" target="_blank">OpenTK</a> as an interface for OpenGL, and <a href="https://github.com/garrynewman/GWEN" target="_blank">Gwen</a> for UI shit. So everything is basically platform independent except the shit I've written using the newest .NET framework. That’s the reason why it'll be Windows only for now.</p>
+
+<h1>Is it open source?</h1>
+<p>The game engine itself won't be open source. But it will be possible to expand/modify almost every part of the game through mods. It will also be possible to contribute your mods to get them implemented into the default game.</p>
+
+<h1>Is it for free?</h1>
+<p>Probably. But I haven't really thought about that stuff yet.</p>
+
+<h1>How far are you now?</h1>
+<p>Still working on the engine. I'm already working on it for about 4 months from now (March 2015).</p>
+
+<h1>Who the hell are you?</h1>
+<p>Name is Maximilian Köhler (MaxKhl). 25. Germany. I'm programming for about 10 years (first hobby, then job and hobby). Learned a lot in that time. Discovered Space Station 13. Played it for a year, always thought about getting it out of the Byond engine. Hesitated because it's so much work doing it from scratch. Tried to bring SS13 to Germany with a translated German version (<a href="http://ss13.de">DE Station</a>). Didn't work quite well. But while I translated and improved SS13, I learned a lot about the massive code and its impressive structure. After I spent a couple of months on the SS13 source, and yet not many people wanted to play on a German SS13 server, I finally got confident enough to give it a try and develop a new Space Station 13 like game. Now we're here.</p>
+
+<h1>I got a question / want to contribute / want to talk to you.</h1>
+<p>You can contact me via e-mail (<a href="mailto:maxkhl@outpost-omega.com">maxkhl@outpost-omega.com</a>), Steam (<a href="http://steamcommunity.com/id/maxkhlp" target="_blank">MaxKhl</a>) or Teamspeak 3 (<a href="ts3server://ts.ss13.de">ts.ss13.de</a>).</p>
+
+<h1>You really like small fonts, do you?</h1>
+<p>Kind of... <a onclick="document.getElementById('text').style.fontSize = '17px';">click here</a>. Better?</p>
+
+<!--<h1>Whats the shit with the corgi?</h1>
+<p>That’s an outdated meme. Not funny at all. A buddy made a joke and I needed a logo. So I slapped that stuff together and now it looks like that until I have time to make something good.</p>-->
+
+<h1>I found a lot of typos and you write strange.</h1>
+<p>Sorry. English is not my mother language. I give my best to write properly. Luckilly ma bes frend agentmas wen bak an fiad mos typo an gramer sa it al betar naow. - not agentmass</p>
+
+<p><br /></p>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6053AD6B-405B-4F9F-8F6B-8FA3B05AA7F8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OutpostOmega.ModMaker</RootNamespace>
+    <AssemblyName>OutpostOmega.ModMaker</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Project Space\Game\Lib\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>AppSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="CodeEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dialog\CodeHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\CodeHelp.Designer.cs">
+      <DependentUpon>CodeHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Functions.cs" />
+    <Compile Include="ModNavigation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModNavigation.Designer.cs">
+      <DependentUpon>ModNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\NewMod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\NewMod.Designer.cs">
+      <DependentUpon>NewMod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\NewEnum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\NewEnum.Designer.cs">
+      <DependentUpon>NewEnum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\NewString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\NewString.Designer.cs">
+      <DependentUpon>NewString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialog\CodeHelp.resx">
+      <DependentUpon>CodeHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModNavigation.resx">
+      <DependentUpon>ModNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\NewMod.resx">
+      <DependentUpon>NewMod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\NewEnum.resx">
+      <DependentUpon>NewEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\NewString.resx">
+      <DependentUpon>NewString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="AppSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>AppSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ColladaImport\Grendgine_Collada.csproj">
+      <Project>{030374a0-c1e8-484c-942c-cf8a990aa4ef}</Project>
+      <Name>Grendgine_Collada</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jitter\Jitter.csproj">
+      <Project>{aa03ef1a-94f7-4d30-ab14-2092863ff923}</Project>
+      <Name>Jitter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LuaInterface\LuaInterface.csproj">
+      <Project>{f55cabbb-4108-4a39-94e1-581fd46dc021}</Project>
+      <Name>LuaInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectSpace.Data\OutpostOmega.Data.csproj">
+      <Project>{6b48dd08-7b2c-43b6-8033-aae8580ac76c}</Project>
+      <Name>OutpostOmega.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectSpace.Game\OutpostOmega.Game.csproj">
+      <Project>{9724bb02-8414-4bad-b9c5-bf61c7836c4e}</Project>
+      <Name>OutpostOmega.Game</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScintillaNET\ScintillaNET.csproj">
+      <Project>{22ae2386-60f1-476e-9303-61cdb0aac4cf}</Project>
+      <Name>ScintillaNET</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

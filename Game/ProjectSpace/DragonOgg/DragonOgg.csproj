@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB438628-F3CB-4E04-8E25-5A332C010FA5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DragonOgg</RootNamespace>
+    <AssemblyName>DragonOgg</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ReleaseVersion>0.6</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Launch|AnyCPU'">
+    <OutputPath>bin\Launch\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Launch|x64'">
+    <OutputPath>bin\x64\Launch\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>OutpostOmega.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK">
+      <HintPath>..\..\Lib\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="csvorbis\VorbisFileInstance.cs" />
+    <Compile Include="Interactive\AudioChannel.cs" />
+    <Compile Include="Interactive\AudioClip.cs" />
+    <Compile Include="Interactive\AudioManager.cs" />
+    <Compile Include="MediaPlayer\OggFile.cs" />
+    <Compile Include="MediaPlayer\OggPlayer.cs" />
+    <Compile Include="MediaPlayer\OggPlaylist.cs" />
+    <Compile Include="csogg\Buffer.cs" />
+    <Compile Include="csogg\Packet.cs" />
+    <Compile Include="csogg\Page.cs" />
+    <Compile Include="csogg\StreamState.cs" />
+    <Compile Include="csogg\SyncState.cs" />
+    <Compile Include="csvorbis\AllocChain.cs" />
+    <Compile Include="csvorbis\Block.cs" />
+    <Compile Include="csvorbis\CodeBook.cs" />
+    <Compile Include="csvorbis\Comment.cs" />
+    <Compile Include="csvorbis\csorbisException.cs" />
+    <Compile Include="csvorbis\Drft.cs" />
+    <Compile Include="csvorbis\DspState.cs" />
+    <Compile Include="csvorbis\EncodeAuxNearestMatch.cs" />
+    <Compile Include="csvorbis\EncodeAuxThreshMatch.cs" />
+    <Compile Include="csvorbis\Floor0.cs" />
+    <Compile Include="csvorbis\Floor1.cs" />
+    <Compile Include="csvorbis\FuncFloor.cs" />
+    <Compile Include="csvorbis\FuncMapping.cs" />
+    <Compile Include="csvorbis\FuncResidue.cs" />
+    <Compile Include="csvorbis\FuncTime.cs" />
+    <Compile Include="csvorbis\Info.cs" />
+    <Compile Include="csvorbis\InfoMode.cs" />
+    <Compile Include="csvorbis\Lookup.cs" />
+    <Compile Include="csvorbis\Lpc.cs" />
+    <Compile Include="csvorbis\Lsp.cs" />
+    <Compile Include="csvorbis\Mapping0.cs" />
+    <Compile Include="csvorbis\Mdct.cs" />
+    <Compile Include="csvorbis\PsyInfo.cs" />
+    <Compile Include="csvorbis\PsyLook.cs" />
+    <Compile Include="csvorbis\Residue0.cs" />
+    <Compile Include="csvorbis\Residue1.cs" />
+    <Compile Include="csvorbis\Residue2.cs" />
+    <Compile Include="csvorbis\StaticCodeBook.cs" />
+    <Compile Include="csvorbis\Time0.cs" />
+    <Compile Include="csvorbis\VorbisFile.cs" />
+    <Compile Include="TagLibSharp\Aac\AudioHeader.cs" />
+    <Compile Include="TagLibSharp\Aac\BitStream.cs" />
+    <Compile Include="TagLibSharp\Aac\File.cs" />
+    <Compile Include="TagLibSharp\Aiff\File.cs" />
+    <Compile Include="TagLibSharp\Aiff\StreamHeader.cs" />
+    <Compile Include="TagLibSharp\Ape\Tag.cs" />
+    <Compile Include="TagLibSharp\Ape\Item.cs" />
+    <Compile Include="TagLibSharp\Ape\Footer.cs" />
+    <Compile Include="TagLibSharp\Ape\File.cs" />
+    <Compile Include="TagLibSharp\Ape\StreamHeader.cs" />
+    <Compile Include="TagLibSharp\Asf\Guid.cs" />
+    <Compile Include="TagLibSharp\Asf\StreamPropertiesObject.cs" />
+    <Compile Include="TagLibSharp\Asf\UnknownObject.cs" />
+    <Compile Include="TagLibSharp\Asf\Tag.cs" />
+    <Compile Include="TagLibSharp\Asf\Object.cs" />
+    <Compile Include="TagLibSharp\Asf\ExtendedContentDescriptionObject.cs" />
+    <Compile Include="TagLibSharp\Asf\ContentDescriptionObject.cs" />
+    <Compile Include="TagLibSharp\Asf\MetadataLibraryObject.cs" />
+    <Compile Include="TagLibSharp\Asf\HeaderObject.cs" />
+    <Compile Include="TagLibSharp\Asf\HeaderExtensionObject.cs" />
+    <Compile Include="TagLibSharp\Asf\File.cs" />
+    <Compile Include="TagLibSharp\Asf\FilePropertiesObject.cs" />
+    <Compile Include="TagLibSharp\Asf\PaddingObject.cs" />
+    <Compile Include="TagLibSharp\Asf\ContentDescriptor.cs" />
+    <Compile Include="TagLibSharp\Asf\DescriptionRecord.cs" />
+    <Compile Include="TagLibSharp\Mpc\StreamHeader.cs" />
+    <Compile Include="TagLibSharp\Mpc\File.cs" />
+    <Compile Include="TagLibSharp\Ogg\GroupedComment.cs" />
+    <Compile Include="TagLibSharp\Ogg\Bitstream.cs" />
+    <Compile Include="TagLibSharp\Ogg\Paginator.cs" />
+    <Compile Include="TagLibSharp\Ogg\Codec.cs" />
+    <Compile Include="TagLibSharp\Ogg\Codecs\Vorbis.cs" />
+    <Compile Include="TagLibSharp\Ogg\Codecs\Theora.cs" />
+    <Compile Include="TagLibSharp\Ogg\Page.cs" />
+    <Compile Include="TagLibSharp\Ogg\XiphComment.cs" />
+    <Compile Include="TagLibSharp\Ogg\PageHeader.cs" />
+    <Compile Include="TagLibSharp\Ogg\File.cs" />
+    <Compile Include="TagLibSharp\Flac\Block.cs" />
+    <Compile Include="TagLibSharp\Flac\BlockHeader.cs" />
+    <Compile Include="TagLibSharp\Flac\StreamHeader.cs" />
+    <Compile Include="TagLibSharp\Flac\Picture.cs" />
+    <Compile Include="TagLibSharp\Flac\File.cs" />
+    <Compile Include="TagLibSharp\Mpeg\XingHeader.cs" />
+    <Compile Include="TagLibSharp\Mpeg\VBRIHeader.cs" />
+    <Compile Include="TagLibSharp\Mpeg\File.cs" />
+    <Compile Include="TagLibSharp\Mpeg\AudioFile.cs" />
+    <Compile Include="TagLibSharp\Mpeg\AudioHeader.cs" />
+    <Compile Include="TagLibSharp\Mpeg\VideoHeader.cs" />
+    <Compile Include="TagLibSharp\NonContainer\EndTag.cs" />
+    <Compile Include="TagLibSharp\NonContainer\File.cs" />
+    <Compile Include="TagLibSharp\NonContainer\StartTag.cs" />
+    <Compile Include="TagLibSharp\NonContainer\Tag.cs" />
+    <Compile Include="TagLibSharp\Id3v1\Tag.cs" />
+    <Compile Include="TagLibSharp\Id3v1\StringHandler.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\PopularimeterFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\PlayCountFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\PrivateFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\RelativeVolumeFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\UniqueFileIdentifierFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\UnknownFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\CommentsFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\TextIdentificationFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\AttachedPictureFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\GeneralEncapsulatedObjectFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\UnsynchronisedLyricsFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\SynchronizedLyricsFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\MusicCdIdentifierFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frames\TermsOfUseFrame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\FrameFactory.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Frame.cs" />
+    <Compile Include="TagLibSharp\Id3v2\FrameTypes.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Tag.cs" />
+    <Compile Include="TagLibSharp\Id3v2\FrameHeader.cs" />
+    <Compile Include="TagLibSharp\Id3v2\ExtendedHeader.cs" />
+    <Compile Include="TagLibSharp\Id3v2\SynchData.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Header.cs" />
+    <Compile Include="TagLibSharp\Id3v2\Footer.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\AppleTag.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Box.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\BoxFactory.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\BoxHeader.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\BoxTypes.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\File.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\FileParser.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoFreeSpaceBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\UnknownBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoUserDataBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoChunkOffsetBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoChunkLargeOffsetBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\AppleItemListBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\AppleAnnotationBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoSampleTableBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoSampleEntry.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoAudioSampleEntry.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoVisualSampleEntry.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoMetaBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoSampleDescriptionBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\AppleAdditionalInfoBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoHandlerBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\IsoMovieHeaderBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\FullBox.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\AppleElementaryStreamDescriptor.cs" />
+    <Compile Include="TagLibSharp\Mpeg4\Boxes\AppleDataBox.cs" />
+    <Compile Include="TagLibSharp\Riff\AviHeaderList.cs" />
+    <Compile Include="TagLibSharp\Riff\AviStream.cs" />
+    <Compile Include="TagLibSharp\Riff\WaveFormatEx.cs" />
+    <Compile Include="TagLibSharp\Riff\BitmapInfoHeader.cs" />
+    <Compile Include="TagLibSharp\Riff\DivXTag.cs" />
+    <Compile Include="TagLibSharp\Riff\File.cs" />
+    <Compile Include="TagLibSharp\Riff\InfoTag.cs" />
+    <Compile Include="TagLibSharp\Riff\List.cs" />
+    <Compile Include="TagLibSharp\Riff\ListTag.cs" />
+    <Compile Include="TagLibSharp\Riff\MovieIdTag.cs" />
+    <Compile Include="TagLibSharp\WavPack\File.cs" />
+    <Compile Include="TagLibSharp\WavPack\StreamHeader.cs" />
+    <Compile Include="TagLibSharp\ICodec.cs" />
+    <Compile Include="TagLibSharp\Tag.cs" />
+    <Compile Include="TagLibSharp\ReadOnlyByteVector.cs" />
+    <Compile Include="TagLibSharp\ByteVector.cs" />
+    <Compile Include="TagLibSharp\ByteVectorList.cs" />
+    <Compile Include="TagLibSharp\CombinedTag.cs" />
+    <Compile Include="TagLibSharp\Genres.cs" />
+    <Compile Include="TagLibSharp\Properties.cs" />
+    <Compile Include="TagLibSharp\File.cs" />
+    <Compile Include="TagLibSharp\StringList.cs" />
+    <Compile Include="TagLibSharp\SupportedMimeType.cs" />
+    <Compile Include="TagLibSharp\UnsupportedFormatException.cs" />
+    <Compile Include="TagLibSharp\Picture.cs" />
+    <Compile Include="TagLibSharp\ListBase.cs" />
+    <Compile Include="TagLibSharp\FileTypes.cs" />
+    <Compile Include="TagLibSharp\CorruptFileException.cs" />
+    <Compile Include="MediaPlayer\MiscStuff.cs" />
+    <Compile Include="MediaPlayer\OggPlaylistWriter.cs" />
+    <Compile Include="MediaPlayer\OggPlayerFBN.cs" />
+    <Compile Include="MediaPlayer\OggPlayerVBN.cs" />
+    <Compile Include="MediaPlayer\Queues.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <VersionControlPolicy inheritsSet="Mono" />
+          <ChangeLogPolicy inheritsSet="Mono" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <None Include="OutpostOmega.pfx" />
+    <None Include="TagLibSharp\TagLib.sources" />
+    <None Include="..\DragonOgg-README" />
+    <None Include="LGPL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

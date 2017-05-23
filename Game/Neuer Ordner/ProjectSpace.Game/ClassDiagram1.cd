@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OutpostOmega.Game.GameObject">
+    <Position X="2.5" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="OutpostOmega.Game.GameObject.FunctionSelectedHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GameObject.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="OutpostOmega.Game.GameObject.Animation">
+        <NestedTypes>
+          <Delegate Name="OutpostOmega.Game.GameObject.Animation.AnimationDoneHandler">
+            <TypeIdentifier>
+              <NewMemberFileName>GameObject_animation.cs</NewMemberFileName>
+            </TypeIdentifier>
+          </Delegate>
+          <Enum Name="OutpostOmega.Game.GameObject.Animation.EaseFunction" Collapsed="true">
+            <TypeIdentifier>
+              <NewMemberFileName>GameObject_animation.cs</NewMemberFileName>
+            </TypeIdentifier>
+          </Enum>
+        </NestedTypes>
+        <TypeIdentifier>
+          <NewMemberFileName>GameObject_animation.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>SEYGgeQFI7DBkqBlHwAN15QQgAIFQiSsRABAEEC0iAI=</HashCode>
+      <FileName>GameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OutpostOmega.Game.GameObjects.Item">
+    <Position X="5.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAIAAAAAAAAAIAAEABQAAIAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.GameObjects.Structures.Structure">
+    <Position X="5.25" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAMEAAQCBAAAABAAAAAEAAACAKQBAgQAAEAAABAggAA=</HashCode>
+      <FileName>GameObjects\Structure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.GameObjects.Structures.Machine">
+    <Position X="7.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAgAAACAAAAEAABAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Structures\Machine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.GameObjects.Mob">
+    <Position X="5.25" Y="8.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="OutpostOmega.Game.GameObjects.Mob.QuickslotChangedHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>GameObjects\Mob.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="OutpostOmega.Game.GameObjects.Mob.QuickslotSelectedChangedHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>GameObjects\Mob.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>RAUAAAIABuAQAAAAQCIBIkQKEIgDAgQQAAIAAIAABBA=</HashCode>
+      <FileName>GameObjects\Mob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.GameObjects.Mobs.Mind">
+    <Position X="5.25" Y="19.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQQAEAAAAAAAAgAAQAAAAAAAAQAAgQAAgAAIAEAAAA=</HashCode>
+      <FileName>GameObjects\Mobs\Mind.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.GameObjects.Mobs.View">
+    <Position X="5.25" Y="22.75" Width="1.75" />
+    <NestedTypes>
+      <Delegate Name="OutpostOmega.Game.GameObjects.Mobs.View.TargetGameObjectChangedHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GameObjects\Mobs\View.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQQAABAAAQAAAIAAAAAABAAAACIEAEAEEAAAAIABABA=</HashCode>
+      <FileName>GameObjects\Mobs\View.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.GameObjects.Mobs.CarbonBased.Carbon">
+    <Position X="7.5" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Mobs\CarbonBased\Carbon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.GameObjects.Mobs.CarbonBased.Human">
+    <Position X="9.75" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAAAQAAAAAAAAAACAAAIAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Mobs\CarbonBased\Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.turf.Structure">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="OutpostOmega.Game.turf.Structure.NewChunkHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>turf\Structure.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AA4AEAAABCJAhgAQCBAABgAAIAAIAgAAAAAAAAgAAAA=</HashCode>
+      <FileName>turf\Structure.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OutpostOmega.Game.turf.Chunk">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="OutpostOmega.Game.turf.Chunk.Mesh">
+        <TypeIdentifier>
+          <NewMemberFileName>turf\Chunk.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAAIggAAACgAoQAtCAAAAgAAAAQBEAQBABACgCQEBAA=</HashCode>
+      <FileName>turf\Chunk.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OutpostOmega.Game.Content.ContentManager">
+    <Position X="13" Y="12.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="OutpostOmega.Game.Content.ContentManager.ContentChangedHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\ContentManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Enum Name="OutpostOmega.Game.Content.ContentManager.ContentChange" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\ContentManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAYAgAGAAAAAAABAAAAABAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Content\ContentManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.Content.ContentFile">
+    <Position X="15.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAgAAAACEAAAIAAAAAAgAAAAAABBABAEAAAAIABAA=</HashCode>
+      <FileName>Content\ContentFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OutpostOmega.Game.Content.Model">
+    <Position X="17.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAACACABIAAAAAAAAAAAAAAAEAgAAAQAAAABAQA=</HashCode>
+      <FileName>Content\Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.Content.Mesh">
+    <Position X="19.75" Y="12.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="OutpostOmega.Game.Content.Mesh.gOTexPair" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\Mesh.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAIEAAAAACAAIAAACAAABgQAABAAAAAAAAgAAAAQAAA=</HashCode>
+      <FileName>Content\Mesh.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OutpostOmega.Game.Content.Texture">
+    <Position X="15.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Content\Texture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.Content.UserInterface">
+    <Position X="17.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkAAAYAQAIAAAAAIAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Content\UserInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutpostOmega.Game.World">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="OutpostOmega.Game.World.NewGameObjectHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>World.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="OutpostOmega.Game.World.GameObjectRemovedHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>World.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABaACAAAQKiAtIQCAAAIBiAAsDBCQARAoCgAAQAEAAA=</HashCode>
+      <FileName>World.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="OutpostOmega.Game.turf.block">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIBAAgAAAAEAAAgAAAAAAECAABAEAAAAAAAgIEcAE=</HashCode>
+      <FileName>turf\block.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

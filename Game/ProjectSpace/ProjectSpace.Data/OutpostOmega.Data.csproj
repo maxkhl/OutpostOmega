@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6B48DD08-7B2C-43B6-8033-AAE8580AC76C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>OutpostOmega.Data</RootNamespace>
+    <AssemblyName>OutpostOmega.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Unity|AnyCPU'">
+    <OutputPath>..\Unity\Assets\</OutputPath>
+    <DocumentationFile>..\Unity\Assets\OutpostOmega.Data.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Launch|AnyCPU'">
+    <OutputPath>bin\Launch\</OutputPath>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Unity|x64'">
+    <OutputPath>bin\x64\Unity\</OutputPath>
+    <DocumentationFile>..\Unity\Assets\OutpostOmega.Data.xml</DocumentationFile>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Launch|x64'">
+    <OutputPath>bin\x64\Launch\</OutputPath>
+    <Optimize>true</Optimize>
+    <FileAlignment>4096</FileAlignment>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>OutpostOmega.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Project Space\Game\Lib\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="converter\typeconverter\Converter_ContentFile.cs" />
+    <Compile Include="converter\typeconverter\Converter_ContentManager.cs" />
+    <Compile Include="converter\typeconverter\Converter_FileInfo.cs" />
+    <Compile Include="converter\typeconverter\Converter_Mesh.cs" />
+    <Compile Include="converter\typeconverter\Converter_BoolArray.cs" />
+    <Compile Include="converter\typeconverter\Converter_gameObject.cs" />
+    <Compile Include="converter\typeconverter\Converter_JShape.cs" />
+    <Compile Include="converter\typeconverter\Converter_Material.cs" />
+    <Compile Include="converter\typeconverter\Converter_JVector.cs" />
+    <Compile Include="converter\typeconverter\Converter_JMatrix.cs" />
+    <Compile Include="converter\Converter.cs" />
+    <Compile Include="converter\Converter_Deserialization.cs" />
+    <Compile Include="converter\Converter_Helper.cs" />
+    <Compile Include="converter\Converter_ObjIdentification.cs" />
+    <Compile Include="converter\Converter_Options.cs" />
+    <Compile Include="converter\Converter_Serialization.cs" />
+    <Compile Include="converter\typeconverter\Converter_Default.cs" />
+    <Compile Include="converter\typeconverter\Converter_NetSerialization.cs" />
+    <Compile Include="converter\typeconverter\Converter_Chunk.cs" />
+    <Compile Include="converter\typeconverter\Converter_Structure.cs" />
+    <Compile Include="converter\typeconverter\Converter_World.cs" />
+    <Compile Include="converter\typeconverter\Converter_JQuaternion.cs" />
+    <Compile Include="DataHandler_Extensions.cs" />
+    <Compile Include="DataHandler_Serialization.cs" />
+    <Compile Include="DataHandler.cs" />
+    <Compile Include="datum\GridPosition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OutpostOmega.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ColladaImport\Grendgine_Collada.csproj">
+      <Project>{030374a0-c1e8-484c-942c-cf8a990aa4ef}</Project>
+      <Name>Grendgine_Collada</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jitter\Jitter.csproj">
+      <Project>{aa03ef1a-94f7-4d30-ab14-2092863ff923}</Project>
+      <Name>Jitter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lidgren.Network\Lidgren.Network.csproj">
+      <Project>{49ba1c69-6104-41ac-a5d8-b54fa9f696e8}</Project>
+      <Name>Lidgren.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectSpace.Game\OutpostOmega.Game.csproj">
+      <Project>{9724bb02-8414-4bad-b9c5-bf61c7836c4e}</Project>
+      <Name>OutpostOmega.Game</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

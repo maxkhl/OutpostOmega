@@ -1,0 +1,56 @@
+#############################
+######    Bewegung     ######
+#############################
+# W 	- 	 Forwärts   #
+# S 	-	 Rückwärts  #
+# A 	-	 Nach Links #
+# D 	-	 Nach Rechts#
+# Strg	- 	 Ducken     #
+#############################
+# Leer 	-	 Springen   #
+# Shift	-	 Sprinten   #
+#############################
+######   Interaktion   ######
+#############################
+# Q	-	 Werfen     #
+# E	-	 Benutzen   #
+# R	-  Sekundärfunktion #
+#          z. B. Nachladen  #
+#############################
+#####     Interface     #####	
+#############################
+# B	- 	Inventar    #
+# C	-   Maus aktivieren #
+#___________________________#
+# 1	-  Hand Rechts 1    #
+# 2	-  Hand Rechts 2    #
+# 3	-  Hand Rechts 3    #
+# 4	-  Hand Rechts 4    #
+#---------------------------#
+#	   Auswählen der It-#
+#          ems, die auf dem #
+#          gewählten Slot   #
+#          liegen           #
+#___________________________#
+# F1	-  Hand Links 1     #
+# F2	-  Hand Links 2     #
+# F3	-  Hand Links 3     #
+# F4	-  Hand Links 4     #
+#---------------------------#
+#	   Auswählen der It-#
+#          ems, die auf dem #
+#          gewählten Slot   #
+#          liegen           #
+#___________________________#
+# Maus 1- Linke Hand nutzen #
+# Maus 2- Rechte Hand nutzen#
+# Maus 3-                   #
+#############################
+#####   Kommunikation   #####
+#############################
+# T,Enter  - Textchat       #
+# G	   - Sprachchat     #
+#############################
+
+
+

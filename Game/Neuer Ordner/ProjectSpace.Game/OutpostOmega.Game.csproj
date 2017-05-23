@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9724BB02-8414-4BAD-B9C5-BF61C7836C4E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OutpostOmega.Game</RootNamespace>
+    <AssemblyName>OutpostOmega.Game</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Unity|AnyCPU'">
+    <OutputPath>..\Unity\Assets\</OutputPath>
+    <DocumentationFile>..\Unity\Assets\OutpostOmega.Game.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Launch|AnyCPU'">
+    <OutputPath>bin\Launch\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Unity|x64'">
+    <OutputPath>bin\x64\Unity\</OutputPath>
+    <DocumentationFile>..\Unity\Assets\OutpostOmega.Game.xml</DocumentationFile>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Launch|x64'">
+    <OutputPath>bin\x64\Launch\</OutputPath>
+    <Optimize>true</Optimize>
+    <FileAlignment>4096</FileAlignment>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>OutpostOmega.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK">
+      <HintPath>..\..\Lib\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Console.cs" />
+    <Compile Include="Content\ContentFile.cs" />
+    <Compile Include="Content\ContentManager.cs" />
+    <Compile Include="Content\Mesh.cs" />
+    <Compile Include="Content\Sound.cs" />
+    <Compile Include="Content\Texture.cs" />
+    <Compile Include="Content\Model.cs" />
+    <Compile Include="Content\UserInterface.cs" />
+    <Compile Include="Content\Video.cs" />
+    <Compile Include="datums\datum.cs" />
+    <Compile Include="datums\JobManager.cs" />
+    <Compile Include="datums\program\program.cs" />
+    <Compile Include="datums\turf\Cable.cs" />
+    <Compile Include="datums\UserGroup.cs" />
+    <Compile Include="datums\UserInterface\Base.cs" />
+    <Compile Include="GameObjects\Attributes\IconAttribute.cs" />
+    <Compile Include="GameObjects\Items\Device.cs" />
+    <Compile Include="GameObjects\Items\Devices\Builder.cs" />
+    <Compile Include="GameObjects\Items\Devices\CableSpawner.cs" />
+    <Compile Include="GameObjects\Items\Devices\Drawer.cs" />
+    <Compile Include="GameObjects\Items\Devices\Spawner.cs" />
+    <Compile Include="GameObjects\Items\Devices\PhysGun.cs" />
+    <Compile Include="GameObjects\Items\Stacks\Mineral.cs" />
+    <Compile Include="GameObjects\Items\Stack.cs" />
+    <Compile Include="GameObjects\Screen.cs" />
+    <Compile Include="GameObjects\Structures\VoidLogo.cs" />
+    <Compile Include="GameObjects\Structures\Stairs.cs" />
+    <Compile Include="GameObject_animation.cs" />
+    <Compile Include="GameObject_interaction.cs" />
+    <Compile Include="GameObject_deserialization.cs" />
+    <Compile Include="GameObject.cs" />
+    <Compile Include="GameObject_graphic.cs" />
+    <Compile Include="GameObject_physic.cs" />
+    <Compile Include="GameObject_generation.cs" />
+    <Compile Include="GameObject_static.cs" />
+    <Compile Include="GameObject_propmanager.cs" />
+    <Compile Include="atmospherics\Gas.cs" />
+    <Compile Include="atmospherics\GasState.cs" />
+    <Compile Include="GameObjects\Attributes\Construction.cs" />
+    <Compile Include="GameObjects\Attributes\Access.cs" />
+    <Compile Include="GameObjects\Attributes\Definition.cs" />
+    <Compile Include="GameObjects\Attributes\Serialize.cs" />
+    <Compile Include="GameObjects\Function.cs" />
+    <Compile Include="GameObjects\Item.cs" />
+    <Compile Include="GameObjects\Items\Tool.cs" />
+    <Compile Include="GameObjects\Items\Tools\Knife.cs" />
+    <Compile Include="GameObjects\Items\Tools\Wrench.cs" />
+    <Compile Include="GameObjects\Mobs\CarbonBased\Carbon.cs" />
+    <Compile Include="GameObjects\Mobs\CarbonBased\Human.cs" />
+    <Compile Include="GameObjects\Mobs\Mind.cs" />
+    <Compile Include="GameObjects\Mob.cs" />
+    <Compile Include="GameObjects\Mobs\Observer.cs" />
+    <Compile Include="GameObjects\Mobs\View.cs" />
+    <Compile Include="GameObjects\Structures\Frame.cs" />
+    <Compile Include="GameObjects\Structures\Furnitures\Wall_light_fixture.cs" />
+    <Compile Include="GameObjects\Structures\Furnitures\Chair_Office.cs" />
+    <Compile Include="GameObjects\Structures\Furnitures\Chair.cs" />
+    <Compile Include="GameObjects\Structures\Furnitures\Table.cs" />
+    <Compile Include="GameObjects\Structures\Machines\Display.cs" />
+    <Compile Include="GameObjects\Structures\Machines\Door.cs" />
+    <Compile Include="GameObjects\Structures\Machines\Doors\Airlock.cs" />
+    <Compile Include="GameObjects\Structures\Machine.cs" />
+    <Compile Include="GameObjects\Structures\Machines\Watertank.cs" />
+    <Compile Include="GameObjects\Structures\Machines\Vendingmachine.cs" />
+    <Compile Include="GameObjects\Structure.cs" />
+    <Compile Include="GameObjects\Structures\Suzanne.cs" />
+    <Compile Include="GameObjects\Structures\Window.cs" />
+    <Compile Include="Lua\LuaDocumentationAttr.cs" />
+    <Compile Include="Lua\ModPack.cs" />
+    <Compile Include="Tools\Collada.cs" />
+    <Compile Include="Tools\Convert.cs" />
+    <Compile Include="Tools\MouseState.cs" />
+    <Compile Include="UICommand.cs" />
+    <Compile Include="WorldSettings.cs" />
+    <Compile Include="Tools\KeybeardState.cs" />
+    <Compile Include="turf\block.cs" />
+    <Compile Include="turf\turftypes\turfType.cs" />
+    <Compile Include="turf\turftypes\gobject.cs" />
+    <Compile Include="turf\turftypes\floor.cs" />
+    <Compile Include="turf\turftypes\space.cs" />
+    <Compile Include="GTPS\GTPS.cs" />
+    <Compile Include="Lua\Assembly.cs" />
+    <Compile Include="Lua\Builder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GameObjects\Attributes\SynchronizationAttr.cs" />
+    <Compile Include="structures\Direction.cs" />
+    <Compile Include="structures\uvCoord.cs" />
+    <Compile Include="Tools\heightmap.cs" />
+    <Compile Include="Lua\Parser.cs" />
+    <Compile Include="Tools\MathHelper.cs" />
+    <Compile Include="turf\Chunk.cs" />
+    <Compile Include="turf\Structure.cs" />
+    <Compile Include="World.cs" />
+    <Compile Include="World_Misc.cs" />
+    <Compile Include="World_Mods.cs" />
+    <Compile Include="World_Serialization.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ColladaImport\Grendgine_Collada.csproj">
+      <Project>{030374a0-c1e8-484c-942c-cf8a990aa4ef}</Project>
+      <Name>Grendgine_Collada</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jitter\Jitter.csproj">
+      <Project>{aa03ef1a-94f7-4d30-ab14-2092863ff923}</Project>
+      <Name>Jitter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LuaInterface\LuaInterface.csproj">
+      <Project>{f55cabbb-4108-4a39-94e1-581fd46dc021}</Project>
+      <Name>LuaInterface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Model\Structure\Machinery\Atmospherics\" />
+    <Folder Include="datums\areas\" />
+    <Folder Include="datums\commands\" />
+    <Folder Include="datums\diseases\" />
+    <Folder Include="datums\economy\" />
+    <Folder Include="datums\jobs\" />
+    <Folder Include="datums\medical\" />
+    <Folder Include="datums\reagents\" />
+    <Folder Include="GameObjects\Items\Clothing\" />
+    <Folder Include="GameObjects\Items\fluff\" />
+    <Folder Include="GameObjects\Items\Weapons\" />
+    <Folder Include="GameObjects\Mobs\SiliconBased\" />
+    <Folder Include="GameObjects\Mobs\Simple\" />
+    <Folder Include="GameObjects\other\" />
+    <Folder Include="GameObjects\Structures\Containers\locker\" />
+    <Folder Include="GameObjects\Structures\Windows\" />
+    <Folder Include="Mods\test\Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Model\Box.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Content\DefaultWorld.sav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\DefaultWorld_001.sav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\BoxUV.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Character\Human\Hooman.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Items\Devices\Gun.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Items\Stacks\MetalSheets.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Stairs.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\VoidLogo.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Window.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Mods\default\Content\Display\display_big.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Mods\default\Content\PDA\PDA.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Items\Tools\Knife.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Items\Tools\Wrench.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Other\Skysphere.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Other\Station.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Plane.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Frame.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Furniture\chair.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Furniture\chair_office.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Furniture\table.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Furniture\wall_light_fixture.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Machinery\Display\display_big.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Machinery\Display\display_small.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Machinery\Display\mini-terminal.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Machinery\Doors\Airlock.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Structure\Machinery\watertank.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Suzanne.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Vendingmachine\GalaxPlus.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sound\Ambient\Tristan Lohengrin - Vaisseau Alien.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sound\Test\BoingSample.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sound\Test\GuitarSample.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Mods\default\Content\BoxUV.dae">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Mods\default\DisplayBig.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Mods\default\PDA.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Mods\test\init.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Mods\APIgen.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>APIgen.txt</LastGenOutput>
+    </None>
+    <None Include="Mods\Example.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="OutpostOmega.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Model\BoxUV.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Character\Human\Hooman.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Items\Devices\Physgun.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Items\Devices\Gun.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Items\Devices\Spawner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Items\Devices\Write.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Items\Stacks\MetalSheetsIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Items\Stacks\MetalSheets.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Machinery\Doors\AirlockMoving.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Machinery\Doors\AirlockActive.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Stairs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\VoidLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Window.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Cables.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mods\default\Content\Display\Void Industries Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mods\default\Content\Display\Void_Industries_Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mods\default\Content\Display\display_big.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mods\default\Content\PDA\PDA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Items\Tools\Knife.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Items\Tools\Wrench.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Other\Skysphere.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Other\Station.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Plane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Frame.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Furniture\chair.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Furniture\chair_office.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Furniture\table.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Furniture\wall_light_fixture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Machinery\Display\display_big.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Machinery\Display\display_small.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Machinery\Display\mini-terminal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Machinery\Doors\Airlock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Structure\Machinery\watertank.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Model\Vendingmachine\GalaxPlus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Tileset.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\Tileset_Normal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Video\anni001.mpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Video\anni001.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Video\apo16004.mpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Video\apo16004.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mods\default\Content\BoxUV.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mods\default\Content\UI\Main.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Mods\test\define.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mods\default\Content\head_avatar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mods\default\define.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Mods\APIgen.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>APIgen.tt</DependentUpon>
+    </Content>
+    <None Include="Mods\default\RapeCube.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,136 @@
+﻿
+######################
+### Addon Commands ###
+######################
+OutpostOmega.Game.Lua.Builder NewBuilder()
+Description: Creates a new GameObject-Builder used to create custom GameObjects
+Parameters: nothing
+Returns: New Builder object
+
+########################
+### General Commands ###
+########################
+Void print(System.Object, System.String, Boolean)
+Description: Prints a message to the console
+Parameters: 1 Text: The text you want to display
+2 Sender: Display name of the sender (optional)
+3 Error: Whether this is a error message or not (optional)
+Returns: nothing
+
+Void hook(System.Object)
+Description: Used to call a lua function from the engine (just for testing)
+Parameters: 1 Function: A function that should be called
+Returns: nothing
+
+System.Type getType(System.String)
+Description: Tries to find a certain type from the given string
+Parameters: 1 TypeName: Name of the type that should be searched
+Returns: Found Type-Object (raises an exception if nothing found - internal error)
+
+#####################
+### Math Commands ###
+#####################
+System.Object Vector2(System.String, System.String)
+Description: Creates a 2-dimensional vector from the given values
+Parameters: 1 X: float value of x-dimension
+2 Y: float value of y-dimension
+Returns: Created Vector2
+
+System.Object Vector3(System.String, System.String, System.String)
+Description: Creates a 3-dimensional vector from the given values
+Parameters: 1 X: float value of x-dimension
+2 Y: float value of y-dimension
+3 Z: float value of z-dimension
+Returns: Created Vector2
+
+System.Object VectorTransform(System.Object, System.Object)
+Description: Transforms a 3-dimensional vector using a matrix
+Parameters: 1 vector3: The 3-dimensional vector that should be transformed
+2 matrix: Matrix that should be used to transform the vector
+Returns: Transformed Vector3
+
+System.Object MatrixIdentity()
+Description: Creates a empty (indentity) matrix
+Parameters: nothing
+Returns: empty (indentity) matrix
+
+System.Object MatrixRotationX(System.String)
+Description: Creates a rotation matrix on the x-axis
+Parameters: 1 deg: X-rotation in degrees (0-360)
+Returns: Rotation matrix
+
+System.Object MatrixRotationY(System.String)
+Description: Creates a rotation matrix on the y-axis
+Parameters: 1 deg: Y-rotation in degrees (0-360)
+Returns: Rotation matrix
+
+System.Object MatrixRotationZ(System.String)
+Description: Creates a rotation matrix on the z-axis
+Parameters: 1 deg: Z-rotation in degrees (0-360)
+Returns: Rotation matrix
+
+System.Object MatrixTranslation(System.String, System.String, System.String)
+Description: Creates a translation (position/movement) matrix
+Parameters: 1 X: X-value of the translation
+2 Y: Y-value of the translation
+3 Z: Z-value of the translation
+Returns: Translation matrix
+
+System.Object MatrixMultiply(System.Object, System.Object)
+Description: Multiplys 2 matrices
+Parameters: 1 Matrix1: First matrix
+2 Matrix2: Second Matrix
+Returns: Result of multiplication (matrix)
+
+#######################
+### Physic Commands ###
+#######################
+System.Object PhysicBoxShape(Single, Single, Single)
+Description: Creates a box shape
+Parameters: 1 X: X-dimension of the box
+1 Y: Y-dimension of the box
+1 Z: Z-dimension of the box
+Returns: New box shape object
+
+System.Object PhysicCapsuleShape(Single, Single)
+Description: Creates a capsule shape
+Parameters: 1 length: Length of the capsule
+1 radius: Radius of the capsule
+Returns: New capsule shape object
+
+System.Object PhysicConeShape(Single, Single)
+Description: Creates a cone shape
+Parameters: 1 height: Height of the cone
+2 radius: Radius of the cone base
+Returns: New cone shape object
+
+System.Object PhysicCylinderShape(Single, Single)
+Description: Creates a cylinder shape
+Parameters: 1 height: Height of the cylinder
+2 radius: Radius of the cylinder
+Returns: New cylinder shape object
+
+System.Object PhysicSphereShape(Single)
+Description: Creates a sphere shape
+Parameters: 1 radius: Radius of the shpere
+Returns: New sphere shape object
+
+######################
+### World Commands ###
+######################
+System.Object GetFirstGO(System.String)
+Description: Gets the first GameObject matching the given name
+Parameters: 1. arg: Searched name (has to be contained in the searched objects name)
+Returns: First found GameObject
+
+System.Object GetGO(System.String)
+Description: Gets all GameObjects matching the given name
+Parameters: 1. arg: Searched name (has to be contained in the searched objects name)
+Returns: Array if all found GameObject
+
+Void MoveGO(OutpostOmega.Game.gameObject, Jitter.LinearMath.JVector)
+Description: Moves a specific GameObject to the given Position
+Parameters: 1. GameObject: The GameObject that should be moved
+2. Position: The new position
+Returns: nothing
+

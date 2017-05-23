@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OutpostOmega.Updateserver" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UploadDirPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">upload</Value>
+    </Setting>
+    <Setting Name="XMLPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Launcher.xml</Value>
+    </Setting>
+    <Setting Name="webadress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://outpost-omega.com/launcher</Value>
+    </Setting>
+    <Setting Name="version" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.001</Value>
+    </Setting>
+    <Setting Name="newsurl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://server.outpost-omega.com/launcher/news.html</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,3 @@
+﻿http://sourceforge.net/projects/csharpcollada/
+
+Public Domain
