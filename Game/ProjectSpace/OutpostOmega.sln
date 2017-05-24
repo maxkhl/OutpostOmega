@@ -449,9 +449,6 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		CodeStyleEnforcer_RulesLocation = 0
 	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = ProjectSpace.Data\ProjectSpace.Data.csproj
 	EndGlobalSection
