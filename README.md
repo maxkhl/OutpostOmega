@@ -1,4 +1,4 @@
-![Outpost Omega Logo](http://outpost-omega.com/images/Logo.png)
+![Outpost Omega Logo](https://github.com/maxkhl/OutpostOmega/blob/master/Design/Artwork/LogoSmall.png)
 # Outpost Omega - Another Space Station 13 remake
 
 ## Read this
