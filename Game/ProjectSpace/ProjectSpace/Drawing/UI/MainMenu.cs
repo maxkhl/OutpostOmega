@@ -16,6 +16,10 @@ namespace OutpostOmega.Drawing.UI
         List<AnimatedLabel> animLabels = new List<AnimatedLabel>();
         AnimatedTexture2D animation;
         AnimatedTexture2D animationChund;
+        List<Button> MenuButtons;
+
+        List<OutpostOmega.Game.Tools.Animation> MenuButtonAnimations;
+
         public MainMenu(Scene Scene, Base parent)
             : base(parent)
         {
@@ -62,65 +66,86 @@ namespace OutpostOmega.Drawing.UI
             animation.Play = true;
             //logo.ImageName = @"Content\Image\LogoSmall.png";
             logo.ImageHandle = animation.Handle;
-            logo.Clicked += logo_Clicked;
+            logo.Clicked += delegate(Base sender, ClickedEventArgs arguments)
+            {
+                Spawn = !Spawn;
+
+                if (animationChund == null)
+                {
+                    ImagePanel imgpanel = new ImagePanel(this);
+                    imgpanel.SetBounds(120 - 80, 200 - 80, 80, 80);
+                    animationChund = new AnimatedTexture2D(new FileInfo(@"Content\Image\SadSmiley.gif"));
+                    animationChund.Play = true;
+                    animationChund.Repeat = true;
+                    animationChund.TargetFPS = 1;
+
+                    imgpanel.ImageHandle = animationChund.Handle;
+                }
+            };
             //logo.Dock = Pos.Right;
             logo.Width = 391;
             logo.Height = 125;
             //logo.Hide();
 
-
+            MenuButtons = new List<Button>();
 
             Button continueWorld = new Button(contMain);
+            MenuButtons.Add(continueWorld);
             continueWorld.Width = bWidth;
             continueWorld.Height = bHeight;
             continueWorld.Text = "Continue";
-            continueWorld.SetPosition(25, vPosition);
+            continueWorld.SetPosition(-500, vPosition);
             continueWorld.IsDisabled = !File.Exists("Save/Autosave.sav");
             continueWorld.Clicked += continueWorld_Clicked;
             continueWorld.TextColor = System.Drawing.Color.White;
             vPosition += vSpace;
 
             Button newWorld = new Button(contMain);
+            MenuButtons.Add(newWorld);
             newWorld.Width = bWidth;
             newWorld.Height = bHeight;
             newWorld.Text = "New Testworld";
-            newWorld.SetPosition(25, vPosition);
+            newWorld.SetPosition(-500, vPosition);
             newWorld.Clicked += newWorld_Clicked;
             newWorld.TextColor = System.Drawing.Color.White;
             vPosition += vSpace;
 
             Button load = new Button(contMain);
+            MenuButtons.Add(load);
             load.Width = bWidth;
             load.Height = bHeight;
             load.Text = "Load Game";
-            load.SetPosition(25, vPosition);
+            load.SetPosition(-500, vPosition);
             load.Clicked += load_Clicked;
             load.TextColor = System.Drawing.Color.White;
             vPosition += vSpace;
 
             Button multiplayer = new Button(contMain);
+            MenuButtons.Add(multiplayer);
             multiplayer.Width = bWidth;
             multiplayer.Height = bHeight;
             multiplayer.Text = "Multiplayer";
-            multiplayer.SetPosition(25, vPosition);
+            multiplayer.SetPosition(-500, vPosition);
             multiplayer.Clicked += multiplayer_Clicked;
             multiplayer.TextColor = System.Drawing.Color.White;
             vPosition += vSpace;
 
             Button options = new Button(contMain);
+            MenuButtons.Add(options);
             options.Width = bWidth;
             options.Height = bHeight;
             options.Text = "Settings";
-            options.SetPosition(25, vPosition);
+            options.SetPosition(-500, vPosition);
             options.Clicked += options_Clicked;
             options.TextColor = System.Drawing.Color.White;
             vPosition += vSpace;
 
             Button exit = new Button(contMain);
+            MenuButtons.Add(exit);
             exit.Width = bWidth;
             exit.Height = bHeight;
             exit.Text = "Exit Game";
-            exit.SetPosition(25, vPosition);
+            exit.SetPosition(-500, vPosition);
             exit.Pressed += exit_Pressed;
             exit.TextColor = System.Drawing.Color.White;
             vPosition += vSpace;
@@ -136,7 +161,11 @@ namespace OutpostOmega.Drawing.UI
             test.Text = "Test";
             test.SetPosition(0, 50);
             test.Position(Pos.Right);
-            test.Pressed += test_Pressed;
+            test.Pressed += delegate(Base sender, EventArgs arguments)
+            {
+                var tstwindow = new Test(Scene, this.Parent);
+                tstwindow.Show();
+            };
             test.TextColor = System.Drawing.Color.White;
 
             Button test2 = new Button(contRight);
@@ -145,7 +174,11 @@ namespace OutpostOmega.Drawing.UI
             test2.Text = "Video";
             test2.SetPosition(0, 90);
             test2.Position(Pos.Right);
-            test2.Pressed += test2_Pressed;
+            test2.Pressed += delegate(Base sender, EventArgs arguments)
+            {
+                var vPlaer = new VideoPlayer(Scene, this.Parent);
+                vPlaer.Show();
+            };
             test2.TextColor = System.Drawing.Color.White;
 
             Button test3 = new Button(contRight);
@@ -154,50 +187,25 @@ namespace OutpostOmega.Drawing.UI
             test3.Text = "Game of Life";
             test3.SetPosition(0, 120);
             test3.Position(Pos.Right);
-            test3.Pressed += test3_Pressed;
+            test3.Pressed += delegate(Base sender, EventArgs arguments)
+            {
+                var cw = new Conway(Scene, this);
+                cw.Show();
+            };
             test3.TextColor = System.Drawing.Color.White;
 
 
             Scene.Game.UnlockCursor();
 
 
+            MenuButtonAnimations = new List<OutpostOmega.Game.Tools.Animation>();
+            for (int i = 0; i < MenuButtons.Count; i++ )
+            {
+                MenuButtons[i].Animate("X", 25 + (i * 5), 2000 + (i * 100), OutpostOmega.Game.Tools.Easing.EaseFunction.BackEaseOut);
+            }
+
             //newWorld_Clicked(null, null);
             //QuickLoad();
-        }
-
-        void test3_Pressed(Base sender, EventArgs arguments)
-        {
-            var cw = new Conway(Scene, this);
-            cw.Show();
-        }
-
-        void test2_Pressed(Base sender, EventArgs arguments)
-        {
-            var vPlaer = new VideoPlayer(Scene, this.Parent);
-            vPlaer.Show();
-        }
-
-        void test_Pressed(Base sender, EventArgs arguments)
-        {
-            var tstwindow = new Test(Scene, this.Parent);
-            tstwindow.Show();
-        }
-
-        void logo_Clicked(Base sender, ClickedEventArgs arguments)
-        {
-            Spawn = !Spawn;
-
-            if (animationChund == null)
-            {
-                ImagePanel imgpanel = new ImagePanel(this);
-                imgpanel.SetBounds(120 - 80, 200 - 80, 80, 80);
-                animationChund = new AnimatedTexture2D(new FileInfo(@"Content\Image\SadSmiley.gif"));
-                animationChund.Play = true;
-                animationChund.Repeat = true;
-                animationChund.TargetFPS = 1;
-
-                imgpanel.ImageHandle = animationChund.Handle;
-            }
         }
 
         class AnimatedLabel : IDisposable
@@ -222,7 +230,7 @@ namespace OutpostOmega.Drawing.UI
 
                 Speed = rand.Next(1, 10);
 
-                var titles = new string[25]
+                var titles = new List<string>()
                 {
                     "EichelsaftLP",
                     "50 Winkel of Jay",
@@ -239,6 +247,7 @@ namespace OutpostOmega.Drawing.UI
                     "Richtiger Pfisch",
                     "Labba ned",
                     "Pfehlix",
+                    "Paul is voll der Ranzbruder",
                     "Asoziales PACK",
                     "Kotzt mich alles an hier",
                     "Voll keen bock uf meine Mudder",
@@ -249,7 +258,12 @@ namespace OutpostOmega.Drawing.UI
                     "Elmo is im Gebäudeee",
                     "Pah",
                     "Ischeer",
-                };
+                    "Selbst im Angesicht der Niederlage an der Ostfront wird sich das TS-Regime dem Bolschewismus nicht beugen!",
+                    "Junge Junge",
+                    "Bissle Stange verbiegen und McFit Mitarbeiter bespucken",
+                    "HattErNichGesaaaaaagt",
+                    "Eeeeeeeeeeeeee",
+                }.ToArray();
 
                 label.Text = "-" + titles[rand.Next(0, titles.Length)] + "-";
                 label.Font = new Font(scene.renderer, "Verdana", 12);
@@ -288,6 +302,8 @@ namespace OutpostOmega.Drawing.UI
         bool Spawn = false;
         public override void Think()
         {
+
+
             animation.Update();
             if(animationChund != null)
                 animationChund.Update();

@@ -79,6 +79,9 @@ namespace OutpostOmega.Data
         /// <returns>Fileinfo of created file</returns>
         public static FileInfo SaveToFile(this World world, FileInfo target, bool Compression = true)
         {
+            if (!target.Directory.Exists)
+                target.Directory.Create();
+
             using( FileStream fstream = target.Create() )
             {
                 DataHandler.XmlToStream(world.GetXML(DataHandler.ConverterFileID), fstream, Compression);

@@ -7,6 +7,7 @@ using Gwen;
 using Gwen.Control;
 using System.Diagnostics;
 using OpenTK.Input;
+using System.IO;
 
 namespace OutpostOmega.Scenes
 {
@@ -26,7 +27,12 @@ namespace OutpostOmega.Scenes
             //TestVideo = new Drawing.Video(new System.IO.FileInfo(@"Content\Video\Wildlife.wmv"));
             //TestVideo.Play();
         }
-        ImagePanel _image;
+        ImagePanel LogoImage;
+        ImagePanel LoadingImage;
+
+        TextBox MessageBox;
+
+        OutpostOmega.Game.Tools.Animation testAnimation;
         public override void Initialize()
         {
             if (AppSettings.Default.SkipIntro)
@@ -35,18 +41,63 @@ namespace OutpostOmega.Scenes
             }
             else
             {
-                _image = new ImagePanel(this.Canvas);
-                _image.ImageName = @"Content\Image\Intro1.png";
 
-                _image.Width = 969;
-                _image.Height = 602;
 
-                _image.X = Game.Width / 2 - _image.Width / 2;
-                _image.Y = Game.Height / 2 - _image.Height / 2;
+
+                LoadingImage = new ImagePanel(this.Canvas);
+                LoadingImage.ImageName = @"Content\Image\MinimalisticLogo.png";
+
+                LoadingImage.Width = 499;
+                LoadingImage.Height = 57;
+
+                LoadingImage.X = Game.Width / 2 - LoadingImage.Width / 2;
+                LoadingImage.Y = -LoadingImage.TextureHeight;
+                LoadingImage.Animate(
+                    "Y", 
+                    LoadingImage.TextureHeight + 20, 
+                    1000, 
+                    OutpostOmega.Game.Tools.Easing.EaseFunction.CircEaseOut,
+                    delegate(OutpostOmega.Game.Tools.Animation sender)
+                    {
+                        MessageBox.Animate(
+                            "Y",
+                            0, 
+                            2000, 
+                            OutpostOmega.Game.Tools.Easing.EaseFunction.CubicEaseOut);
+                    });
+
+                MessageBox = new TextBox(this.Canvas);
+                MessageBox.Margin = new Margin(20, 20, 20, 20);
+                MessageBox.Width = this.Game.Width;
+                MessageBox.Height = this.Game.Height;
+                MessageBox.X = 0;
+                MessageBox.Y = this.Game.Height;
+                //MessageBox.Dock = Pos.Fill;
+                MessageBox.Font = new Font(this.renderer, "Arial", 15);
+                MessageBox.Alignment = Pos.Center;
+                MessageBox.TextColor = System.Drawing.Color.FromArgb(143, 143, 143); //Gray
+                MessageBox.ShouldDrawBackground = false;
+
+                AddTextLine("Please keep in mind that this is a VERY early version.");
+                AddTextLine("Feel free to contact me at maxkhl@outpost-omega.com");
+                AddTextLine("");
+                AddTextLine("Wait or press <ESCAPE> to continue");
+
+
+
+                
+
+                /*LogoImage.X = Game.Width / 2 - LogoImage.Width / 2;
+                LogoImage.Y = 20;*/
 
                 _introTimer.Start();
             }
             base.Initialize();
+        }
+
+        public void AddTextLine(string Line)
+        {
+            MessageBox.Text += Line + "\n";
         }
 
         private void CloseIntro()
@@ -59,17 +110,18 @@ namespace OutpostOmega.Scenes
 
         protected override void UpdateScene()
         {
-            if (_introTimer.ElapsedMilliseconds >= 15000 && _introStage == 0)
-            {
-                _image.ImageName = @"Content\Image\Intro2.png";
-                _introStage++;
-            }
 
-            if (_introTimer.ElapsedMilliseconds >= 20000)
+            /*if (_introTimer.ElapsedMilliseconds >= 15000 && _introStage == 0)
+            {
+                //LogoImage.ImageName = @"Content\Image\Intro2.png";
+                _introStage++;
+            }*/
+
+            /*if (_introTimer.ElapsedMilliseconds >= 20000)
             {
                 _introTimer.Stop();
                 CloseIntro();
-            }
+            }*/
             if (Keyboard.GetState().IsKeyDown(OpenTK.Input.Key.Escape))
                 CloseIntro();
             

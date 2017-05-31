@@ -175,8 +175,10 @@
     <Compile Include="GameObjects\Structures\Window.cs" />
     <Compile Include="Lua\LuaDocumentationAttr.cs" />
     <Compile Include="Lua\ModPack.cs" />
+    <Compile Include="Tools\Animation.cs" />
     <Compile Include="Tools\Collada.cs" />
     <Compile Include="Tools\Convert.cs" />
+    <Compile Include="Tools\Easing.cs" />
     <Compile Include="Tools\MouseState.cs" />
     <Compile Include="UICommand.cs" />
     <Compile Include="WorldSettings.cs" />

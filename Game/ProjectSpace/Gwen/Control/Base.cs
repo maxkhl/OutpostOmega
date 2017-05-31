@@ -1387,6 +1387,47 @@ namespace Gwen.Control
         }
 
         /// <summary>
+        /// Updates this instance. Only used for oo custom shit. Not required for gwen itself
+        /// </summary>
+        /// <param name="ElapsedTime">The elapsed time in ms.</param>
+        public virtual void Update(float ElapsedTime)
+        {
+            if (_animations != null)
+                for (int i = 0; i < _animations.Count; i++)
+                    if (_animations[i].Active)
+                        _animations[i].Update(ElapsedTime);
+                    else
+                        _animations.RemoveAt(i);
+
+
+            foreach (var child in this.Children)
+                child.Update(ElapsedTime);
+        }
+
+        private List<OutpostOmega.Game.Tools.Animation> _animations;
+        /// <summary>
+        /// Creates a internal quick-animation for the specified property and takes care of updating it. It is a fire and forget method
+        /// </summary>
+        /// <param name="Property">Name of the target-property. Produces dump when incorrect so make sure this is correct (f.e. 'X' or 'Width')</param>
+        /// <param name="Target">The targetvalue the animation is going for.</param>
+        /// <param name="Duration">The overall duration the animation takes in ms.</param>
+        /// <param name="Function">The function the animation uses.</param>
+        /// <param name="Callback">Callback function once the animation is done. Null if you dont want to use this.</param>
+        public void Animate(string Property, object Target, int Duration, OutpostOmega.Game.Tools.Easing.EaseFunction Function, OutpostOmega.Game.Tools.Animation.OnAnimationDoneHandler Callback = null)
+        {
+            if (_animations == null)
+                _animations = new List<OutpostOmega.Game.Tools.Animation>();
+
+            _animations.Add(new OutpostOmega.Game.Tools.Animation(
+                this.GetType().GetProperty(Property), this));
+            _animations.LastOrDefault().Animate(Target, Duration, Function);
+
+            if (Callback != null)
+                _animations.LastOrDefault().OnAnimationDone += Callback;
+            
+        }
+
+        /// <summary>
         /// Invokes mouse leave event (used by input system).
         /// </summary>
         internal void InputMouseLeft()

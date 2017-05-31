@@ -8,6 +8,22 @@ namespace Gwen.Control
     /// </summary>
     public class ImagePanel : Base
     {
+        public int TextureHeight
+        {
+            get
+            {
+                return m_Texture.Height;
+            }
+        }
+        public int TextureWidth
+        {
+            get
+            {
+                return m_Texture.Width;
+            }
+        }
+
+
         private readonly Texture m_Texture;
         private readonly float[] m_uv;
         private Color m_DrawColor;

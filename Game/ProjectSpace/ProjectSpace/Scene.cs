@@ -15,7 +15,7 @@ namespace OutpostOmega
     /// <summary>
     /// Combination of objects, that build a complete scene
     /// </summary>
-    class Scene : IDisposable
+    partial class Scene : IDisposable
     {
 
         /// <summary>
@@ -80,6 +80,9 @@ namespace OutpostOmega
             //canvas.ShouldDrawBackground = true;
             Canvas.BackgroundColor = Color.FromArgb(255, 150, 170, 170);
             #endregion
+
+            //Initialize FPS-Counter
+            InitFPS();
         }
 
         public static void CreateDefaultSkin(ref Gwen.Skin.Base Skin, Gwen.Renderer.OpenTK Renderer)
@@ -123,6 +126,9 @@ namespace OutpostOmega
         {
             if (Disposing)
                 return;
+
+            //Update Framecounter
+            UpdateFPS(elapsedDrawTime.Elapsed.Milliseconds);
 
             if (!elapsedDrawTime.IsRunning)
             {
@@ -267,7 +273,9 @@ namespace OutpostOmega
         /// Can be overridden to define update logic for this scene
         /// </summary>
         protected virtual void UpdateScene()
-        { }
+        {
+            this.Canvas.Update(elapsedUpdateTime.Elapsed.Milliseconds);
+        }
 
         /// <summary>
         /// Refresh the Bounds if screen/window-size is changing
