@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace OutpostOmega.Server.Dialog
 {
-    partial class uc_NetStats : UserControl
+    partial class uc_NetStats : UserControl, IDisposable
     {
         Task Worker; bool Work = true;
         Main MainForm;
@@ -46,6 +46,8 @@ namespace OutpostOmega.Server.Dialog
         private delegate void RefreshDelegate();
         private void RefreshChart()
         {
+            if (Disposed) return;
+
             DumpTime = LastUpdate;
             switch (cB_Time.Text)
             {
@@ -116,6 +118,14 @@ namespace OutpostOmega.Server.Dialog
                 if(item != null)
                     chart.Series.Remove(item);
             }
+        }
+
+        public bool Disposed = false;
+        public void Dispose()
+        {
+            Disposed = true;
+            Worker.Dispose();
+
         }
     }
 }

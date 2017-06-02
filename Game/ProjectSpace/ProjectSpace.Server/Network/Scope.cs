@@ -220,9 +220,15 @@ namespace OutpostOmega.Server.Network
 
         private void SendInitialData()
         {
-            var om = _client.GetOM(OutpostOmega.Network.Command.Create, OutpostOmega.Network.SecondCommand.Null);
+
             var blankWorld = _client.Host.networkHandler.World;
             var data = _client.Host.networkHandler.GetObjectData(_client.ID, blankWorld);
+
+            //Send message
+            _client.SendMessage(String.Format("Transfering world '{0}' ({1} bytes)", blankWorld.ID, data.Length));
+
+            //Send world afterwards
+            var om = _client.GetOM(OutpostOmega.Network.Command.Create, OutpostOmega.Network.SecondCommand.Null);
             om.Write(data.Length);
             om.Write(data);
             _client.Connection.SendMessage(om, Lidgren.Network.NetDeliveryMethod.ReliableOrdered, 1);

@@ -33,6 +33,9 @@ namespace OutpostOmega.Drawing.UI
 
         Scene Scene;
         public Label ProgressText;
+        Label ProgressText2;
+        Label ProgressText3;
+        Label ProgressText4;
         AnimatedTexture2D Animation;
         ImagePanel ImgPanel;
         ImagePanel Background;
@@ -72,10 +75,28 @@ namespace OutpostOmega.Drawing.UI
             Message = InitMessage;
 
             ProgressText.X = this.Width / 2 - ProgressText.Width / 2;
-            ProgressText.Y = this.Height / 2 + ImgPanel.Height - ProgressText.Height / 2 + 5;
-            if (ProgressText.Y > this.Height)
-                ProgressText.Y = (this.Height - ProgressText.Height) - 5;
+            ProgressText.Y = this.Height - ( ProgressText.Height * 4 + 25 );
             ProgressText.BringToFront();
+
+
+            ProgressText2 = new Label(this)
+            {
+                TextColor = System.Drawing.Color.FromArgb(205, 205, 205),
+                X = ProgressText.X,
+                Y = ProgressText.Y + ProgressText.Height,
+            };
+            ProgressText3 = new Label(this)
+            {
+                TextColor = System.Drawing.Color.FromArgb(155, 155, 155),
+                X = ProgressText.X,
+                Y = ProgressText.Y + ProgressText.Height * 2,
+            };
+            ProgressText4 = new Label(this)
+            {
+                TextColor = System.Drawing.Color.FromArgb(105, 105, 105),
+                X = ProgressText.X,
+                Y = ProgressText.Y + ProgressText.Height * 3,
+            };
 
             this.BoundsChanged += LoadingScreen_BoundsChanged;
 
@@ -101,10 +122,16 @@ namespace OutpostOmega.Drawing.UI
 
             if (ProgressText.Text != Message)
             {
+                ProgressText4.Text = ProgressText3.Text;
+                ProgressText3.Text = ProgressText2.Text;
+                ProgressText2.Text = ProgressText.Text;
                 ProgressText.Text = Message;
 
                 ProgressText.X = this.Width / 2 - ProgressText.Width / 2;
-                ProgressText.Y = this.Height / 2 - ProgressText.Height / 2 + ImgPanel.Height;
+                ProgressText2.X = this.Width / 2 - ProgressText2.Width / 2;
+                ProgressText3.X = this.Width / 2 - ProgressText3.Width / 2;
+                ProgressText4.X = this.Width / 2 - ProgressText4.Width / 2;
+                //ProgressText.Y = this.Height / 2 - ProgressText.Height / 2 + ImgPanel.Height;
             }
             Animation.Update();
             base.Think();
@@ -116,7 +143,16 @@ namespace OutpostOmega.Drawing.UI
             ImgPanel.Y = this.Height / 2 - ImgPanel.Height / 2;
 
             ProgressText.X = this.Width / 2 - ProgressText.Width / 2;
-            ProgressText.Y = this.Height / 2 - ProgressText.Height / 2 + ImgPanel.Height;
+            ProgressText.Y = this.Height - (ProgressText.Height * 4 + 25);
+
+            ProgressText2.X = this.Width / 2 - ProgressText2.Width / 2;
+            ProgressText2.Y = ProgressText.Y + ProgressText.Height;
+
+            ProgressText3.X = this.Width / 2 - ProgressText3.Width / 2;
+            ProgressText3.Y = ProgressText.Y + ProgressText.Height * 2;
+
+            ProgressText4.X = this.Width / 2 - ProgressText4.Width / 2;
+            ProgressText4.Y = ProgressText.Y + ProgressText.Height * 3;
 
             Background.Width = this.Width;
             Background.Height = this.Height;

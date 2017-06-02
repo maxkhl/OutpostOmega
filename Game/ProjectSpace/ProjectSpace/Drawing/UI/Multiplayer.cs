@@ -80,11 +80,17 @@ namespace OutpostOmega.Drawing.UI
             base.Think();
         }*/
 
-        public override void Think()
+        float LastDequeue = 0;
+        public override void Update(float ElapsedTime)
         {
             string message = "";
-            if (loadingScreen != null && Client.Output.TryDequeue(out message))
+            LastDequeue += ElapsedTime;
+
+            if (loadingScreen != null && LastDequeue > 1000 && Client.Output.TryDequeue(out message))
+            {
                 loadingScreen.Message = message;
+                LastDequeue = 0;
+            }
 
             if(newWorld != null)
             {
@@ -94,7 +100,7 @@ namespace OutpostOmega.Drawing.UI
                 this.Close();
             }
 
-            base.Think();
+            base.Update(ElapsedTime);
         }
 
         OutpostOmega.Network.nClient Client;
@@ -102,7 +108,7 @@ namespace OutpostOmega.Drawing.UI
         private LoadingScreen loadingScreen;
         void connect_Clicked(Base sender, ClickedEventArgs arguments)
         {
-            loadingScreen = new LoadingScreen(Scene, this.Parent);
+            loadingScreen = LoadingScreen.Start(Scene, Scene.Canvas, "Connecting...");
             Client = new OutpostOmega.Network.nClient(username.Text);
             Client.NewWorldReceived += client_NewWorldReceived;
             Client.Disconnected += Client_Disconnected;
@@ -115,6 +121,7 @@ namespace OutpostOmega.Drawing.UI
             AppSettings.Default.LastServer = adress.Text;
             AppSettings.Default.LastUsername = username.Text;
             AppSettings.Default.Save();
+
         }
 
         void Client_Disconnected(Network.nClient sender, string reason)

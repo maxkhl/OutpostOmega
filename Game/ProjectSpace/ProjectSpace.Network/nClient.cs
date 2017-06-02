@@ -204,14 +204,20 @@ namespace OutpostOmega.Network
             NetIncomingMessage im;
             while (netClient != null && (im = netClient.ReadMessage()) != null)
             {
+                string text;
                 switch (im.MessageType)
                 {
-                    case NetIncomingMessageType.DebugMessage:
                     case NetIncomingMessageType.ErrorMessage:
                     case NetIncomingMessageType.WarningMessage:
-                    case NetIncomingMessageType.VerboseDebugMessage:
-                        string text = im.ReadString();
+                        text = im.ReadString();
                         Output.Enqueue(text);
+                        break;
+                    case NetIncomingMessageType.DebugMessage:
+                    case NetIncomingMessageType.VerboseDebugMessage:
+#if DEBUG
+                        text = im.ReadString();
+                        //Output.Enqueue(text);
+#endif
                         break;
                     case NetIncomingMessageType.StatusChanged:
                         NetConnectionStatus status = (NetConnectionStatus)im.ReadByte();
@@ -537,7 +543,7 @@ namespace OutpostOmega.Network
                             break;
                         case (byte)Command.Message: // Message
                             var message = im.ReadString();
-                            Output.Enqueue("Message from Server: " + message);
+                            Output.Enqueue("Server: " + message);
                             break;
                         default:                            
                             Output.Enqueue("Unknown command received. Type: " + Type.ToString() + " Subtype: " + subType.ToString());
