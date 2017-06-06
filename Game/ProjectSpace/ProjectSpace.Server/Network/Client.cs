@@ -33,7 +33,7 @@ namespace OutpostOmega.Server.Network
         /// <summary>
         /// The Mind of this client
         /// </summary>
-        public PlayerMind Mind { get; set; }
+        public RemotePlayer Mind { get; set; }
 
         /// <summary>
         /// The clients scope. This will watch the clients situation and send him the necessary data
@@ -131,9 +131,9 @@ namespace OutpostOmega.Server.Network
             //Get the Username and create mind with it
             foreach (GameObject gameObject in Host.networkHandler.World.AllGameObjects)
             {
-                if (typeof(PlayerMind).IsAssignableFrom(gameObject.GetType()) && ((PlayerMind)gameObject).Username == Username)
+                if (typeof(RemotePlayer).IsAssignableFrom(gameObject.GetType()) && ((RemotePlayer)gameObject).Username == Username)
                 {
-                    this.Mind = ((PlayerMind)gameObject);
+                    this.Mind = ((RemotePlayer)gameObject);
                     if (!this.Mind.Registered) this.Mind.Register();
 
                     Main.Message(Connection.RemoteEndPoint.Address.ToString() + " logged in as '" + Username + "'. Existing mind assigned.");
@@ -323,20 +323,23 @@ namespace OutpostOmega.Server.Network
                             break;
                         case (byte)SecondCommand.InputMouseDelta:
 
-                            if(this.Mind.SimulatedMouseInput == null)
-                                this.Mind.SimulatedMouseInput = new Game.Tools.MouseState();
+                            /*if(this.Mind.SimulatedMouseInput == null)
+                                this.Mind.SimulatedMouseInput = new Game.Tools.MouseState();*/
 
                             var remoteTime = im.ReadDouble();
                             LastReceivedPackageTime[(SecondCommand)subType] = remoteTime;
                             LastReceivedMouseTime = remoteTime;
-                            //im.ReadDouble(); // müll
+
+                            var mouseState = new Game.Tools.MouseState();
+
                             //this.Mind.SimulatedMouseInput.ElapsedTime = -1;//Clock - 
-                            //this.Mind.SimulatedMouseInput.LeftKey = im.ReadBoolean();
-                            //this.Mind.SimulatedMouseInput.MiddleKey = im.ReadBoolean();
-                            //this.Mind.SimulatedMouseInput.RightKey = im.ReadBoolean();
-                            this.Mind.SimulatedMouseInput.X -= im.ReadInt32();
-                            this.Mind.SimulatedMouseInput.Y -= im.ReadInt32();
-                            //this.Mind.SimulatedMouseInput = newMS;
+                            mouseState.LeftKey = im.ReadBoolean();
+                            mouseState.MiddleKey = im.ReadBoolean();
+                            mouseState.RightKey = im.ReadBoolean();
+                            mouseState.X = im.ReadInt32();
+                            mouseState.Y = im.ReadInt32();
+
+                            this.Mind.ApplyMouseState(mouseState);
 
                             break;
                         case (byte)SecondCommand.GameObject:

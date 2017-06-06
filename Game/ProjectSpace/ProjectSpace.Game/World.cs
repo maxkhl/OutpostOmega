@@ -174,7 +174,7 @@ namespace OutpostOmega.Game
                                 }
                             }
 
-                            if (AllGameObjects[i].SimulatedMouseInput != null)
+                            /*if (AllGameObjects[i].SimulatedMouseInput != null)
                             {
                                 mState = AllGameObjects[i].SimulatedMouseInput;
 
@@ -187,7 +187,7 @@ namespace OutpostOmega.Game
                                 {
 
                                 }
-                            }
+                            }*/
 
 
                             ((GameObjects.Mobs.Minds.PlayerTypes.LocalPlayer)AllGameObjects[i]).Update(mState, kState, ElapsedTime);

@@ -15,7 +15,7 @@ namespace OutpostOmega.Network
     /// <summary>
     /// Client for handling networkstuff on the gameclient
     /// </summary>
-    public class nClient : IDisposable
+    public partial class nClient : IDisposable
     {
         /// <summary>
         /// Lidgren netClient object

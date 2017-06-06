@@ -252,7 +252,7 @@ namespace OutpostOmega.Server
         /// <param name="Text">Message</param>
         public static void Message(string Text)
         {
-            if (_MainForm == null || _MainForm.Closing)
+            if (_MainForm == null || _MainForm.Closing || _MainForm.Disposing)
                 return;
 
             if (_MainForm.rTB_Output.InvokeRequired)

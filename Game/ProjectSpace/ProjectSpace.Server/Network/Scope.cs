@@ -226,6 +226,8 @@ namespace OutpostOmega.Server.Network
 
             //Send message
             _client.SendMessage(String.Format("Transfering world '{0}' ({1} bytes)", blankWorld.ID, data.Length));
+            _client.Connection.Peer.FlushSendQueue();
+
 
             //Send world afterwards
             var om = _client.GetOM(OutpostOmega.Network.Command.Create, OutpostOmega.Network.SecondCommand.Null);

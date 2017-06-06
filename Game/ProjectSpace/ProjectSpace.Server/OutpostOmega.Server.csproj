@@ -154,6 +154,12 @@
     <Compile Include="Dialog\TestClient.Designer.cs">
       <DependentUpon>TestClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\TestClientOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\TestClientOld.Designer.cs">
+      <DependentUpon>TestClientOld.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\uc_Clients.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\TestClient.resx">
       <DependentUpon>TestClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\TestClientOld.resx">
+      <DependentUpon>TestClientOld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\uc_Clients.resx">
       <DependentUpon>uc_Clients.cs</DependentUpon>

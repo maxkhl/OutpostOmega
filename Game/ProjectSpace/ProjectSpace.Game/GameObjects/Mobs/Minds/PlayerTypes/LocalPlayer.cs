@@ -95,7 +95,8 @@ namespace OutpostOmega.Game.GameObjects.Mobs.Minds.PlayerTypes
                 {
 
                     // Rotates the playerview
-                    Mob.View.AddRotation(((float)(mouseState.X - OldMouseState.X) /*+ (World.ClientMode ? 2 : 0)*/) /** (float)ElapsedTime*/, (float)(mouseState.Y - OldMouseState.Y) /** (float)ElapsedTime*/);
+                    Mob.View.AddRotation(
+                        ((float)(mouseState.X - OldMouseState.X) /*+ (World.ClientMode ? 2 : 0)*/) /** (float)ElapsedTime*/, (float)(mouseState.Y - OldMouseState.Y) /** (float)ElapsedTime*/);
                 }
 
 
@@ -212,7 +213,7 @@ namespace OutpostOmega.Game.GameObjects.Mobs.Minds.PlayerTypes
                 }*/
             }
 
-            OldMouseState = mouseState;
+            OldMouseState = new Tools.MouseState(mouseState);
 
             base.Update(ElapsedTime);
         }

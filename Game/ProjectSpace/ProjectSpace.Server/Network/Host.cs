@@ -163,6 +163,8 @@ namespace OutpostOmega.Server.Network
                 NetIncomingMessage im;
                 while ((im = netServer.ReadMessage()) != null)
                 {
+                    if (Disposing) return;
+
                     //NetIncomingMessage im = netServer.ReadMessage();
 
                     // Get general information about sender

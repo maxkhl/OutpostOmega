@@ -28,6 +28,20 @@ namespace OutpostOmega.Game.Tools
 
         }
 
+        public MouseState(MouseState mState)
+        {
+            LeftKey = mState.LeftKey;
+            MiddleKey = mState.MiddleKey;
+            RightKey = mState.RightKey;
+
+            X = mState.X;
+            Y = mState.Y;
+
+            ScrollWheel = mState.ScrollWheel;
+            ScrollWheelAbs = mState.ScrollWheelAbs;
+            ScrollWheelPrec = mState.ScrollWheelPrec;
+        }
+
         public MouseState(OpenTK.Input.MouseState mState)
         {
             LeftKey = mState.LeftButton == ButtonState.Pressed;

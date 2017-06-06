@@ -70,7 +70,8 @@ namespace OutpostOmega.Scenes
                 {
                     if (OldMouseState.X != mouseState.X || OldMouseState.Y != mouseState.Y)
                     {
-                        var outgoingMouseMessage = Client.GetOM(Command.Data, SecondCommand.InputMouseDelta);
+                        Client.SendMouseState(new OutpostOmega.Game.Tools.MouseState(mouseState), new OutpostOmega.Game.Tools.MouseState(OldMouseState));
+                        /*var outgoingMouseMessage = Client.GetOM(Command.Data, SecondCommand.InputMouseDelta);
                         outgoingMouseMessage.Write(Client.Clock);
                         //outgoingMouseMessage.Write(mouseState.LeftButton == ButtonState.Pressed);
                         //outgoingMouseMessage.Write(mouseState.MiddleButton == ButtonState.Pressed);
@@ -78,7 +79,7 @@ namespace OutpostOmega.Scenes
                         outgoingMouseMessage.Write(mouseState.X - OldMouseState.X);
                         outgoingMouseMessage.Write(mouseState.Y - OldMouseState.Y);
                         Client.netClient.SendMessage(outgoingMouseMessage, Lidgren.Network.NetDeliveryMethod.ReliableOrdered);
-
+                        */
                         OldMouseState = mouseState;
                     }
                     
