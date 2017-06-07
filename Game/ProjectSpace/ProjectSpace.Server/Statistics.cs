@@ -47,6 +47,22 @@ namespace OutpostOmega.Server
             this.UpdateTask.Start();
         }
 
+
+
+        public void Stop()
+        {
+            Work = false;
+            System.Threading.Thread.Sleep(2000);
+            if (this.UpdateTask.Status == TaskStatus.Running)
+            {
+                try
+                {
+                    this.UpdateTask.Wait(200, new System.Threading.CancellationToken(true));
+                }
+                catch { }
+            }
+        }
+
         public delegate void StatisticsUpdatedDelegate();
         public event StatisticsUpdatedDelegate StatisticsUpdated;
 

@@ -25,5 +25,10 @@ namespace OutpostOmega.Error
             foreach (var pair in e.Data)
                 report_output.Text += pair.ToString() + Environment.NewLine;
         }
+
+        private void CrashReport_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill(); // AAARGHHHGHglglgghh...
+        }
     }
 }

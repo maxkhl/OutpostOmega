@@ -56,6 +56,8 @@ namespace OutpostOmega.Server.Dialog
         Game.Tools.MouseState MouseState = new Game.Tools.MouseState();
         void timer_Tick(object sender, EventArgs e)
         {
+            if (Program.Crashed) return;
+
             string msg = "";
             if (uClient.Output.TryDequeue(out msg))
                 tB_Output.Text += msg + Environment.NewLine;
@@ -98,6 +100,50 @@ namespace OutpostOmega.Server.Dialog
         {
             DrawDarts();
             DrawCharState();
+            RefreshMatrixComparison();
+        }
+
+        private void RefreshMatrixComparison()
+        {
+            if (ServerWorld == null || GameWorld == null) return;
+            var sPlayer = (from psPlayer in ServerWorld.GetGameObjects<OutpostOmega.Game.GameObjects.Mobs.Minds.PlayerMind>()
+                           where psPlayer.Username == this.uClient.Username
+                           select psPlayer).SingleOrDefault();
+            if (sPlayer == null) return;
+
+
+            NumericUpDown[] clientNum = new NumericUpDown[9] {
+                cM11, cM12, cM13,
+                cM21, cM22, cM23,
+                cM31, cM32, cM33,
+            };
+
+
+            NumericUpDown[] serverNum = new NumericUpDown[9] {
+                sM11, sM12, sM13,
+                sM21, sM22, sM23,
+                sM31, sM32, sM33,
+            };
+
+            
+            for(int x = 0; x < 3; x++)
+                for(int y = 0; y < 3; y++)
+                {
+                    var index = x + 3 * y;
+                    clientNum[index].Value = (decimal)(float)typeof(Jitter.LinearMath.JMatrix).GetField("M" + (x + 1).ToString() + (y + 1).ToString()).GetValue(GameWorld.Player.Mob.View.Orientation);
+                    serverNum[index].Value = (decimal)(float)typeof(Jitter.LinearMath.JMatrix).GetField("M" + (x + 1).ToString() + (y + 1).ToString()).GetValue(sPlayer.Mob.View.Orientation);
+
+                    if (clientNum[index].Value == serverNum[index].Value)
+                    {
+                        clientNum[index].BackColor = Color.Lime;
+                        serverNum[index].BackColor = Color.Lime;
+                    }
+                    else
+                    {
+                        clientNum[index].BackColor = Color.Red;
+                        serverNum[index].BackColor = Color.Red;
+                    }
+                }
         }
 
         private void DrawCharState()
@@ -119,6 +165,25 @@ namespace OutpostOmega.Server.Dialog
             }
 
             pB_CharState.Image = (Image)bitmap;
+
+            if(ServerWorld == null) return;
+            var sPlayer = (from psPlayer in ServerWorld.GetGameObjects<OutpostOmega.Game.GameObjects.Mobs.Minds.PlayerMind>()
+                           where psPlayer.Username == this.uClient.Username
+                           select psPlayer).SingleOrDefault();
+            if (sPlayer == null) return;
+            
+            bitmap = new Bitmap(150, 150);
+
+            forwV = sPlayer.Mob.View.Forward;
+
+            using (var graphics = Graphics.FromImage(bitmap))
+            {
+                graphics.DrawLine(redPen, new Point(75, 75), new Point((int)(forwV.X * 75), (int)(forwV.Y * 75)));
+                graphics.DrawLine(bluePen, new Point(75, 75), new Point((int)(forwV.X * 75), (int)(forwV.Z * 75)));
+                graphics.DrawLine(greenPen, new Point(75, 75), new Point((int)(forwV.Y * 75), (int)(forwV.Z * 75)));
+            }
+
+            pB_remote_charState.Image = (Image)bitmap;
 
         }
 
@@ -162,7 +227,17 @@ namespace OutpostOmega.Server.Dialog
         private void pB_input_Click(object sender, EventArgs e)
         {
             MouseEventArgs me = (MouseEventArgs)e;
-            inp_cursor = me.Location;
+            if(me.Button == System.Windows.Forms.MouseButtons.Left)
+                inp_cursor = me.Location;
+            
+            if(me.Button == System.Windows.Forms.MouseButtons.Right)
+                inp_cursor = new Point(75, 75);
+
+            if (me.Button == System.Windows.Forms.MouseButtons.Middle)
+            {
+                var rand = new Random();
+                inp_cursor = new Point(rand.Next(50, 100), rand.Next(50, 100));
+            }
         }
 
         Point out_cursor = new Point(75, 75);

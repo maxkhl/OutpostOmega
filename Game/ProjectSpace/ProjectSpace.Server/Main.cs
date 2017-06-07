@@ -257,7 +257,14 @@ namespace OutpostOmega.Server
 
             if (_MainForm.rTB_Output.InvokeRequired)
             {
-                _MainForm.rTB_Output.Invoke(new MessageCallback(Message), Text);
+                try
+                {
+                    _MainForm.rTB_Output.Invoke(new MessageCallback(Message), Text);
+                }
+                catch (Exception e)
+                {
+                    if (!Program.Crashed) throw e;
+                }
             }
             else
             {
@@ -279,7 +286,14 @@ namespace OutpostOmega.Server
 
             if (_MainForm.rTB_Output.InvokeRequired)
             {
-                _MainForm.rTB_Output.Invoke(new MessageColorCallback(Message), Text, color);
+                try
+                {
+                    _MainForm.rTB_Output.Invoke(new MessageColorCallback(Message), Text, color);
+                }
+                catch (Exception e)
+                {
+                    if (!Program.Crashed) throw e;
+                }
             }
             else
             {
@@ -299,7 +313,14 @@ namespace OutpostOmega.Server
 
             if (_MainForm.rTB_Output.InvokeRequired)
             {
-                _MainForm.rTB_Output.Invoke(new CLSCallback(CLS));
+                try
+                {
+                    _MainForm.rTB_Output.Invoke(new CLSCallback(CLS));
+                }
+                catch (Exception e)
+                {
+                    if (!Program.Crashed) throw e;
+                }
             }
             else
             {
@@ -310,12 +331,20 @@ namespace OutpostOmega.Server
         private delegate void FPSCallback(float FPS);
         public static void SetFPS(float FPS)
         {
-            if (_MainForm == null || _MainForm.IsDisposed)
+            if (_MainForm == null || _MainForm.Closing || _MainForm.IsDisposed)
                 return;
+            
 
             if (_MainForm.menuStrip1.InvokeRequired)
             {
-                _MainForm.menuStrip1.Invoke(new FPSCallback(SetFPS), FPS);                
+                try
+                {
+                    _MainForm.menuStrip1.Invoke(new FPSCallback(SetFPS), FPS);
+                }
+                catch(Exception e)
+                {
+                    if (!Program.Crashed) throw e;
+                }
             }
             else
             {
@@ -394,7 +423,7 @@ namespace OutpostOmega.Server
                 MessageBox.Show("Load a world first you stupid donkeyass");
                 return;
             }
-            var testClient = new Dialog.TestClient();
+            var testClient = new Dialog.TestClient(ActiveWorld);
             testClient.Show();
         }
 
@@ -403,7 +432,7 @@ namespace OutpostOmega.Server
             var messages = ActiveWorld.Console.Execute(tB_Input.Text);
             foreach(var message in messages)
             {
-                rTB_Output.Text += string.Format("{0} - {1}: {2}\n", message.TimeStamp, message.Sender, message.Text);
+                rTB_Output.AppendText(string.Format("{0} - {1}: {2}\n", message.TimeStamp, message.Sender, message.Text), Color.Yellow);
             }
         }
 
@@ -537,6 +566,17 @@ namespace OutpostOmega.Server
                     MessageBox.Show("Could not load world. Error '" + exc.Message + "'");
                 }
             }
+        }
+
+        /// <summary>
+        /// Used to stop all asynchronous shit going on
+        /// </summary>
+        public void Stop()
+        {
+            Closing = true;
+
+            Statistic.Stop();
+            _mainGame.Stop(); // Stop main processing thread
         }
 
         private void modfolderToolStripMenuItem_Click(object sender, EventArgs e)

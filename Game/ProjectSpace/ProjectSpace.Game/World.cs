@@ -130,6 +130,14 @@ namespace OutpostOmega.Game
             UpdateTest(sender, mouseState, keyboardState, ElapsedTime);
         }
 
+        /// <summary>
+        /// Stops asynchronus operations in this world. (f.e. atmos system)
+        /// </summary>
+        public void Stop()
+        {
+            AtmosSystem.Stop();
+        }
+
 
         /// <summary>
         /// Updates the physics and all GameObjects (should be called every frame)
@@ -320,6 +328,12 @@ namespace OutpostOmega.Game
             return (from gObject in AllGameObjects
                     where gObject.GetType() == type
                     select gObject).ToArray();
+        }
+        public T[] GetGameObjects<T>()
+        {
+            return (from gObject in AllGameObjects
+                    where gObject is T
+                    select (T)(object)gObject).ToArray();
         }
         public turf.Structure GetStructure(Jitter.Dynamics.RigidBody RigidBody)
         {

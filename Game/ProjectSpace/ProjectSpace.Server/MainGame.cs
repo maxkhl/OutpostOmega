@@ -36,6 +36,8 @@ namespace OutpostOmega.Server
 
         public void Stop()
         {
+            World.Stop();
+
             _mainThreadAlive = false;
             Thread.Sleep(200);
             if (_mainThread.ThreadState != System.Threading.ThreadState.Stopped)
@@ -47,6 +49,7 @@ namespace OutpostOmega.Server
                 catch { }
             }
             World.PhysicSystem.CollisionSystem.threadManager.StopMe();
+            
         }
 
 
@@ -95,6 +98,10 @@ namespace OutpostOmega.Server
                     Thread.Sleep(500);
                     continue;
                 }
+
+                if (!this._mainThreadAlive) continue;
+
+                if (Program.Crashed) return;
 
                 if (lastFrameTime > 0)
                 {

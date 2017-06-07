@@ -401,21 +401,24 @@ namespace OutpostOmega.Server.Network
         /// <summary>
         /// Sends a message to the client
         /// </summary>
-        /// <param name="om"></param>
-        /// <param name="deliveryMethod"></param>
-        public void SendOM(NetOutgoingMessage om, NetDeliveryMethod deliveryMethod)
+        /// <param name="om">Outgoing message</param>
+        /// <param name="deliveryMethod">delivery method</param>
+        /// <param name="Channel">Sequence channel</param>
+        public void SendOM(NetOutgoingMessage om, NetDeliveryMethod deliveryMethod, int Channel = 0)
         {
-            Connection.SendMessage(om, deliveryMethod, 0);
+            Connection.SendMessage(om, deliveryMethod, Channel);
         }
 
         /// <summary>
         /// Sends a message to this client
         /// </summary>
-        public void SendMessage(string Text)
+        /// <param name="Text">Message</param>
+        /// <param name="Channel">Sequence channel</param>
+        public void SendMessage(string Text, int Channel = 0)
         {
             var om = GetOM(Command.Message);
             om.Write(Text);
-            SendOM(om, NetDeliveryMethod.ReliableOrdered);
+            SendOM(om, NetDeliveryMethod.ReliableOrdered, Channel);
         }
     }
 }

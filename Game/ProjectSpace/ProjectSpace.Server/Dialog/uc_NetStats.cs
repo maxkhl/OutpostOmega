@@ -29,7 +29,7 @@ namespace OutpostOmega.Server.Dialog
         double LastUpdate = Environment.TickCount / 1000;
         public void UpdateStatistics()
         {
-            if (MainForm != null && MainForm.Statistic != null)
+            if (MainForm != null && !MainForm.Closing && MainForm.Statistic != null)
             {
                 foreach(var key in MainForm.Statistic.Data.Keys)
                 {
@@ -38,7 +38,14 @@ namespace OutpostOmega.Server.Dialog
                 }
 
                 if(chart.InvokeRequired)
-                    chart.Invoke(new RefreshDelegate(RefreshChart));
+                    try {
+                        chart.Invoke(new RefreshDelegate(RefreshChart));
+                    }
+                    catch (Exception e)
+                    {
+                        if (!Program.Crashed) throw e;
+                    }
+
                 LastUpdate = (Environment.TickCount - MainForm.Statistic.StartTime) / 1000;
             }
         }
