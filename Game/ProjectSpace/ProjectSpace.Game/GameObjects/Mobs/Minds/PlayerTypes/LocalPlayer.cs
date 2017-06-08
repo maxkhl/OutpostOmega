@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenTK.Input;
 using OpenTK;
 using Jitter.LinearMath;
+using OutpostOmega.Game.Tools;
 
 namespace OutpostOmega.Game.GameObjects.Mobs.Minds.PlayerTypes
 {
@@ -26,6 +27,24 @@ namespace OutpostOmega.Game.GameObjects.Mobs.Minds.PlayerTypes
         {
             OldMouseState = new Tools.MouseState();
             base.OnDeserialization();
+        }
+
+        public Tools.MouseState DeltaMouseState = new Tools.MouseState();
+        public override void ApplyMouseState(Tools.MouseState MouseState)
+        {
+            if (DeltaMouseState == null) DeltaMouseState = new Tools.MouseState();
+
+            lock (DeltaMouseState)
+            {
+                int x = DeltaMouseState.X + MouseState.X,
+                    y = DeltaMouseState.Y + MouseState.Y;
+
+                DeltaMouseState = new Tools.MouseState(MouseState);
+                DeltaMouseState.X = x;
+                DeltaMouseState.Y = y;
+            }
+
+            base.ApplyMouseState(MouseState);
         }
 
 
@@ -91,13 +110,19 @@ namespace OutpostOmega.Game.GameObjects.Mobs.Minds.PlayerTypes
                 if (keyboardState[Key.Space])
                     Mob.Jump();
 
-                if (mouseState.X != OldMouseState.X || mouseState.Y != OldMouseState.Y)
-                {
+                var deltaMouseState = new Tools.MouseState(mouseState);
+                deltaMouseState.X -= OldMouseState.X;
+                deltaMouseState.Y -= OldMouseState.Y;
+                ApplyMouseState(deltaMouseState);
+
+
+                //if (mouseState.X != OldMouseState.X || mouseState.Y != OldMouseState.Y)
+                //{
 
                     // Rotates the playerview
-                    Mob.View.AddRotation(
-                        ((float)(mouseState.X - OldMouseState.X) /*+ (World.ClientMode ? 2 : 0)*/) /** (float)ElapsedTime*/, (float)(mouseState.Y - OldMouseState.Y) /** (float)ElapsedTime*/);
-                }
+                //    Mob.View.AddRotation(
+                //        ((float)(mouseState.X - OldMouseState.X) /*+ (World.ClientMode ? 2 : 0)*/) /** (float)ElapsedTime*/, (float)(mouseState.Y - OldMouseState.Y) /** (float)ElapsedTime*/);
+                //}
 
 
 

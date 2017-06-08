@@ -31,5 +31,17 @@ namespace OutpostOmega.Game.GameObjects.Mobs.Minds
             this.Group = world.Settings.DefaultUserGroup;
         }
 
+
+        /// <summary>
+        /// Applies and interprets a mousestate for this player-mind.
+        /// </summary>
+        /// <param name="MouseState">Delta-state of the mouse.</param>
+        public virtual void ApplyMouseState(Tools.MouseState MouseState)
+        {
+            this.Mob.View.AddRotation(
+                (float)MouseState.X,
+                (float)MouseState.Y);
+        }
+
     }
 }

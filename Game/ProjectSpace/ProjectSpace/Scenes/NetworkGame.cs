@@ -22,6 +22,7 @@ namespace OutpostOmega.Scenes
 
         Stopwatch sendTimer;
 
+
         public NetworkGame(nClient Client, MainGame game, World world)
             : base(game, world)
         {
@@ -46,7 +47,7 @@ namespace OutpostOmega.Scenes
             base.Dispose();
         }
 
-        const double SendUpdatesPerSecond = 2;
+        const double SendUpdatesPerSecond = 20;
         OpenTK.Input.MouseState OldMouseState = OpenTK.Input.Mouse.GetState();
         protected override void UpdateScene()
         {
@@ -68,9 +69,13 @@ namespace OutpostOmega.Scenes
                 }
                 else
                 {
-                    if (OldMouseState.X != mouseState.X || OldMouseState.Y != mouseState.Y)
+
+                    lock (World.Player.DeltaMouseState)
                     {
-                        Client.SendMouseState(new OutpostOmega.Game.Tools.MouseState(mouseState), new OutpostOmega.Game.Tools.MouseState(OldMouseState));
+                        Client.SendMouseState(new OutpostOmega.Game.Tools.MouseState(World.Player.DeltaMouseState), new OutpostOmega.Game.Tools.MouseState());
+                        World.Player.DeltaMouseState.X = 0;
+                        World.Player.DeltaMouseState.Y = 0;
+                    }
                         /*var outgoingMouseMessage = Client.GetOM(Command.Data, SecondCommand.InputMouseDelta);
                         outgoingMouseMessage.Write(Client.Clock);
                         //outgoingMouseMessage.Write(mouseState.LeftButton == ButtonState.Pressed);
@@ -80,8 +85,7 @@ namespace OutpostOmega.Scenes
                         outgoingMouseMessage.Write(mouseState.Y - OldMouseState.Y);
                         Client.netClient.SendMessage(outgoingMouseMessage, Lidgren.Network.NetDeliveryMethod.ReliableOrdered);
                         */
-                        OldMouseState = mouseState;
-                    }
+                    OldMouseState = mouseState;
                     
                 }
             }
