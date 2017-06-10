@@ -72,6 +72,7 @@ namespace OutpostOmega.Scenes
 
             Console = new Drawing.UI.Console(this, Canvas);
 
+            Tools.Input.LoadDefaultSet();
 
             FPSLabel = new Gwen.Control.Label(Canvas);
             //FPSLabel.Text = "Project Space - Dev Build";

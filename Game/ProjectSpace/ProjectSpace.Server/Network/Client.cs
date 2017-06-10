@@ -300,48 +300,53 @@ namespace OutpostOmega.Server.Network
                     {
                         case (byte)SecondCommand.Input:
 
-                            OutpostOmega.Game.Tools.KeybeardState kState;
-
-                            if (this.Mind.SimulatedKeyInput != null)
-                                kState = this.Mind.SimulatedKeyInput;
-                            else
-                                kState = new OutpostOmega.Game.Tools.KeybeardState();
-
-                            LastReceivedPackageTime[(SecondCommand)subType] = im.ReadDouble();
-                            //kState.ElapsedTime = Clock - im.ReadDouble();
-
-                            while(im.Position < im.LengthBits)
-                            {
-                                var key = (OpenTK.Input.Key)im.ReadByte();
-                                var btnstate = im.ReadBoolean();
-                                if(btnstate)
-                                { }
-                                kState[key] = btnstate;
-                            }
-                            this.Mind.SimulatedKeyInput = kState;
+                            // Reading all packages
+                            var packages = InputPackage.ReadIncommingMessage(im);
 
                             break;
-                        case (byte)SecondCommand.InputMouseDelta:
 
-                            /*if(this.Mind.SimulatedMouseInput == null)
-                                this.Mind.SimulatedMouseInput = new Game.Tools.MouseState();*/
+                        //    OutpostOmega.Game.Tools.KeybeardState kState;
 
-                            var remoteTime = im.ReadDouble();
-                            LastReceivedPackageTime[(SecondCommand)subType] = remoteTime;
-                            LastReceivedMouseTime = remoteTime;
+                        //    if (this.Mind.SimulatedKeyInput != null)
+                        //        kState = this.Mind.SimulatedKeyInput;
+                        //    else
+                        //        kState = new OutpostOmega.Game.Tools.KeybeardState();
 
-                            var mouseState = new Game.Tools.MouseState();
+                        //    LastReceivedPackageTime[(SecondCommand)subType] = im.ReadDouble();
+                        //    //kState.ElapsedTime = Clock - im.ReadDouble();
 
-                            //this.Mind.SimulatedMouseInput.ElapsedTime = -1;//Clock - 
-                            mouseState.LeftKey = im.ReadBoolean();
-                            mouseState.MiddleKey = im.ReadBoolean();
-                            mouseState.RightKey = im.ReadBoolean();
-                            mouseState.X = im.ReadInt32();
-                            mouseState.Y = im.ReadInt32();
+                        //    while(im.Position < im.LengthBits)
+                        //    {
+                        //        var key = (OpenTK.Input.Key)im.ReadByte();
+                        //        var btnstate = im.ReadBoolean();
+                        //        if(btnstate)
+                        //        { }
+                        //        kState[key] = btnstate;
+                        //    }
+                        //    this.Mind.SimulatedKeyInput = kState;
 
-                            this.Mind.ApplyMouseState(mouseState);
+                        //    break;
+                        //case (byte)SecondCommand.InputMouseDelta:
 
-                            break;
+                        //    /*if(this.Mind.SimulatedMouseInput == null)
+                        //        this.Mind.SimulatedMouseInput = new Game.Tools.MouseState();*/
+
+                        //    var remoteTime = im.ReadDouble();
+                        //    LastReceivedPackageTime[(SecondCommand)subType] = remoteTime;
+                        //    LastReceivedMouseTime = remoteTime;
+
+                        //    var mouseState = new Game.Tools.MouseState();
+
+                        //    //this.Mind.SimulatedMouseInput.ElapsedTime = -1;//Clock - 
+                        //    mouseState.LeftKey = im.ReadBoolean();
+                        //    mouseState.MiddleKey = im.ReadBoolean();
+                        //    mouseState.RightKey = im.ReadBoolean();
+                        //    mouseState.X = im.ReadInt32();
+                        //    mouseState.Y = im.ReadInt32();
+
+                        //    this.Mind.ApplyMouseState(mouseState);
+
+                        //    break;
                         case (byte)SecondCommand.GameObject:
                             if (this.Mind.World != null)
                             {

@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="InputPackage.cs" />
     <Compile Include="nClient_TransferFunctions.cs" />
     <Compile Include="NetworkHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

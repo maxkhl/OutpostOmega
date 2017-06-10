@@ -82,4 +82,30 @@ namespace OutpostOmega.Network
         /// </summary>
         InputMouseDelta = 5
     }
+
+    /// <summary>
+    /// Second-byte command
+    /// </summary>
+    public enum InputType : byte
+    {
+        /// <summary>
+        /// No type.. like.. idk..
+        /// </summary>
+        Undefined = 0,
+
+        /// <summary>
+        /// Action trigger
+        /// </summary>
+        Action = 1,
+
+        /// <summary>
+        /// Mouse coordinates
+        /// </summary>
+        Mouse = 2,
+
+        /// <summary>
+        /// Used to separate input packages
+        /// </summary>
+        //Separator = 255,
+    }
 }

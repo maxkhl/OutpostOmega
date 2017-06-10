@@ -72,7 +72,8 @@ namespace OutpostOmega.Scenes
 
                     lock (World.Player.DeltaMouseState)
                     {
-                        Client.SendMouseState(new OutpostOmega.Game.Tools.MouseState(World.Player.DeltaMouseState), new OutpostOmega.Game.Tools.MouseState());
+                        Client.AddInput(World.Player.DeltaMouseState.X, World.Player.DeltaMouseState.Y);
+                        //Client.SendMouseState(new OutpostOmega.Game.Tools.MouseState(), new OutpostOmega.Game.Tools.MouseState());
                         World.Player.DeltaMouseState.X = 0;
                         World.Player.DeltaMouseState.Y = 0;
                     }

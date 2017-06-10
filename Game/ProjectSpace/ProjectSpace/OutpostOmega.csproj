@@ -205,6 +205,7 @@
     <Compile Include="Tools\Collada.cs" />
     <Compile Include="Tools\Convert.cs" />
     <Compile Include="Tools\DebugDrawer.cs" />
+    <Compile Include="Tools\Input.cs" />
     <Compile Include="Tools\Other.cs" />
     <Compile Include="Tools\Draw.cs" />
     <Compile Include="Tools\OpenGL.cs" />
