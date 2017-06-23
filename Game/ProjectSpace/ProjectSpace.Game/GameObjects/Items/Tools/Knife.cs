@@ -16,7 +16,7 @@ namespace OutpostOmega.Game.GameObjects.Items.Tools
             : base(world, ID)
         {
             var model = LoadModel(@"Content\Model\Items\Tools\Knife.dae");
-            model.AssignTexture("Cube.010", this, LoadTexture(@"Content\Model\Items\Tools\Knife.png"));
+            model.AssignTexture("Cube", this, LoadTexture(@"Content\Model\Items\Tools\Knife.png"));
 
             this.Shape = new Jitter.Collision.Shapes.BoxShape(0.4f, 0.018f, 0.071f);
             this.Mass = 20;

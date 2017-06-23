@@ -29,9 +29,9 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
             this.PhysicEnableDebug();
         }
 
-        public override void UseDevice(GameObject Target, Mob User, UseAction Action)
+        public override void UseDevice(GameObject Target, Mob User, Game.Tools.Action Action)
         {
-            if (User.Mind != null && Action == UseAction.Primary)
+            if (User.Mind != null && Action == Game.Tools.Action.InteractPrimary)
             {
                 if (User.View.TargetStructure != null)
                 {

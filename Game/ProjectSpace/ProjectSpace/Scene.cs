@@ -67,6 +67,9 @@ namespace OutpostOmega
             elapsedUpdateTime = new Stopwatch();
             elapsedDrawTime = new Stopwatch();
 
+            // Loading the default key sets - this needs to be dynamic in the future to allow custome key layouts
+            Tools.Input.LoadDefaultSet();
+
             #region Gwen Stuff
             renderer = new Gwen.Renderer.OpenTK();
             //Skin = new Gwen.Skin.TexturedBase(renderer, @"Content\UI\DefaultSkin.png");
@@ -251,6 +254,9 @@ namespace OutpostOmega
                 elapsedUpdateTime.Reset();
                 elapsedUpdateTime.Start();
             }
+
+            // Checks for input updates and fires InputChanged event
+            UpdateInput();
 
             if (!Stop)
             {

@@ -22,7 +22,7 @@ namespace OutpostOmega.Game
         /// <summary>
         /// Gets called by a mob when this object is interacted with
         /// </summary>
-        public virtual bool Use(GameObjects.Mob User, GameObjects.Item Item, UseAction Action)
+        public virtual bool Use(GameObjects.Mob User, GameObjects.Item Item, Tools.Action Action)
         {
             if (!CanInteract)
                 return false;
@@ -30,25 +30,25 @@ namespace OutpostOmega.Game
                 return true;
         }
 
-        public enum UseAction
-        {
-            /// <summary>
-            /// Primary interaction (left mouse usualy)
-            /// </summary>
-            Primary,
-            /// <summary>
-            /// Secondary interaction (right mouse)
-            /// </summary>
-            Secondary,
-            /// <summary>
-            /// Tertiary interaction (middle mouse)
-            /// </summary>
-            Tertiary,
-            /// <summary>
-            /// Inspect interaction (e)
-            /// </summary>
-            Inspect,
-        }
+        //public enum UseAction
+        //{
+        //    /// <summary>
+        //    /// Primary interaction (left mouse usualy)
+        //    /// </summary>
+        //    Primary,
+        //    /// <summary>
+        //    /// Secondary interaction (right mouse)
+        //    /// </summary>
+        //    Secondary,
+        //    /// <summary>
+        //    /// Tertiary interaction (middle mouse)
+        //    /// </summary>
+        //    Tertiary,
+        //    /// <summary>
+        //    /// Inspect interaction (e)
+        //    /// </summary>
+        //    Inspect,
+        //}
 	}
 }
 

@@ -57,6 +57,21 @@ namespace OutpostOmega.Game.Tools
         /// What did you expect here
         /// </summary>
         Jump = 8,
+
+        /// <summary>
+        /// Inspect something
+        /// </summary>
+        Inspect = 9,
+
+        /// <summary>
+        /// Run faaast like the wind
+        /// </summary>
+        Run = 10,
+
+        /// <summary>
+        /// Toggles between WASD- and mousemode
+        /// </summary>
+        ToggleMouseMode = 20,
     }
 
     /// <summary>
@@ -72,16 +87,16 @@ namespace OutpostOmega.Game.Tools
         /// <summary>
         /// Activate a action, keeping it active
         /// </summary>
-        Activate = 0,
+        Activate = 1,
 
         /// <summary>
         /// Release a action, changing it to inactive
         /// </summary>
-        Release = 1,
+        Release = 2,
 
         /// <summary>
         /// Quickly activate a action and then release it again
         /// </summary>
-        Toggle = 2,
+        Toggle = 3,
     }
 }

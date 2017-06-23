@@ -154,7 +154,7 @@ namespace OutpostOmega.Game
         /// </summary>
         //public Tools.MouseState SimulatedMouseInput { get; set; }
 
-        public Tools.MouseState OldMouseState = new Tools.MouseState(OpenTK.Input.Mouse.GetState());
+        //public Tools.MouseState OldMouseState = new Tools.MouseState(OpenTK.Input.Mouse.GetState());
         #endregion
 
         /// <summary>

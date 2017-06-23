@@ -11,38 +11,64 @@ namespace OutpostOmega.Tools
     /// </summary>
     public static class Input
     {
-        public enum InputDevice : byte
+        /// <summary>
+        /// Contains the current games key bindings
+        /// </summary>
+        public static Dictionary<Tuple<Game.Tools.InputDevice, Game.Tools.Keys>, Game.Tools.Action> KeyBindings { get; private set; }
+
+        /// <summary>
+        /// Translates a given key to the current set action and action state that is defined in the bindings
+        /// </summary>
+        /// <param name="Key">Given key that should be in the opentks keyboard or mousebutton enums. Use tostring</param>
+        /// <param name="compoundInputState">The compoundinputstate that should be asked</param>
+        /// <returns>A tuple of action and actionstate, if nothing bound returns unknown action</returns>
+        public static Tuple<Game.Tools.Action, Game.Tools.ActionState> TranslateKey(Game.Tools.Keys Key, Game.Tools.CompoundInputState compoundInputState)
         {
-            Keyboard = 1,
-            Mouse = 2,
+            var inputDevice = Game.Tools.KeysHelper.GetInputDevice(Key);
+
+            var targetTuple = new Tuple<Game.Tools.InputDevice, Game.Tools.Keys>(inputDevice, Key);
+
+            if (KeyBindings.ContainsKey(targetTuple))
+                return new Tuple<Game.Tools.Action, Game.Tools.ActionState>(
+                    KeyBindings[targetTuple],
+                    compoundInputState.IsKeyDown(Key) ? Game.Tools.ActionState.Activate : Game.Tools.ActionState.Release);
+            else
+                return new Tuple<Game.Tools.Action, Game.Tools.ActionState>(
+                    Game.Tools.Action.Undefined,
+                    Game.Tools.ActionState.Undefined);
         }
 
-        public static Dictionary<Tuple<InputDevice, string>, Game.Tools.Action> KeyBindings { get; private set; }
-
-        public static Game.Tools.Action TranslateKey(InputDevice Device, string Key)
+        /// <summary>
+        /// Adds a key to the keybindings
+        /// </summary>
+        /// <param name="Device">Input device of the given key</param>
+        /// <param name="Key">Given key that should be in the opentks keyboard or mousebutton enums. Use tostring</param>
+        /// <param name="Action">Action defined in the Game.Tools.Action enumeration</param>
+        private static void AddKey(Game.Tools.InputDevice Device, Game.Tools.Keys Key, Game.Tools.Action Action)
         {
-            return KeyBindings[new Tuple<InputDevice, string>(Device, Key)];
+            KeyBindings[new Tuple<Game.Tools.InputDevice, Game.Tools.Keys>(Device, Key)] = Action;
         }
 
-        private static void AddKey(InputDevice Device, string Key, Game.Tools.Action Action)
-        {
-            KeyBindings[new Tuple<InputDevice, string>(Device, Key)] = Action;
-        }
-
+        /// <summary>
+        /// Loads a default keybinding
+        /// </summary>
         public static void LoadDefaultSet()
         {
-            AddKey(InputDevice.Keyboard, OpenTK.Input.Key.W.ToString(), Game.Tools.Action.MoveForward);
-            AddKey(InputDevice.Keyboard, OpenTK.Input.Key.S.ToString(), Game.Tools.Action.MoveBack);
+            KeyBindings = new Dictionary<Tuple<Game.Tools.InputDevice, Game.Tools.Keys>, Game.Tools.Action>();
 
-            AddKey(InputDevice.Keyboard, OpenTK.Input.Key.A.ToString(), Game.Tools.Action.StrafeLeft);
-            AddKey(InputDevice.Keyboard, OpenTK.Input.Key.D.ToString(), Game.Tools.Action.StrafeRight);
+            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.W, Game.Tools.Action.MoveForward);
+            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.S, Game.Tools.Action.MoveBack);
 
-            AddKey(InputDevice.Keyboard, OpenTK.Input.Key.Space.ToString(), Game.Tools.Action.Jump);
-            //AddKey(InputDevice.Keyboard, OpenTK.Input.Key.W.ToString(), Game.Tools.Action.MoveForward);
+            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.A, Game.Tools.Action.StrafeLeft);
+            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.D, Game.Tools.Action.StrafeRight);
 
-            AddKey(InputDevice.Mouse, OpenTK.Input.MouseButton.Left.ToString(), Game.Tools.Action.InteractPrimary);
-            AddKey(InputDevice.Mouse, OpenTK.Input.MouseButton.Middle.ToString(), Game.Tools.Action.InteractTertiary);
-            AddKey(InputDevice.Mouse, OpenTK.Input.MouseButton.Right.ToString(), Game.Tools.Action.InteractSecondary);
+            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.Space, Game.Tools.Action.Jump);
+
+            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.Tab, Game.Tools.Action.ToggleMouseMode);
+
+            AddKey(Game.Tools.InputDevice.Mouse, Game.Tools.Keys.LeftMouseButton, Game.Tools.Action.InteractPrimary);
+            AddKey(Game.Tools.InputDevice.Mouse, Game.Tools.Keys.MiddleMouseButton, Game.Tools.Action.InteractTertiary);
+            AddKey(Game.Tools.InputDevice.Mouse, Game.Tools.Keys.RightMouseButton, Game.Tools.Action.InteractSecondary);
         }
     }
 }

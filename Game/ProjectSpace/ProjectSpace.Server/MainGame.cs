@@ -142,6 +142,9 @@ namespace OutpostOmega.Server
                         this.World.Update(new OutpostOmega.Game.Tools.KeybeardState(), new OutpostOmega.Game.Tools.MouseState(), step);
                         //this.World.PhysicSystem.Step(step, true);
 
+                        while (this.World.DebugMessages.Count > 0)
+                            Main.Message(this.World.DebugMessages.Dequeue());
+
                         lock (Host.ConnectedClients)
                         {
                             for (int i = 0; i < Host.ConnectedClients.Count; i++)

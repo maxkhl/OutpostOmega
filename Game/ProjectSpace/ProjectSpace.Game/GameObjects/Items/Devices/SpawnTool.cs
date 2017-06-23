@@ -55,10 +55,10 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
             base.Update(ElapsedTime);
         }
 
-        public override void UseDevice(GameObject Target, Mob User, UseAction Action)
+        public override void UseDevice(GameObject Target, Mob User, Game.Tools.Action Action)
         {
             // Allows user to rotate object
-            if (Action == UseAction.Tertiary)
+            if (Action == Game.Tools.Action.InteractTertiary)
                 if (this.SpawnDirection == 3)
                     this.SpawnDirection = 0;
                 else

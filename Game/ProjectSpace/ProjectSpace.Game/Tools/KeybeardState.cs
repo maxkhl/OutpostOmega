@@ -34,5 +34,15 @@ namespace OutpostOmega.Game.Tools
                     this.Add(key, openTKState.IsKeyDown(key));
             }
         }
+
+        public bool IsKeyDown(Key key)
+        {
+            return this[key];
+        }
+
+        public bool IsKeyUp(Key key)
+        {
+            return !this[key];
+        }
     }
 }

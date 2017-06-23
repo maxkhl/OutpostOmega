@@ -65,7 +65,7 @@ namespace OutpostOmega.Game.GameObjects.Structures.Machines.Doors
         }
 
         public bool IsOpen { get; set; }
-        public override bool Use(Mob User, Item Item, UseAction Action)
+        public override bool Use(Mob User, Item Item, Game.Tools.Action Action)
         {
             /*if(_Model == null)
             {

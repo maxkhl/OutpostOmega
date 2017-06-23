@@ -178,8 +178,11 @@
     <Compile Include="Tools\Action.cs" />
     <Compile Include="Tools\Animation.cs" />
     <Compile Include="Tools\Collada.cs" />
+    <Compile Include="Tools\CompoundInputState.cs" />
     <Compile Include="Tools\Convert.cs" />
     <Compile Include="Tools\Easing.cs" />
+    <Compile Include="Tools\InputDevice.cs" />
+    <Compile Include="Tools\Keys.cs" />
     <Compile Include="Tools\MouseState.cs" />
     <Compile Include="UICommand.cs" />
     <Compile Include="WorldSettings.cs" />

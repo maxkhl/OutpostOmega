@@ -69,11 +69,11 @@ namespace OutpostOmega.Game.GameObjects
             this.Visible = true;
         }*/
 
-        public override bool Use(Mob User, Item Item, UseAction Action)
+        public override bool Use(Mob User, Item Item, Game.Tools.Action Action)
         {
             if(Item == null) //Hands
             {
-                if (Action == UseAction.Primary) // Equip
+                if (Action == Game.Tools.Action.InteractPrimary) // Equip
                 {
                     var qSlot = User.AddToQuickslot(this);
                     if (qSlot >= 0)

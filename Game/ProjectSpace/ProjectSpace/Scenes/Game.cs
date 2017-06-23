@@ -52,7 +52,23 @@ namespace OutpostOmega.Scenes
         /// <summary>
         /// True if mouse is active, false if camera is controlled
         /// </summary>
-        public bool MouseMode { get; set; }
+        public bool MouseMode
+        {
+            get
+            {
+                return _mouseMode;
+            }
+            set
+            {
+                _mouseMode = value;
+
+                if (value)
+                    Game.UnlockCursor();
+                else
+                    Game.LockCursor();
+            }
+        }
+        private bool _mouseMode = true;
 
         /// <summary>
         /// The ingame console
@@ -66,6 +82,8 @@ namespace OutpostOmega.Scenes
         {
             tmpWrld = World;
             World.UICall += World_UICall;
+            this.KeyStateChanged += Game_InputChanged;
+            this.MouseMoved += Game_MouseMoved;
             HUDSkin = new Gwen.Skin.TexturedBase(renderer, @"Content\UI\HUD.png");
             HUDSkin.Colors.Label.Default = Color.White;
             HUDSkin.Colors.Button.Normal = Color.Silver;
@@ -95,6 +113,31 @@ namespace OutpostOmega.Scenes
             {
                 Console.Message(string.Format("{0} loaded", Mod.ID));
             }
+        }
+
+        /// <summary>
+        /// Used for turning the player
+        /// </summary>
+        private void Game_MouseMoved(int X, int Y)
+        {
+            if (!this.MouseMode && this.Game.Focused) // Only pass if mousemode is disabled
+                this.World.Player.ApplyMouseDelta(X, Y);
+        }
+
+        /// <summary>
+        /// Passes triggered actions to the current player
+        /// </summary>
+        private void Game_InputChanged(OutpostOmega.Game.Tools.Action action, OutpostOmega.Game.Tools.ActionState actionState)
+        {
+            if (!this.Game.Focused) return;
+
+            // Special case for mouse mode. This needs to be handled in the scene
+            if (action == OutpostOmega.Game.Tools.Action.ToggleMouseMode &&
+                actionState == OutpostOmega.Game.Tools.ActionState.Activate)
+                this.MouseMode = !this.MouseMode;
+
+            if(!this.MouseMode) // Only pass if mousemode is disabled
+                this.World.Player.InjectAction(action, actionState);
         }
 
         /// <summary>
@@ -325,7 +368,9 @@ namespace OutpostOmega.Scenes
             }
             base.UpdateScene();
         }
-        public override void OnKeyDown(OpenTK.Input.KeyboardKeyEventArgs e)
+
+
+        /*public override void OnKeyDown(OpenTK.Input.KeyboardKeyEventArgs e)
         {
             Tools.Performance.Start("User Interaction");
             if (World != null)
@@ -340,7 +385,7 @@ namespace OutpostOmega.Scenes
                         MouseMode = false;
                         Game.LockCursor();
 
-                        World.Player.OldMouseState = new OutpostOmega.Game.Tools.MouseState() { X = (int)Game.MouseData.LastPosition.X, Y = (int)Game.MouseData.LastPosition.Y };
+                        //World.Player.OldMouseState = new OutpostOmega.Game.Tools.MouseState() { X = (int)Game.MouseData.LastPosition.X, Y = (int)Game.MouseData.LastPosition.Y };
                     }
                     else
                     {
@@ -354,7 +399,7 @@ namespace OutpostOmega.Scenes
             }
             base.OnKeyDown(e);
             Tools.Performance.Stop("User Interaction");
-        }
+        }*/
 
         public override void Dispose()
         {

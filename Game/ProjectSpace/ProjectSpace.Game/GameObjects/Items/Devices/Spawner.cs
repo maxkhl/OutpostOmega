@@ -53,9 +53,9 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
             base.Update(ElapsedTime);
         }
 
-        public override void UseDevice(GameObject Target, Mob User, UseAction Action)
+        public override void UseDevice(GameObject Target, Mob User, Game.Tools.Action Action)
         {
-            if (User.Mind != null && this.SelectedBuildObject != null && Action == UseAction.Primary)
+            if (User.Mind != null && this.SelectedBuildObject != null && Action == Game.Tools.Action.InteractPrimary)
             {
                 if (User.View.TargetStructure != null)
                 {
@@ -123,13 +123,13 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
                         SpawnDirection--;
                 }*/
             }
-            if (Action == UseAction.Secondary)
+            if (Action == Game.Tools.Action.InteractSecondary)
                 if (User.View.TargetStructure != null)
                     User.View.TargetStructure.Remove(User.View.TargetHitInside);
                 else if (User.View.TargetGameObject != null)
                     User.View.TargetGameObject.Dispose();
 
-            if (Action == UseAction.Inspect)
+            if (Action == Game.Tools.Action.Inspect)
                 World.CallUI(this, UICommand.Open, null);
         }
     }

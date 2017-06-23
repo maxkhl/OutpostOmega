@@ -14,7 +14,7 @@ namespace OutpostOmega.Game.GameObjects.Items.Stacks
             : base(world, ID)
         {
             var model = LoadModel(@"Content\Model\Items\Stacks\Metalsheets.dae");
-            model.AssignTexture("Cube.010", this, LoadTexture(@"Content\Model\Items\Stacks\Metalsheets.png"));
+            model.AssignTexture("Plates", this, LoadTexture(@"Content\Model\Items\Stacks\Metalsheets.png"));
 
             this.Shape = MeshToShape(model, model.Meshs["Colission"]);
 

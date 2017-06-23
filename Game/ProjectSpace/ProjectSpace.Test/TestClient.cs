@@ -67,7 +67,7 @@ namespace OutpostOmega.Server.Dialog
             if (this.GameWorld != null)
             {
                 this.GameWorld.Update(new Game.Tools.KeybeardState(), MouseState, 20);
-                uClient.SendMouseState(MouseState);
+                uClient.AddInput(MouseState.X, MouseState.Y);
             }
 
             

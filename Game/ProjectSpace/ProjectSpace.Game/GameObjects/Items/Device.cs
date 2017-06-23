@@ -20,7 +20,7 @@ namespace OutpostOmega.Game.GameObjects.Items
         /// <summary>
         /// Called whenever this decive is used
         /// </summary>
-        public virtual void UseDevice(GameObject Target, Mob User, UseAction Action)
+        public virtual void UseDevice(GameObject Target, Mob User, Game.Tools.Action Action)
         { }
     }
 }

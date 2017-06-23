@@ -33,6 +33,11 @@ namespace OutpostOmega.Game.GameObjects
         }
         private string _Name = "";
 
+        /// <summary>
+        /// Gets or sets if this mob is currently running (affects the move() method)
+        /// </summary>
+        public bool Running { get; set; }
+
         public CharacterController charController
         {
             get
@@ -273,6 +278,9 @@ namespace OutpostOmega.Game.GameObjects
             base.Initialise();
         }
         
+        /// <summary>
+        /// This is used to specify the objects, the character can move through
+        /// </summary>
         private bool RayCallback(Jitter.Dynamics.RigidBody body, JVector normal, float fraction)
         {
             if (body.Tag != null && typeof(GameObject).IsAssignableFrom(body.Tag.GetType()) && ((GameObject)body.Tag).IsPassable)
@@ -286,24 +294,12 @@ namespace OutpostOmega.Game.GameObjects
         /// <summary>
         /// Executes the use command for this mob
         /// </summary>
-        public void DoUse(UseAction Action)
+        public void DoUse(Tools.Action actionType)
         {
-            //if (HoldItem == null) return;
-
             if (HoldItem != null && typeof(Items.Device).IsAssignableFrom(HoldItem.GetType()))
-                ((Items.Device)HoldItem).UseDevice(this.View.TargetGameObject, this, Action);
+                ((Items.Device)HoldItem).UseDevice(this.View.TargetGameObject, this, actionType);
             else if (this.View.TargetGameObject != null)
-                this.View.TargetGameObject.Use(this, HoldItem, Action);                
-        }
-
-        /// <summary>
-        /// Holds a specific item in front of the mob (imagine it like the pickup thing in hl2)
-        /// </summary>
-        /// <param name="Item">Item to hold</param>
-        /// <param name="Offset">Offset</param>
-        protected void Hold(GameObjects.Item Item)
-        {
-            //HoldItem = Item;
+                this.View.TargetGameObject.Use(this, HoldItem, actionType);                
         }
 
         /// <summary>
@@ -323,12 +319,6 @@ namespace OutpostOmega.Game.GameObjects
                 if (QuickslotChanged != null)
                     QuickslotChanged(null, SelectedQuickslot, false);
             }
-        }
-
-        public override void OnDeserialization()
-        {
-            
- 	         base.OnDeserialization();
         }
 
         public int AddToQuickslot(Item item)
@@ -382,13 +372,29 @@ namespace OutpostOmega.Game.GameObjects
         /// <summary>
         /// Moves this mob in the given direction
         /// </summary>
-        public void Move(JVector MovementVector, bool Run)
+        public new void Move(JVector MovementVector)
         {
+            //charController.TargetVelocity = new JVector(0, charController.TargetVelocity.Y, 0);
+
+            // Disable vertical movement if flymode is off
+            if (!FlyMode)
+            {
+                MovementVector.Y = 0;
+            }
+            // I dont know why this is here. TODO: Validate later when everything works
+            else
+            {
+                charController.TargetVelocity = JVector.Zero;
+            }
+
             MovementVector.Normalize();
-            MovementVector *= Run ? MovementRunSpeed : MovementSpeed;
+            MovementVector *= this.Running ? MovementRunSpeed : MovementSpeed;
             charController.TargetVelocity += MovementVector;
         }
 
+        /// <summary>
+        /// Mob tries to jump. This might not happen if circumstances prevent it (f.e. mob is in air already or blocked)
+        /// </summary>
         public void Jump()
         {
             charController.TryJump = true;
@@ -435,6 +441,20 @@ namespace OutpostOmega.Game.GameObjects
         protected virtual void Breathe()
         {
 
+        }
+
+
+
+        /// <summary>
+        /// Turns this mob. This method is mainly used to turn the mob using mouse input. There should be another one soon for AI-based turning
+        /// </summary>
+        /// <param name="X">X delta movement</param>
+        /// <param name="Y">Y delta movement</param>
+        public void Turn(float X, float Y)
+        {
+            this.View.AddRotation(
+                X,
+                Y);
         }
 
         /// <summary>

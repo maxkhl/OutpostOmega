@@ -45,6 +45,28 @@ namespace OutpostOmega.Network
         }
 
         /// <summary>
+        /// Creates a new input package containing a position
+        /// </summary>
+        public InputPackage(double Time, Jitter.LinearMath.JVector Position)
+        {
+            this.Written = false;
+            this.Time = Time;
+            this.Type = InputType.Position;
+            this.Data = Position;
+        }
+
+        /// <summary>
+        /// Creates a new input package containing a position
+        /// </summary>
+        public InputPackage(double Time, Jitter.LinearMath.JMatrix Direction)
+        {
+            this.Written = false;
+            this.Time = Time;
+            this.Type = InputType.Orientation;
+            this.Data = Direction;
+        }
+
+        /// <summary>
         /// Creates a outgoing message out of this inputpackage ready to be sent to the server
         /// </summary>
         /// <param name="Client">Client this message should be generated for</param>
@@ -105,6 +127,18 @@ namespace OutpostOmega.Network
                         var actionState = (Game.Tools.ActionState)incomingMessage.ReadByte();
                         newPackage = new InputPackage(time, action, actionState);
                         break;
+                    case InputType.Position:
+                        Jitter.LinearMath.JVector position = new Jitter.LinearMath.JVector(incomingMessage.ReadFloat(), incomingMessage.ReadFloat(), incomingMessage.ReadFloat());
+                        newPackage = new InputPackage(time, position);
+                        break;
+                    case InputType.Orientation:
+                        Jitter.LinearMath.JMatrix orientation = 
+                            new Jitter.LinearMath.JMatrix(
+                                incomingMessage.ReadFloat(), incomingMessage.ReadFloat(), incomingMessage.ReadFloat(),
+                                incomingMessage.ReadFloat(), incomingMessage.ReadFloat(), incomingMessage.ReadFloat(),
+                                incomingMessage.ReadFloat(), incomingMessage.ReadFloat(), incomingMessage.ReadFloat());
+                        newPackage = new InputPackage(time, orientation);
+                        break;
                     default:
                         throw new Exception("Unreadable inputpackage. Something is very wrong here");
                 }
@@ -139,6 +173,30 @@ namespace OutpostOmega.Network
                     outgoingMessage.Write((byte)tupleAction.Item1);
                     outgoingMessage.Write((byte)tupleAction.Item2);
                     break;
+
+                case InputType.Position:
+
+                    var position = (Jitter.LinearMath.JVector)this.Data;
+                    outgoingMessage.Write(position.X);
+                    outgoingMessage.Write(position.Y);
+                    outgoingMessage.Write(position.Z);
+                    break;
+
+                case InputType.Orientation:
+
+                    var orientation = (Jitter.LinearMath.JMatrix)this.Data;
+                    outgoingMessage.Write(orientation.M11);
+                    outgoingMessage.Write(orientation.M12);
+                    outgoingMessage.Write(orientation.M13);
+
+                    outgoingMessage.Write(orientation.M21);
+                    outgoingMessage.Write(orientation.M22);
+                    outgoingMessage.Write(orientation.M23);
+
+                    outgoingMessage.Write(orientation.M31);
+                    outgoingMessage.Write(orientation.M32);
+                    outgoingMessage.Write(orientation.M33);
+                    break;
             }
             this.Written = true;
         }
@@ -155,6 +213,33 @@ namespace OutpostOmega.Network
             return ip1.Type != ip2.Type ||
                    ip1.Data != ip2.Data ||
                    ip1.Time != ip2.Time;
+        }
+
+        /// <summary>
+        /// Applies this inputpackage to the given target
+        /// </summary>
+        /// <param name="target">Target player this package should be applied to</param>
+        public void Apply(Game.GameObjects.Mobs.Minds.PlayerTypes.RemotePlayer target)
+        {
+            switch(this.Type)
+            {
+                case InputType.Mouse:
+                    var mouseTuple = (Tuple<int, int>)this.Data;
+                    target.Mob.View.AddRotation(mouseTuple.Item1, mouseTuple.Item2);
+                    break;
+                case InputType.Action:
+                    var actionTuple = (Tuple<Game.Tools.Action, Game.Tools.ActionState>)this.Data;
+                    target.InjectAction(actionTuple.Item1, actionTuple.Item2);
+                    break;
+                case InputType.Position:
+                    var position = (Jitter.LinearMath.JVector)this.Data;
+                    target.Mob.SetPosition(position);
+                    break;
+                case InputType.Orientation:
+                    var orientation = (Jitter.LinearMath.JMatrix)this.Data;
+                    target.Mob.View.Orientation = orientation;
+                    break;
+            }
         }
     }
 }

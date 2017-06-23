@@ -98,10 +98,8 @@ namespace OutpostOmega
                 _SceneChanged = true;
                 Active = Scenebuffer[Handle];
                 ActiveHandle = Handle;
-                if (Active != null)
-                {
-                    Active.RefreshView();
-                }
+
+                Active?.RefreshView();
 
                 // Close the loading screen
                 //Drawing.UI.LoadingScreen.Stop();
@@ -126,10 +124,7 @@ namespace OutpostOmega
         /// </summary>
         void RenderFrame(object sender, FrameEventArgs e)
         {
-            if (Active != null)
-            {
-                Active.Draw();
-            }
+            Active?.Draw();
         }
 
         /// <summary>
@@ -145,10 +140,7 @@ namespace OutpostOmega
                     Active.Initialize();
             }
 
-            if (Active != null)
-            {
-                Active.Update();
-            }
+            Active?.Update();
 
             if (NextSceneHandle != ActiveHandle)
                 MakeSceneActive(NextSceneHandle);
@@ -183,52 +175,33 @@ namespace OutpostOmega
         /// </summary>
         void ResizeViewport(object sender, EventArgs e)
         {
-            if (Active != null)
-                Active.RefreshView();
+            Active?.RefreshView();
         }
 
         #region Input Stuff
         void Game_KeyDown(object sender, KeyboardKeyEventArgs e)
         {
-            if (Active != null)
-            {
-                Active.OnKeyDown(e);
-            }
+            Active?.OnKeyDown(e);
         }
         void Game_KeyUp(object sender, KeyboardKeyEventArgs e)
         {
-            if (Active != null)
-            {
-                Active.OnKeyUp(e);
-            }
+            Active?.OnKeyUp(e);
         }
         void Game_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Active != null)
-            {
-                Active.OnMouseDown(e);
-            }
+            Active?.OnMouseDown(e);
         }
         void Game_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (Active != null)
-            {
-                Active.OnMouseUp(e);
-            }
+            Active?.OnMouseUp(e);
         }
         void Game_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            if (Active != null)
-            {
-                Active.OnMouseWheel(e);
-            }
+            Active?.OnMouseWheel(e);
         }
         void Game_MouseMove(object sender, MouseMoveEventArgs e)
         {
-            if (Active != null)
-            {
-                Active.OnMouseMove(e);
-            }
+            Active?.OnMouseMove(e);
         }
         #endregion
     }

@@ -51,7 +51,7 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
 
         GameObject Target;
         Mob User;
-        public override void UseDevice(GameObject Target, Mob User, UseAction Action)
+        public override void UseDevice(GameObject Target, Mob User, Game.Tools.Action Action)
         {
             // Basic switch - use once => start move, use again => stop move
             if (this.Target == null && Target != null)

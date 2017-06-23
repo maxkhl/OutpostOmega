@@ -303,6 +303,10 @@ namespace OutpostOmega.Server.Network
                             // Reading all packages
                             var packages = InputPackage.ReadIncommingMessage(im);
 
+                            // Applying packages to this player
+                            foreach (var package in packages)
+                                package.Apply(this.Mind);
+
                             break;
 
                         //    OutpostOmega.Game.Tools.KeybeardState kState;

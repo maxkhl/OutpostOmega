@@ -200,6 +200,7 @@
     <Compile Include="Scenes\Intro.cs" />
     <Compile Include="Scenes\Menu.cs" />
     <Compile Include="Scenes\NetworkGame.cs" />
+    <Compile Include="Scene_Input.cs" />
     <Compile Include="Scene_FPSCounter.cs" />
     <Compile Include="T08_VBO.cs" />
     <Compile Include="Tools\Collada.cs" />

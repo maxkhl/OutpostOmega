@@ -31,6 +31,8 @@ namespace OutpostOmega.Game
 
         public Dictionary<string, string> IDCounter { get; set; }
 
+        public Queue<string> DebugMessages = new Queue<string>();
+
         /// <summary>
         /// The player that is playing the game. This mind will receive all the input. All other minds are AI or network-controlled
         /// </summary>
@@ -198,7 +200,7 @@ namespace OutpostOmega.Game
                             }*/
 
 
-                            ((GameObjects.Mobs.Minds.PlayerTypes.LocalPlayer)AllGameObjects[i]).Update(mState, kState, ElapsedTime);
+                            //((GameObjects.Mobs.Minds.PlayerTypes.LocalPlayer)AllGameObjects[i]).Update(mState, kState, ElapsedTime);
                             ElapsedTime = oldElapsedTime;
                         }
                         else
@@ -214,7 +216,7 @@ namespace OutpostOmega.Game
             {
                 var kState = keyboardState;
                 var mState = mouseState;
-                Player.Update(mState, kState, ElapsedTime);
+                Player.Update(ElapsedTime);
                 Player.Mob.Update((float)ElapsedTime);
                 Player.Mob.View.Update(ElapsedTime);
 //Player.Update(mouseState, keyboardState, ElapsedTime);

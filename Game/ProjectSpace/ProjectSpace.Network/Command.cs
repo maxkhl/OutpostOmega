@@ -104,6 +104,16 @@ namespace OutpostOmega.Network
         Mouse = 2,
 
         /// <summary>
+        /// Position >> THIS IS TEMPORARY AND NEEDS TO BE REPLACED BY A REAL SYSTEM
+        /// </summary>
+        Position = 8,
+
+        /// <summary>
+        /// Orientation >> THIS IS TEMPORARY AND NEEDS TO BE REPLACED BY A REAL SYSTEM
+        /// </summary>
+        Orientation = 9,
+
+        /// <summary>
         /// Used to separate input packages
         /// </summary>
         //Separator = 255,
