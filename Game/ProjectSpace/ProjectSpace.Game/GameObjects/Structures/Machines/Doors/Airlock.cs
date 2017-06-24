@@ -77,6 +77,8 @@ namespace OutpostOmega.Game.GameObjects.Structures.Machines.Doors
             }*/
             //_Model.Meshs["DoorFrame"][this].Alpha = 0.5f;
 
+            if (Action != Tools.Action.InteractSecondary) return false;
+
             if(Item == null) // Hands
             {
                 if (IsOpen)

@@ -30,7 +30,8 @@ namespace OutpostOmega.Game.GameObjects
         public Item(World world, string ID = "item")
             : base(world, ID)
         {
-
+            // Items should not react to characters
+            this.IsPassable = true;
         }
 
         /*public override void KeyPress(OpenTK.Input.Key Key, bool IsRepeat)

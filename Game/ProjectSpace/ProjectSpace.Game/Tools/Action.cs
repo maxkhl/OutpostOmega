@@ -69,9 +69,64 @@ namespace OutpostOmega.Game.Tools
         Run = 10,
 
         /// <summary>
+        /// Quickslot 1 select action
+        /// </summary>
+        SelectQuickslot1 = 11,
+
+        /// <summary>
+        /// Quickslot 2 select action
+        /// </summary>
+        SelectQuickslot2 = 12,
+
+        /// <summary>
+        /// Quickslot 3 select action
+        /// </summary>
+        SelectQuickslot3 = 13,
+
+        /// <summary>
+        /// Quickslot 4 select action
+        /// </summary>
+        SelectQuickslot4 = 14,
+
+        /// <summary>
+        /// Quickslot 5 select action
+        /// </summary>
+        SelectQuickslot5 = 15,
+
+        /// <summary>
+        /// Quickslot 6 select action
+        /// </summary>
+        SelectQuickslot6 = 16,
+
+        /// <summary>
+        /// Quickslot 7 select action
+        /// </summary>
+        SelectQuickslot7 = 17,
+
+        /// <summary>
+        /// Quickslot 8 select action
+        /// </summary>
+        SelectQuickslot8 = 18,
+
+        /// <summary>
+        /// Quickslot 9 select action
+        /// </summary>
+        SelectQuickslot9 = 19,
+
+        /// <summary>
         /// Toggles between WASD- and mousemode
         /// </summary>
         ToggleMouseMode = 20,
+
+        /// <summary>
+        /// Makes the characters mob fart
+        /// </summary>
+        Fart = 21,
+
+        /// <summary>
+        /// Drops the item in the currently active hand
+        /// </summary>
+        Drop = 22,
     }
 
     /// <summary>

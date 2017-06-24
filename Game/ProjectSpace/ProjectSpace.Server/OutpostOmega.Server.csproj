@@ -172,6 +172,12 @@
     <Compile Include="Dialog\uc_NetStats.Designer.cs">
       <DependentUpon>uc_NetStats.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\uc_WorldViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialog\uc_WorldViewer.Designer.cs">
+      <DependentUpon>uc_WorldViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawer\Main.cs" />
     <Compile Include="Drawer\otkDrawing.cs" />
     <Compile Include="Extensions.cs" />
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\uc_NetStats.resx">
       <DependentUpon>uc_NetStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\uc_WorldViewer.resx">
+      <DependentUpon>uc_WorldViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

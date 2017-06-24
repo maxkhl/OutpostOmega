@@ -134,7 +134,10 @@ namespace OutpostOmega.Scenes
             // Special case for mouse mode. This needs to be handled in the scene
             if (action == OutpostOmega.Game.Tools.Action.ToggleMouseMode &&
                 actionState == OutpostOmega.Game.Tools.ActionState.Activate)
+            {
                 this.MouseMode = !this.MouseMode;
+                return;
+            }
 
             if(!this.MouseMode) // Only pass if mousemode is disabled
                 this.World.Player.InjectAction(action, actionState);

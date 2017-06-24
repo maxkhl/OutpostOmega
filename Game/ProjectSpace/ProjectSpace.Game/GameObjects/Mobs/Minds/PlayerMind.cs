@@ -7,11 +7,11 @@ using Jitter.LinearMath;
 
 namespace OutpostOmega.Game.GameObjects.Mobs.Minds
 {
+    /// <summary>
+    /// Type of mind that contains a player
+    /// </summary>
     public abstract class PlayerMind : Mind
     {
-
-
-
         /// <summary>
         /// Account-username of this Player
         /// </summary>
@@ -46,6 +46,39 @@ namespace OutpostOmega.Game.GameObjects.Mobs.Minds
                     break;
                 case Tools.Action.Run:
                     this.Mob.Running = true;
+                    break;
+                case Tools.Action.Fart:
+                    this.Mob.Fart();
+                    break;
+                case Tools.Action.Drop:
+                    this.Mob.Drop();
+                    break;
+                case Tools.Action.SelectQuickslot1:
+                    this.Mob.SelectedQuickslot = 0;
+                    break;
+                case Tools.Action.SelectQuickslot2:
+                    this.Mob.SelectedQuickslot = 1;
+                    break;
+                case Tools.Action.SelectQuickslot3:
+                    this.Mob.SelectedQuickslot = 2;
+                    break;
+                case Tools.Action.SelectQuickslot4:
+                    this.Mob.SelectedQuickslot = 3;
+                    break;
+                case Tools.Action.SelectQuickslot5:
+                    this.Mob.SelectedQuickslot = 4;
+                    break;
+                case Tools.Action.SelectQuickslot6:
+                    this.Mob.SelectedQuickslot = 5;
+                    break;
+                case Tools.Action.SelectQuickslot7:
+                    this.Mob.SelectedQuickslot = 6;
+                    break;
+                case Tools.Action.SelectQuickslot8:
+                    this.Mob.SelectedQuickslot = 7;
+                    break;
+                case Tools.Action.SelectQuickslot9:
+                    this.Mob.SelectedQuickslot = 8;
                     break;
             }
         }
@@ -292,15 +325,6 @@ namespace OutpostOmega.Game.GameObjects.Mobs.Minds
                 }*/
             }
 
-
-            base.Update(ElapsedTime);
-        }
-
-
-        public void Update(Tools.MouseState mouseState, Tools.KeybeardState keyboardState, double ElapsedTime)
-        {
-            
-            //OldMouseState = new Tools.MouseState(mouseState);
 
             base.Update(ElapsedTime);
         }

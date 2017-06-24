@@ -14,7 +14,7 @@ namespace OutpostOmega.Tools
         /// <summary>
         /// Contains the current games key bindings
         /// </summary>
-        public static Dictionary<Tuple<Game.Tools.InputDevice, Game.Tools.Keys>, Game.Tools.Action> KeyBindings { get; private set; }
+        public static Dictionary<Game.Tools.Keys, Game.Tools.Action> KeyBindings { get; private set; }
 
         /// <summary>
         /// Translates a given key to the current set action and action state that is defined in the bindings
@@ -25,12 +25,11 @@ namespace OutpostOmega.Tools
         public static Tuple<Game.Tools.Action, Game.Tools.ActionState> TranslateKey(Game.Tools.Keys Key, Game.Tools.CompoundInputState compoundInputState)
         {
             var inputDevice = Game.Tools.KeysHelper.GetInputDevice(Key);
+            
 
-            var targetTuple = new Tuple<Game.Tools.InputDevice, Game.Tools.Keys>(inputDevice, Key);
-
-            if (KeyBindings.ContainsKey(targetTuple))
+            if (KeyBindings.ContainsKey(Key))
                 return new Tuple<Game.Tools.Action, Game.Tools.ActionState>(
-                    KeyBindings[targetTuple],
+                    KeyBindings[Key],
                     compoundInputState.IsKeyDown(Key) ? Game.Tools.ActionState.Activate : Game.Tools.ActionState.Release);
             else
                 return new Tuple<Game.Tools.Action, Game.Tools.ActionState>(
@@ -41,12 +40,11 @@ namespace OutpostOmega.Tools
         /// <summary>
         /// Adds a key to the keybindings
         /// </summary>
-        /// <param name="Device">Input device of the given key</param>
         /// <param name="Key">Given key that should be in the opentks keyboard or mousebutton enums. Use tostring</param>
         /// <param name="Action">Action defined in the Game.Tools.Action enumeration</param>
-        private static void AddKey(Game.Tools.InputDevice Device, Game.Tools.Keys Key, Game.Tools.Action Action)
+        private static void AddKey(Game.Tools.Keys Key, Game.Tools.Action Action)
         {
-            KeyBindings[new Tuple<Game.Tools.InputDevice, Game.Tools.Keys>(Device, Key)] = Action;
+            KeyBindings[Key] = Action;
         }
 
         /// <summary>
@@ -54,21 +52,35 @@ namespace OutpostOmega.Tools
         /// </summary>
         public static void LoadDefaultSet()
         {
-            KeyBindings = new Dictionary<Tuple<Game.Tools.InputDevice, Game.Tools.Keys>, Game.Tools.Action>();
+            KeyBindings = new Dictionary<Game.Tools.Keys, Game.Tools.Action>();
 
-            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.W, Game.Tools.Action.MoveForward);
-            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.S, Game.Tools.Action.MoveBack);
+            AddKey(Game.Tools.Keys.W, Game.Tools.Action.MoveForward);
+            AddKey(Game.Tools.Keys.S, Game.Tools.Action.MoveBack);
 
-            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.A, Game.Tools.Action.StrafeLeft);
-            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.D, Game.Tools.Action.StrafeRight);
+            AddKey(Game.Tools.Keys.A, Game.Tools.Action.StrafeLeft);
+            AddKey(Game.Tools.Keys.D, Game.Tools.Action.StrafeRight);
 
-            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.Space, Game.Tools.Action.Jump);
+            AddKey(Game.Tools.Keys.Space, Game.Tools.Action.Jump);
 
-            AddKey(Game.Tools.InputDevice.Keyboard, Game.Tools.Keys.Tab, Game.Tools.Action.ToggleMouseMode);
+            AddKey(Game.Tools.Keys.Tab, Game.Tools.Action.ToggleMouseMode);
 
-            AddKey(Game.Tools.InputDevice.Mouse, Game.Tools.Keys.LeftMouseButton, Game.Tools.Action.InteractPrimary);
-            AddKey(Game.Tools.InputDevice.Mouse, Game.Tools.Keys.MiddleMouseButton, Game.Tools.Action.InteractTertiary);
-            AddKey(Game.Tools.InputDevice.Mouse, Game.Tools.Keys.RightMouseButton, Game.Tools.Action.InteractSecondary);
+            AddKey(Game.Tools.Keys.LeftMouseButton, Game.Tools.Action.InteractPrimary);
+            AddKey(Game.Tools.Keys.MiddleMouseButton, Game.Tools.Action.InteractTertiary);
+            AddKey(Game.Tools.Keys.RightMouseButton, Game.Tools.Action.InteractSecondary);
+
+            AddKey(Game.Tools.Keys.X, Game.Tools.Action.Fart);
+
+            AddKey(Game.Tools.Keys.Q, Game.Tools.Action.Drop);
+
+            AddKey(Game.Tools.Keys.Number1, Game.Tools.Action.SelectQuickslot1);
+            AddKey(Game.Tools.Keys.Number2, Game.Tools.Action.SelectQuickslot2);
+            AddKey(Game.Tools.Keys.Number3, Game.Tools.Action.SelectQuickslot3);
+            AddKey(Game.Tools.Keys.Number4, Game.Tools.Action.SelectQuickslot4);
+            AddKey(Game.Tools.Keys.Number5, Game.Tools.Action.SelectQuickslot5);
+            AddKey(Game.Tools.Keys.Number6, Game.Tools.Action.SelectQuickslot6);
+            AddKey(Game.Tools.Keys.Number7, Game.Tools.Action.SelectQuickslot7);
+            AddKey(Game.Tools.Keys.Number8, Game.Tools.Action.SelectQuickslot8);
+            AddKey(Game.Tools.Keys.Number9, Game.Tools.Action.SelectQuickslot9);
         }
     }
 }

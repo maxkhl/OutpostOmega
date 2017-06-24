@@ -283,14 +283,6 @@ namespace OutpostOmega.Game
         }
 
         /// <summary>
-        /// Is called whenever a character is pressing a key and looks at this gameobject at a certain distance
-        /// </summary>
-        public virtual void KeyPress(OpenTK.Input.Key Key, bool IsRepeat)
-        {
-
-        }
-
-        /// <summary>
         /// Used to reply a functionlist to a mind that is trying to access this gameObject
         /// </summary>
         public virtual GameObjects.Function[] FunctionRequest(GameObjects.Mobs.Minds.PlayerMind Requester)

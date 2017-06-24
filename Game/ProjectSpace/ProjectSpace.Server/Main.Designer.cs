@@ -68,6 +68,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.btn_send = new System.Windows.Forms.Button();
             this.tP_Stats = new System.Windows.Forms.TabPage();
+            this.tP_WorldViewer = new System.Windows.Forms.TabPage();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -95,13 +96,13 @@
             // tSSL_activeWorld
             // 
             this.tSSL_activeWorld.Name = "tSSL_activeWorld";
-            this.tSSL_activeWorld.Size = new System.Drawing.Size(66, 17);
+            this.tSSL_activeWorld.Size = new System.Drawing.Size(72, 17);
             this.tSSL_activeWorld.Text = "World: none";
             // 
             // tSSL_FPS
             // 
             this.tSSL_FPS.Name = "tSSL_FPS";
-            this.tSSL_FPS.Size = new System.Drawing.Size(58, 17);
+            this.tSSL_FPS.Size = new System.Drawing.Size(61, 17);
             this.tSSL_FPS.Text = "Tickrate: 0";
             // 
             // notifyIcon1
@@ -143,7 +144,7 @@
             this.restartToolStripMenuItem.Image = global::OutpostOmega.Server.Properties.Resources.Back;
             this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
             this.restartToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.restartToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.restartToolStripMenuItem.Text = "Restart";
             this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
             // 
@@ -151,14 +152,14 @@
             // 
             this.settingsToolStripMenuItem.Image = global::OutpostOmega.Server.Properties.Resources.Gear;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
             // 
             // tSMI_Main_World
             // 
@@ -168,7 +169,7 @@
             this.tSMI_Main_World_Load,
             this.tSMI_Main_World_Save});
             this.tSMI_Main_World.Name = "tSMI_Main_World";
-            this.tSMI_Main_World.Size = new System.Drawing.Size(149, 22);
+            this.tSMI_Main_World.Size = new System.Drawing.Size(153, 22);
             this.tSMI_Main_World.Text = "World";
             // 
             // tSMI_Main_World_New
@@ -176,19 +177,19 @@
             this.tSMI_Main_World_New.Image = global::OutpostOmega.Server.Properties.Resources.Document;
             this.tSMI_Main_World_New.Name = "tSMI_Main_World_New";
             this.tSMI_Main_World_New.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.tSMI_Main_World_New.Size = new System.Drawing.Size(136, 22);
+            this.tSMI_Main_World_New.Size = new System.Drawing.Size(143, 22);
             this.tSMI_Main_World_New.Text = "New";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(140, 6);
             // 
             // tSMI_Main_World_Load
             // 
             this.tSMI_Main_World_Load.Image = global::OutpostOmega.Server.Properties.Resources.Folder;
             this.tSMI_Main_World_Load.Name = "tSMI_Main_World_Load";
-            this.tSMI_Main_World_Load.Size = new System.Drawing.Size(136, 22);
+            this.tSMI_Main_World_Load.Size = new System.Drawing.Size(143, 22);
             this.tSMI_Main_World_Load.Text = "Load";
             this.tSMI_Main_World_Load.Click += new System.EventHandler(this.tSMI_Main_World_Load_Click_1);
             // 
@@ -197,7 +198,7 @@
             this.tSMI_Main_World_Save.Image = global::OutpostOmega.Server.Properties.Resources.Save;
             this.tSMI_Main_World_Save.Name = "tSMI_Main_World_Save";
             this.tSMI_Main_World_Save.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.tSMI_Main_World_Save.Size = new System.Drawing.Size(136, 22);
+            this.tSMI_Main_World_Save.Size = new System.Drawing.Size(143, 22);
             this.tSMI_Main_World_Save.Text = "Save";
             this.tSMI_Main_World_Save.Click += new System.EventHandler(this.tSMI_Main_World_Save_Click_1);
             // 
@@ -205,28 +206,28 @@
             // 
             this.modfolderToolStripMenuItem.Image = global::OutpostOmega.Server.Properties.Resources.Folder;
             this.modfolderToolStripMenuItem.Name = "modfolderToolStripMenuItem";
-            this.modfolderToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.modfolderToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.modfolderToolStripMenuItem.Text = "Modfolder";
             this.modfolderToolStripMenuItem.Click += new System.EventHandler(this.modfolderToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(150, 6);
             // 
             // tSMI_Main_Exit
             // 
             this.tSMI_Main_Exit.Image = global::OutpostOmega.Server.Properties.Resources.Close;
             this.tSMI_Main_Exit.Name = "tSMI_Main_Exit";
             this.tSMI_Main_Exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.tSMI_Main_Exit.Size = new System.Drawing.Size(149, 22);
+            this.tSMI_Main_Exit.Size = new System.Drawing.Size(153, 22);
             this.tSMI_Main_Exit.Text = "Exit";
             // 
             // browserToolStripMenuItem
             // 
             this.browserToolStripMenuItem.Image = global::OutpostOmega.Server.Properties.Resources.Globe;
             this.browserToolStripMenuItem.Name = "browserToolStripMenuItem";
-            this.browserToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.browserToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.browserToolStripMenuItem.Text = "Browser";
             this.browserToolStripMenuItem.Click += new System.EventHandler(this.browserToolStripMenuItem_Click_1);
             // 
@@ -237,20 +238,20 @@
             this.lockServerToolStripMenuItem});
             this.tSMI_Admin.Image = global::OutpostOmega.Server.Properties.Resources.Star;
             this.tSMI_Admin.Name = "tSMI_Admin";
-            this.tSMI_Admin.Size = new System.Drawing.Size(64, 20);
+            this.tSMI_Admin.Size = new System.Drawing.Size(71, 20);
             this.tSMI_Admin.Text = "Admin";
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.pauseToolStripMenuItem.Text = "Pause World";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
             // lockServerToolStripMenuItem
             // 
             this.lockServerToolStripMenuItem.Name = "lockServerToolStripMenuItem";
-            this.lockServerToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.lockServerToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.lockServerToolStripMenuItem.Text = "Lock Server";
             this.lockServerToolStripMenuItem.Click += new System.EventHandler(this.lockServerToolStripMenuItem_Click);
             // 
@@ -269,7 +270,7 @@
             // tSMI_Test_CreateTestworld
             // 
             this.tSMI_Test_CreateTestworld.Name = "tSMI_Test_CreateTestworld";
-            this.tSMI_Test_CreateTestworld.Size = new System.Drawing.Size(157, 22);
+            this.tSMI_Test_CreateTestworld.Size = new System.Drawing.Size(162, 22);
             this.tSMI_Test_CreateTestworld.Text = "Create Testworld";
             this.tSMI_Test_CreateTestworld.Click += new System.EventHandler(this.tSMI_Test_CreateTestworld_Click);
             // 
@@ -278,13 +279,13 @@
             this.tSMI_Physic.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tSMI_Physic_Debug});
             this.tSMI_Physic.Name = "tSMI_Physic";
-            this.tSMI_Physic.Size = new System.Drawing.Size(157, 22);
+            this.tSMI_Physic.Size = new System.Drawing.Size(162, 22);
             this.tSMI_Physic.Text = "Physic";
             // 
             // tSMI_Physic_Debug
             // 
             this.tSMI_Physic_Debug.Name = "tSMI_Physic_Debug";
-            this.tSMI_Physic_Debug.Size = new System.Drawing.Size(105, 22);
+            this.tSMI_Physic_Debug.Size = new System.Drawing.Size(109, 22);
             this.tSMI_Physic_Debug.Text = "Debug";
             this.tSMI_Physic_Debug.Click += new System.EventHandler(this.tSMI_Physic_Debug_Click);
             // 
@@ -294,26 +295,26 @@
             this.tSMI_Test_World_CheckInt,
             this.tSMI_Test_World_TestSerial});
             this.tSMI_Test_World.Name = "tSMI_Test_World";
-            this.tSMI_Test_World.Size = new System.Drawing.Size(157, 22);
+            this.tSMI_Test_World.Size = new System.Drawing.Size(162, 22);
             this.tSMI_Test_World.Text = "World";
             // 
             // tSMI_Test_World_CheckInt
             // 
             this.tSMI_Test_World_CheckInt.Name = "tSMI_Test_World_CheckInt";
-            this.tSMI_Test_World_CheckInt.Size = new System.Drawing.Size(155, 22);
+            this.tSMI_Test_World_CheckInt.Size = new System.Drawing.Size(161, 22);
             this.tSMI_Test_World_CheckInt.Text = "Check integrity";
             // 
             // tSMI_Test_World_TestSerial
             // 
             this.tSMI_Test_World_TestSerial.Name = "tSMI_Test_World_TestSerial";
-            this.tSMI_Test_World_TestSerial.Size = new System.Drawing.Size(155, 22);
+            this.tSMI_Test_World_TestSerial.Size = new System.Drawing.Size(161, 22);
             this.tSMI_Test_World_TestSerial.Text = "Test Serialization";
             this.tSMI_Test_World_TestSerial.Click += new System.EventHandler(this.tSMI_Test_World_TestSerial_Click);
             // 
             // tSMI_Test_Testclient
             // 
             this.tSMI_Test_Testclient.Name = "tSMI_Test_Testclient";
-            this.tSMI_Test_Testclient.Size = new System.Drawing.Size(157, 22);
+            this.tSMI_Test_Testclient.Size = new System.Drawing.Size(162, 22);
             this.tSMI_Test_Testclient.Text = "Testclient";
             this.tSMI_Test_Testclient.Click += new System.EventHandler(this.tSMI_Test_Testclient_Click);
             // 
@@ -321,7 +322,7 @@
             // 
             this.accountsToolStripMenuItem.Image = global::OutpostOmega.Server.Properties.Resources.Users;
             this.accountsToolStripMenuItem.Name = "accountsToolStripMenuItem";
-            this.accountsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.accountsToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.accountsToolStripMenuItem.Text = "Accounts";
             this.accountsToolStripMenuItem.Click += new System.EventHandler(this.accountsToolStripMenuItem_Click);
             // 
@@ -370,6 +371,7 @@
             // 
             this.tabControl1.Controls.Add(this.tP_Console);
             this.tabControl1.Controls.Add(this.tP_Stats);
+            this.tabControl1.Controls.Add(this.tP_WorldViewer);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -427,6 +429,16 @@
             this.tP_Stats.TabIndex = 1;
             this.tP_Stats.Text = "Resources";
             this.tP_Stats.UseVisualStyleBackColor = true;
+            // 
+            // tP_WorldViewer
+            // 
+            this.tP_WorldViewer.Location = new System.Drawing.Point(4, 22);
+            this.tP_WorldViewer.Name = "tP_WorldViewer";
+            this.tP_WorldViewer.Padding = new System.Windows.Forms.Padding(3);
+            this.tP_WorldViewer.Size = new System.Drawing.Size(674, 409);
+            this.tP_WorldViewer.TabIndex = 2;
+            this.tP_WorldViewer.Text = "World Viewer";
+            this.tP_WorldViewer.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -500,7 +512,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tP_Console;
         private System.Windows.Forms.TabPage tP_Stats;
-
+        private System.Windows.Forms.TabPage tP_WorldViewer;
     }
 }
 

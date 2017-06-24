@@ -166,45 +166,7 @@ namespace OutpostOmega.Game
                     {
                         if (AllGameObjects[i].Priority != (GameObject.ProcessPriority)priority) continue;
 
-                        // Update-logic is a bit different for local players because they need all the input shit
-                        if (AllGameObjects[i].GetType() == typeof(GameObjects.Mobs.Minds.PlayerTypes.LocalPlayer))
-                        {
-                            var kState = keyboardState;
-                            var mState = mouseState;
-
-                            var oldElapsedTime = ElapsedTime;
-                            if (AllGameObjects[i].SimulatedKeyInput != null)
-                            {
-                                kState = AllGameObjects[i].SimulatedKeyInput;
-
-                                if (kState.ElapsedTime > -1)
-                                {
-                                    ElapsedTime = kState.ElapsedTime;
-                                    AllGameObjects[i].SimulatedKeyInput.ElapsedTime = -1;
-                                }
-                            }
-
-                            /*if (AllGameObjects[i].SimulatedMouseInput != null)
-                            {
-                                mState = AllGameObjects[i].SimulatedMouseInput;
-
-                                if (mState.ElapsedTime > -1)
-                                {
-                                    ElapsedTime += kState.ElapsedTime;
-                                    AllGameObjects[i].SimulatedMouseInput.ElapsedTime = -1;
-                                }
-                                else if(mState.ElapsedTime < -1) // Do not change the elapsed time
-                                {
-
-                                }
-                            }*/
-
-
-                            //((GameObjects.Mobs.Minds.PlayerTypes.LocalPlayer)AllGameObjects[i]).Update(mState, kState, ElapsedTime);
-                            ElapsedTime = oldElapsedTime;
-                        }
-                        else
-                            AllGameObjects[i].Update(ElapsedTime); //mState, kState, 
+                        AllGameObjects[i].Update(ElapsedTime);
                     }
                 }
 
@@ -223,35 +185,6 @@ namespace OutpostOmega.Game
                 //Player.Mob.Update(mouseState, keyboardState, ElapsedTime);
                 //Player.Mob.View.Update(mouseState, keyboardState, ElapsedTime);
             }
-        }
-
-        /// <summary>
-        /// Sends input to the corresponding targets
-        /// This will take the Players current view and do a raycast. If the Player is looking at a specific object, the targeted object will be notified
-        /// </summary>
-        /// <param name="Key"></param>
-        public void KeyPress(OpenTK.Input.Key Key, bool IsRepeat)
-        {
-            if (CatchGlobalKey(Key))
-                return;
-
-            if (Player == null)
-                return;
-
-            if (Player.Mob == null)
-                return;
-
-            if (Player.Mob.View == null)
-                return;
-
-            // this stuff is outdated
-            //Determine the Target
-            //if (Player.Mob.View.TargetGameObject != null)
-            //    Player.Mob.View.TargetGameObject.KeyPress(Key, IsRepeat);
-            //else //no target? Maybe the mind knows what to do
-
-            // Send every key to the player
-            Player.KeyPress(Key, IsRepeat);
         }
 
         /// <summary>

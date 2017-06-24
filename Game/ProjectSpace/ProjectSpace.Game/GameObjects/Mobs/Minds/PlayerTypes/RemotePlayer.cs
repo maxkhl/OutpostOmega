@@ -13,6 +13,5 @@ namespace OutpostOmega.Game.GameObjects.Mobs.Minds.PlayerTypes
         {
 
         }
-
     }
 }

@@ -156,6 +156,10 @@ namespace OutpostOmega.Server
             var netstats = new Dialog.uc_NetStats(this);
             netstats.Parent = tP_Stats;
             netstats.Dock = DockStyle.Fill;
+
+            var worldviewer = new Dialog.uc_WorldViewer(this);
+            worldviewer.Parent = tP_WorldViewer;
+            worldviewer.Dock = DockStyle.Fill;
         }
 
         /*void SecondTimer_Tick(object sender, EventArgs e)
