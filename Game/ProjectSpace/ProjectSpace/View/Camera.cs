@@ -59,7 +59,7 @@ namespace OutpostOmega.View
         /// <summary>
         /// The View and Projection Matrix of this camera
         /// </summary>
-        public Matrix4 ViewProjectionMatrix { get; set; }
+        public virtual Matrix4 ViewProjectionMatrix {  get; }
 
 
         public bool LockCursor { get; set; }

@@ -163,119 +163,139 @@ namespace OutpostOmega.Server.Network
                 NetIncomingMessage im;
                 while ((im = netServer.ReadMessage()) != null)
                 {
-                    if (Disposing) return;
-
-                    //NetIncomingMessage im = netServer.ReadMessage();
-
-                    // Get general information about sender
-                    var client = GetClient(im.SenderConnection);
-
-                    string adress = "Unknown";
-                    if (im.SenderConnection != null)
-                        adress = im.SenderConnection.RemoteEndPoint.Address.ToString();
-
-                    switch (im.MessageType)
+#if DEBUG
+                    ProcessIm(im);
+#else
+                    try
                     {
-                        // The big Message Block. Contains System-Messages that will be posted to the output-box
-                        case NetIncomingMessageType.DebugMessage:
-                        case NetIncomingMessageType.ErrorMessage:
-                        case NetIncomingMessageType.WarningMessage:
-                        case NetIncomingMessageType.VerboseDebugMessage:
+                        ProcessIm(im);
+                    }
+                    catch(Exception e)
+                    {
+                        new OutpostOmega.Error.CrashReport(e);
+                    }
+#endif
+                }
+            }
+        }
 
+        /// <summary>
+        /// Processes the given incoming message
+        /// </summary>
+        /// <param name="im">Incoming message</param>
+        private void ProcessIm(NetIncomingMessage im)
+        {
+            if (Disposing) return;
+
+            //NetIncomingMessage im = netServer.ReadMessage();
+
+            // Get general information about sender
+            var client = GetClient(im.SenderConnection);
+
+            string adress = "Unknown";
+            if (im.SenderConnection != null)
+                adress = im.SenderConnection.RemoteEndPoint.Address.ToString();
+
+            switch (im.MessageType)
+            {
+                // The big Message Block. Contains System-Messages that will be posted to the output-box
+                case NetIncomingMessageType.DebugMessage:
+                case NetIncomingMessageType.ErrorMessage:
+                case NetIncomingMessageType.WarningMessage:
+                case NetIncomingMessageType.VerboseDebugMessage:
+
+                    if (client != null)
+                        Main.Message(im.MessageType.ToString() + " from " + client.Mind.Username + " (" + adress + "): " + im.ReadString());
+                    else if (im.SenderConnection != null)
+                        Main.Message(im.MessageType.ToString() + " from " + adress + " (no client): " + im.ReadString());
+                    else
+                        Main.Message(im.ReadString());
+
+                    break;
+                // Connection Approval
+                case NetIncomingMessageType.ConnectionApproval:
+
+                    if (Locked)
+                    {
+                        im.SenderConnection.Deny("Server is locked currently. Reason: " + Lockreason);
+                        Main.Message("Blocked connection due to active server lock");
+                    }
+                    else
+                    {
+                        var Username = im.ReadString();
+
+                        var User = (from clnt in Clients
+                                    where
+                                     clnt.Mind.Username == Username
+                                    select clnt).SingleOrDefault();
+
+                        if (User != null)
+                        {
+                            if (User.Online) // Same user already online
+                            {
+                                im.SenderConnection.Deny("User with the same name already online");
+                                Main.Message(adress + ": Rejected. Username '" + Username + "' already in use.");
+                            }
+                            else // User known but not online. Here should some kind of authentication happen but for now we'll just assign him to that user
+                            {
+                                im.SenderConnection.Approve();
+                                User.Online = true;
+                                User.Connection = im.SenderConnection;
+                                User.Host = this;
+                            }
+                        }
+                        else // Totaly new user
+                        {
+                            im.SenderConnection.Approve();
+                            User = new Client(Username, this, im.SenderConnection);
+                        }
+                    }
+                    break;
+                // Connections and Disconnections
+                case NetIncomingMessageType.StatusChanged:
+                    NetConnectionStatus status = (NetConnectionStatus)im.ReadByte();
+                    string Reason = im.ReadString();
+                    switch (status)
+                    {
+                        case NetConnectionStatus.RespondedAwaitingApproval:
+                            Main.Message("Incomming connection from " + adress);
+                            break;
+                        case NetConnectionStatus.Disconnected:
                             if (client != null)
-                                Main.Message(im.MessageType.ToString() + " from " + client.Mind.Username + " (" + adress + "): " + im.ReadString());
-                            else if (im.SenderConnection != null)
-                                Main.Message(im.MessageType.ToString() + " from " + adress + " (no client): " + im.ReadString());
-                            else
-                                Main.Message(im.ReadString());
-
-                            break;
-                        // Connection Approval
-                        case NetIncomingMessageType.ConnectionApproval:
-
-                            if (Locked)
                             {
-                                im.SenderConnection.Deny("Server is locked currently. Reason: " + Lockreason);
-                                Main.Message("Blocked connection due to active server lock");
-                            }
-                            else
-                            {
-                                var Username = im.ReadString();
-
-                                var User = (from clnt in Clients
-                                            where
-                                             clnt.Mind.Username == Username
-                                            select clnt).SingleOrDefault();
-
-                                if (User != null)
-                                {
-                                    if (User.Online) // Same user already online
-                                    {
-                                        im.SenderConnection.Deny("User with the same name already online");
-                                        Main.Message(adress + ": Rejected. Username '" + Username + "' already in use.");
-                                    }
-                                    else // User known but not online. Here should some kind of authentication happen but for now we'll just assign him to that user
-                                    {
-                                        im.SenderConnection.Approve();
-                                        User.Online = true;
-                                        User.Connection = im.SenderConnection;
-                                        User.Host = this;
-                                    }
-                                }
-                                else // Totaly new user
-                                {
-                                    im.SenderConnection.Approve();
-                                    User = new Client(Username, this, im.SenderConnection);
-                                }
+                                client.Online = false;
+                                Main.Message(client.Mind.Username + " (" + adress + ") disconnected. Reason: " + Reason);
                             }
                             break;
-                        // Connections and Disconnections
-                        case NetIncomingMessageType.StatusChanged:
-                            NetConnectionStatus status = (NetConnectionStatus)im.ReadByte();
-                            string Reason = im.ReadString();
-                            switch (status)
-                            {
-                                case NetConnectionStatus.RespondedAwaitingApproval:
-                                    Main.Message("Incomming connection from " + adress);
-                                    break;
-                                case NetConnectionStatus.Disconnected:
-                                    if (client != null)
-                                    {
-                                        client.Online = false;
-                                        Main.Message(client.Mind.Username + " (" + adress + ") disconnected. Reason: " + Reason);
-                                    }
-                                    break;
-                                case NetConnectionStatus.RespondedConnect:
-                                case NetConnectionStatus.Connected:
+                        case NetConnectionStatus.RespondedConnect:
+                        case NetConnectionStatus.Connected:
 
-                                    break;
-                                case NetConnectionStatus.Disconnecting:
-                                    if (client != null)
-                                    {
-                                        client.Online = false;
-                                    }
-                                    break;
-                                default:
-                                    Main.Message("Unknown statusmessage '" + status.ToString() + "' (" + Reason + ")");
-                                    break;
-                            }
                             break;
-                        // This is the interesting stuff!
-                        case NetIncomingMessageType.Data:
+                        case NetConnectionStatus.Disconnecting:
                             if (client != null)
                             {
-                                System.Threading.ThreadPool.QueueUserWorkItem(
-                                    new System.Threading.WaitCallback(client.ProcessPackage), im);
+                                client.Online = false;
                             }
-                            else
-                                Main.Message("Error! Unadressed Data-Package from " + im.SenderConnection.RemoteEndPoint.Address.ToString());
                             break;
                         default:
-                            string pmsg = im.ReadString();
-                            Main.Message("Unknown messagetype '" + im.MessageType.ToString() + "' (" + pmsg + ")");
+                            Main.Message("Unknown statusmessage '" + status.ToString() + "' (" + Reason + ")");
                             break;
                     }
-                }
+                    break;
+                // This is the interesting stuff!
+                case NetIncomingMessageType.Data:
+                    if (client != null)
+                    {
+                        System.Threading.ThreadPool.QueueUserWorkItem(
+                            new System.Threading.WaitCallback(client.ProcessPackageWorker), im);
+                    }
+                    else
+                        Main.Message("Error! Unadressed Data-Package from " + im.SenderConnection.RemoteEndPoint.Address.ToString());
+                    break;
+                default:
+                    string pmsg = im.ReadString();
+                    Main.Message("Unknown messagetype '" + im.MessageType.ToString() + "' (" + pmsg + ")");
+                    break;
             }
         }
 

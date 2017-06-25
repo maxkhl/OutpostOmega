@@ -13,6 +13,25 @@ namespace OutpostOmega.Game
     public partial class GameObject
     {
         #region Public Properties
+
+        /// <summary>
+        /// Ignores the parents position
+        /// </summary>
+        public bool IgnoreParentPosition
+        {
+            get
+            {
+                return _IgnoreParentPosition;
+            }
+            set
+            {
+                _IgnoreParentPosition = value;
+                NotifyPropertyChanged();
+            }
+        }
+        private bool _IgnoreParentPosition = false;
+
+
         /// <summary>
         /// Position of the models origin. Set accessor is protected. Please use the method SetPosition()
         /// </summary>
@@ -22,7 +41,10 @@ namespace OutpostOmega.Game
             get
             {
                 if (this.Parent != null)
-                    return this.Parent.Position + localPosition;
+                    if(IgnoreParentPosition)
+                        return JVector.Zero;
+                    else
+                        return this.Parent.Position + localPosition;
                 else
                     if (IsPhysical)
                         return  RigidBody.Position;
@@ -51,6 +73,23 @@ namespace OutpostOmega.Game
         public JVector LastMove { get; set; }
 
         /// <summary>
+        /// Ignores the parents orientation
+        /// </summary>
+        public bool IgnoreParentOrientation
+        {
+            get
+            {
+                return _IgnoreParentOrientation;
+            }
+            set
+            {
+                _IgnoreParentOrientation = value;
+                NotifyPropertyChanged();
+            }
+        }
+        private bool _IgnoreParentOrientation = false;
+
+        /// <summary>
         /// Orientation of this object
         /// </summary>
         [GameObjects.Attributes.SynchronizationAttr(GameObjects.Attributes.SynchronizePriority.UnreliableSequenced, GameObjects.Attributes.SynchronizeState.Prediction)]
@@ -59,7 +98,10 @@ namespace OutpostOmega.Game
             get
             {
                 if (Parent != null)
-                    return Parent.Orientation * _localOrientation;
+                    if(IgnoreParentOrientation)
+                        return _Orientation;
+                    else
+                        return Parent.Orientation * _localOrientation;
                 else
                 {
                     if (RigidBody == null)
@@ -72,6 +114,8 @@ namespace OutpostOmega.Game
             {
                 if (!JMatrix.Compare(value, Orientation))
                 {
+                    if (this.ID == "human1")
+                    { }
                     if (Parent != null)
                         _localOrientation = JMatrix.Inverse(Parent.Orientation) * value;
                     else
@@ -97,9 +141,15 @@ namespace OutpostOmega.Game
         {
             get
             {
+                if (this.ID == "spawner2" || this.ID == "View1")
+                {
+                    System.Diagnostics.Debug.WriteLine(this.ID + " - " + this.localPosition.ToString());
+                }
+                if (this.ID == "human1")
+                { }
                 var translationmatrix = 
                     OpenTK.Matrix4.CreateTranslation(OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(this.Offset)) 
-                    * OutpostOmega.Tools.Convert.Matrix.Jitter_To_OpenGL_4(this.Orientation)
+                    * OutpostOmega.Tools.Convert.Matrix.Jitter_To_OpenGL_4(this._Orientation)
                     * OpenTK.Matrix4.CreateTranslation(OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(this.localPosition)) 
                     * OpenTK.Matrix4.CreateScale(this.Scale);
                 //var translationmatrix = JMatrix.CreateTranslation(this.Position);// * JMatrix.CreateTranslation(this.Offset) * this._Orientation;// * JMatrix.CreateScale(new JVector(this.Scale));

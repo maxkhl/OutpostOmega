@@ -27,7 +27,7 @@
       <Value Profile="(Default)">Server.xml</Value>
     </Setting>
     <Setting Name="TargetTransferRate" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">30</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -95,12 +95,15 @@ namespace OutpostOmega.Drawing.Game
 
                         if (gOTexPair.UserInterface != null)
                         { }
-                        Vector3 position = OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(gOTexPair.gameObject.Position);
-                        Vector3 offset = OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(gOTexPair.gameObject.Offset);
+
+                        //Vector3 position = OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(gOTexPair.gameObject.Position);
+                        //Vector3 offset = OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(gOTexPair.gameObject.Offset);
 
                         //var Translationz = OutpostOmega.Tools.Convert.Matrix.Jitter_To_OpenGL_4(gOTexPair.gameObject.OTKTranslation);
 
                         //this.Translation = Matrix4.CreateTranslation(offset) * Tools.Convert.Matrix.Jitter_To_OpenGL_4(gOTexPair.gameObject.Orientation) * Matrix4.CreateTranslation(position) * Matrix4.CreateScale(gOTexPair.gameObject.Scale);
+
+
                         this.Translation = gOTexPair.gameObject.OTKTranslation;
                         base.DrawCore(ref renderOptions);
                     }

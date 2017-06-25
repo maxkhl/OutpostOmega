@@ -32,6 +32,7 @@ namespace OutpostOmega.Game.GameObjects
         {
             // Items should not react to characters
             this.IsPassable = true;
+            this.Priority = ProcessPriority.First;
         }
 
         /*public override void KeyPress(OpenTK.Input.Key Key, bool IsRepeat)

@@ -259,12 +259,32 @@ namespace OutpostOmega.Server.Network
         /// <summary>
         /// Used to process a specific message adressed to this client
         /// </summary>
-        public void ProcessPackage(Object state)
+        public void ProcessPackageWorker(Object state)
         {
             NetIncomingMessage im = (NetIncomingMessage)state;
             if (im == null)
                 return;
 
+#if DEBUG
+            ProcessPackage(im);
+#else
+            try
+            {
+                ProcessPackage(im);
+            }
+            catch(Exception e)
+            {
+                new OutpostOmega.Error.CrashReport(e);
+            }
+#endif
+        }
+
+        /// <summary>
+        /// Processes a incoming message adressed to this client
+        /// </summary>
+        /// <param name="im">Incoming message</param>
+        private void ProcessPackage(NetIncomingMessage im)
+        {
             var Type = im.ReadByte();
             var subType = im.ReadByte();
             if (LastReceivedPackageTime.ContainsKey((SecondCommand)subType))
@@ -296,7 +316,7 @@ namespace OutpostOmega.Server.Network
                     }
                     break;
                 case (byte)Command.Data:
-                    switch(subType)
+                    switch (subType)
                     {
                         case (byte)SecondCommand.Input:
 

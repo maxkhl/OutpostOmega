@@ -391,6 +391,13 @@ namespace Jitter.LinearMath
             result.M33 = m33;
         }
 
+        public static JMatrix Invert(JMatrix matrix)
+        {
+            JMatrix jmout;
+            Invert(ref matrix, out jmout);
+            return jmout;
+        }
+
         /// <summary>
         /// Calculates the inverse of a give matrix.
         /// </summary>

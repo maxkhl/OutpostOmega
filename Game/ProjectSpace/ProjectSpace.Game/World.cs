@@ -52,7 +52,7 @@ namespace OutpostOmega.Game
                 _Player = value;
                 if (_Player != null)
                 {
-                    _Player.Mob.Visible = false; //Hide the player
+                    //_Player.Mob.Visible = false; //Hide the player
                 }
             }
         }

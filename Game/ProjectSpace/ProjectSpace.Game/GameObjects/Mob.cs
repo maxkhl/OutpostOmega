@@ -105,6 +105,8 @@ namespace OutpostOmega.Game.GameObjects
                     Quickslot[_SelectedQuickslot].Visible = false;
                     Quickslot[_SelectedQuickslot].Holder = null;
                     Quickslot[_SelectedQuickslot].Parent = null;
+                    Quickslot[_SelectedQuickslot].IgnoreParentOrientation = false;
+                    Quickslot[_SelectedQuickslot].IgnoreParentPosition = false;
                 }
 
                 if (Quickslot[value] != null)
@@ -112,8 +114,10 @@ namespace OutpostOmega.Game.GameObjects
                     Quickslot[value].Visible = true;
                     Quickslot[value].Holder = this;
                     Quickslot[value].Parent = this.View;
+                    Quickslot[value].IgnoreParentOrientation = true;
+                    Quickslot[value].IgnoreParentPosition = true;
                     Quickslot[value].localPosition = HoldOffset;
-                    
+
                 }
                 var oldval = _SelectedQuickslot;
                 _SelectedQuickslot = value;
@@ -218,7 +222,7 @@ namespace OutpostOmega.Game.GameObjects
                 return Quickslot[SelectedQuickslot];
             }
         }
-        private GameObjects.Item _HoldItem = null;
+        //private GameObjects.Item _HoldItem = null;
         private Jitter.LinearMath.JVector HoldOffset;
 
         public Mob(World world, string ID = "mob", float Height = 1.8f, float Width = 0.80f, float Mass = 0.19477874f)
@@ -229,7 +233,7 @@ namespace OutpostOmega.Game.GameObjects
             //this.Shape = new CapsuleShape(Height, Width);
             this.Position = new Jitter.LinearMath.JVector(0, 20, 0);
 
-            this.Priority = ProcessPriority.Second;
+            this.Priority = ProcessPriority.First;
 
             Quickslot = new List<Item>(9);
             for (int i = 0; i < 9; i++)
@@ -269,7 +273,7 @@ namespace OutpostOmega.Game.GameObjects
             MovementSpeed = 0.07f;
             MovementRunSpeed = 0.15f;
 
-            HoldOffset = new JVector(0.0f, 0.0f, -0.2f);
+            HoldOffset = new JVector(0.1f, -0.1f, -0.2f);
 
             _charController = new Jitter.Dynamics.Constraints.CharacterController(World.PhysicSystem, this.Position, Width, Height);
             _charController.RayCallback = RayCallback;

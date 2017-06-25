@@ -290,6 +290,8 @@ namespace OutpostOmega.Network
 
         void gameObject_PropertyChanged(GameObject sender, string PropertyName, bool ChildChange)
         {
+            //Those are not interesting for networking. The parent will report the change already
+            if (ChildChange) return;
             //return;
             if(PredictionData.ContainsKey(sender))
             {
@@ -391,7 +393,7 @@ namespace OutpostOmega.Network
             if (_processThread == null ||
                 _processThread.ThreadState != ThreadState.Running)
             {
-                _processThread = new Thread(ProcessPackage);
+                _processThread = new Thread(ProcessPackageWorker);
                 _processThread.Priority = ThreadPriority.Lowest;
                 //Output.Enqueue("Processthread started");
             }
@@ -417,143 +419,162 @@ namespace OutpostOmega.Network
         private DateTime PacketTime = DateTime.Now;
 
         /// <summary>
-        /// Used to process the im queue
+        /// Worker that starts package processing
         /// </summary>
-        public void ProcessPackage()
+        public void ProcessPackageWorker()
         {
-            NetIncomingMessage im;
             while (_packetQueue.Count > 0 && !Disposing)
             {
-                if (_packetQueue.TryDequeue(out im))
+#if DEBUG
+                ProcessNextPackage();
+#else
+                try
                 {
-                    if (im == null)
-                        continue;
+                    ProcessNextPackage();
+                }
+                catch(Exception e)
+                {
+                    new OutpostOmega.Error.CrashReport(e);
+                }
+#endif
+                Thread.Sleep(1);
+            }
+        }
 
-                    var Type = im.ReadByte();
-                    var subType = im.ReadByte();
-                    switch (Type)
-                    {
-                        case (byte)Command.Create: // New object received
-                            object obj = null;
+        /// <summary>
+        /// Processes the next package in the packet queue
+        /// </summary>
+        private void ProcessNextPackage()
+        {
+            NetIncomingMessage im;
+            if (_packetQueue.TryDequeue(out im))
+            {
+                if (im == null)
+                    return;
+
+                var Type = im.ReadByte();
+                var subType = im.ReadByte();
+                switch (Type)
+                {
+                    case (byte)Command.Create: // New object received
+                        object obj = null;
 #if DEBUG
                             obj = NetworkHandler.ReadSerializedData(im.ReadBytes(im.ReadInt32()));
 #else
-                            try
-                            {
-                                obj = NetworkHandler.ReadSerializedData(im.ReadBytes(im.ReadInt32()));
-                            }
-                            catch (Exception e)
-                            {
-                                Output.Enqueue("ERROR: " + e.Message + e.Source);
-                            }
+                        try
+                        {
+                            obj = NetworkHandler.ReadSerializedData(im.ReadBytes(im.ReadInt32()));
+                        }
+                        catch (Exception e)
+                        {
+                            Output.Enqueue("ERROR: " + e.Message + e.Source);
+                        }
 #endif
-                            if (obj == null)
+                        if (obj == null)
 #if DEBUG
                                 throw new Exception("Could not serialize that shit");
 #else
-                                Output.Enqueue("ERROR: New object received but unable to read it"); 
+                            Output.Enqueue("ERROR: New object received but unable to read it");
 #endif
 
-                            // World
-                            if(obj.GetType() == typeof(World))
-                            {
-                                this.World = (World)obj;
-                                foreach (GameObject gO in _unprocessedObjects)
-                                    this.World.Add(gO);
-                                _unprocessedObjects.Clear();
+                        // World
+                        if (obj.GetType() == typeof(World))
+                        {
+                            this.World = (World)obj;
+                            foreach (GameObject gO in _unprocessedObjects)
+                                this.World.Add(gO);
+                            _unprocessedObjects.Clear();
 
-                                foreach(var gameObject in this.World.AllGameObjects)
-                                    WatchPredictionProperties(gameObject);
-                            }
+                            foreach (var gameObject in this.World.AllGameObjects)
+                                WatchPredictionProperties(gameObject);
+                        }
 
-                            // Gameobjects
-                            if(obj.GetType().IsSubclassOf(typeof(GameObject)))
-                            {
-                                if (this.World != null)
-                                    this.World.Add((GameObject)obj);
-                                else
-                                    _unprocessedObjects.Add((GameObject)obj);
+                        // Gameobjects
+                        if (obj.GetType().IsSubclassOf(typeof(GameObject)))
+                        {
+                            if (this.World != null)
+                                this.World.Add((GameObject)obj);
+                            else
+                                _unprocessedObjects.Add((GameObject)obj);
 
-                                //WatchPredictionProperties((GameObject)obj);
-                            }
-                            break;
-                        case (byte)Command.Delete:
-                            string id = im.ReadString();
-                            var delobject = (from gobject in World.AllGameObjects
-                                             where gobject.ID == id
-                                             select gobject).FirstOrDefault();
-                            if (delobject != null)
-                                delobject.Dispose();
+                            //WatchPredictionProperties((GameObject)obj);
+                        }
+                        break;
+                    case (byte)Command.Delete:
+                        string id = im.ReadString();
+                        var delobject = (from gobject in World.AllGameObjects
+                                         where gobject.ID == id
+                                         select gobject).FirstOrDefault();
+                        if (delobject != null)
+                            delobject.Dispose();
 
-                            break;
-                        // Data update
-                        case (byte)Command.Data:
-                            switch(subType)
-                            {
-                                case (byte)SecondCommand.GameObject:
-                                    if (World != null)
+                        break;
+                    // Data update
+                    case (byte)Command.Data:
+                        switch (subType)
+                        {
+                            case (byte)SecondCommand.GameObject:
+                                if (World != null)
+                                {
+                                    var gameObject_ID = im.ReadString();
+                                    var property_name = im.ReadString();
+                                    if (property_name == "TargetGameObject")
+                                    { }
+
+                                    var gameObject = World.GetGameObject(gameObject_ID);
+                                    System.Reflection.PropertyInfo property = null;
+                                    if (gameObject != null)
+                                        property = gameObject.GetType().GetProperty(property_name);
+
+
+                                    if (property == null)
+                                        return; //Nothing to do then
+
+
+                                    bool Predict = false;
+                                    double SendTime = 0;
+                                    var attribute = property.GetCustomAttribute(typeof(OutpostOmega.Game.GameObjects.Attributes.SynchronizationAttr), true);
+                                    if (attribute != null && ((OutpostOmega.Game.GameObjects.Attributes.SynchronizationAttr)attribute).State == Game.GameObjects.Attributes.SynchronizeState.Prediction)
                                     {
-                                        var gameObject_ID = im.ReadString();
-                                        var property_name = im.ReadString();
-                                        if (property_name == "TargetGameObject")
-                                        { }
-
-                                        var gameObject = World.GetGameObject(gameObject_ID);
-                                        System.Reflection.PropertyInfo property = null;
-                                        if (gameObject != null)
-                                            property = gameObject.GetType().GetProperty(property_name);
-
-
-                                        if (property == null)
-                                            return; //Nothing to do then
-                                        
-
-                                        bool Predict = false;
-                                        double SendTime = 0;
-                                        var attribute = property.GetCustomAttribute(typeof(OutpostOmega.Game.GameObjects.Attributes.SynchronizationAttr), true);
-                                        if (attribute != null && ((OutpostOmega.Game.GameObjects.Attributes.SynchronizationAttr)attribute).State == Game.GameObjects.Attributes.SynchronizeState.Prediction)
-                                        {
-                                            SendTime = im.ReadDouble();
-                                            Predict = true;
-                                        }
-
-
-                                        object new_value;
-                                        if (!SpecialDeserialize(im, property, out new_value))
-                                        {
-                                            var data = im.ReadBytes(im.ReadInt32());
-                                            new_value = NetworkHandler.ReadSerializedData(data);
-                                        }
-
-
-                                        object oldvalue = null;
-                                        if (gameObject != null)
-                                        {
-                                            oldvalue = property.GetValue(gameObject);
-                                            if (Predict)
-                                                ModifyPredictedValue(gameObject, property, SendTime, ref new_value);
-
-
-                                            property.SetValue(gameObject, new_value, null);
-                                        }
+                                        SendTime = im.ReadDouble();
+                                        Predict = true;
                                     }
 
-                                    break;
-                            }
-                            break;
-                        case (byte)Command.Message: // Message
-                            var message = im.ReadString();
-                            Output.Enqueue("Server: " + message);
-                            break;
-                        default:                            
-                            Output.Enqueue("Unknown command received. Type: " + Type.ToString() + " Subtype: " + subType.ToString());
-                            break;
-                    }
-                }
 
-                PacketCounter++;
-                Thread.Sleep(1);
+                                    object new_value;
+                                    if (!SpecialDeserialize(im, property, out new_value))
+                                    {
+                                        var data = im.ReadBytes(im.ReadInt32());
+                                        new_value = NetworkHandler.ReadSerializedData(data);
+                                    }
+
+
+                                    object oldvalue = null;
+                                    if (gameObject != null)
+                                    {
+                                        oldvalue = property.GetValue(gameObject);
+                                        if (Predict)
+                                            ModifyPredictedValue(gameObject, property, SendTime, ref new_value);
+
+
+                                        property.SetValue(gameObject, new_value, null);
+                                    }
+                                }
+
+                                break;
+                        }
+                        break;
+                    case (byte)Command.Message: // Message
+                        var message = im.ReadString();
+                        Output.Enqueue("Server: " + message);
+                        break;
+                    default:
+                        Output.Enqueue("Unknown command received. Type: " + Type.ToString() + " Subtype: " + subType.ToString());
+                        break;
+                }
             }
+
+            PacketCounter++;
         }
 
         public bool Disposing = false;

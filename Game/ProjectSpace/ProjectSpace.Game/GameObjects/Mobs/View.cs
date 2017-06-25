@@ -161,6 +161,15 @@ namespace OutpostOmega.Game.GameObjects.Mobs
 
             Orientation = OutpostOmega.Tools.Convert.Matrix.OpenGL_To_Jitter_4(OpenTK.Matrix4.LookAt(OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(Position), OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(Position + lookat), OpenTK.Vector3.UnitY));
 
+            //lookat.Z = 0;//Mob should only face on a 2-dimensional level
+            lookat.Y = 0;//Mob should only face on a 2-dimensional level
+            
+            this.Parent.Orientation = OutpostOmega.Tools.Convert.Matrix.OpenGL_To_Jitter_4(
+                OpenTK.Matrix4.LookAt(
+                    OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(this.Parent.Position), 
+                    OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(this.Parent.Position + lookat), 
+                    OpenTK.Vector3.UnitY));
+
             /*if (z > 0.0f)
             {
                 Rotation.Z = (float)(Rotation.Z + System.Math.Sin(z) * tVecPos.X + System.Math.Cos(z) * tVecPos.Z);

@@ -53,7 +53,9 @@ namespace OutpostOmega.Server.Network
 
         void World_NewGameObject(GameObject newGameObject)
         {
-            if (Disposing || Idling) return;
+            if (Disposing || Idling || GameObjectNeeded(newGameObject)) return;
+
+            
 
             CreateRemoteGameObject(newGameObject);
             newGameObject.PropertyChanged += gObject_PropertyChanged;
@@ -62,11 +64,25 @@ namespace OutpostOmega.Server.Network
 
         void World_GameObjectRemoved(GameObject removedGameObject)
         {
-            if (Disposing || Idling) return;
+            if (Disposing || Idling || GameObjectNeeded(removedGameObject)) return;
 
             DeleteRemoteGameObject(removedGameObject);
             removedGameObject.PropertyChanged -= gObject_PropertyChanged;
             _ObjectScope.Remove(removedGameObject);
+        }
+
+        /// <summary>
+        /// Checks if the given gameobject is relevant for the player
+        /// Filters out stuff like the player and his mob
+        /// </summary>
+        private bool GameObjectNeeded(GameObject gameObject)
+        {
+            /*if (typeof(Game.GameObjects.Mob).IsAssignableFrom(gameObject.GetType()))
+                return ((Game.GameObjects.Mob)gameObject).Mind != this._client.Mind;
+            if (typeof(Game.GameObjects.Mobs.Mind).IsAssignableFrom(gameObject.GetType()))
+                return ((Game.GameObjects.Mobs.Mind)gameObject) != this._client.Mind;*/
+
+            return true;
         }
 
         private bool _firstUpdate = true;

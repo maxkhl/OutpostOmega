@@ -29,8 +29,8 @@ namespace OutpostOmega.View
             {
                 if (_Reference != value)
                 {
-                    if (_Reference != null)
-                        _Reference.PropertyChanged -= Reference_PropertyChanged;
+                    //if (_Reference != null)
+                    //    _Reference.PropertyChanged -= Reference_PropertyChanged;
 
                     _Reference = value;
 
@@ -40,7 +40,7 @@ namespace OutpostOmega.View
                     Refresh();
 
                     // Register event to observe orientation and position
-                    _Reference.PropertyChanged += Reference_PropertyChanged;
+                    //_Reference.PropertyChanged += Reference_PropertyChanged;
                 }
             }
         }
@@ -84,8 +84,8 @@ namespace OutpostOmega.View
                     break;
             }
 
-            if (PropChanged)
-                Refresh();
+            //if (PropChanged)
+            //    Refresh();
         }
 
         /// <summary>
@@ -93,9 +93,11 @@ namespace OutpostOmega.View
         /// </summary>
         public override void Refresh()
         {
-            this.ViewProjectionMatrix = GetViewMatrix() * Matrix4.CreatePerspectiveFieldOfView(FieldOfView, (float)this.Width / (float)this.Height, 0.01f, 4000.0f);
+            //this.ViewProjectionMatrix = ;
             base.Refresh();
         }
+
+        public override Matrix4 ViewProjectionMatrix => GetViewMatrix() * Matrix4.CreatePerspectiveFieldOfView(FieldOfView, (float)this.Width / (float)this.Height, 0.01f, 4000.0f);
 
         /// <summary>
         /// Returns the view matrix.
@@ -107,6 +109,9 @@ namespace OutpostOmega.View
             lookat.X = (float)(Math.Sin((float)Orientation.X) * Math.Cos((float)Orientation.Y));
             lookat.Y = (float)Math.Sin((float)Orientation.Y);
             lookat.Z = (float)(Math.Cos((float)Orientation.X) * Math.Cos((float)Orientation.Y));*/
+
+            LookAt = OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(Reference.Forward);
+            this.Position = OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(Reference.Position);
 
             return Matrix4.LookAt(Position, Position + LookAt, Vector3.UnitY);
         }
