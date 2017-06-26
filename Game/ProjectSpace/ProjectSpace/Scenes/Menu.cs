@@ -44,8 +44,10 @@ namespace OutpostOmega.Scenes
 
         public override void Initialize()
         {
+            // Make sure this happens first as it initializes gwen
+            base.Initialize();
 
-            if(AppSettings.Default.AutoStart)
+            if (AppSettings.Default.AutoStart)
             {
                 OutpostOmega.Game.World world = null;
 
@@ -109,8 +111,6 @@ namespace OutpostOmega.Scenes
             {
                 mesh.Translation = Matrix4.CreateRotationY((float)OutpostOmega.Game.Tools.MathHelper.DegreeToRadian(-180)) * Matrix4.CreateTranslation(0, -5, 0);
             }
-
-            base.Initialize();
         }
 
         protected override void RefreshSceneView()

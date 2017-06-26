@@ -35,6 +35,9 @@ namespace OutpostOmega.Scenes
         OutpostOmega.Game.Tools.Animation testAnimation;
         public override void Initialize()
         {
+            base.Initialize();
+
+
             if (AppSettings.Default.SkipIntro)
             {
                 CloseIntro();
@@ -92,7 +95,6 @@ namespace OutpostOmega.Scenes
 
                 _introTimer.Start();
             }
-            base.Initialize();
         }
 
         public void AddTextLine(string Line)

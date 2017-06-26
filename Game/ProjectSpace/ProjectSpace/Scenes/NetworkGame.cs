@@ -48,19 +48,26 @@ namespace OutpostOmega.Scenes
             : base(game, world)
         {
             this.Client = Client;
+        }
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
             this.KeyStateChanged += NetworkGame_KeyStateChanged;
             this.MouseMoved += NetworkGame_MouseMoved;
-            world.ClientMode = true;
+            World.ClientMode = true;
             sendTimer = new Stopwatch();
 
             //if(world.Player == null)
             //{
-                world.Player = (from gobj in world.AllGameObjects
-                                where gobj.GetType().IsAssignableFrom(typeof(LocalPlayer))
-                                select (LocalPlayer)gobj).FirstOrDefault();
-                if (world.Player == null)
-                    throw new Exception("No mind for the player found. Need to add joinmenu or spectator");
-            //}                
+            World.Player = (from gobj in World.AllGameObjects
+                            where gobj.GetType().IsAssignableFrom(typeof(LocalPlayer))
+                            select (LocalPlayer)gobj).FirstOrDefault();
+            if (World.Player == null)
+                throw new Exception("No mind for the player found. Need to add joinmenu or spectator");
+            //}   
+            Chat = new Drawing.UI.Chat(this, this.Canvas);
         }
 
 
@@ -191,11 +198,6 @@ namespace OutpostOmega.Scenes
                 return 1;
             }
             return 0;
-        }
-        public override void Initialize()
-        {
-            Chat = new Drawing.UI.Chat(this, this.Canvas);
-            base.Initialize();
         }
     }
 }

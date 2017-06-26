@@ -77,10 +77,12 @@ namespace OutpostOmega.Server.Network
         /// </summary>
         private bool GameObjectNeeded(GameObject gameObject)
         {
-            /*if (typeof(Game.GameObjects.Mob).IsAssignableFrom(gameObject.GetType()))
+            if (typeof(Game.GameObjects.Mob).IsAssignableFrom(gameObject.GetType()))
                 return ((Game.GameObjects.Mob)gameObject).Mind != this._client.Mind;
             if (typeof(Game.GameObjects.Mobs.Mind).IsAssignableFrom(gameObject.GetType()))
-                return ((Game.GameObjects.Mobs.Mind)gameObject) != this._client.Mind;*/
+                return ((Game.GameObjects.Mobs.Mind)gameObject) != this._client.Mind;
+            if (typeof(Game.GameObjects.Mobs.View).IsAssignableFrom(gameObject.GetType()))
+                return ((Game.GameObjects.Mobs.View)gameObject) != this._client.Mind.Mob.View;
 
             return true;
         }

@@ -522,6 +522,13 @@ namespace OutpostOmega.Network
                                     { }
 
                                     var gameObject = World.GetGameObject(gameObject_ID);
+
+                                    if (gameObject == this.World.Player ||
+                                        gameObject == this.World.Player.Mob ||
+                                        gameObject == this.World.Player.Mob.View)
+                                        return;
+
+
                                     System.Reflection.PropertyInfo property = null;
                                     if (gameObject != null)
                                         property = gameObject.GetType().GetProperty(property_name);
