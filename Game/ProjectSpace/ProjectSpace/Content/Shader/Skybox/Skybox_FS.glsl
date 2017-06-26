@@ -1,10 +1,12 @@
-﻿varying vec3 lightVec;
-varying vec3 eyeVec;
+﻿#version 120
+
+//varying vec3 lightVec;
+//varying vec3 eyeVec;
 varying vec2 texCoord;
 uniform sampler2D colorMap;
-uniform sampler2D normalMap;
-uniform int TextureIndex;
-uniform float invRadius;
+//uniform sampler2D normalMap;
+//uniform int TextureIndex;
+//uniform float invRadius;
 uniform float brightness;
 
 void main (void)

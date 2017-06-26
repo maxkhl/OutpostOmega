@@ -1,4 +1,6 @@
-﻿varying vec3 lightVec;
+﻿#version 120
+
+varying vec3 lightVec;
 varying vec3 eyeVec;
 varying vec2 texCoord;
 varying vec4 position;

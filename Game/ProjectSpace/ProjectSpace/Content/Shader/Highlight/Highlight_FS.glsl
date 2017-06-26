@@ -1,4 +1,6 @@
-﻿uniform vec4 Color;
+﻿#version 120
+
+uniform vec4 Color;
 uniform float Transparency;
 
 void main (void)

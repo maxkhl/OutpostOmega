@@ -95,12 +95,14 @@ namespace OutpostOmega.Drawing
             if (Disposing)
                 return;
 
-            SkyShader.Bind();      
+            SkyShader.Bind();
+
             int colMapLocation = SkyShader.GetUniformLocation("colorMap");
-            
+
             int brightnessLocation = SkyShader.GetUniformLocation("brightness");
             GL.Uniform1(brightnessLocation, Brightness);
-            
+            Tools.OpenGL.CheckError();
+
 
             GL.Enable(EnableCap.Texture2D);
             for (int i = 0; i < Sides.Count; i++)

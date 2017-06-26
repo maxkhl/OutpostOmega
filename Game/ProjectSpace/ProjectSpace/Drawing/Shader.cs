@@ -81,6 +81,7 @@ namespace OutpostOmega.Drawing
         public void Bind()
         {
             GL.UseProgram(ProgramHandle);
+            Tools.OpenGL.CheckError();
         }
 
         public void UnBind()

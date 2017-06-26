@@ -1,3 +1,5 @@
+#version 120
+
 // Copyright (c) 2008 the OpenTK Team. See license.txt for legal bla
 
 // Material uniforms
