@@ -81,7 +81,19 @@ namespace OutpostOmega.Scenes
             : base(game)
         {
             tmpWrld = World;
-            World.UICall += World_UICall;
+            //this.World = World;
+        }
+
+
+        Gwen.Control.Label UILabel;
+        Gwen.Control.ImagePanel Crosshair;
+        public override void Initialize()
+        {
+            // Make sure this happens first as it initializes gwen
+            base.Initialize();
+
+
+            tmpWrld.UICall += World_UICall;
             this.KeyStateChanged += Game_InputChanged;
             this.MouseMoved += Game_MouseMoved;
             HUDSkin = new Gwen.Skin.TexturedBase(renderer, @"Content\UI\HUD.png");
@@ -104,7 +116,7 @@ namespace OutpostOmega.Scenes
             {
                 modfiles = OutpostOmega.Game.Lua.ModPack.SearchFolder(modfolder);
                 foreach (var modfile in modfiles)
-                    Mods.Add(World.LoadMod(modfile));
+                    Mods.Add(tmpWrld.LoadMod(modfile));
             }
             else
                 throw new Exception("Modfolder not found at '" + modfolder.FullName + "'");
@@ -113,6 +125,83 @@ namespace OutpostOmega.Scenes
             {
                 Console.Message(string.Format("{0} loaded", Mod.ID));
             }
+
+            Screens = new List<Drawing.Screen>();
+            BackgroundScreens = new List<Drawing.Screen>();
+
+            ElapsedWorldUpdateTime = new Stopwatch();
+
+            this.LoadWorld(tmpWrld);
+
+            Drawing.Screen defaultScreen = null;
+            if (AppSettings.Default.LegacyRendering)
+                defaultScreen = new Drawing.Screens.Default(this);
+            else
+                defaultScreen = new Drawing.Screens.Default_Deferred(this);
+
+            defaultScreen.Fullscreen = true;
+            this.Screens.Add(defaultScreen);
+
+            var cyberScreen = new Drawing.Screens.Cybernet(this)
+            {
+                Width = 150,
+                Height = 100,
+                X = 20,
+                Y = 90,
+                amount = 0.3f
+            };
+            this.Screens.Add(cyberScreen);
+
+            //new Drawing.UI.Chat(this, this.Canvas);
+            var toolbar = new Drawing.UI.ToolBar(this, this.Canvas);
+            new Drawing.UI.MenuBar(this, this.Canvas);
+
+            var logoPanel = new Gwen.Control.ImagePanel(Canvas)
+            {
+                ImageName = @"Content\Image\IngameLogo.png"
+            };
+            logoPanel.SetPosition(0, 0);
+            logoPanel.SetBounds(0, 0, 391, 125);
+
+            Crosshair = new Gwen.Control.ImagePanel(Canvas)
+            {
+                ImageName = @"Content\Image\Crosshair.png"
+            };
+            Crosshair.SetBounds(Game.Width / 2 - 25, Game.Height / 2 - 25, 50, 50);
+
+            MouseMode = Game.CursorVisible;
+
+            // We need to wipe the addon assembly before executing lua code
+            OutpostOmega.Game.Lua.ModPack.WipeAddonAssembly();
+
+            bool Error = false;
+            Console.Message("Calling startup hook");
+            Console.Message("### Mod output starting here ###");
+            foreach (var Mod in Mods)
+            {
+                var messages = Mod.Execute(OutpostOmega.Game.Lua.ModPack.ScriptHook.startup, this.World);
+                foreach (var msg in messages)
+                {
+                    Console.Message(string.Format("{0} {1}@{2}: {3}", msg.TimeStamp.ToShortTimeString(), msg.Sender, Mod.Name, msg.Text));
+                    Error = msg.Error ? true : Error;
+                }
+                //Mod.Assembly.HookException += Assembly_HookException;
+            }
+            Console.Message("### Mod output ending here ###");
+
+            if (Error)
+                new Gwen.Control.MessageBox(Canvas, "One or multiple mods are causing errors. Check the console (tilde)", "Minor crash");
+
+            // Try to resolve all objects that probably came with a mod (that should be loaded now)
+            Data.DataHandler.ProcessUnloadedObjects();
+
+            // Test
+            UILabel = new Gwen.Control.Label(Canvas)
+            {
+                TextColorOverride = Color.FromArgb(193, 254, 9) // OO-Lime
+            };
+
+            //base.Initialize();
         }
 
         /// <summary>
@@ -178,87 +267,6 @@ namespace OutpostOmega.Scenes
             new Gwen.Control.MessageBox(Canvas, "A mod is causing errors. Check the console (tilde)", "Minor crash");
         }*/
 
-        Gwen.Control.Label UILabel;
-        Gwen.Control.ImagePanel Crosshair;
-        public override void Initialize()
-        {
-            Screens = new List<Drawing.Screen>();
-            BackgroundScreens = new List<Drawing.Screen>();
-
-            ElapsedWorldUpdateTime = new Stopwatch();
-
-            this.LoadWorld(tmpWrld);
-
-            Drawing.Screen defaultScreen = null;
-            if (AppSettings.Default.LegacyRendering)
-                defaultScreen = new Drawing.Screens.Default(this);
-            else 
-                defaultScreen = new Drawing.Screens.Default_Deferred(this);
-
-            defaultScreen.Fullscreen = true;
-            this.Screens.Add(defaultScreen);
-
-            var cyberScreen = new Drawing.Screens.Cybernet(this)
-            {
-                Width = 150,
-                Height = 100,
-                X = 20,
-                Y = 90,
-                amount = 0.3f
-            };
-            this.Screens.Add(cyberScreen);
-
-            //new Drawing.UI.Chat(this, this.Canvas);
-            var toolbar = new Drawing.UI.ToolBar(this, this.Canvas);
-            new Drawing.UI.MenuBar(this, this.Canvas);
-
-            var logoPanel = new Gwen.Control.ImagePanel(Canvas)
-            {
-                ImageName = @"Content\Image\IngameLogo.png"
-            };
-            logoPanel.SetPosition(0, 0);
-            logoPanel.SetBounds(0, 0, 391, 125);
-
-            Crosshair = new Gwen.Control.ImagePanel(Canvas)
-            {
-                ImageName = @"Content\Image\Crosshair.png"
-            };
-            Crosshair.SetBounds(Game.Width / 2 - 25, Game.Height / 2 - 25, 50, 50);
-
-            MouseMode = Game.CursorVisible;
-
-            // We need to wipe the addon assembly before executing lua code
-            OutpostOmega.Game.Lua.ModPack.WipeAddonAssembly();
-
-            bool Error = false;
-            Console.Message("Calling startup hook");
-            Console.Message("### Mod output starting here ###");
-            foreach (var Mod in Mods)
-            {
-                var messages = Mod.Execute(OutpostOmega.Game.Lua.ModPack.ScriptHook.startup, this.World);
-                foreach (var msg in messages)
-                {
-                    Console.Message(string.Format("{0} {1}@{2}: {3}", msg.TimeStamp.ToShortTimeString(), msg.Sender, Mod.Name, msg.Text));
-                    Error = msg.Error ? true : Error;
-                }
-                //Mod.Assembly.HookException += Assembly_HookException;
-            }
-            Console.Message("### Mod output ending here ###");
-
-            if (Error)
-                new Gwen.Control.MessageBox(Canvas, "One or multiple mods are causing errors. Check the console (tilde)", "Minor crash");
-
-            // Try to resolve all objects that probably came with a mod (that should be loaded now)
-            Data.DataHandler.ProcessUnloadedObjects();
-
-            // Test
-            UILabel = new Gwen.Control.Label(Canvas)
-            {
-                TextColorOverride = Color.FromArgb(193, 254, 9) // OO-Lime
-            };
-
-            base.Initialize();
-        }
 
         protected override void RefreshSceneView()
         {

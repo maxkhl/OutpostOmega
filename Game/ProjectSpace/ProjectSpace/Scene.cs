@@ -66,26 +66,6 @@ namespace OutpostOmega
             this.Game = Game;
             elapsedUpdateTime = new Stopwatch();
             elapsedDrawTime = new Stopwatch();
-
-            // Loading the default key sets - this needs to be dynamic in the future to allow custome key layouts
-            Tools.Input.LoadDefaultSet();
-
-            #region Gwen Stuff
-            renderer = new Gwen.Renderer.OpenTK();
-            //Skin = new Gwen.Skin.TexturedBase(renderer, @"Content\UI\DefaultSkin.png");
-            var lSkin = Skin;
-            CreateDefaultSkin(ref lSkin, renderer);
-            Skin = lSkin;
-            Canvas = new Gwen.Control.Canvas(Skin);
-            _input = new Gwen.Input.OpenTK(Game);
-            _input.Initialize(Canvas);
-            Canvas.SetSize(Game.Width, Game.Height);
-            //canvas.ShouldDrawBackground = true;
-            Canvas.BackgroundColor = Color.FromArgb(255, 150, 170, 170);
-            #endregion
-
-            //Initialize FPS-Counter
-            InitFPS();
         }
 
         public static void CreateDefaultSkin(ref Gwen.Skin.Base Skin, Gwen.Renderer.OpenTK Renderer)
@@ -116,10 +96,30 @@ namespace OutpostOmega
         /// </summary>
         public virtual void Initialize()
         {
+            // Loading the default key sets - this needs to be dynamic in the future to allow custome key layouts
+            Tools.Input.LoadDefaultSet();
 
+            #region Gwen Stuff
+            renderer = new Gwen.Renderer.OpenTK();
+            //Skin = new Gwen.Skin.TexturedBase(renderer, @"Content\UI\DefaultSkin.png");
+            var lSkin = Skin;
+            CreateDefaultSkin(ref lSkin, renderer);
+            Skin = lSkin;
+            Canvas = new Gwen.Control.Canvas(Skin);
+            _input = new Gwen.Input.OpenTK(Game);
+            _input.Initialize(Canvas);
+            Canvas.SetSize(Game.Width, Game.Height);
+            //canvas.ShouldDrawBackground = true;
+            Canvas.BackgroundColor = Color.FromArgb(255, 150, 170, 170);
+            #endregion
+
+            //Initialize FPS-Counter
+            InitFPS();
 
             // Close the loading screen
             Drawing.UI.LoadingScreen.Stop();
+
+            RefreshView();
         }
 
         /// <summary>
@@ -296,8 +296,9 @@ namespace OutpostOmega
             GL.LoadIdentity();
             GL.Ortho(0, Game.Width, Game.Height, 0, -1, 1);
 
-            renderer.FlushTextCache();
-            Canvas.SetSize(Game.Width, Game.Height);
+            
+            renderer?.FlushTextCache();
+            Canvas?.SetSize(Game.Width, Game.Height);
 
             RefreshSceneView();
         }
@@ -358,11 +359,11 @@ namespace OutpostOmega
                 return;
 
 #if DEBUG
-            _input.ProcessKeyDown(e);
+            _input?.ProcessKeyDown(e);
 #else
             try
             {
-                _input.ProcessKeyDown(e);
+                _input?.ProcessKeyDown(e);
             }
             catch (Exception exc) { ThrowCrash(exc); }
 #endif
@@ -373,11 +374,11 @@ namespace OutpostOmega
                 return;
 
 #if DEBUG
-            _input.ProcessKeyUp(e);
+            _input?.ProcessKeyUp(e);
 #else
             try
             {
-                _input.ProcessKeyUp(e);
+                _input?.ProcessKeyUp(e);
             }
             catch (Exception exc) { ThrowCrash(exc); }
 #endif
@@ -388,11 +389,11 @@ namespace OutpostOmega
                 return;
 
 #if DEBUG
-            _input.ProcessMouseMessage(e);
+            _input?.ProcessMouseMessage(e);
 #else
             try
             {
-                _input.ProcessMouseMessage(e);
+                _input?.ProcessMouseMessage(e);
             }
             catch (Exception exc) { ThrowCrash(exc); }
 #endif
@@ -403,11 +404,11 @@ namespace OutpostOmega
                 return;
             
 #if DEBUG
-            _input.ProcessMouseMessage(e);
+            _input?.ProcessMouseMessage(e);
 #else
             try
             {
-                _input.ProcessMouseMessage(e);
+                _input?.ProcessMouseMessage(e);
             }
             catch (Exception exc) { ThrowCrash(exc); }
 #endif
@@ -418,11 +419,11 @@ namespace OutpostOmega
                 return;
             
 #if DEBUG
-            _input.ProcessMouseMessage(e);
+            _input?.ProcessMouseMessage(e);
 #else
             try
             {
-                _input.ProcessMouseMessage(e);
+                _input?.ProcessMouseMessage(e);
             }
             catch (Exception exc) { ThrowCrash(exc); }
 #endif
@@ -433,11 +434,11 @@ namespace OutpostOmega
                 return;
 
 #if DEBUG
-            _input.ProcessMouseMessage(e);
+            _input?.ProcessMouseMessage(e);
 #else
             try
             {
-                _input.ProcessMouseMessage(e);
+                _input?.ProcessMouseMessage(e);
             }
             catch (Exception exc) { ThrowCrash(exc); }
 #endif

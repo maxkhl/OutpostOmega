@@ -474,6 +474,13 @@ namespace Gwen.Renderer
             int glTex;
 
             // Create the opengl texture
+            //GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
+            var eCode = GL.GetError();
+            if (eCode != ErrorCode.NoError)
+            {
+                throw new Exception(eCode.ToString());
+            }
+
             GL.GenTextures(1, out glTex);
 
             GL.BindTexture(TextureTarget.Texture2D, glTex);

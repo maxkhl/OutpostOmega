@@ -284,6 +284,12 @@ namespace Gwen.Skin
         public TexturedBase(Renderer.Base renderer, string textureName)
             : base(renderer)
         {
+
+            var eCode = OpenTK.Graphics.OpenGL.GL.GetError();
+            if (eCode != OpenTK.Graphics.OpenGL.ErrorCode.NoError)
+            {
+                throw new Exception(eCode.ToString());
+            }
             m_Texture = new Texture(Renderer);
             m_Texture.Load(textureName);
 
