@@ -27,7 +27,7 @@ namespace UnitTest
             this.Host.Shutdown();
         }
 
-        OONetwork.nClient Client;
+        OONetwork.GameNetClient Client;
         [TestMethod]
         [TestCategory("Network&Serialization")]
         public void ClientSetupTest()
@@ -35,7 +35,7 @@ namespace UnitTest
             if (Host == null)
                 ServerSetupTest();
 
-            Client = new OONetwork.nClient("UnitTestClient");
+            Client = new OONetwork.GameNetClient("UnitTestClient");
         }
 
         [TestMethod]

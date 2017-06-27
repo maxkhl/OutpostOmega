@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using OutpostOmega.Game.turf;
+using OutpostOmega.Game.Turf;
 
 namespace OutpostOmega.Drawing.Screens
 {
@@ -57,7 +57,7 @@ namespace OutpostOmega.Drawing.Screens
             {
                 // Render the chunk in special condition (only when pressure is higher than 0
                 var jitterVertices = GameScene.Drawer.Chunks[i].SourceChunk.Render(
-                    delegate( Block turf) { return Block.Pressure(turf) > 0; }, false);
+                    delegate( Block turf) { return turf.Pressure > 0; }, false);
 
                 // Convert vertex data to opengl
                 var vertices = Tools.Convert.Mesh.Vertex.Jitter_To_OpenGL(jitterVertices);

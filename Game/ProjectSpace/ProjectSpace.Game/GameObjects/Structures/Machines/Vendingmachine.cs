@@ -48,7 +48,7 @@ namespace OutpostOmega.Game.GameObjects.Structures.Machines
         }
         private machineType _Type;
 
-        public Vendingmachine(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "vendingmachine")
+        public Vendingmachine(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "vendingmachine")
             : base(X, Y, Z, Structure, World, ID)
         {
             this.SpaceRequirement = new bool[1, 2, 1] { { { true }, { true } } };

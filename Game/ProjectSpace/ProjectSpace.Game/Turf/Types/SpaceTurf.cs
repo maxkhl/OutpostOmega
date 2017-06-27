@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using Jitter.LinearMath;
-using OutpostOmega.Game.structures;
+using OutpostOmega.Game.Structures;
 
-namespace OutpostOmega.Game.turf.types
+namespace OutpostOmega.Game.Turf.Types
 {
     /// <summary>
     /// Space
     /// </summary>
-    public class space : turfType
+    public class SpaceTurf : TurfType
     {
         /// <summary>
         /// Space is not visible

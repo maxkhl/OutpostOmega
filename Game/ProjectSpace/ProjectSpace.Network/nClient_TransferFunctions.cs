@@ -9,7 +9,7 @@ namespace OutpostOmega.Network
     /// <summary>
     /// Clients transferfunctions to send specific data to the server
     /// </summary>
-    public partial class nClient
+    public partial class GameNetClient
     {
         /// <summary>
         /// Contains inputpackages that are about to be sent to the server
@@ -28,7 +28,7 @@ namespace OutpostOmega.Network
                 om = InputPackage.CreateOutgoingMessage(this, InputPackageQueue.ToArray());
                 InputPackageQueue.Clear();
             }
-            this.netClient.SendMessage(om, Lidgren.Network.NetDeliveryMethod.ReliableOrdered);
+            this.NetClient.SendMessage(om, Lidgren.Network.NetDeliveryMethod.ReliableOrdered);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace OutpostOmega.Network
             om.Write(MouseState.RightKey);
             om.Write(MouseState.X - OldMouseState.X);
             om.Write(MouseState.Y - OldMouseState.Y);
-            this.netClient.SendMessage(om, Lidgren.Network.NetDeliveryMethod.ReliableOrdered);
+            this.NetClient.SendMessage(om, Lidgren.Network.NetDeliveryMethod.ReliableOrdered);
 
         }
     }

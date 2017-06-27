@@ -62,8 +62,10 @@ namespace OutpostOmega.Drawing.UI
 
             ImagePanel logo = new ImagePanel(contLogo);
             logo.SetPosition(30, 10);
-            animation = new AnimatedTexture2D(new FileInfo(@"Content\Image\MenuAnimation.gif"));
-            animation.Play = true;
+            animation = new AnimatedTexture2D(new FileInfo(@"Content\Image\MenuAnimation.gif"))
+            {
+                Play = true
+            };
             //logo.ImageName = @"Content\Image\LogoSmall.png";
             logo.ImageHandle = animation.Handle;
             logo.Clicked += delegate(Base sender, ClickedEventArgs arguments)
@@ -74,11 +76,12 @@ namespace OutpostOmega.Drawing.UI
                 {
                     ImagePanel imgpanel = new ImagePanel(this);
                     imgpanel.SetBounds(120 - 80, 200 - 80, 80, 80);
-                    animationChund = new AnimatedTexture2D(new FileInfo(@"Content\Image\SadSmiley.gif"));
-                    animationChund.Play = true;
-                    animationChund.Repeat = true;
-                    animationChund.TargetFPS = 1;
-
+                    animationChund = new AnimatedTexture2D(new FileInfo(@"Content\Image\SadSmiley.gif"))
+                    {
+                        Play = true,
+                        Repeat = true,
+                        TargetFPS = 1
+                    };
                     imgpanel.ImageHandle = animationChund.Handle;
                 }
             };
@@ -155,10 +158,12 @@ namespace OutpostOmega.Drawing.UI
 
 
 
-            Button test = new Button(contRight);
-            test.Width = 100;
-            test.Height = bHeight;
-            test.Text = "Test";
+            Button test = new Button(contRight)
+            {
+                Width = 100,
+                Height = bHeight,
+                Text = "Test"
+            };
             test.SetPosition(0, 50);
             test.Position(Pos.Right);
             test.Pressed += delegate(Base sender, EventArgs arguments)
@@ -168,10 +173,12 @@ namespace OutpostOmega.Drawing.UI
             };
             test.TextColor = System.Drawing.Color.White;
 
-            Button test2 = new Button(contRight);
-            test2.Width = 100;
-            test2.Height = bHeight;
-            test2.Text = "Video";
+            Button test2 = new Button(contRight)
+            {
+                Width = 100,
+                Height = bHeight,
+                Text = "Video"
+            };
             test2.SetPosition(0, 90);
             test2.Position(Pos.Right);
             test2.Pressed += delegate(Base sender, EventArgs arguments)
@@ -181,10 +188,12 @@ namespace OutpostOmega.Drawing.UI
             };
             test2.TextColor = System.Drawing.Color.White;
 
-            Button test3 = new Button(contRight);
-            test3.Width = 100;
-            test3.Height = bHeight;
-            test3.Text = "Game of Life";
+            Button test3 = new Button(contRight)
+            {
+                Width = 100,
+                Height = bHeight,
+                Text = "Game of Life"
+            };
             test3.SetPosition(0, 120);
             test3.Position(Pos.Right);
             test3.Pressed += delegate(Base sender, EventArgs arguments)
@@ -216,9 +225,11 @@ namespace OutpostOmega.Drawing.UI
 
             public AnimatedLabel(Base Parent, Scene scene)
             {
-                label = new Label(Parent);
-                //subtitle.Dock = Pos.Bottom;
-                label.Margin = new Gwen.Margin(25, 25, 25, 25);
+                label = new Label(Parent)
+                {
+                    //subtitle.Dock = Pos.Bottom;
+                    Margin = new Gwen.Margin(25, 25, 25, 25)
+                };
                 var rand = new Random();
                 Position = new OpenTK.Vector2(
                     rand.Next(0, scene.Game.Width - 50), 
@@ -283,12 +294,6 @@ namespace OutpostOmega.Drawing.UI
                 label.X = (int)Position.X;
                 label.Y = (int)Position.Y;
                 return false;
-
-                if((Target-Position).Length < 4)
-                {
-                    this.Dispose();
-                    return true;
-                }
             }
 
             public bool Disposing { get; set; }

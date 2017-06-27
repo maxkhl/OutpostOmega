@@ -13,7 +13,7 @@ namespace OutpostOmega.Game.GameObjects.Structures.Machines
     [Attributes.Construction(typeof(Frame), typeof(Items.Tools.Wrench))]
     class Display : Machine
     {
-        public Display(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "display")
+        public Display(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "display")
             : base(X, Y, Z, Structure, World, ID)
         {
             this.SpaceRequirement = new bool[2, 2, 1] { { { true }, { true } }, { { true }, { true } } };

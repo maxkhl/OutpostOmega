@@ -73,7 +73,7 @@ namespace OutpostOmega.Game.GameObjects.Mobs
             }
         }
         private GameObject _TargetGameObject;
-        public turf.Structure TargetStructure 
+        public Turf.Structure TargetStructure 
         { 
             get; 
             set; 

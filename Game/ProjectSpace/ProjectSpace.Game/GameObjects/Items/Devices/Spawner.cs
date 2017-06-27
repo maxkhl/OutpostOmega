@@ -38,7 +38,7 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
             {
                 if (Holder.View.TargetStructure != null)
                 {
-                    if (this.SelectedBuildObject != null && this.SelectedBuildObject.GetType() == typeof(turf.types.turfTypeE))
+                    if (this.SelectedBuildObject != null && this.SelectedBuildObject.GetType() == typeof(Turf.Types.TurfTypeE))
                     {
                         var tpos = Holder.View.TargetStructure.GetBlockPosition(Holder.View.TargetHitInside);
                         World.CallUI(this, UICommand.Highlight, new Jitter.LinearMath.JBBox(tpos - new JVector(0.1f), tpos + JVector.One + new JVector(0.1f)));
@@ -87,8 +87,8 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
 
                         structureObject.Register();
                     }
-                    else if (ObjectType == typeof(turf.types.turfTypeE))
-                        User.View.TargetStructure.Add((turf.types.turfTypeE)this.SelectedBuildObject, User.View.TargetHit);
+                    else if (ObjectType == typeof(Turf.Types.TurfTypeE))
+                        User.View.TargetStructure.Add((Turf.Types.TurfTypeE)this.SelectedBuildObject, User.View.TargetHit);
                     else
                     {
                         var Object = GameObject.GenerateNew(ObjectType, this.World);

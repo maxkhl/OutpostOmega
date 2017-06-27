@@ -71,7 +71,7 @@ namespace OutpostOmega.Network
         /// </summary>
         /// <param name="Client">Client this message should be generated for</param>
         /// <returns>Generated and ready to send message</returns>
-        public Lidgren.Network.NetOutgoingMessage CreateOutgoingMessage(nClient Client)
+        public Lidgren.Network.NetOutgoingMessage CreateOutgoingMessage(GameNetClient Client)
         {
             var om = Client.GetOM(Command.Data, SecondCommand.Input);
 
@@ -86,7 +86,7 @@ namespace OutpostOmega.Network
         /// <param name="Client">Client the messages should be generated for</param>
         /// <param name="Packages">Packages that are used</param>
         /// <returns>Generated and ready to send message</returns>
-        public static Lidgren.Network.NetOutgoingMessage CreateOutgoingMessage(nClient Client, InputPackage[] Packages)
+        public static Lidgren.Network.NetOutgoingMessage CreateOutgoingMessage(GameNetClient Client, InputPackage[] Packages)
         {
             var om = Client.GetOM(Command.Data, SecondCommand.Input);
 

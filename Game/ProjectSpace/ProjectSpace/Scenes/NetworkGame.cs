@@ -16,7 +16,7 @@ namespace OutpostOmega.Scenes
 {
     class NetworkGame : Game
     {
-        public nClient Client;
+        public GameNetClient Client;
 
         private Drawing.UI.Chat Chat;
 
@@ -25,7 +25,7 @@ namespace OutpostOmega.Scenes
         /// <summary>
         /// True if mouse is active, false if camera is controlled
         /// </summary>
-        public bool MouseMode
+        public new bool MouseMode
         {
             get
             {
@@ -44,7 +44,7 @@ namespace OutpostOmega.Scenes
         private bool _mouseMode = true;
 
 
-        public NetworkGame(nClient Client, MainGame game, World world)
+        public NetworkGame(GameNetClient Client, MainGame game, World world)
             : base(game, world)
         {
             this.Client = Client;
@@ -107,8 +107,7 @@ namespace OutpostOmega.Scenes
             {
                 sendTimer.Reset();
 
-                string text;
-                if (Client.Output.Count > 0 && Client.Output.TryDequeue(out text))
+                if (Client.Output.Count > 0 && Client.Output.TryDequeue(out string text))
                     Chat.Message(text);
 
 

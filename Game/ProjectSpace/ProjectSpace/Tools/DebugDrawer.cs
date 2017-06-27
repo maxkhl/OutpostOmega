@@ -16,24 +16,24 @@ namespace OutpostOmega.Tools
         {
             var color = new Color4(R, G, B, 255);
             Draw.Line(
-                OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(start),
-                OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(end),
+                Convert.Vector.Jitter_To_OpenGL(start),
+                Convert.Vector.Jitter_To_OpenGL(end),
                 color);
         }
         public void DrawTriangle(JVector pos1, JVector pos2, JVector pos3)
         {
 
             Draw.Line(
-                OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(pos1),
-                OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(pos3),
+                Convert.Vector.Jitter_To_OpenGL(pos1),
+                Convert.Vector.Jitter_To_OpenGL(pos3),
                 Color4.Red);
             Draw.Line(
-                OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(pos1),
-                OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(pos2),
+                Convert.Vector.Jitter_To_OpenGL(pos1),
+                Convert.Vector.Jitter_To_OpenGL(pos2),
                 Color4.Red);
             Draw.Line(
-                OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(pos2),
-                OutpostOmega.Tools.Convert.Vector.Jitter_To_OpenGL(pos3),
+                Convert.Vector.Jitter_To_OpenGL(pos2),
+                Convert.Vector.Jitter_To_OpenGL(pos3),
                 Color4.Red);
             //dso.dsDrawLine(pos2, pos1);
             //dso.dsDrawLine(pos2, pos3);

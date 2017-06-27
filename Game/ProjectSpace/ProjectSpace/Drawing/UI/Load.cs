@@ -12,8 +12,6 @@ namespace OutpostOmega.Drawing.UI
 {
     class Load : WindowControl
     {
-        Button load;
-
         /// <summary>
         /// Base directory for savegames
         /// </summary>

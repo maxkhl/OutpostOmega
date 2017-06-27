@@ -137,7 +137,7 @@ namespace OutpostOmega.Game.GameObjects.Structures
         /// <summary>
         /// Structure, this object is connected to
         /// </summary>
-        public turf.Structure ParentStructure
+        public Turf.Structure ParentStructure
         {
             get
             {
@@ -149,7 +149,7 @@ namespace OutpostOmega.Game.GameObjects.Structures
                 NotifyPropertyChanged();
             }
         }
-        private turf.Structure _ParentStructure;
+        private Turf.Structure _ParentStructure;
         #endregion
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace OutpostOmega.Game.GameObjects.Structures
         /// <param name="Offset">Offset to the block space (in units)</param>
         /// <param name="World">Connected World</param>
         /// <param name="ID">ID of the object</param>
-        public Structure(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "structure")
+        public Structure(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "structure")
             : base(World, ID)
         {
             this.SpaceRequirement = new bool[1,1,1] {{{true}}};

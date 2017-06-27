@@ -21,12 +21,12 @@ namespace OutpostOmega.Game.datums.turf
             CurveWN = 6
         }
 
-        public static structures.uvCoord GetUV(cableType cableID)
+        public static Structures.uvCoord GetUV(cableType cableID)
         {
             if (!Enum.IsDefined(typeof(cableType), cableID))
                 throw new Exception(String.Format("Unknown cable ID '{0}'", cableID));
 
-            var uvCoord = new structures.uvCoord();
+            var uvCoord = new Structures.uvCoord();
 
             switch((cableType)cableID)
             {

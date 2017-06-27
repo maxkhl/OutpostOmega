@@ -15,7 +15,7 @@ namespace OutpostOmega.Game.GameObjects.Structures
     [Attributes.Construction(typeof(Frame), typeof(Items.Tool))]
     public class Chair_Office : Structure
     {
-        public Chair_Office(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "chair_office")
+        public Chair_Office(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "chair_office")
             : base(X, Y, Z, Structure, World, ID)
         {
             this.SpaceRequirement = new bool[1, 2, 1] { { { true }, { true } } };

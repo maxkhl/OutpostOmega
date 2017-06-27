@@ -15,7 +15,7 @@ namespace OutpostOmega.Game.GameObjects.Structures
     [Attributes.Construction(typeof(Frame), typeof(Items.Tool))]
     public class Window : Structure
     {
-        public Window(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "Window")
+        public Window(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "Window")
             : base(X, Y, Z, Structure, World, ID)
         {
             //this.IsPassable = true;

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using Jitter.LinearMath;
-using OutpostOmega.Game.structures;
+using OutpostOmega.Game.Structures;
 
-namespace OutpostOmega.Game.turf.types
+namespace OutpostOmega.Game.Turf.Types
 {
     /// <summary>
     /// Room consumed by a GameObject
     /// </summary>
-    public class gobject : turfType
+    public class GameObjectTurf : TurfType
     {
         /// <summary>
         /// GameObject (space) is invisible
@@ -20,7 +20,7 @@ namespace OutpostOmega.Game.turf.types
         { 
             get
             {
-                return false;
+                return false; 
             }
         }
 

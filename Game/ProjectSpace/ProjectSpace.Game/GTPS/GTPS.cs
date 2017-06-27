@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using OutpostOmega.Game.turf;
+using OutpostOmega.Game.Turf;
 
 namespace OutpostOmega.Game.GTPS
 {
@@ -89,15 +89,15 @@ namespace OutpostOmega.Game.GTPS
                         var chunk = structure.chunks[c];
                         
                         // Iterate through each block
-                        for(int x = 0; x < turf.Chunk.SizeXYZ; x++)
-                            for(int y = 0; y < turf.Chunk.SizeXYZ; y++)
-                                for(int z = 0; z < turf.Chunk.SizeXYZ; z++)
+                        for(int x = 0; x < Turf.Chunk.SizeXYZ; x++)
+                            for(int y = 0; y < Turf.Chunk.SizeXYZ; y++)
+                                for(int z = 0; z < Turf.Chunk.SizeXYZ; z++)
                                 {
                                     var block = chunk.blocks[x, y, z];
 
                                     if(block.NeedsProcessing)
                                     {
-                                        if (!Block.CanContainGas(block)) // Clean up errors
+                                        if (!block.CanContainGas) // Clean up errors
                                         {
                                             block.NeedsProcessing = false;
                                             continue;
@@ -131,15 +131,15 @@ namespace OutpostOmega.Game.GTPS
                                         // Check for processable neighbours
                                         for (int n = 0; n < Neighours.Count; n++)
                                         {
-                                            if (!Block.CanContainGas(Neighours[n]))
+                                            if (!Neighours[n].CanContainGas)
                                                 Neighours.RemoveAt(n);
                                         }
 
                                         //Sort neighbours for pressure
                                         Neighours.Sort(delegate(Block a, Block b)
                                         {
-                                            int aPressure = Block.Pressure(a),
-                                                bPressure = Block.Pressure(b);
+                                            int aPressure = a.Pressure,
+                                                bPressure = b.Pressure;
 
                                             if (aPressure > bPressure) return 1;
                                             else if (aPressure == bPressure) return 0;
@@ -165,7 +165,7 @@ namespace OutpostOmega.Game.GTPS
                                                 if (Amount > gas.Units) Amount = gas.Units;
 
                                                 gas.Units -= Amount; //Remove gas
-                                                Block.ModGas(ref neighbour, gas.GasID, Amount); //Add gas
+                                                neighbour.ModGas(gas.GasID, Amount); //Add gas
                                             }
                                             
                                             block.gasComposition[g] = gas;

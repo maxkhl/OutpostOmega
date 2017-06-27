@@ -22,7 +22,7 @@ namespace OutpostOmega.Scenes
         /// <summary>
         /// World drawer for this scene
         /// </summary>
-        public Drawing.Game.dWorld Drawer { get; protected set; }
+        public Drawing.Game.WorldDrawer Drawer { get; protected set; }
 
         /// <summary>
         /// Screens drawn in this scene
@@ -37,7 +37,7 @@ namespace OutpostOmega.Scenes
         /// <summary>
         /// Last World Update duration
         /// </summary>
-        public Stopwatch elapsedWorldUpdateTime { get; protected set; }
+        public Stopwatch ElapsedWorldUpdateTime { get; protected set; }
 
         /// <summary>
         /// A list of all loaded mods
@@ -185,7 +185,7 @@ namespace OutpostOmega.Scenes
             Screens = new List<Drawing.Screen>();
             BackgroundScreens = new List<Drawing.Screen>();
 
-            elapsedWorldUpdateTime = new Stopwatch();
+            ElapsedWorldUpdateTime = new Stopwatch();
 
             this.LoadWorld(tmpWrld);
 
@@ -198,25 +198,31 @@ namespace OutpostOmega.Scenes
             defaultScreen.Fullscreen = true;
             this.Screens.Add(defaultScreen);
 
-            var cyberScreen = new Drawing.Screens.Cybernet(this);
-            cyberScreen.Width = 150;
-            cyberScreen.Height = 100;
-            cyberScreen.X = 20;
-            cyberScreen.Y = 90;
-            cyberScreen.amount = 0.3f;
+            var cyberScreen = new Drawing.Screens.Cybernet(this)
+            {
+                Width = 150,
+                Height = 100,
+                X = 20,
+                Y = 90,
+                amount = 0.3f
+            };
             this.Screens.Add(cyberScreen);
 
             //new Drawing.UI.Chat(this, this.Canvas);
             var toolbar = new Drawing.UI.ToolBar(this, this.Canvas);
             new Drawing.UI.MenuBar(this, this.Canvas);
 
-            var logoPanel = new Gwen.Control.ImagePanel(Canvas);
-            logoPanel.ImageName = @"Content\Image\IngameLogo.png";
+            var logoPanel = new Gwen.Control.ImagePanel(Canvas)
+            {
+                ImageName = @"Content\Image\IngameLogo.png"
+            };
             logoPanel.SetPosition(0, 0);
             logoPanel.SetBounds(0, 0, 391, 125);
 
-            Crosshair = new Gwen.Control.ImagePanel(Canvas);
-            Crosshair.ImageName = @"Content\Image\Crosshair.png";
+            Crosshair = new Gwen.Control.ImagePanel(Canvas)
+            {
+                ImageName = @"Content\Image\Crosshair.png"
+            };
             Crosshair.SetBounds(Game.Width / 2 - 25, Game.Height / 2 - 25, 50, 50);
 
             MouseMode = Game.CursorVisible;
@@ -327,7 +333,7 @@ namespace OutpostOmega.Scenes
                     }
                 }
 
-                var ElapsedTime = elapsedWorldUpdateTime.ElapsedMilliseconds / (double)1000;
+                var ElapsedTime = ElapsedWorldUpdateTime.ElapsedMilliseconds / (double)1000;
 
                 for (int i = 0; i < Screens.Count; i++)
                     Screens[i].Update(ElapsedTime);
@@ -335,21 +341,20 @@ namespace OutpostOmega.Scenes
                 for (int i = 0; i < BackgroundScreens.Count; i++)
                     BackgroundScreens[i].Update(ElapsedTime);
 
-                elapsedWorldUpdateTime.Stop();
+                ElapsedWorldUpdateTime.Stop();
                 Tools.Performance.Start("Update World");
                 Drawer.Update(mouseState, kstate, ElapsedTime);
                 Tools.Performance.Stop("Update World");
                 //World.Update(kstate, elapsedWorldUpdateTime.ElapsedMilliseconds / (double)1000);
                 if (ElapsedTime > 0)
                     FPSLabel.Text = string.Format("{0} FPS", Math.Round(1 / ElapsedTime).ToString());
-                elapsedWorldUpdateTime.Reset();
-                elapsedWorldUpdateTime.Start();
+                ElapsedWorldUpdateTime.Reset();
+                ElapsedWorldUpdateTime.Start();
 
                 var gObj = World.Player.Mob.View.TargetGameObject;
                 if (gObj != null)
                 {
-                    bool onScreen = false;
-                    var screenPos = Tools.Other.GetPointOnScreen(Tools.Convert.Vector.Jitter_To_OpenGL(gObj.Position), this.Screens[0], out onScreen);
+                    var screenPos = Tools.Other.GetPointOnScreen(Tools.Convert.Vector.Jitter_To_OpenGL(gObj.Position), this.Screens[0], out bool onScreen);
 
                     if (!onScreen && !UILabel.IsHidden)
                         UILabel.Hide();
@@ -441,7 +446,7 @@ namespace OutpostOmega.Scenes
 
 
             this.World = World;
-            this.Drawer = new Drawing.Game.dWorld(this.World, this);
+            this.Drawer = new Drawing.Game.WorldDrawer(this.World, this);
         }
     }
 }

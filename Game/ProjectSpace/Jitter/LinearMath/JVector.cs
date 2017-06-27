@@ -128,6 +128,12 @@ namespace Jitter.LinearMath
             this.Z = z;
         }
 
+        public static JVector GetRandom(float Scale)
+        {
+            var random = new Random();
+            return new JVector((float)random.NextDouble() * Scale, (float)random.NextDouble() * Scale, (float)random.NextDouble() * Scale);
+        }
+
         /// <summary>
         /// Vector has only positive values?
         /// </summary>

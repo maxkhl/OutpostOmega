@@ -181,6 +181,7 @@
     <Compile Include="Drawer\Main.cs" />
     <Compile Include="Drawer\otkDrawing.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HostSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

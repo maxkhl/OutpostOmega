@@ -187,11 +187,11 @@
     <Compile Include="UICommand.cs" />
     <Compile Include="WorldSettings.cs" />
     <Compile Include="Tools\KeybeardState.cs" />
-    <Compile Include="turf\block.cs" />
-    <Compile Include="turf\turftypes\turfType.cs" />
-    <Compile Include="turf\turftypes\gobject.cs" />
-    <Compile Include="turf\turftypes\floor.cs" />
-    <Compile Include="turf\turftypes\space.cs" />
+    <Compile Include="Turf\Block.cs" />
+    <Compile Include="Turf\Types\TurfType.cs" />
+    <Compile Include="Turf\Types\GameObjectTurf.cs" />
+    <Compile Include="Turf\Types\FloorTurf.cs" />
+    <Compile Include="Turf\Types\SpaceTurf.cs" />
     <Compile Include="GTPS\GTPS.cs" />
     <Compile Include="Lua\Assembly.cs" />
     <Compile Include="Lua\Builder.cs" />
@@ -202,8 +202,8 @@
     <Compile Include="Tools\heightmap.cs" />
     <Compile Include="Lua\Parser.cs" />
     <Compile Include="Tools\MathHelper.cs" />
-    <Compile Include="turf\Chunk.cs" />
-    <Compile Include="turf\Structure.cs" />
+    <Compile Include="Turf\Chunk.cs" />
+    <Compile Include="Turf\Structure.cs" />
     <Compile Include="World.cs" />
     <Compile Include="World_Misc.cs" />
     <Compile Include="World_Mods.cs" />

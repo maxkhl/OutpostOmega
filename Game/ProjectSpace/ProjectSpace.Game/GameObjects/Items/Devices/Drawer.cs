@@ -38,7 +38,7 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
                     var hitPoint = User.View.TargetHitInside;
                     var hitBlock = User.View.TargetStructure[hitPoint.X, hitPoint.Y, hitPoint.Z];
 
-                    if(turf.Block.IsVisible(hitBlock))
+                    if(hitBlock.IsVisible)
                     {
                         var Chunk = User.View.TargetStructure.GetChunkAtPos(hitPoint);
                         var BlockPos = Chunk.Position + new JVector(hitBlock.X, hitBlock.Y, hitBlock.Z) + new JVector(0.5f);

@@ -40,7 +40,7 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
                 if (User.View.TargetStructure != null)
                 {
                     var ObjectType = this.SelectedBuildObject.GetType();
-                    if (ObjectType == typeof(turf.types.turfTypeE))
+                    if (ObjectType == typeof(Turf.Types.TurfTypeE))
                     {
                         if(FirstClick)
                         {
@@ -68,7 +68,7 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
                                     for (int z = 0; z < diff.Z && diff.Z > 0 || z > diff.Z && diff.Z < 0; z += zStep)
                                     {
                                         var pos = FirstPosition + new JVector(x * -1, y * -1, z * -1);
-                                        User.View.TargetStructure.Add((turf.types.turfTypeE)this.SelectedBuildObject, pos);
+                                        User.View.TargetStructure.Add((Turf.Types.TurfTypeE)this.SelectedBuildObject, pos);
                                     }
 
                                 FirstClick = true;

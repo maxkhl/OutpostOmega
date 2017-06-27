@@ -13,14 +13,17 @@ namespace OutpostOmega.Drawing.Game
     /// <summary>
     /// Used to draw a drawable GameObject
     /// </summary>
-    class dGameObject : IDisposable
+    class GameObjectDrawer : IDisposable
     {
         public GameObject AssignedGameObject { get; set; }
 
         public struct ModelMesh
         {
-            public string Name;
-            public Drawing.Mesh Mesh;
+            private string name;
+            private Mesh mesh;
+
+            public string Name { get => name; set => name = value; }
+            internal Mesh Mesh { get => mesh; set => mesh = value; }
         }
 
         /// <summary>
@@ -35,7 +38,7 @@ namespace OutpostOmega.Drawing.Game
 
         public List<ModelMesh> ModelMeshs { get; set; }
         
-        public dGameObject(GameObject GameObject)
+        public GameObjectDrawer(GameObject GameObject)
             //: base(OpenTK.Graphics.OpenGL.PrimitiveType.Quads, GetVertices(GameObject, Model), GetIndices(GameObject, Model))
         {
             ModelMeshs = new List<ModelMesh>();

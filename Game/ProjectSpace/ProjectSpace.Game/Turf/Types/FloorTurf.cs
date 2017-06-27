@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using Jitter.LinearMath;
-using OutpostOmega.Game.structures;
+using OutpostOmega.Game.Structures;
 
-namespace OutpostOmega.Game.turf.types
+namespace OutpostOmega.Game.Turf.Types
 {
     /// <summary>
     /// Basic floor
     /// </summary>
-    public class floor : turfType
+    public class FloorTurf : TurfType
     {
         /// <summary>
         /// Floor is solid (means, objects can collide with it)
@@ -46,7 +46,7 @@ namespace OutpostOmega.Game.turf.types
             }
         }
 
-        public floor()
+        public FloorTurf()
         {
             var UVC = new uvCoord() { X = 0.5f, Y = 0.0f, Width = 0.5f, Height = 0.5f };
 

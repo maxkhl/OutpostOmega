@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OutpostOmega.Game;
-using OutpostOmega.Game.turf;
+using OutpostOmega.Game.Turf;
 using System.IO;
 using OutpostOmega.Game.Tools;
 
@@ -13,7 +13,7 @@ namespace OutpostOmega.Drawing.Game
     /// <summary>
     /// Used to handle the gameworld on the frontend
     /// </summary>
-    class dWorld : IDisposable
+    class WorldDrawer : IDisposable
     {
         /// <summary>
         /// Assigned World
@@ -21,7 +21,7 @@ namespace OutpostOmega.Drawing.Game
         public World World { get; set; }
 
         //
-        public List<dChunk> Chunks { get; set; }
+        public List<ChunkDrawer> Chunks { get; set; }
         //public List<dGameObject> GameObjects { get; set; }
         public List<Light> Lights { get; set; }
 
@@ -41,11 +41,11 @@ namespace OutpostOmega.Drawing.Game
 
         public Scenes.Game Scene { get; protected set; }
 
-        public dWorld(World World, Scenes.Game Parent)
+        public WorldDrawer(World World, Scenes.Game Parent)
         {
             this.World = World;
             this.Scene = Parent;
-            this.Chunks = new List<dChunk>();
+            this.Chunks = new List<ChunkDrawer>();
             this.Meshs = new List<gameObjectMesh>();
             this.Textures = new List<Texture2D>();
             this.uInterfaces = new List<dUserInterface>();
@@ -188,7 +188,7 @@ namespace OutpostOmega.Drawing.Game
                 {
                     var oStructure = (Structure)oldStructure;
                     foreach (Chunk chunk in oStructure.chunks)
-                        foreach (dChunk dchunk in (from cnk in Chunks where cnk.SourceChunk == chunk select cnk))
+                        foreach (ChunkDrawer dchunk in (from cnk in Chunks where cnk.SourceChunk == chunk select cnk))
                             Chunks.Remove(dchunk);
                     oStructure.newChunk -= nStructure_newChunk;
                 }
@@ -196,8 +196,10 @@ namespace OutpostOmega.Drawing.Game
 
         void nStructure_newChunk(Chunk newChunk)
         {
-            var newdChunk = new dChunk(newChunk);
-            newdChunk.Shader = ChunkShader;
+            var newdChunk = new ChunkDrawer(newChunk)
+            {
+                Shader = ChunkShader
+            };
             Chunks.Add(newdChunk);
         }
 
@@ -242,7 +244,7 @@ namespace OutpostOmega.Drawing.Game
             //    gameobject.Draw(renderOptions);
             Tools.Performance.Stop("Draw World Meshs");
             Tools.Performance.Start("Draw World Chunks");
-            foreach (dChunk chunk in Chunks)
+            foreach (ChunkDrawer chunk in Chunks)
                 chunk.Draw(renderOptions);
             Tools.Performance.Stop("Draw World Chunks");
 
@@ -273,7 +275,7 @@ namespace OutpostOmega.Drawing.Game
             /*foreach (dGameObject gameobject in GameObjects)
                 gameobject.Dispose();*/
 
-            foreach (dChunk chunk in Chunks)
+            foreach (ChunkDrawer chunk in Chunks)
                 chunk.Dispose();
         }
     }

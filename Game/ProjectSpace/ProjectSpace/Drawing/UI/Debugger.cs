@@ -12,7 +12,6 @@ namespace OutpostOmega.Drawing.UI
 {
     class Debugger : Menu
     {
-        bool IsGameScene = false;
         GameObject Target = null;
         ScrollControl Scroll;
         Scenes.Game GameScene;
@@ -30,8 +29,10 @@ namespace OutpostOmega.Drawing.UI
             this.SetPosition(Scene.Game.Width - this.Width, Scene.Game.Height - this.Height);
 
 
-            Scroll = new ScrollControl(this);
-            Scroll.Dock = Pos.Fill;
+            Scroll = new ScrollControl(this)
+            {
+                Dock = Pos.Fill
+            };
         }
 
         public override void Think()

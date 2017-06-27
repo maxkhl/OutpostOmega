@@ -23,11 +23,13 @@ namespace OutpostOmega.Drawing.UI
 
             int posy = 2;
 
-            ImagePanel reset = new ImagePanel(this);
-            reset.Name = "Reset";
-            reset.ImageName = @"Content\Image\Buttons\Back.png";
-            reset.Width = 22;
-            reset.Height = 22;
+            ImagePanel reset = new ImagePanel(this)
+            {
+                Name = "Reset",
+                ImageName = @"Content\Image\Buttons\Back.png",
+                Width = 22,
+                Height = 22
+            };
             reset.SetPosition(this.Width - reset.Width, posy);
             reset.Clicked += reset_Clicked;
             reset.HoverEnter += HoverEnter;
@@ -45,44 +47,52 @@ namespace OutpostOmega.Drawing.UI
             inventory.HoverLeave += HoverLeave;
             posy += 34;*/
 
-            ImagePanel settings = new ImagePanel(this);
-            settings.Name = "Settings";
-            settings.ImageName = @"Content\Image\Buttons\Gear.png";
-            settings.Width = 22;
-            settings.Height = 22;
+            ImagePanel settings = new ImagePanel(this)
+            {
+                Name = "Settings",
+                ImageName = @"Content\Image\Buttons\Gear.png",
+                Width = 22,
+                Height = 22
+            };
             settings.SetPosition(this.Width - settings.Width, posy);
             settings.Clicked += options_Clicked;
             settings.HoverEnter += HoverEnter;
             settings.HoverLeave += HoverLeave;
             posy += 34;
 
-            ImagePanel fullScreen = new ImagePanel(this);
-            fullScreen.Name = "Fullscreen";
-            fullScreen.ImageName = @"Content\Image\Buttons\Fullscreen.png";
-            fullScreen.Width = 22;
-            fullScreen.Height = 22;
+            ImagePanel fullScreen = new ImagePanel(this)
+            {
+                Name = "Fullscreen",
+                ImageName = @"Content\Image\Buttons\Fullscreen.png",
+                Width = 22,
+                Height = 22
+            };
             fullScreen.SetPosition(this.Width - fullScreen.Width, posy);
             fullScreen.Clicked += fullScreen_Clicked;
             fullScreen.HoverEnter += HoverEnter;
             fullScreen.HoverLeave += HoverLeave;
             posy += 34;
 
-            ImagePanel performance = new ImagePanel(this);
-            performance.Name = "Performance";
-            performance.ImageName = @"Content\Image\Buttons\Stats.png";
-            performance.Width = 22;
-            performance.Height = 22;
+            ImagePanel performance = new ImagePanel(this)
+            {
+                Name = "Performance",
+                ImageName = @"Content\Image\Buttons\Stats.png",
+                Width = 22,
+                Height = 22
+            };
             performance.SetPosition(this.Width - performance.Width, posy);
             performance.Clicked += performance_Clicked;
             performance.HoverEnter += HoverEnter;
             performance.HoverLeave += HoverLeave;
             posy += 34;
 
-            ImagePanel console = new ImagePanel(this);
-            console.Name = "Console";
-            console.ImageName = @"Content\Image\Buttons\Hash.png";
-            console.Width = 22;
-            console.Height = 22;
+            ImagePanel console = new ImagePanel(this)
+            {
+                Name = "Console",
+                ImageName = @"Content\Image\Buttons\Hash.png",
+                Width = 22,
+                Height = 22
+            };
             console.SetPosition(this.Width - console.Width, posy);
             console.Clicked += console_Clicked;
             console.HoverEnter += HoverEnter;
@@ -100,44 +110,52 @@ namespace OutpostOmega.Drawing.UI
             SpawnMenu.HoverLeave += HoverLeave;
             posy += 34;*/
 
-            ImagePanel videoPlayer = new ImagePanel(this);
-            videoPlayer.Name = "Video Player";
-            videoPlayer.ImageName = @"Content\Image\Buttons\Media.png";
-            videoPlayer.Width = 22;
-            videoPlayer.Height = 22;
+            ImagePanel videoPlayer = new ImagePanel(this)
+            {
+                Name = "Video Player",
+                ImageName = @"Content\Image\Buttons\Media.png",
+                Width = 22,
+                Height = 22
+            };
             videoPlayer.SetPosition(this.Width - videoPlayer.Width, posy);
             videoPlayer.Clicked += videoPlayer_Clicked;
             videoPlayer.HoverEnter += HoverEnter;
             videoPlayer.HoverLeave += HoverLeave;
             posy += 34;
 
-            ImagePanel debug = new ImagePanel(this);
-            debug.Name = "Debug";
-            debug.ImageName = @"Content\Image\Buttons\Bug.png";
-            debug.Width = 22;
-            debug.Height = 22;
+            ImagePanel debug = new ImagePanel(this)
+            {
+                Name = "Debug",
+                ImageName = @"Content\Image\Buttons\Bug.png",
+                Width = 22,
+                Height = 22
+            };
             debug.SetPosition(this.Width - videoPlayer.Width, posy);
             debug.Clicked += debug_Clicked;
             debug.HoverEnter += HoverEnter;
             debug.HoverLeave += HoverLeave;
             posy += 34;
 
-            ImagePanel save = new ImagePanel(this);
-            save.Name = "Save";
-            save.ImageName = @"Content\Image\Buttons\Save.png";
-            save.Width = 22;
-            save.Height = 22;
+            ImagePanel save = new ImagePanel(this)
+            {
+                Name = "Save",
+                ImageName = @"Content\Image\Buttons\Save.png",
+                Width = 22,
+                Height = 22
+            };
             save.SetPosition(this.Width - save.Width, posy);
             save.Clicked += save_Clicked;
             save.HoverEnter += HoverEnter;
             save.HoverLeave += HoverLeave;
             posy += 34;
 
-            ImagePanel exit = new ImagePanel(this);
-            exit.Name = "Exit";
-            exit.ImageName = @"Content\Image\Buttons\Standby.png";
-            exit.Width = 22;
-            exit.Height = 22;
+            ImagePanel exit = new ImagePanel(this)
+            {
+                Name = "Exit",
+                ImageName = @"Content\Image\Buttons\Standby.png",
+                Width = 22,
+                Height = 22
+            };
             exit.SetPosition(this.Width - exit.Width, posy);
             exit.Clicked += exit_Pressed;
             exit.HoverEnter += HoverEnter;
@@ -147,9 +165,11 @@ namespace OutpostOmega.Drawing.UI
             buttonLabel = new Label(this);
             //buttonLabel.Width = 200;
 
-            Label tipp = new Label(this.Parent);
-            tipp.Text = "Press TAB to switch between camera and cursor mode";
-            tipp.Y = 0;
+            Label tipp = new Label(this.Parent)
+            {
+                Text = "Press TAB to switch between camera and cursor mode",
+                Y = 0
+            };
             tipp.X = (GameScene.Game.Width / 2) - (tipp.Width / 2);
 
             //exit_Pressed(null, null);

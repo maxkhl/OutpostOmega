@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OutpostOmega.Game;
-using OutpostOmega.Game.structures;
+using OutpostOmega.Game.Structures;
 using OutpostOmega.Game.GameObjects;
-using OutpostOmega.Game.turf.types;
+using OutpostOmega.Game.Turf.Types;
 using Jitter.LinearMath;
 using Jitter;
 using Jitter.Dynamics;
 
-namespace OutpostOmega.Game.turf
+namespace OutpostOmega.Game.Turf
 {
+    /// <summary>
+    /// A chunk contains a specific amount of blocks and is part of a structure
+    /// Also a chunk is a independent generated model
+    /// </summary>
     public class Chunk : IDisposable
     {
         public const float BlockSize = 1f;
@@ -97,7 +101,12 @@ namespace OutpostOmega.Game.turf
             }
             set
             {
+                this.NeedsRender = true;
+
                 blocks[lx, ly, lz] = value;
+
+                //Raise changed event
+                Changed?.Invoke(this, lx, ly, lz, value, value.type != (byte)TurfTypeE.space);
             }
         }
 
@@ -108,7 +117,7 @@ namespace OutpostOmega.Game.turf
         /// <summary>
         /// Structure, this chunk is assigned to. Could be null because the structure has to assign this value
         /// </summary>
-        public turf.Structure AssignedStructure { get; set; }
+        public Turf.Structure AssignedStructure { get; set; }
 
         
         public Chunk()
@@ -130,6 +139,9 @@ namespace OutpostOmega.Game.turf
             _IDCounter++;
             NeedsRender = true;
         }
+
+        public delegate void ChangedHandler(Chunk sender, int X, int Y, int Z, Block block, bool Added);
+        public event ChangedHandler Changed;
 
         private Jitter.Collision.Octree _octree;
         private Jitter.Collision.Shapes.TriangleMeshShape _shape;
@@ -212,7 +224,7 @@ namespace OutpostOmega.Game.turf
                             yV = (float)y * BlockSize,
                             zV = (float)z * BlockSize;
 
-                        if (!Block.IsVisible(block))
+                        if (!block.IsVisible)
                             continue;
 
                         if (condition != null && !condition(block))
@@ -233,7 +245,7 @@ namespace OutpostOmega.Game.turf
 
                             triangles.AddRange(GetIndices(vertexIndex));
 
-                            uv1.AddRange(GetUV(Block.GetTurfType(block).GetUVCoords(block)[Direction.Top]));
+                            uv1.AddRange(GetUV(block.TurfType.GetUVCoords(block)[Direction.Top]));
 
                             SetDecoys(GetCableUV(block, Direction.Top), uv2, uv3, uv4);
 
@@ -263,7 +275,7 @@ namespace OutpostOmega.Game.turf
 
                             triangles.AddRange(GetIndices(vertexIndex));
 
-                            uv1.AddRange(GetUV(Block.GetTurfType(block).GetUVCoords(block)[Direction.Bottom]));
+                            uv1.AddRange(GetUV(block.TurfType.GetUVCoords(block)[Direction.Bottom]));
 
                             SetDecoys(GetCableUV(block, Direction.Bottom), uv2, uv3, uv4);
                             /*var uvs = new JVector2[4];
@@ -293,7 +305,7 @@ namespace OutpostOmega.Game.turf
 
                             triangles.AddRange(GetIndices(vertexIndex));
 
-                            uv1.AddRange(GetUV(Block.GetTurfType(block).GetUVCoords(block)[Direction.Left]));
+                            uv1.AddRange(GetUV(block.TurfType.GetUVCoords(block)[Direction.Left]));
 
                             SetDecoys(GetCableUV(block, Direction.Left), uv2, uv3, uv4);
 
@@ -314,7 +326,7 @@ namespace OutpostOmega.Game.turf
 
                             triangles.AddRange(GetIndices(vertexIndex));
 
-                            uv1.AddRange(GetUV(Block.GetTurfType(block).GetUVCoords(block)[Direction.Right]));
+                            uv1.AddRange(GetUV(block.TurfType.GetUVCoords(block)[Direction.Right]));
 
                             SetDecoys(GetCableUV(block, Direction.Right), uv2, uv3, uv4);
 
@@ -337,7 +349,7 @@ namespace OutpostOmega.Game.turf
 
                             triangles.AddRange(GetIndices(vertexIndex));
 
-                            uv1.AddRange(GetUV(Block.GetTurfType(block).GetUVCoords(block)[Direction.Back]));
+                            uv1.AddRange(GetUV(block.TurfType.GetUVCoords(block)[Direction.Back]));
 
                             SetDecoys(GetCableUV(block, Direction.Back), uv2, uv3, uv4);
 
@@ -358,7 +370,7 @@ namespace OutpostOmega.Game.turf
 
                             triangles.AddRange(GetIndices(vertexIndex));
 
-                            uv1.AddRange(GetUV(Block.GetTurfType(block).GetUVCoords(block)[Direction.Front]));
+                            uv1.AddRange(GetUV(block.TurfType.GetUVCoords(block)[Direction.Front]));
 
                             SetDecoys(GetCableUV(block, Direction.Front), uv2, uv3, uv4);
 
@@ -484,9 +496,9 @@ namespace OutpostOmega.Game.turf
 
         private JVector2[] GetCableUV(Block block, Direction direction)
         {
-            if (!Block.HasDecoy(block, direction)) return null;
+            if (!block.HasDecoy(direction)) return null;
 
-            var Cables = Block.GetCables(block, direction);
+            var Cables = block.GetCables(direction);
 
             List<JVector2> retList = new List<JVector2>();
             foreach (var Cable in Cables)
@@ -593,7 +605,7 @@ namespace OutpostOmega.Game.turf
                     targX < SizeXYZ &&
                     targY < SizeXYZ &&
                     targZ < SizeXYZ)
-                    return !Block.IsVisible(blocks[targX, targY, targZ]);
+                    return !blocks[targX, targY, targZ].IsVisible;
                 else
                     if (AssignedStructure != null)
                     {
@@ -601,7 +613,7 @@ namespace OutpostOmega.Game.turf
                         targY += (int)this.Position.Y;
                         targZ += (int)this.Position.Z;
 
-                        return !Block.IsVisible(this.AssignedStructure[targX, targY, targZ]);
+                        return !this.AssignedStructure[targX, targY, targZ].IsVisible;
                     }
                     else
                         return true; //border and no structure available (failsave)
@@ -622,7 +634,7 @@ namespace OutpostOmega.Game.turf
                 targX < SizeXYZ &&
                 targY < SizeXYZ &&
                 targZ < SizeXYZ)
-                return !Block.IsVisible(blocks[targX, targY, targZ]);
+                return !blocks[targX, targY, targZ].IsVisible;
             else
                 if (AssignedStructure != null)
                 {
@@ -630,7 +642,7 @@ namespace OutpostOmega.Game.turf
                     targY += (int)this.Position.Y;
                     targZ += (int)this.Position.Z;
 
-                    return !Block.IsVisible(this.AssignedStructure[targX, targY, targZ]);
+                    return !this.AssignedStructure[targX, targY, targZ].IsVisible;
                 }
                 else
                     return true; //border and no structure available (failsave)

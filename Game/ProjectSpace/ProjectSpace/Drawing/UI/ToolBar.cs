@@ -40,11 +40,13 @@ namespace OutpostOmega.Drawing.UI
             buttonLabel = new Label(this);
             for(int i = 0; i < 9; i++)
             {
-                var cont = new ImagePanel(this);
-                cont.Name = (i+1).ToString();
-                cont.ImageName = @"Content\Image\ToolBG.png";
-                cont.Width = size;
-                cont.Height = size;
+                var cont = new ImagePanel(this)
+                {
+                    Name = (i + 1).ToString(),
+                    ImageName = @"Content\Image\ToolBG.png",
+                    Width = size,
+                    Height = size
+                };
                 cont.SetPosition(posx, this.Height - cont.Height);
                 cont.Clicked += cont_Clicked;
                 //cont.HoverEnter += HoverEnter;
@@ -230,7 +232,6 @@ namespace OutpostOmega.Drawing.UI
             //this.Parent.Hide();
         }
 
-        OutpostOmega.Game.GameObjects.Item[] OldQuickslots;
         public override void Think()
         {
             if (Exit)

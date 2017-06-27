@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using OutpostOmega.Game.turf;
+using OutpostOmega.Game.Turf;
 
 namespace OutpostOmega.Drawing.Game
 {
     /// <summary>
     /// Used to display a chunk in the opengl world
     /// </summary>
-    class dChunk : Mesh
+    class ChunkDrawer : Mesh
     {
         private static Texture2D ChunkTileset;
         private static Texture2D ChunkTilesetNormal;
         private static Texture2D CableTileset;
 
         public Chunk SourceChunk { get; set; }
-        public dChunk(Chunk chunk)
+        public ChunkDrawer(Chunk chunk)
             : base(PrimitiveType.Triangles, Tools.Convert.Mesh.Vertex.Jitter_To_OpenGL(chunk.mesh), Tools.Convert.Mesh.Index.Jitter_To_OpenGL(chunk.mesh))
         {
             this.SourceChunk = chunk;

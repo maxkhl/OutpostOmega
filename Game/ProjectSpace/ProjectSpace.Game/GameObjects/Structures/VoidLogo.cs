@@ -15,7 +15,7 @@ namespace OutpostOmega.Game.GameObjects.Structures
     [Attributes.Construction(typeof(Frame), typeof(Items.Tool))]
     public class VoidLogo : Structure
     {
-        public VoidLogo(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "VoidLogo")
+        public VoidLogo(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "VoidLogo")
             : base(X, Y, Z, Structure, World, ID)
         {
             //this.IsPassable = true;

@@ -44,7 +44,7 @@ namespace OutpostOmega.Drawing.Screens
             {
                 var modelMesh = new Mesh(OpenTK.Graphics.OpenGL.PrimitiveType.Triangles, mesh.Vertices, mesh.Indices[Grendgine_Collada_Input_Semantic.VERTEX]);
                 
-                Texture2D texture;
+               // Texture2D texture;
                 /*if (Model.GetTexture(mesh.Name) != null)
                 {
                     if (Model.GetTexture(mesh.Name).Data == null)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Jitter.LinearMath;
 using OutpostOmega.Game.GameObjects.Mobs;
 using OutpostOmega.Game;
-using OutpostOmega.Game.turf;
+using OutpostOmega.Game.Turf;
 using System.Threading;
 using Lidgren.Network;
 
@@ -28,28 +28,41 @@ namespace OutpostOmega.Server.Network
         private Client _client { get; set; }
 
         private List<GameObject> _ObjectScope;
-        private List<Chunk> _ChunkScope;
 
         public Scope(Client client)
         {
             this._client = client;
             this._ObjectScope = new List<GameObject>();
-            this._ChunkScope = new List<Chunk>();
             this.NeedsUpdate = true;
 
             _client.Host.networkHandler.World.GameObjectRemoved += World_GameObjectRemoved;
             _client.Host.networkHandler.World.NewGameObject += World_NewGameObject;
-            _client.Host.networkHandler.World.Structures[0].newChunk += Scope_newChunk;
+            _client.Host.networkHandler.World.Structures[0].Changed += StructureChanged;
+
+            //_client.Host.networkHandler.World.Structures[0].newChunk += Scope_newChunk;
         }
 
-        void Scope_newChunk(Chunk newChunk)
+        private void StructureChanged(Structure sender, JVector Position, Block block, bool Added)
+        {
+            var outgoingMessage = _client.GetOM(
+                OutpostOmega.Network.Command.Data,                 
+                Added ? OutpostOmega.Network.SecondCommand.CreateBlock : OutpostOmega.Network.SecondCommand.RemoveBlock);
+
+            //outgoingMessage.Write(_client.Host.networkHandler.GetObjectData(_client.ID, block));
+
+            outgoingMessage.Write(block.type);
+            outgoingMessage.Write(Position.X);
+            outgoingMessage.Write(Position.Y);
+            outgoingMessage.Write(Position.Z);
+        }
+
+        /*void Scope_newChunk(Chunk newChunk)
         {
             if (Disposing || Idling) return;
 
-            _ChunkScope.Add(newChunk);
             var outgoingMessage = _client.GetOM(OutpostOmega.Network.Command.Create, OutpostOmega.Network.SecondCommand.Chunk);
             outgoingMessage.Write(_client.Host.networkHandler.GetObjectData(_client.ID, newChunk));
-        }
+        }*/
 
         void World_NewGameObject(GameObject newGameObject)
         {
@@ -430,7 +443,9 @@ namespace OutpostOmega.Server.Network
 
             _client.Host.networkHandler.World.GameObjectRemoved -= World_GameObjectRemoved;
             _client.Host.networkHandler.World.NewGameObject -= World_NewGameObject;
-            _client.Host.networkHandler.World.Structures[0].newChunk -= Scope_newChunk;
+            _client.Host.networkHandler.World.Structures[0].Changed -= StructureChanged;
+
+            //_client.Host.networkHandler.World.Structures[0].newChunk -= Scope_newChunk;
 
             foreach (var gameObject in _ObjectScope)
                 gameObject.PropertyChanged -= gObject_PropertyChanged;
@@ -449,7 +464,8 @@ namespace OutpostOmega.Server.Network
 
                 _client.Host.networkHandler.World.GameObjectRemoved += World_GameObjectRemoved;
                 _client.Host.networkHandler.World.NewGameObject += World_NewGameObject;
-                _client.Host.networkHandler.World.Structures[0].newChunk += Scope_newChunk;
+                //_client.Host.networkHandler.World.Structures[0].newChunk += Scope_newChunk;
+                _client.Host.networkHandler.World.Structures[0].Changed += StructureChanged;
 
                 foreach (var gameObject in _ObjectScope)
                     gameObject.PropertyChanged += gObject_PropertyChanged;

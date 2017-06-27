@@ -13,9 +13,6 @@ namespace OutpostOmega.Drawing.UI
     class Test : WindowControl
     {
         Scene Scene;
-        Button connect;
-        TextBox adress;
-        TextBox username;
         //ListBox output;
         public Test(Scene Scene, Base parent)
             : base(parent, "TestWindow")
@@ -45,9 +42,11 @@ namespace OutpostOmega.Drawing.UI
 
             graphics.DrawLine(new System.Drawing.Pen(System.Drawing.Color.White, 5), new System.Drawing.Point(5, 60), new System.Drawing.Point(80, 60));
 
-            ImagePanel imgPanel = new ImagePanel(this);
-            imgPanel.Width = 200;
-            imgPanel.Height = 100;
+            ImagePanel imgPanel = new ImagePanel(this)
+            {
+                Width = 200,
+                Height = 100
+            };
             Texture2D tex = new Texture2D(img);
             imgPanel.ImageHandle = tex.Handle;
 

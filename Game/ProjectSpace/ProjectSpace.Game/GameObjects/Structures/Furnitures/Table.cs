@@ -15,7 +15,7 @@ namespace OutpostOmega.Game.GameObjects.Structures
     [Attributes.Construction(typeof(Frame), typeof(Items.Tool))]
     public class Table : Structure
     {
-        public Table(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "table")
+        public Table(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "table")
             : base(X, Y, Z, Structure, World, ID)
         {
             this.SpaceRequirement = new bool[1, 1, 1] { { { true } } };

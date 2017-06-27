@@ -7,6 +7,9 @@ using OpenTK;
 
 namespace OutpostOmega.View
 {
+    /// <summary>
+    /// Basic abstract camera class. Provides functionality for the different camera types
+    /// </summary>
     abstract class Camera
     {
         /// <summary>
@@ -32,14 +35,20 @@ namespace OutpostOmega.View
         }
         private Drawing.Screen _Screen;
 
-        public float FieldOfView = 1.3f;
-
+        /// <summary>
+        /// Gets triggered by the attached screen
+        /// </summary>
         void _Screen_BoundsChanged(object sender, int Width, int Height)
         {
             this.Width = Width;
             this.Height = Height;
             this.Refresh();
         }
+
+        /// <summary>
+        /// FIeld of view for this camera
+        /// </summary>
+        public float FieldOfView = 1.3f;
 
         /// <summary>
         /// Position of the camera
@@ -58,19 +67,15 @@ namespace OutpostOmega.View
 
         /// <summary>
         /// The View and Projection Matrix of this camera
+        /// Overridden by other classes
         /// </summary>
-        public virtual Matrix4 ViewProjectionMatrix {  get; }
-
-
-        public bool LockCursor { get; set; }
+        public abstract Matrix4 ViewProjectionMatrix {  get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Camera"/> class.
         /// </summary>
         public Camera()
-        {
-            
-        }
+        { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Camera"/> class.

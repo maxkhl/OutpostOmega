@@ -12,7 +12,7 @@ namespace OutpostOmega.Game.GameObjects.Structures
     /// </summary>
     public class Suzanne : Structure
     {
-        public Suzanne(int X, int Y, int Z, turf.Structure Structure, World world, string ID = "Suzanne")
+        public Suzanne(int X, int Y, int Z, Turf.Structure Structure, World world, string ID = "Suzanne")
             : base(X, Y, Z, Structure, world, ID)
         {
             this.SpaceRequirement = new bool[1, 1, 1] { { { true } } };

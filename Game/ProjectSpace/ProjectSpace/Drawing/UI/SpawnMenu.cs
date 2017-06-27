@@ -101,9 +101,9 @@ namespace OutpostOmega.Drawing.UI
 
         private void BuildTurfTree(TreeNode ParentNode)
         {
-            var tnames = Enum.GetNames(typeof(OutpostOmega.Game.turf.types.turfTypeE));
+            var tnames = Enum.GetNames(typeof(OutpostOmega.Game.Turf.Types.TurfTypeE));
             foreach (string turfname in tnames)
-                ParentNode.AddNode(turfname).UserData = (OutpostOmega.Game.turf.types.turfTypeE)Enum.Parse(typeof(OutpostOmega.Game.turf.types.turfTypeE), turfname);
+                ParentNode.AddNode(turfname).UserData = (OutpostOmega.Game.Turf.Types.TurfTypeE)Enum.Parse(typeof(OutpostOmega.Game.Turf.Types.TurfTypeE), turfname);
         }
 
         HorizontalSplitter hsplitter;
@@ -196,11 +196,11 @@ namespace OutpostOmega.Drawing.UI
                         spawnTool.SelectedBuildObject = newGameObject;
                     //}
                 }
-                else if (gObjType == typeof(OutpostOmega.Game.turf.types.turfTypeE))
+                else if (gObjType == typeof(OutpostOmega.Game.Turf.Types.TurfTypeE))
                 {
                     var spawnTool = GetPlayersSpawnTool();
                     if (spawnTool != null)
-                        spawnTool.SelectedBuildObject = (OutpostOmega.Game.turf.types.turfTypeE)selectedNode.UserData;
+                        spawnTool.SelectedBuildObject = (OutpostOmega.Game.Turf.Types.TurfTypeE)selectedNode.UserData;
                 }
             }
         }

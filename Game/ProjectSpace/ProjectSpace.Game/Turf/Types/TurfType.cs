@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using OutpostOmega.Game.GameObjects;
-using OutpostOmega.Game.structures;
+using OutpostOmega.Game.Structures;
 
-namespace OutpostOmega.Game.turf.types
+namespace OutpostOmega.Game.Turf.Types
 {
-    public interface turfType
+    public interface TurfType
     {
         bool IsVisible { get; }
         bool IsAirtight { get; }
         Dictionary<Direction, uvCoord> GetUVCoords(Block Block);
         Dictionary<Direction, uvCoord> UVCoords { get; }
     }
-    public enum turfTypeE
+    public enum TurfTypeE
     {
         space = 0,
         floor = 1,

@@ -46,7 +46,7 @@ namespace OutpostOmega.Game.GameObjects.Structures
         /// </summary>
         public event EventHandler powerStateChanged;
 
-        public Machine(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "machinery")
+        public Machine(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "machinery")
             : base(X, Y, Z, Structure, World, ID)
         {
 

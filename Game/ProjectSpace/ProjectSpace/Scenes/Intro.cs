@@ -44,12 +44,13 @@ namespace OutpostOmega.Scenes
 
 
 
-                LoadingImage = new ImagePanel(this.Canvas);
-                LoadingImage.ImageName = @"Content\Image\MinimalisticLogo.png";
+                LoadingImage = new ImagePanel(this.Canvas)
+                {
+                    ImageName = @"Content\Image\MinimalisticLogo.png",
 
-                LoadingImage.Width = 499;
-                LoadingImage.Height = 57;
-
+                    Width = 499,
+                    Height = 57
+                };
                 LoadingImage.X = Game.Width / 2 - LoadingImage.Width / 2;
                 LoadingImage.Y = -LoadingImage.TextureHeight;
                 LoadingImage.Animate(
@@ -66,18 +67,19 @@ namespace OutpostOmega.Scenes
                             OutpostOmega.Game.Tools.Easing.EaseFunction.CubicEaseOut);
                     });
 
-                MessageBox = new TextBox(this.Canvas);
-                MessageBox.Margin = new Margin(20, 20, 20, 20);
-                MessageBox.Width = this.Game.Width;
-                MessageBox.Height = this.Game.Height;
-                MessageBox.X = 0;
-                MessageBox.Y = this.Game.Height;
-                //MessageBox.Dock = Pos.Fill;
-                MessageBox.Font = new Font(this.renderer, "Arial", 15);
-                MessageBox.Alignment = Pos.Center;
-                MessageBox.TextColor = System.Drawing.Color.FromArgb(143, 143, 143); //Gray
-                MessageBox.ShouldDrawBackground = false;
-
+                MessageBox = new TextBox(this.Canvas)
+                {
+                    Margin = new Margin(20, 20, 20, 20),
+                    Width = this.Game.Width,
+                    Height = this.Game.Height,
+                    X = 0,
+                    Y = this.Game.Height,
+                    //MessageBox.Dock = Pos.Fill;
+                    Font = new Font(this.renderer, "Arial", 15),
+                    Alignment = Pos.Center,
+                    TextColor = System.Drawing.Color.FromArgb(143, 143, 143), //Gray
+                    ShouldDrawBackground = false
+                };
                 AddTextLine("Please keep in mind that this is a VERY early version.");
                 AddTextLine("Feel free to contact me at maxkhl@outpost-omega.com");
                 AddTextLine("");

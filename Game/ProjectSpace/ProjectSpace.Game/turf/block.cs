@@ -2,53 +2,53 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using OutpostOmega.Game.turf.types;
+using OutpostOmega.Game.Turf.Types;
 
-namespace OutpostOmega.Game.turf
+namespace OutpostOmega.Game.Turf
 {
     /// <summary>
     /// Basically every solid structure like walls, floors and roofs. 
     /// Interior or special structures that require advanced functionality (like windows, doors, stairs, ...), dont belong here. Look at gameobject.structure for that.
     /// This struct is used to store turfs in a compact and performant way.
     /// 
-    /// Everything you need to do with a turf, should be done over the static methods. Please change values only directly when you are absolutely sure what you are doing!
+    /// Everything you need to do with a turf, should be done over the methods. Please change values only directly when you are absolutely sure what you are doing!
     /// </summary>
     public struct Block
     {
         /// <summary>
         /// Type of this turf. Check the turfType enumeration for further info
         /// </summary>
-        public byte type;
+        public byte type { get; private set; }
 
         /// <summary>
         /// Determins if this block is indoor (can contain atmosphere)
         /// </summary>
-        public bool IsIndoor;
+        public bool IsIndoor { get; set; }
 
         /// <summary>
         /// Temperate of the gas inside this turf
         /// </summary>
-        public float Temperature;
+        public float Temperature { get; private set; }
 
         /// <summary>
         /// Determin if this block needs to be processed by the gas simulation
         /// </summary>
-        public bool NeedsProcessing;
+        public bool NeedsProcessing { get; set; }
 
         /// <summary>
         /// X-Position inside chunk
         /// </summary>
-        public byte X;
+        public byte X { get; private set; }
 
         /// <summary>
         /// Y-Position inside chunk
         /// </summary>
-        public byte Y;
+        public byte Y { get; private set; }
 
         /// <summary>
         /// Z-Position inside chunk
         /// </summary>
-        public byte Z;
+        public byte Z { get; private set; }
 
         public Int16 UVFront;
 
@@ -66,28 +66,28 @@ namespace OutpostOmega.Game.turf
 
         public byte[] Pipes;
 
-        public static bool HasDecoy(Block turf, structures.Direction direction)
+        public bool HasDecoy(Structures.Direction direction)
         {
-            if (GetCables(turf, direction).Count == 0)
+            if (GetCables( direction).Count == 0)
                 return false;
 
             return true;
         }
 
-        public static bool SetCable(ref Block turf, structures.Direction direction, datums.turf.Cable.cableType cableType)
+        public bool SetCable(Structures.Direction direction, datums.turf.Cable.cableType cableType)
         {
-            if (GetCables(turf, direction).Contains(cableType))
+            if (GetCables(direction).Contains(cableType))
                 return false;
 
             int count = 0;
-            if (turf.Cables == null)
-                turf.Cables = new byte[2];
+            if (this.Cables == null)
+                this.Cables = new byte[2];
             else
             {
                 bool exists = false;
-                for (int i = 0; i < turf.Cables.Length; i += 2)
+                for (int i = 0; i < this.Cables.Length; i += 2)
                 {
-                    if (turf.Cables[i] == (byte)direction)
+                    if (this.Cables[i] == (byte)direction)
                     {
                         count = i;
                         exists = true;
@@ -96,32 +96,32 @@ namespace OutpostOmega.Game.turf
 
                 if (!exists)
                 {
-                    count = turf.Cables.Length;
-                    Array.Resize(ref turf.Cables, turf.Cables.Length + 2);
+                    count = this.Cables.Length;
+                    Array.Resize(ref this.Cables, this.Cables.Length + 2);
                 }
             }
 
-            turf.Cables[count] = (byte)direction;
+            this.Cables[count] = (byte)direction;
             count++;
-            turf.Cables[count] = (byte)cableType;
+            this.Cables[count] = (byte)cableType;
 
             return true;
         }
-        public static List<datums.turf.Cable.cableType> GetCables(Block turf, structures.Direction direction)
+        public List<datums.turf.Cable.cableType> GetCables(Structures.Direction direction)
         {
             var ret = new List<datums.turf.Cable.cableType>();
 
-            if (turf.Cables == null || turf.Cables.Length == 0) return ret;
+            if (this.Cables == null || this.Cables.Length == 0) return ret;
 
-            for(int i = 0; i < turf.Cables.Count(); i+=2)
+            for(int i = 0; i < this.Cables.Count(); i+=2)
             {
-                if ((structures.Direction)turf.Cables[i] == direction)
-                    ret.Add((datums.turf.Cable.cableType)turf.Cables[i + 1]);
+                if ((Structures.Direction)this.Cables[i] == direction)
+                    ret.Add((datums.turf.Cable.cableType)this.Cables[i + 1]);
             }
             return ret;
         }
 
-        public static void RefreshCovered(Block turf)
+        public void RefreshCovered()
         {
 
         }
@@ -141,73 +141,80 @@ namespace OutpostOmega.Game.turf
         /// <summary>
         /// Determins if this turf is able to contain gas (Airtight will override this value!)
         /// </summary>
-        public static bool CanContainGas(Block turf)
+        public bool CanContainGas
         {
-            return turf.IsIndoor && !GetTurfType(turf.type).IsAirtight;
+            get
+            {
+                return this.IsIndoor && !this.TurfType.IsAirtight;
+            }
         }
 
         /// <summary>
         /// Determins if gas can pass through this block
         /// </summary>
-        public static bool IsAirtight(Block turf)
+        public bool IsAirtight
         {
-            return GetTurfType(turf.type).IsAirtight;
+            get
+            {
+                return this.TurfType.IsAirtight;
+            }
         }
 
         /// <summary>
         /// The gas-pressure inside this turf. This value is calculated out of the gas composition inside this turf and its unit-values
         /// </summary>
-        public static int Pressure(Block turf)
+        public int Pressure
         {
-            float pressure = 0;
-            if (turf.gasComposition != null)
+            get
             {
-                for (int i = 0; i < turf.gasComposition.Count; i++)
+                float pressure = 0;
+                if (this.gasComposition != null)
                 {
-                    pressure += turf.gasComposition[i].Units;
+                    for (int i = 0; i < this.gasComposition.Count; i++)
+                    {
+                        pressure += this.gasComposition[i].Units;
+                    }
                 }
+                return (int)pressure;
             }
-            return (int)pressure;
         }
 
         /// <summary>
         /// Determins if this turf should be drawn / is visible (renderwise)
         /// </summary>
-        public static bool IsVisible(Block turf)
+        public bool IsVisible
         {
-            return GetTurfType(turf.type).IsVisible;
+            get
+            {
+                return this.TurfType.IsVisible;
+            }
         }
 
         /// <summary>
         /// Every available turf type. Do not change the order!
         /// </summary>
-        private static turfType[] types = new turfType[] 
+        private static TurfType[] types = new TurfType[] 
         {             
-            new types.space(),
-            new types.floor(),            
+            new Types.SpaceTurf(),
+            new Types.FloorTurf(),            
         };
 
         /// <summary>
         /// Returns the typeobject of the specific turf. Changing stuff there will apply to every turf of the same type
         /// </summary>
-        public static turfType GetTurfType(byte type)
+        public TurfType TurfType
         {
-            return types[type];
+            get
+            {
+                return types[this.type];
+            }
         }
 
         /// <summary>
-        /// Returns the typeobject of the specific turf. Changing stuff there will apply to every turf of the same type
-        /// </summary>
-        public static turfType GetTurfType(Block turf)
-        {
-            return types[turf.type];
-        }
-
-        /// <summary>
-        /// Creates a new turf object. Better use this to make a valid turf
+        /// Creates a new block. Better use this to make a valid block
         /// </summary>
         /// <param name="TurfType">Type</param>
-        public static Block Create(turfTypeE TurfType, byte X, byte Y, byte Z)
+        public static Block Create(TurfTypeE TurfType, byte X, byte Y, byte Z)
         {
             return new Block()
             {
@@ -230,31 +237,31 @@ namespace OutpostOmega.Game.turf
         /// </summary>
         /// <param name="gasID">Gas ID</param>
         /// <param name="units">Units of the gas to add</param>
-        public static void ModGas(ref Block turf, byte gasID, float units)
+        public void ModGas(byte gasID, float units)
         {
-            if (!CanContainGas(turf))
+            if (!this.CanContainGas)
                 return;
 
             //This is a space block. So we let air, that got sent to us, dissapear
-            if (!turf.IsIndoor)
+            if (!this.IsIndoor)
                 return;
 
 
             bool hit = false;
-            if (turf.gasComposition == null)
-                turf.gasComposition = new List<atmospherics.GasState>();
+            if (this.gasComposition == null)
+                this.gasComposition = new List<atmospherics.GasState>();
 
-            for (int i = 0; i < turf.gasComposition.Count; i++)
+            for (int i = 0; i < this.gasComposition.Count; i++)
             {
-                if (turf.gasComposition[i].GasID == gasID)
+                if (this.gasComposition[i].GasID == gasID)
                 {
-                    var gasState = turf.gasComposition[i];
+                    var gasState = this.gasComposition[i];
                     gasState.Units += units;
-                    turf.gasComposition[i] = gasState;
+                    this.gasComposition[i] = gasState;
 
                     // No gas left
-                    if (turf.gasComposition[i].Units == 0)
-                        turf.gasComposition.RemoveAt(i);
+                    if (this.gasComposition[i].Units == 0)
+                        this.gasComposition.RemoveAt(i);
 
 
                     hit = true;
@@ -262,14 +269,14 @@ namespace OutpostOmega.Game.turf
             }
             if (!hit)
             {
-                turf.gasComposition.Add(new atmospherics.GasState()
+                this.gasComposition.Add(new atmospherics.GasState()
                 {
                     GasID = gasID,
                     Units = units
                 });
             }
 
-            turf.NeedsProcessing = true; // Important!
+            this.NeedsProcessing = true; // Important!
         }
     }
 }

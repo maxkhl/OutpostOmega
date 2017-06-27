@@ -19,7 +19,7 @@ namespace OutpostOmega.Game.GameObjects.Structures.Machines.Doors
 
         private Content.Model _Model;
 
-        public Airlock(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "airlock")
+        public Airlock(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "airlock")
             : base(X, Y, Z, Structure, World, ID)
         {
             this.BlockOffset = new JVector(0, 1, .5f);

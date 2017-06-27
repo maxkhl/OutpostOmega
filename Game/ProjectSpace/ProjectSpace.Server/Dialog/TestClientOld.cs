@@ -12,7 +12,7 @@ namespace OutpostOmega.Server.Dialog
 {
     public partial class TestClientOld : Form
     {
-        public nClient uClient { get; set; }
+        public GameNetClient uClient { get; set; }
 
         Timer timer;
 
@@ -25,7 +25,7 @@ namespace OutpostOmega.Server.Dialog
             if (inpBox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 Username = inpBox.InputText;
 
-            uClient = new nClient(Username);
+            uClient = new GameNetClient(Username);
 
             uClient.Connect("localhost", 12041);
 

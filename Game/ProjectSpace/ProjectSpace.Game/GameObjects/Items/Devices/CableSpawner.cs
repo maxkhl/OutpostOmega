@@ -94,31 +94,31 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
                     var hitPoint = User.View.TargetHitInside;
                     var hitBlock = User.View.TargetStructure[hitPoint.X, hitPoint.Y, hitPoint.Z];
 
-                    if(turf.Block.IsVisible(hitBlock))
+                    if(hitBlock.IsVisible)
                     {
                         var Chunk = User.View.TargetStructure.GetChunkAtPos(hitPoint);
                         var BlockPos = Chunk.Position + new JVector(hitBlock.X, hitBlock.Y, hitBlock.Z) + new JVector(0.5f);
 
-                        structures.Direction dir = structures.Direction.Front;
+                        Game.Structures.Direction dir = Game.Structures.Direction.Front;
                         if (User.View.TargetHitNormal == JVector.Forward)
-                            dir = structures.Direction.Front;
+                            dir = Game.Structures.Direction.Front;
 
                         if (User.View.TargetHitNormal == JVector.Backward)
-                            dir = structures.Direction.Back;
+                            dir = Game.Structures.Direction.Back;
 
                         if (User.View.TargetHitNormal == JVector.Left)
-                            dir = structures.Direction.Left;
+                            dir = Game.Structures.Direction.Left;
 
                         if (User.View.TargetHitNormal == JVector.Right)
-                            dir = structures.Direction.Right;
+                            dir = Game.Structures.Direction.Right;
 
                         if (User.View.TargetHitNormal == JVector.Up)
-                            dir = structures.Direction.Top;
+                            dir = Game.Structures.Direction.Top;
 
                         if (User.View.TargetHitNormal == JVector.Down)
-                            dir = structures.Direction.Bottom;
+                            dir = Game.Structures.Direction.Bottom;
 
-                        var currcables = turf.Block.GetCables(hitBlock, dir);
+                        var currcables = hitBlock.GetCables(dir);
 
                         datums.turf.Cable.cableType oldCable = datums.turf.Cable.cableType.CurveWN;
                         if (currcables.Count > 0)
@@ -168,7 +168,7 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
                                 break;
                         }*/
 
-                        turf.Block.SetCable(ref hitBlock, dir, newCable);
+                        hitBlock.SetCable(dir, newCable);
 
                         User.View.TargetStructure[hitPoint.X, hitPoint.Y, hitPoint.Z] = hitBlock;
                         User.View.TargetStructure.GetChunkAtPos(hitPoint).NeedsRender = true;

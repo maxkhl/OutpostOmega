@@ -191,6 +191,7 @@
     <Compile Include="Drawing\Vertex.cs" />
     <Compile Include="Drawing\Texture2D.cs" />
     <Compile Include="GameStarter.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="MainGame_Cursor.cs" />
     <Compile Include="Program.cs" />

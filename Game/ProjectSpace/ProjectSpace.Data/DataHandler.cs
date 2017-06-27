@@ -78,7 +78,7 @@ namespace OutpostOmega.Data
 
                     return DataHandler.LoadXML(mStream);
                 }
-                catch(Exception e)
+                catch
                 {
                     // Try it without decompression
                     stream.Seek(0, SeekOrigin.Begin);

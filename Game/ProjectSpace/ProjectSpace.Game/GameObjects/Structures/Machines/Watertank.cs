@@ -17,7 +17,7 @@ namespace OutpostOmega.Game.GameObjects.Structures.Machines
     public class Watertank : Machine
     {
 
-        public Watertank(int X, int Y, int Z, turf.Structure Structure, World World, string ID = "watertank")
+        public Watertank(int X, int Y, int Z, Turf.Structure Structure, World World, string ID = "watertank")
             : base(X, Y, Z, Structure, World, ID)
         {
             this.SpaceRequirement = new bool[2, 2, 2] { { { true, true }, { true, true } }, { { true, true }, { true, true } } };

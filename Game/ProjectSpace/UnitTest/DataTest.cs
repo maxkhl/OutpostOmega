@@ -21,8 +21,8 @@ namespace UnitTest
             var rnd = new Random();
 
             newWorld = new World("Testworld");
-            newWorld.Structures.Add(new OutpostOmega.Game.turf.Structure(newWorld, "TestStructure"));
-            var Turfs = Enum.GetNames(typeof(OutpostOmega.Game.turf.types.turfTypeE));
+            newWorld.Structures.Add(new OutpostOmega.Game.Turf.Structure(newWorld, "TestStructure"));
+            var Turfs = Enum.GetNames(typeof(OutpostOmega.Game.Turf.Types.TurfTypeE));
 
             var number = rnd.Next(10, 100);
 
@@ -30,7 +30,7 @@ namespace UnitTest
             {
                 var turf = Turfs[rnd.Next(0, Turfs.Length - 1)];
                 newWorld.Structures[0].Add(
-                    (OutpostOmega.Game.turf.types.turfTypeE)Enum.Parse(typeof(OutpostOmega.Game.turf.types.turfTypeE), turf),
+                    (OutpostOmega.Game.Turf.Types.TurfTypeE)Enum.Parse(typeof(OutpostOmega.Game.Turf.Types.TurfTypeE), turf),
                     new JVector(
                         ((float)rnd.Next(1, 1000)) / 10,
                         ((float)rnd.Next(1, 1000)) / 10,
@@ -176,9 +176,9 @@ namespace UnitTest
                     var SerializedChunk = world2.Structures[i].chunks[c];
                     string Detail = "";
 
-                    for (int x = 0; x < OutpostOmega.Game.turf.Chunk.SizeXYZ; x++)
-                        for (int y = 0; y < OutpostOmega.Game.turf.Chunk.SizeXYZ; y++)
-                            for (int z = 0; z < OutpostOmega.Game.turf.Chunk.SizeXYZ; z++)
+                    for (int x = 0; x < OutpostOmega.Game.Turf.Chunk.SizeXYZ; x++)
+                        for (int y = 0; y < OutpostOmega.Game.Turf.Chunk.SizeXYZ; y++)
+                            for (int z = 0; z < OutpostOmega.Game.Turf.Chunk.SizeXYZ; z++)
                             {
                                 var OriginalBlock = OriginalChunk[x, y, z];
                                 var SerializedBlock = OriginalChunk[x, y, z];

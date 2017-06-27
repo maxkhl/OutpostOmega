@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.Xml.Linq;
-using OutpostOmega.Game.turf;
+using OutpostOmega.Game.Turf;
 
 namespace OutpostOmega.Data.converter
 {
@@ -60,11 +60,11 @@ namespace OutpostOmega.Data.converter
         {
             var chunkData = Decompress(Convert.FromBase64String(element.Element("chunkData").Value));
 
-            var chunkBlocks = new OutpostOmega.Game.turf.Block[Chunk.SizeXYZ, Chunk.SizeXYZ, Chunk.SizeXYZ];
+            var chunkBlocks = new OutpostOmega.Game.Turf.Block[Chunk.SizeXYZ, Chunk.SizeXYZ, Chunk.SizeXYZ];
             for (byte x = 0; x < Chunk.SizeXYZ; x++)
                 for (byte y = 0; y < Chunk.SizeXYZ; y++)
                     for (byte z = 0; z < Chunk.SizeXYZ; z++)
-                        chunkBlocks[x, y, z] = OutpostOmega.Game.turf.Block.Create((OutpostOmega.Game.turf.types.turfTypeE)Enum.Parse(typeof(OutpostOmega.Game.turf.types.turfTypeE), chunkData[x + Chunk.SizeXYZ * (y + Chunk.SizeXYZ * z)].ToString()), x, y, z);
+                        chunkBlocks[x, y, z] = OutpostOmega.Game.Turf.Block.Create((OutpostOmega.Game.Turf.Types.TurfTypeE)Enum.Parse(typeof(OutpostOmega.Game.Turf.Types.TurfTypeE), chunkData[x + Chunk.SizeXYZ * (y + Chunk.SizeXYZ * z)].ToString()), x, y, z);
 
             
 

@@ -22,7 +22,7 @@ namespace OutpostOmega.Game
             var world = new OutpostOmega.Game.World(); //Generate World
 
             //dWorld.World.Debug = true;
-            OutpostOmega.Game.turf.Structure.AddFlat(world, 30, 1); //Generate test Structure
+            OutpostOmega.Game.Turf.Structure.AddFlat(world, 30, 1); //Generate test Structure
 
             //World.Debug = true;
 
@@ -52,103 +52,103 @@ namespace OutpostOmega.Game
             var galaxmachine = new OutpostOmega.Game.GameObjects.Structures.Machines.Vendingmachine(-3, 1, -3, world.Structures[0], world);
             //galaxmachine.PhysicSetPosition(new Jitter.LinearMath.JVector(-2.5f, 1, -4.65f));
             galaxmachine.Register();
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-3, 1, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-3, 2, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-3, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-3, 1, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-3, 2, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-3, 3, -4));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-4, 1, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-4, 2, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-4, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-4, 1, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-4, 2, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-4, 3, -4));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-5, 1, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-5, 2, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-5, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-5, 1, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-5, 2, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-5, 3, -4));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 1, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 2, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 3, -4));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-2, 1, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-2, 2, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-2, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-2, 1, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-2, 2, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-2, 3, -4));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-1, 3, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(0, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-1, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(0, 3, -4));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(1, 1, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(1, 2, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(1, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(1, 1, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(1, 2, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(1, 3, -4));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(2, 1, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(2, 2, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(2, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(2, 1, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(2, 2, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(2, 3, -4));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-6, 4, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-5, 4, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-4, 4, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-3, 4, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-2, 4, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-1, 4, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(-0, 4, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, -2));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, -1));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, 0));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, -1));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(1, 4, 0));
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(2, 4, -4));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(2, 4, -3));
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(2, 4, -2));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(2, 4, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(2, 4, -3));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(2, 4, -2));
 
             new OutpostOmega.Game.GameObjects.Structures.Frame(3, 4, -4, world.Structures[0], world).Register();
             new OutpostOmega.Game.GameObjects.Structures.Frame(3, 4, -3, world.Structures[0], world).Register();
@@ -158,13 +158,13 @@ namespace OutpostOmega.Game
 
             new OutpostOmega.Game.GameObjects.Structures.Frame(3, 1, -4, world.Structures[0], world).Register();
             new OutpostOmega.Game.GameObjects.Structures.Window(3, 2, -4, world.Structures[0], world).Register();
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(3, 3, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(3, 3, -4));
 
             new OutpostOmega.Game.GameObjects.Structures.Frame(4, 1, -4, world.Structures[0], world).Register();
             new OutpostOmega.Game.GameObjects.Structures.Window(4, 2, -4, world.Structures[0], world).Register();
             new OutpostOmega.Game.GameObjects.Structures.Frame(4, 3, -4, world.Structures[0], world).Register();
 
-            world.Structures[0].Add(OutpostOmega.Game.turf.types.turfTypeE.floor, new Jitter.LinearMath.JVector(5, 1, -4));
+            world.Structures[0].Add(OutpostOmega.Game.Turf.Types.TurfTypeE.floor, new Jitter.LinearMath.JVector(5, 1, -4));
             new OutpostOmega.Game.GameObjects.Structures.Frame(5, 2, -4, world.Structures[0], world).Register();
 
             new OutpostOmega.Game.GameObjects.Structures.Frame(6, 1, -4, world.Structures[0], world).Register();

@@ -13,7 +13,7 @@ namespace OutpostOmega.Server.Dialog
 {
     public partial class TestClient : Form
     {
-        public nClient uClient { get; set; }
+        public GameNetClient uClient { get; set; }
 
         World GameWorld;
 
@@ -23,7 +23,7 @@ namespace OutpostOmega.Server.Dialog
         {
             InitializeComponent();
 
-            uClient = new nClient("TestClient");
+            uClient = new GameNetClient("TestClient");
             uClient.NewWorldReceived += uClient_NewWorldReceived;
 
             timer = new Timer();

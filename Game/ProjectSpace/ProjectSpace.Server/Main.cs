@@ -107,9 +107,11 @@ namespace OutpostOmega.Server
 
                 if (ClientPanel != null)
                     ClientPanel.Dispose();
-                ClientPanel = new Dialog.uc_Clients(Host);
-                ClientPanel.Parent = splitContainer1.Panel2;
-                ClientPanel.Dock = DockStyle.Fill;
+                ClientPanel = new Dialog.uc_Clients(Host)
+                {
+                    Parent = splitContainer1.Panel2,
+                    Dock = DockStyle.Fill
+                };
             }
         }
 
@@ -153,13 +155,16 @@ namespace OutpostOmega.Server
             SecondTimer.Tick += SecondTimer_Tick;
             SecondTimer.Start();*/
 
-            var netstats = new Dialog.uc_NetStats(this);
-            netstats.Parent = tP_Stats;
-            netstats.Dock = DockStyle.Fill;
-
-            var worldviewer = new Dialog.uc_WorldViewer(this);
-            worldviewer.Parent = tP_WorldViewer;
-            worldviewer.Dock = DockStyle.Fill;
+            var netstats = new Dialog.uc_NetStats(this)
+            {
+                Parent = tP_Stats,
+                Dock = DockStyle.Fill
+            };
+            var worldviewer = new Dialog.uc_WorldViewer(this)
+            {
+                Parent = tP_WorldViewer,
+                Dock = DockStyle.Fill
+            };
         }
 
         /*void SecondTimer_Tick(object sender, EventArgs e)
@@ -174,18 +179,21 @@ namespace OutpostOmega.Server
 
         private void tSMI_Physic_Debug_Click(object sender, EventArgs e)
         {
-            Thread debugThread = new Thread(new ParameterizedThreadStart(Drawer.Main.Start));
-            debugThread.Name = "DebugDrawer";
+            Thread debugThread = new Thread(new ParameterizedThreadStart(Drawer.Main.Start))
+            {
+                Name = "DebugDrawer"
+            };
             debugThread.Start(ActiveWorld);
         }
 
         private void tSMI_Main_World_Load_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = Environment.CurrentDirectory;
-            ofd.Filter = "Save Files (*.sav)|*.sav|All files (*.*)|*.*";
-            ofd.Multiselect = false;
-
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                InitialDirectory = Environment.CurrentDirectory,
+                Filter = "Save Files (*.sav)|*.sav|All files (*.*)|*.*",
+                Multiselect = false
+            };
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK && ofd.CheckFileExists)
             {
                 FileInfo loadFile = new FileInfo(ofd.FileName);
@@ -196,9 +204,10 @@ namespace OutpostOmega.Server
 
         private void tSMI_Main_World_Save_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Save Files (*.sav)|*.sav";
-
+            SaveFileDialog sfd = new SaveFileDialog()
+            {
+                Filter = "Save Files (*.sav)|*.sav"
+            };
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo saveFile = new FileInfo(sfd.FileName);
@@ -525,11 +534,13 @@ namespace OutpostOmega.Server
                 MessageBox.Show("No world loaded.", "Error");
                 return;
             }
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Title = "Save world '" + ActiveWorld.ID + "' to";
-            sfd.InitialDirectory = Environment.CurrentDirectory;
-            sfd.Filter = "Save Files (*.sav)|*.sav";
-            sfd.DefaultExt = ".sav";
+            SaveFileDialog sfd = new SaveFileDialog()
+            {
+                Title = "Save world '" + ActiveWorld.ID + "' to",
+                InitialDirectory = Environment.CurrentDirectory,
+                Filter = "Save Files (*.sav)|*.sav",
+                DefaultExt = ".sav"
+            };
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 var targetFile = new FileInfo(sfd.FileName);
@@ -549,12 +560,14 @@ namespace OutpostOmega.Server
                     return;
             }
 
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Load world from";
-            ofd.InitialDirectory = Environment.CurrentDirectory;
-            ofd.Filter = "Save Files (*.sav)|*.sav|All files (*.*)|*.*";
-            ofd.Multiselect = false;
-            if(ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Title = "Load world from",
+                InitialDirectory = Environment.CurrentDirectory,
+                Filter = "Save Files (*.sav)|*.sav|All files (*.*)|*.*",
+                Multiselect = false
+            };
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 var targetFile = new FileInfo(ofd.FileName);
 
@@ -594,6 +607,18 @@ namespace OutpostOmega.Server
             {
                 rTB_Output.ScrollToCaret();
             }
+        }
+
+        /// <summary>
+        /// Adds a random block to the gameworld
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmi_addRandomBlock_Click(object sender, EventArgs e)
+        {
+            bool result = false;
+            while(!result)
+                result = _ActiveWorld.Structures[0].Add(Game.Turf.Types.TurfTypeE.floor, Jitter.LinearMath.JVector.GetRandom(50), true);
         }
     }
 }

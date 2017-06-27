@@ -63,9 +63,14 @@ namespace OutpostOmega.Network
         Request = 3,
 
         /// <summary>
-        /// Chunk
+        /// Block
         /// </summary>
-        Chunk = 3,
+        CreateBlock = 7,
+
+        /// <summary>
+        /// Block
+        /// </summary>
+        RemoveBlock = 8,
 
         /// <summary>
         /// GameObject

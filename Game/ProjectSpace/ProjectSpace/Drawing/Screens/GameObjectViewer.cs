@@ -30,7 +30,7 @@ namespace OutpostOmega.Drawing.Screens
                 {
                     if (value.Meshs.Count > 0)
                     {
-                        _GameObjectDrawer = new Game.dGameObject(value);
+                        _GameObjectDrawer = new Game.GameObjectDrawer(value);
                         _GameObjectDrawer.NoTranslation = true; //Keep it at 0 0 0
                         _GameObjectDrawer.ForceDraw = true;
 
@@ -44,7 +44,7 @@ namespace OutpostOmega.Drawing.Screens
         }
 
         private OutpostOmega.Game.GameObject _GameObject;
-        private Game.dGameObject _GameObjectDrawer;
+        private Game.GameObjectDrawer _GameObjectDrawer;
 
         private Drawing.RenderOptions _renderOptions;
 

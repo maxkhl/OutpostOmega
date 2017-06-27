@@ -103,13 +103,13 @@ namespace OutpostOmega.Drawing.UI
             base.Update(ElapsedTime);
         }
 
-        OutpostOmega.Network.nClient Client;
+        OutpostOmega.Network.GameNetClient Client;
 
         private LoadingScreen loadingScreen;
         void connect_Clicked(Base sender, ClickedEventArgs arguments)
         {
             loadingScreen = LoadingScreen.Start(Scene, Scene.Canvas, "Connecting...");
-            Client = new OutpostOmega.Network.nClient(username.Text);
+            Client = new OutpostOmega.Network.GameNetClient(username.Text);
             Client.NewWorldReceived += client_NewWorldReceived;
             Client.Disconnected += Client_Disconnected;
 
@@ -124,7 +124,7 @@ namespace OutpostOmega.Drawing.UI
 
         }
 
-        void Client_Disconnected(Network.nClient sender, string reason)
+        void Client_Disconnected(Network.GameNetClient sender, string reason)
         {
             if (loadingScreen != null)
             {

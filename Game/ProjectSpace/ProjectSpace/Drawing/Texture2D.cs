@@ -51,7 +51,7 @@ namespace OutpostOmega.Drawing
         {
             get
             {
-                return _filterMode;
+                return _filterMode; 
             }
             set
             {
@@ -107,9 +107,8 @@ namespace OutpostOmega.Drawing
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapNearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.GenerateMipmap, 1);
-
-            int maxAniso;
-            GL.GetInteger((GetPName)ExtTextureFilterAnisotropic.MaxTextureMaxAnisotropyExt, out maxAniso);
+            
+            GL.GetInteger((GetPName)ExtTextureFilterAnisotropic.MaxTextureMaxAnisotropyExt, out int maxAniso);
             GL.TexParameter(TextureTarget.Texture2D, (TextureParameterName)ExtTextureFilterAnisotropic.TextureMaxAnisotropyExt, maxAniso);
 
             BitmapData bmp_data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
@@ -132,8 +131,7 @@ namespace OutpostOmega.Drawing
         {
 
         }
-
-        private Matrix4 PushMatrix;
+        
         /// <summary>
         /// Binds the texture to a specified target (shader variable)
         /// </summary>

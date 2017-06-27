@@ -15,12 +15,12 @@ namespace OutpostOmega.Network
     /// <summary>
     /// Client for handling networkstuff on the gameclient
     /// </summary>
-    public partial class nClient : IDisposable
+    public partial class GameNetClient : IDisposable
     {
         /// <summary>
         /// Lidgren netClient object
         /// </summary>
-        public NetClient netClient { get; set; }
+        public NetClient NetClient { get; set; }
         
 		private uint s_timeInitialized = (uint)Environment.TickCount;
 
@@ -28,8 +28,8 @@ namespace OutpostOmega.Network
         { 
             get 
             {
-                if (this.netClient.ConnectionStatus == NetConnectionStatus.Connected)
-                    return this.netClient.Connections[0].GetRemoteTime(NetTime.Now);
+                if (this.NetClient.ConnectionStatus == NetConnectionStatus.Connected)
+                    return this.NetClient.Connections[0].GetRemoteTime(NetTime.Now);
                 else return 0;
                 //return (double)((uint)Environment.TickCount - s_timeInitialized) / 1000.0; 
             } 
@@ -62,8 +62,7 @@ namespace OutpostOmega.Network
             }
             set
             {
-                if (NewWorldReceived != null)
-                    NewWorldReceived(_World, value);
+                NewWorldReceived?.Invoke(_World, value);
 
                 Output.Enqueue("World '" + value.ID + "' received!");
                 _World = value;
@@ -75,7 +74,7 @@ namespace OutpostOmega.Network
         public delegate void NewWorldReceivedHandler(World oldWorld, World newWorld);
         public event NewWorldReceivedHandler NewWorldReceived;
 
-        public delegate void DisconnectedHandler(nClient sender, string reason);
+        public delegate void DisconnectedHandler(GameNetClient sender, string reason);
         public event DisconnectedHandler Disconnected;
 
         /// <summary>
@@ -106,7 +105,7 @@ namespace OutpostOmega.Network
         /// Constructor. This wont start the communication. Use Connect to connect to a server.
         /// </summary>
         /// <param name="Username"></param>
-        public nClient(string Username)
+        public GameNetClient(string Username)
         {
             this.Username = Username;
 
@@ -119,9 +118,9 @@ namespace OutpostOmega.Network
             NetPeerConfiguration config = new NetPeerConfiguration("pspace_network");
             //config.SimulatedMinimumLatency = 0;
             config.EnableMessageType(NetIncomingMessageType.ConnectionApproval);
-            netClient = new NetClient(config);
+            NetClient = new NetClient(config);
 
-            netClient.RegisterReceivedCallback(new SendOrPostCallback(MessageReceived));
+            NetClient.RegisterReceivedCallback(new SendOrPostCallback(MessageReceived));
 
             ThreadPool.QueueUserWorkItem(new WaitCallback(CalculatePPS));
         }
@@ -150,14 +149,14 @@ namespace OutpostOmega.Network
         {
 
 
-            if( netClient.ConnectionStatus == NetConnectionStatus.None ||
-                netClient.ConnectionStatus == NetConnectionStatus.Disconnected)
+            if( NetClient.ConnectionStatus == NetConnectionStatus.None ||
+                NetClient.ConnectionStatus == NetConnectionStatus.Disconnected)
             {
-                netClient.Start();
-                var approval = netClient.CreateMessage();
+                NetClient.Start();
+                var approval = NetClient.CreateMessage();
                 approval.Write(Username);
 
-                NetConnection connection = netClient.Connect(ServerAdress, ServerPort, approval);
+                NetConnection connection = NetClient.Connect(ServerAdress, ServerPort, approval);
                 Output.Enqueue("Connecting to " + ServerAdress + ":" + ServerPort.ToString());
                 return true;
             }
@@ -171,13 +170,12 @@ namespace OutpostOmega.Network
         /// <param name="Reason">Reason for disconnect</param>
         public void Disconnect(string Reason = "Requested by user")
         {
-            if (netClient.ConnectionStatus == NetConnectionStatus.Connected)
+            if (NetClient.ConnectionStatus == NetConnectionStatus.Connected)
             {
-                netClient.Disconnect(Reason);
+                NetClient.Disconnect(Reason);
 
                 // Fire Dc Event
-                if (Disconnected != null)
-                    Disconnected(this, Reason);
+                Disconnected?.Invoke(this, Reason);
             }
             _Online = false;
         }
@@ -190,7 +188,7 @@ namespace OutpostOmega.Network
         /// <returns>new NetOutgoingMessage</returns>
         public NetOutgoingMessage GetOM(Command Type, SecondCommand SecondType = SecondCommand.Null)
         {
-            var om = netClient.CreateMessage();
+            var om = NetClient.CreateMessage();
             om.Write((byte)Type);
             om.Write((byte)SecondType);
             return om;
@@ -202,7 +200,7 @@ namespace OutpostOmega.Network
         private void MessageReceived(object peer)
         {
             NetIncomingMessage im;
-            while (netClient != null && (im = netClient.ReadMessage()) != null)
+            while (NetClient != null && (im = NetClient.ReadMessage()) != null)
             {
                 string text;
                 switch (im.MessageType)
@@ -236,8 +234,7 @@ namespace OutpostOmega.Network
                             Output.Enqueue("Disconnected with reason '" + Reason + "'");
 
                             // Fire Dc Event
-                            if (Disconnected != null)
-                                Disconnected(this, Reason);
+                            Disconnected?.Invoke(this, Reason);
 
                             _Online = false;
                         }
@@ -285,10 +282,10 @@ namespace OutpostOmega.Network
                 }
             }
             if(NeedsPrediction)
-                gameObject.PropertyChanged += gameObject_PropertyChanged;
+                gameObject.PropertyChanged += GameObject_PropertyChanged;
         }
 
-        void gameObject_PropertyChanged(GameObject sender, string PropertyName, bool ChildChange)
+        void GameObject_PropertyChanged(GameObject sender, string PropertyName, bool ChildChange)
         {
             //Those are not interesting for networking. The parent will report the change already
             if (ChildChange) return;
@@ -316,11 +313,10 @@ namespace OutpostOmega.Network
                 {
                     Time = Clock,
                     Instance = delta
-                }); 
+                });
 
                 //Clean up old data
-                TimedObjectState oldestState;
-                while (PredictionData[sender][property].TryPeek(out oldestState) && oldestState.Time - Clock < 1) // We buffer max. 1 second
+                while (PredictionData[sender][property].TryPeek(out TimedObjectState oldestState) && oldestState.Time - Clock < 1) // We buffer max. 1 second
                 {
                     PredictionData[sender][property].TryDequeue(out oldestState); // Dequeue it and ignore it because its too old
                 }
@@ -333,17 +329,16 @@ namespace OutpostOmega.Network
             if (!PredictionData[Instance].ContainsKey(Property)) return;
 
             //Clean up data older then the current package
-            TimedObjectState oldestState;
-            while (PredictionData[Instance][Property].TryPeek(out oldestState) && oldestState.Time < Time)
+            while (PredictionData[Instance][Property].TryPeek(out TimedObjectState oldestState) && oldestState.Time < Time)
             {
                 PredictionData[Instance][Property].TryDequeue(out oldestState); // Dequeue it and ignore it because its too old
             }
 
-            if(PredictionData[Instance][Property].TryPeek(out oldestState))
+            /*if(PredictionData[Instance][Property].TryPeek(out oldestState))
                 if(oldestState.Time - Time > 1)
                 {
 
-                }
+                }*/
 
 
 
@@ -393,8 +388,10 @@ namespace OutpostOmega.Network
             if (_processThread == null ||
                 _processThread.ThreadState != ThreadState.Running)
             {
-                _processThread = new Thread(ProcessPackageWorker);
-                _processThread.Priority = ThreadPriority.Lowest;
+                _processThread = new Thread(ProcessPackageWorker)
+                {
+                    Priority = ThreadPriority.Lowest
+                };
                 //Output.Enqueue("Processthread started");
             }
 
@@ -446,8 +443,7 @@ namespace OutpostOmega.Network
         /// </summary>
         private void ProcessNextPackage()
         {
-            NetIncomingMessage im;
-            if (_packetQueue.TryDequeue(out im))
+            if (_packetQueue.TryDequeue(out NetIncomingMessage im))
             {
                 if (im == null)
                     return;
@@ -459,7 +455,7 @@ namespace OutpostOmega.Network
                     case (byte)Command.Create: // New object received
                         object obj = null;
 #if DEBUG
-                            obj = NetworkHandler.ReadSerializedData(im.ReadBytes(im.ReadInt32()));
+                        obj = NetworkHandler.ReadSerializedData(im.ReadBytes(im.ReadInt32()));
 #else
                         try
                         {
@@ -472,7 +468,7 @@ namespace OutpostOmega.Network
 #endif
                         if (obj == null)
 #if DEBUG
-                                throw new Exception("Could not serialize that shit");
+                            throw new Exception("Could not serialize that shit");
 #else
                             Output.Enqueue("ERROR: New object received but unable to read it");
 #endif
@@ -513,6 +509,12 @@ namespace OutpostOmega.Network
                     case (byte)Command.Data:
                         switch (subType)
                         {
+                            case (byte)SecondCommand.CreateBlock:
+
+                                break;
+                            case (byte)SecondCommand.RemoveBlock:
+
+                                break;
                             case (byte)SecondCommand.GameObject:
                                 if (World != null)
                                 {
@@ -541,8 +543,7 @@ namespace OutpostOmega.Network
                                     }
 
 
-                                    object new_value;
-                                    if (!SpecialDeserialize(im, property, out new_value))
+                                    if (!SpecialDeserialize(im, property, out object new_value))
                                     {
                                         var data = im.ReadBytes(im.ReadInt32());
                                         new_value = NetworkHandler.ReadSerializedData(data);

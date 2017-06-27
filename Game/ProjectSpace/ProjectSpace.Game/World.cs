@@ -61,7 +61,7 @@ namespace OutpostOmega.Game
         /// <summary>
         /// Every structure in this world
         /// </summary>
-        public ObservableCollection<turf.Structure> Structures { get; set; }
+        public ObservableCollection<Turf.Structure> Structures { get; set; }
 
         /// <summary>
         /// Debug mode enables several options for debugging and debug-drawing
@@ -101,7 +101,7 @@ namespace OutpostOmega.Game
             AllGameObjects = new List<GameObject>();
             Datums = new List<datums.datum>();
             //var type = gameObject.Generate("Tehest", new Action<object, MouseState, KeyboardState, double>(UpdateTest));
-            Structures = new ObservableCollection<turf.Structure>();
+            Structures = new ObservableCollection<Turf.Structure>();
 
             IDCounter = new Dictionary<string, string>();
 
@@ -270,12 +270,12 @@ namespace OutpostOmega.Game
                     where gObject is T
                     select (T)(object)gObject).ToArray();
         }
-        public turf.Structure GetStructure(Jitter.Dynamics.RigidBody RigidBody)
+        public Turf.Structure GetStructure(Jitter.Dynamics.RigidBody RigidBody)
         {
             if (RigidBody == null)
                 return null;
 
-            foreach (turf.Structure structure in Structures)
+            foreach (Turf.Structure structure in Structures)
             {
                 var targetChunk = (from chunk in structure.chunks
                                    where chunk.rigidBody == RigidBody
@@ -292,10 +292,10 @@ namespace OutpostOmega.Game
                 foreach (GameObject gobject in AllGameObjects)
                     NewGameObject(gobject);
 
-            var tempList = new List<turf.Structure>(Structures);
+            var tempList = new List<Turf.Structure>(Structures);
             Structures.Clear();
 
-            foreach (turf.Structure structure in tempList)
+            foreach (Turf.Structure structure in tempList)
             {
                 Structures.Add(structure);
                 structure.ResendEvents();
@@ -322,7 +322,7 @@ namespace OutpostOmega.Game
         public void Gas(JVector Position, byte GasID, short Amount)
         {
             var block = Structures[0][Position.X, Position.Y, Position.Z];
-            turf.Block.ModGas(ref block, GasID, Amount);
+            block.ModGas(GasID, Amount);
             Structures[0][Position.X, Position.Y, Position.Z] = block;
         }
 
@@ -381,7 +381,7 @@ namespace OutpostOmega.Game
 
             AtmosSystem.Dispose();
 
-            foreach (turf.Structure structure in Structures)
+            foreach (Turf.Structure structure in Structures)
                 structure.Dispose();
         }
     }

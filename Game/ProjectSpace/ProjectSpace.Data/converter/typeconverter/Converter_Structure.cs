@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.Xml.Linq;
-using OutpostOmega.Game.turf;
+using OutpostOmega.Game.Turf;
 
 namespace OutpostOmega.Data.converter
 {

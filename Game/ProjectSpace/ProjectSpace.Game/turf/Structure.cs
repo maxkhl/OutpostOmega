@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Jitter.LinearMath;
-using OutpostOmega.Game.turf.types;
+using OutpostOmega.Game.Turf.Types;
 using OutpostOmega.Game.GameObjects;
 
-namespace OutpostOmega.Game.turf
+namespace OutpostOmega.Game.Turf
 {
     /// <summary>
     /// This is basically a collection of chunks in the game. It allowes to create multiple independent 
@@ -106,7 +106,7 @@ namespace OutpostOmega.Game.turf
         /// <returns>Block successfully removed?</returns>
         public bool Remove(JVector position)
         {
-            return Add(turfTypeE.space, position);
+            return Add(TurfTypeE.space, position);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace OutpostOmega.Game.turf
         /// <param name="position">World-coordinate where to insert the block</param>
         /// <param name="CheckIntersection">Check for physical-objects that could collide (and probably totaly freak out) at the new blocks position?</param>
         /// <returns>Block added successful?</returns>
-        public bool Add(turfTypeE blockType, JVector position, bool CheckIntersection = true)
+        public bool Add(TurfTypeE blockType, JVector position, bool CheckIntersection = true)
         {
             // Get the target chunk. (Involves check and create of the chunk if neccessary)
             Chunk targetChunk = CreateChunkAtPos(position, true);
@@ -224,10 +224,25 @@ namespace OutpostOmega.Game.turf
         /// <param name="chunk">New chunk</param>
         public void Add(Chunk chunk)
         {
-
             chunks.Add(chunk);
+            chunk.Changed += Chunk_Changed;
             RegisterChunk(chunk);
         }
+
+        /// <summary>
+        /// Reacts to the chunk changed event. Translates the coordinates and then raises the structures event
+        /// </summary>
+        private void Chunk_Changed(Chunk sender, int X, int Y, int Z, Block block, bool Added)
+        {
+            var globalPosition = sender.Position + new JVector(X, Y, Z);
+            Changed?.Invoke(this, globalPosition, block, Added);
+        }
+        
+        /// <summary>
+        /// Fired whenever changes to a block inside this structure happens
+        /// </summary>
+        public event ChangedHandler Changed;
+        public delegate void ChangedHandler(Structure sender, JVector Position, Block block, bool Added);
 
         /// <summary>
         /// Used to announce a chunk to the gameworld
@@ -345,7 +360,7 @@ namespace OutpostOmega.Game.turf
             for (int x = -(Size / 2); x < Size / 2; x++)
                 for (int z = -(Size / 2); z < Size / 2; z++)
                     for (int y = 0; y < Height; y++)
-                        newStruct.Add(turfTypeE.floor, new JVector((float)x, (float)y, (float)z));
+                        newStruct.Add(TurfTypeE.floor, new JVector((float)x, (float)y, (float)z));
 
         }
 
@@ -372,7 +387,7 @@ namespace OutpostOmega.Game.turf
             for(int i = y + 1; i < Height; i++)
             {
                 var block = this[x, i, z];
-                if (Block.IsAirtight(block))
+                if (block.IsAirtight)
                 {
                     for (int c = y + 1; c < i; c++)
                     {
@@ -386,7 +401,7 @@ namespace OutpostOmega.Game.turf
             for (int i = y - 1; i >= 0; i--)
             {
                 var block = this[x, i, z];
-                if (Block.IsAirtight(block))
+                if (block.IsAirtight)
                 {
                     for (int c = i; c < y - 1; c++)
                     {

@@ -124,13 +124,13 @@ namespace OutpostOmega.Tools
                     var chunk = structure.chunks[c];
 
                     // Iterate through each block
-                    for (int x = 0; x < Game.turf.Chunk.SizeXYZ; x++)
-                        for (int y = 0; y < Game.turf.Chunk.SizeXYZ; y++)
-                            for (int z = 0; z < Game.turf.Chunk.SizeXYZ; z++)
+                    for (int x = 0; x < Game.Turf.Chunk.SizeXYZ; x++)
+                        for (int y = 0; y < Game.Turf.Chunk.SizeXYZ; y++)
+                            for (int z = 0; z < Game.Turf.Chunk.SizeXYZ; z++)
                             {
                                 var block = chunk.blocks[x, y, z];
 
-                                var pressure = Game.turf.Block.Pressure(block);
+                                var pressure = block.Pressure;
                                 if (pressure > 0)
                                 {
                                     var worldPos = new Vector3(chunk.Position.X + x, chunk.Position.Y + y, chunk.Position.Z + z);
