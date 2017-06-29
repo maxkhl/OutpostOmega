@@ -16,7 +16,7 @@ namespace OutpostOmega.Game.Turf.Types
         /// <summary>
         /// GameObject (space) is invisible
         /// </summary>
-        public bool IsVisible 
+        public override bool IsVisible 
         { 
             get
             {
@@ -24,7 +24,7 @@ namespace OutpostOmega.Game.Turf.Types
             }
         }
 
-        public bool IsAirtight
+        public override bool IsAirtight
         {
             get
             {
@@ -37,14 +37,14 @@ namespace OutpostOmega.Game.Turf.Types
         /// <summary>
         /// Not visible
         /// </summary>
-        public Dictionary<Direction, uvCoord> UVCoords
+        public override Dictionary<Direction, uvCoord> UVCoords
         {
             get
             {
                 return _uvcoords;
             }
         }
-        public Dictionary<Direction, uvCoord> GetUVCoords(Block Block)
+        public override Dictionary<Direction, uvCoord> GetUVCoords(Block Block)
         {
             return new Dictionary<Direction, uvCoord>();
         }

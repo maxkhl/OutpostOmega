@@ -277,8 +277,8 @@ namespace OutpostOmega.Game
 
             foreach (Turf.Structure structure in Structures)
             {
-                var targetChunk = (from chunk in structure.chunks
-                                   where chunk.rigidBody == RigidBody
+                var targetChunk = (from chunk in structure.Chunks
+                                   where chunk.RigidBody == RigidBody
                                    select chunk).FirstOrDefault();
 
                 if (targetChunk != null)
@@ -308,7 +308,7 @@ namespace OutpostOmega.Game
         public void UpdateChunkRender()
         {
             foreach (var structure in Structures)
-                foreach (var chunk in structure.chunks)
+                foreach (var chunk in structure.Chunks)
                     if (chunk.NeedsRender)
                         chunk.Render();
         }

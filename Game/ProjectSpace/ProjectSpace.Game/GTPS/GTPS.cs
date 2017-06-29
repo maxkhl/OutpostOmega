@@ -84,16 +84,16 @@ namespace OutpostOmega.Game.GTPS
                     var structure = World.Structures[s];
 
                     // Iterate through each chunk
-                    for(int c = 0; c < structure.chunks.Count; c++)
+                    for(int c = 0; c < structure.Chunks.Count; c++)
                     {
-                        var chunk = structure.chunks[c];
+                        var chunk = structure.Chunks[c];
                         
                         // Iterate through each block
                         for(int x = 0; x < Turf.Chunk.SizeXYZ; x++)
                             for(int y = 0; y < Turf.Chunk.SizeXYZ; y++)
                                 for(int z = 0; z < Turf.Chunk.SizeXYZ; z++)
                                 {
-                                    var block = chunk.blocks[x, y, z];
+                                    var block = chunk.Blocks[x, y, z];
 
                                     if(block.NeedsProcessing)
                                     {
@@ -170,7 +170,7 @@ namespace OutpostOmega.Game.GTPS
                                             
                                             block.gasComposition[g] = gas;
                                         }
-                                        chunk.blocks[x, y, z] = block;
+                                        chunk.Blocks[x, y, z] = block;
                                     }
                                 }
                     }

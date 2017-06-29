@@ -120,31 +120,31 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
 
                         var currcables = hitBlock.GetCables(dir);
 
-                        datums.turf.Cable.cableType oldCable = datums.turf.Cable.cableType.CurveWN;
+                        Turf.Properties.Cable.CableType oldCable = Turf.Properties.Cable.CableType.CurveWN;
                         if (currcables.Count > 0)
-                            oldCable = currcables[0];
+                            oldCable = currcables[0].Type;
                         //hitBlock.Cables = null;
 
 
-                        datums.turf.Cable.cableType newCable = datums.turf.Cable.cableType.LineNS;
+                        Turf.Properties.Cable.CableType newCable = Turf.Properties.Cable.CableType.LineNS;
 
                         if((CableX == 0 || CableX == 2) && CableY == 1)
-                            newCable = datums.turf.Cable.cableType.LineNS;
+                            newCable = Turf.Properties.Cable.CableType.LineNS;
 
                         if ((CableY == 0 || CableY == 2) && CableX == 1)
-                            newCable = datums.turf.Cable.cableType.LineWE;
+                            newCable = Turf.Properties.Cable.CableType.LineWE;
 
                         if (CableX == 0 && CableY == 0)
-                            newCable = datums.turf.Cable.cableType.CurveWN;
+                            newCable = Turf.Properties.Cable.CableType.CurveWN;
 
                         if (CableX == 2 && CableY == 0)
-                            newCable = datums.turf.Cable.cableType.CurveSW;
+                            newCable = Turf.Properties.Cable.CableType.CurveSW;
 
                         if (CableX == 2 && CableY == 2)
-                            newCable = datums.turf.Cable.cableType.CurveES;
+                            newCable = Turf.Properties.Cable.CableType.CurveES;
 
                         if (CableX == 0 && CableY == 2)
-                            newCable = datums.turf.Cable.cableType.CurveNE;
+                            newCable = Turf.Properties.Cable.CableType.CurveNE;
 
                         /*switch(oldCable)
                         {
@@ -168,7 +168,7 @@ namespace OutpostOmega.Game.GameObjects.Items.Devices
                                 break;
                         }*/
 
-                        hitBlock.SetCable(dir, newCable);
+                        hitBlock.SetCable(dir, newCable, System.Drawing.Color.Blue);
 
                         User.View.TargetStructure[hitPoint.X, hitPoint.Y, hitPoint.Z] = hitBlock;
                         User.View.TargetStructure.GetChunkAtPos(hitPoint).NeedsRender = true;

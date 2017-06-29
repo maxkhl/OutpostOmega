@@ -45,7 +45,7 @@ namespace OutpostOmega.Data.converter
             for(int x = 0; x < Chunk.SizeXYZ; x++)
                 for(int y = 0; y < Chunk.SizeXYZ; y++)
                     for(int z = 0; z < Chunk.SizeXYZ; z++)
-                        chunkData[x + Chunk.SizeXYZ * (y + Chunk.SizeXYZ * z)] = chunk.blocks[x,y,z].type;
+                        chunkData[x + Chunk.SizeXYZ * (y + Chunk.SizeXYZ * z)] = chunk.Blocks[x,y,z].Type;
 
             newObject.Add(new XElement("chunkData", Convert.ToBase64String(Compress(chunkData))));
             newObject.Add(new XAttribute("X", FloatToString(chunk.Position.X)));

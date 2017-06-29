@@ -179,7 +179,7 @@ namespace OutpostOmega.Drawing.Game
                 foreach (object newStructure in e.NewItems)
                 {
                     var nStructure = (Structure)newStructure;
-                    nStructure.newChunk += nStructure_newChunk;
+                    nStructure.NewChunk += nStructure_newChunk;
                 }
 
             // Handler abmelden
@@ -187,10 +187,10 @@ namespace OutpostOmega.Drawing.Game
                 foreach (object oldStructure in e.OldItems)
                 {
                     var oStructure = (Structure)oldStructure;
-                    foreach (Chunk chunk in oStructure.chunks)
+                    foreach (Chunk chunk in oStructure.Chunks)
                         foreach (ChunkDrawer dchunk in (from cnk in Chunks where cnk.SourceChunk == chunk select cnk))
                             Chunks.Remove(dchunk);
-                    oStructure.newChunk -= nStructure_newChunk;
+                    oStructure.NewChunk -= nStructure_newChunk;
                 }
         }
 

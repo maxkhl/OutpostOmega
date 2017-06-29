@@ -14,21 +14,36 @@ namespace OutpostOmega.Game.Turf
     /// </summary>
     public class Structure : IDisposable
     {
-        public List<Chunk> chunks { get; set; }
+        /// <summary>
+        /// All chunks featured in this structure
+        /// </summary>
+        public List<Chunk> Chunks { get; private set; }
 
-        public string ID { get; set; }
+        /// <summary>
+        /// Unique ID of this structure
+        /// </summary>
+        public string ID { get; private set; }
 
-        public JVector Origin { get; set; }
+        /// <summary>
+        /// Origin of this structure
+        /// </summary>
+        public JVector Origin { get; private set; }
 
-        public World world { get; set; }
+        /// <summary>
+        /// World, this structure is used in
+        /// </summary>
+        public World World { get; private set; }
 
+        /// <summary>
+        /// Height of this structure
+        /// </summary>
         public int Height
         {
             get
             {
                 int minHeight = 0,
                     maxHeight = 0;
-                foreach(Chunk chunk in chunks)
+                foreach(Chunk chunk in Chunks)
                 {
                     int cMaxHeight = (int)chunk.Position.Y + Chunk.SizeXYZ;
                     if (cMaxHeight > maxHeight)
@@ -42,19 +57,28 @@ namespace OutpostOmega.Game.Turf
             }
         }
 
+        /// <summary>
+        /// Initializes a new structure with the given ID
+        /// </summary>
+        /// <param name="ID">ID of the new structure</param>
         public Structure(string ID = "structure")
         {
             this.ID = ID;
-            chunks = new List<Chunk>();
+            Chunks = new List<Chunk>();
             Origin = new JVector();
         }
-        
-        public Structure(World world, string ID = "structure")
+
+        /// <summary>
+        /// Initializes a new structure with the given ID, bound to the given world
+        /// </summary>
+        /// <param name="World">World this structure should be bound to</param>
+        /// <param name="ID">ID of the new structure</param>
+        public Structure(World World, string ID = "structure")
         {
             this.ID = ID;
-            chunks = new List<Chunk>();
+            Chunks = new List<Chunk>();
             Origin = new JVector();
-            this.world = world;
+            this.World = World;
         }
 
         /// <summary>
@@ -124,7 +148,7 @@ namespace OutpostOmega.Game.Turf
                 z < 0 || z > Chunk.SizeXYZ)
                 throw new Exception("Fast block modify call out of bounds");
 
-            chunk.blocks[x, y, z] = block;
+            chunk.Blocks[x, y, z] = block;
 
             RefreshIndoor((int)chunk.Position.X + x, (int)chunk.Position.Y + y, (int)chunk.Position.Z + z);
         }
@@ -172,7 +196,7 @@ namespace OutpostOmega.Game.Turf
                 var originBlock = new JVector((float)xB, (float)yB, (float)zB);
                 var newBlock = new JBBox(originBlock, originBlock + new JVector(Chunk.BlockSize));
 
-                var gameObjects = (from gobj in world.AllGameObjects
+                var gameObjects = (from gobj in World.AllGameObjects
                                    where gobj.IsPhysical
                                    select gobj);
 
@@ -224,7 +248,7 @@ namespace OutpostOmega.Game.Turf
         /// <param name="chunk">New chunk</param>
         public void Add(Chunk chunk)
         {
-            chunks.Add(chunk);
+            Chunks.Add(chunk);
             chunk.Changed += Chunk_Changed;
             RegisterChunk(chunk);
         }
@@ -242,6 +266,14 @@ namespace OutpostOmega.Game.Turf
         /// Fired whenever changes to a block inside this structure happens
         /// </summary>
         public event ChangedHandler Changed;
+
+        /// <summary>
+        /// Handler for Changed event
+        /// </summary>
+        /// <param name="sender">Structure, that fired the event (this)</param>
+        /// <param name="Position">Position, the change occured in world space</param>
+        /// <param name="block">Copy of the block that got changed</param>
+        /// <param name="Added">True if block got added</param>
         public delegate void ChangedHandler(Structure sender, JVector Position, Block block, bool Added);
 
         /// <summary>
@@ -254,10 +286,10 @@ namespace OutpostOmega.Game.Turf
             if (chunk.NeedsRender)
                 chunk.Render(); // This will create the rigidbody aswell (if needed)
 
-            world.PhysicSystem.AddBody(chunk.rigidBody);
+            World.PhysicSystem.AddBody(chunk.RigidBody);
 
-            if (newChunk != null)
-                newChunk(chunk);
+            if (NewChunk != null)
+                NewChunk(chunk);
         }
 
         /// <summary>
@@ -268,16 +300,16 @@ namespace OutpostOmega.Game.Turf
         public Chunk GetChunkAtPos(JVector Position)
         {
             Chunk targetChunk = null;
-            foreach (Chunk chunk in chunks)
+            foreach (Chunk chunk in Chunks)
             {
-                var containment = chunk.bounds.Contains(Position);
+                var containment = chunk.Bounds.Contains(Position);
                 if (containment == JBBox.ContainmentType.Contains ||
                     containment == JBBox.ContainmentType.Intersects)
                 {
                     // for the small occurence of hitting the corner of the chunk perfect
-                    if (Position.X == chunk.bounds.Max.X ||
-                        Position.Y == chunk.bounds.Max.Y ||
-                        Position.Z == chunk.bounds.Max.Z)
+                    if (Position.X == chunk.Bounds.Max.X ||
+                        Position.Y == chunk.Bounds.Max.Y ||
+                        Position.Z == chunk.Bounds.Max.Z)
                         continue;
                     targetChunk = chunk;
                 }
@@ -326,8 +358,8 @@ namespace OutpostOmega.Game.Turf
         /// </summary>
         public void ResendEvents()
         {
-            foreach (Chunk chunk in chunks)
-                newChunk(chunk);
+            foreach (Chunk chunk in Chunks)
+                NewChunk(chunk);
         }
 
         /// <summary>
@@ -344,8 +376,16 @@ namespace OutpostOmega.Game.Turf
         }
 
 
+        /// <summary>
+        /// Handler for NewChunk
+        /// </summary>
+        /// <param name="newChunk">New chunk that got added</param>
         public delegate void NewChunkHandler(Chunk newChunk);
-        public event NewChunkHandler newChunk;
+
+        /// <summary>
+        /// Gets fired when a new chunk was added to this structure
+        /// </summary>
+        public event NewChunkHandler NewChunk;
 
 
         /// <summary>
@@ -369,7 +409,7 @@ namespace OutpostOmega.Game.Turf
         /// </summary>
         public void OnDeserialization()
         {
-            foreach(Chunk chunk in chunks)
+            foreach(Chunk chunk in Chunks)
             {
                 RegisterChunk(chunk);
             }
@@ -417,7 +457,7 @@ namespace OutpostOmega.Game.Turf
         public void Dispose()
         {
             Disposing = true;
-            foreach (Chunk chunk in chunks)
+            foreach (Chunk chunk in Chunks)
                 chunk.Dispose();
         }
     }

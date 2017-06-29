@@ -114,7 +114,8 @@
     <Compile Include="datums\datum.cs" />
     <Compile Include="datums\JobManager.cs" />
     <Compile Include="datums\program\program.cs" />
-    <Compile Include="datums\turf\Cable.cs" />
+    <Compile Include="Turf\Properties\Pipe.cs" />
+    <Compile Include="Turf\Properties\Cable.cs" />
     <Compile Include="datums\UserGroup.cs" />
     <Compile Include="datums\UserInterface\Base.cs" />
     <Compile Include="GameObjects\Attributes\IconAttribute.cs" />

@@ -22,7 +22,7 @@ namespace OutpostOmega.Drawing.Game
 
         public Chunk SourceChunk { get; set; }
         public ChunkDrawer(Chunk chunk)
-            : base(PrimitiveType.Triangles, Tools.Convert.Mesh.Vertex.Jitter_To_OpenGL(chunk.mesh), Tools.Convert.Mesh.Index.Jitter_To_OpenGL(chunk.mesh))
+            : base(PrimitiveType.Triangles, Tools.Convert.Mesh.Vertex.Jitter_To_OpenGL(chunk.Mesh), Tools.Convert.Mesh.Index.Jitter_To_OpenGL(chunk.Mesh))
         {
             this.SourceChunk = chunk;
             this.Translation = Matrix4.CreateTranslation(chunk.Position.X, chunk.Position.Y, chunk.Position.Z);
@@ -58,7 +58,7 @@ namespace OutpostOmega.Drawing.Game
             if (SourceChunk.NeedsRender)
             {
                 SourceChunk.Render();
-                SetData(Tools.Convert.Mesh.Vertex.Jitter_To_OpenGL(SourceChunk.mesh), Tools.Convert.Mesh.Index.Jitter_To_OpenGL(SourceChunk.mesh));
+                SetData(Tools.Convert.Mesh.Vertex.Jitter_To_OpenGL(SourceChunk.Mesh), Tools.Convert.Mesh.Index.Jitter_To_OpenGL(SourceChunk.Mesh));
             }
 
             Translation = Matrix4.CreateTranslation(Tools.Convert.Vector.Jitter_To_OpenGL(SourceChunk.Position));

@@ -71,7 +71,7 @@ namespace OutpostOmega.Tools
                 /// <summary>
                 /// Used to translate the vertices of a chunk from the jitter (physics) world to the opengl (graphics) world
                 /// </summary>
-                public static Drawing.Vertex[] Jitter_To_OpenGL(OutpostOmega.Game.Turf.Chunk.Mesh mesh)
+                public static Drawing.Vertex[] Jitter_To_OpenGL(OutpostOmega.Game.Turf.Chunk.ChunkMesh mesh)
                 {
 
                     var JitterMesh = mesh;
@@ -102,7 +102,7 @@ namespace OutpostOmega.Tools
                 /// <summary>
                 /// Used to translate the indices of a chunk from the jitter (physics) world to the opengl (graphics) world
                 /// </summary>
-                public static uint[] Jitter_To_OpenGL(OutpostOmega.Game.Turf.Chunk.Mesh mesh)
+                public static uint[] Jitter_To_OpenGL(OutpostOmega.Game.Turf.Chunk.ChunkMesh mesh)
                 {
                     var JitterMesh = mesh;
 

@@ -50,7 +50,7 @@ namespace OutpostOmega.Server.Network
 
             //outgoingMessage.Write(_client.Host.networkHandler.GetObjectData(_client.ID, block));
 
-            outgoingMessage.Write(block.type);
+            outgoingMessage.Write(block.Type);
             outgoingMessage.Write(Position.X);
             outgoingMessage.Write(Position.Y);
             outgoingMessage.Write(Position.Z);

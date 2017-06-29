@@ -169,11 +169,11 @@ namespace UnitTest
 
             for (int i = 0; i < world2.Structures.Count; i++)
             {
-                for (int c = 0; c < world2.Structures[i].chunks.Count; c++)
+                for (int c = 0; c < world2.Structures[i].Chunks.Count; c++)
                 {
                     bool Similar = true;
-                    var OriginalChunk = world1.Structures[i].chunks[c];
-                    var SerializedChunk = world2.Structures[i].chunks[c];
+                    var OriginalChunk = world1.Structures[i].Chunks[c];
+                    var SerializedChunk = world2.Structures[i].Chunks[c];
                     string Detail = "";
 
                     for (int x = 0; x < OutpostOmega.Game.Turf.Chunk.SizeXYZ; x++)

@@ -16,7 +16,7 @@ namespace OutpostOmega.Game.Turf.Types
         /// <summary>
         /// Floor is solid (means, objects can collide with it)
         /// </summary>
-        public bool IsVisible 
+        public override bool IsVisible 
         { 
             get
             {
@@ -24,7 +24,10 @@ namespace OutpostOmega.Game.Turf.Types
             }
         }
 
-        public bool IsAirtight
+        /// <summary>
+        /// Floor is airtight
+        /// </summary>
+        public override bool IsAirtight
         {
             get
             {
@@ -38,7 +41,7 @@ namespace OutpostOmega.Game.Turf.Types
         /// <summary>
         /// UV Coords of the texture
         /// </summary>
-        public Dictionary<Direction, uvCoord> UVCoords
+        public override Dictionary<Direction, uvCoord> UVCoords
         {
             get
             {
@@ -62,7 +65,7 @@ namespace OutpostOmega.Game.Turf.Types
             _uvcoords.Add(Direction.Bottom, UVC);
         }
 
-        public Dictionary<Direction, uvCoord> GetUVCoords(Block Block)
+        public override Dictionary<Direction, uvCoord> GetUVCoords(Block Block)
         {
 
 

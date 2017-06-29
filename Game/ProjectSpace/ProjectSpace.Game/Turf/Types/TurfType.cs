@@ -8,12 +8,37 @@ using OutpostOmega.Game.Structures;
 
 namespace OutpostOmega.Game.Turf.Types
 {
-    public interface TurfType
+    /// <summary>
+    /// Abstract turf type to describe properties of turfs
+    /// </summary>
+    public abstract class TurfType
     {
-        bool IsVisible { get; }
-        bool IsAirtight { get; }
-        Dictionary<Direction, uvCoord> GetUVCoords(Block Block);
-        Dictionary<Direction, uvCoord> UVCoords { get; }
+        /// <summary>
+        /// Describes if the block is visible
+        /// </summary>
+        public abstract bool IsVisible { get; }
+
+        /// <summary>
+        /// Describes if air can pass through it
+        /// </summary>
+        public abstract bool IsAirtight { get; }
+
+        /// <summary>
+        /// Returns uv-coords of this block
+        /// </summary>
+        /// <param name="Block"></param>
+        /// <returns></returns>
+        public abstract Dictionary<Direction, uvCoord> GetUVCoords(Block Block);
+        public abstract Dictionary<Direction, uvCoord> UVCoords { get; }
+
+        /// <summary>
+        /// Every available turf type. Do not change the order!
+        /// </summary>
+        public static TurfType[] Types = new TurfType[]
+        {
+            new Types.SpaceTurf(),
+            new Types.FloorTurf(),
+        };
     }
     public enum TurfTypeE
     {

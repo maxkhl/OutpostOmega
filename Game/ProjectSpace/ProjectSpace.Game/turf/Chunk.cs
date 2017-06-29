@@ -18,7 +18,11 @@ namespace OutpostOmega.Game.Turf
     /// </summary>
     public class Chunk : IDisposable
     {
+        /// <summary>
+        /// Size of a block
+        /// </summary>
         public const float BlockSize = 1f;
+
         /// <summary>
         /// SizeXYZ = 1 * 2^LogSizeXYZ = 2 ^ 5 = 32. Used for performance optimization
         /// </summary>
@@ -34,7 +38,10 @@ namespace OutpostOmega.Game.Turf
         /// </summary>
         public const int MaskXYZ = SizeXYZ - 1;
 
-        public Block[, ,] blocks { get; set; }
+        /// <summary>
+        /// Contains all blocks inside this chunk
+        /// </summary>
+        public Block[, ,] Blocks { get; private set; }
 
         /// <summary>
         /// Used to tell if the chunk got updated and needs to get rendered again
@@ -49,23 +56,12 @@ namespace OutpostOmega.Game.Turf
         /// <summary>
         /// ID of this chunk
         /// </summary>
-        public string ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-            }
-        }
-        private string _ID;
+        public string ID { get; set; }
 
         /// <summary>
         /// Gets/Sets the position of this chunk and refreshs the bounds-property
         /// </summary>
-        public JVector Position 
+        public JVector Position  
         { 
             get
             {
@@ -74,9 +70,9 @@ namespace OutpostOmega.Game.Turf
             set
             {
                 _position = value;
-                bounds = new JBBox(_position, _position + new JVector(SizeXYZ));
-                if (rigidBody != null)
-                    rigidBody.Position = value;
+                Bounds = new JBBox(_position, _position + new JVector(SizeXYZ));
+                if (RigidBody != null)
+                    RigidBody.Position = value;
             }
         }
         private JVector _position;
@@ -84,7 +80,7 @@ namespace OutpostOmega.Game.Turf
         /// <summary>
         /// Boundingbox around the whole chunk (even if its empty)
         /// </summary>
-        public JBBox bounds { get; set; }
+        public JBBox Bounds { get; private set; }
 
         /// <summary>
         /// Returns block relative to the chunk origin. F.e. [0, 0, 0] is the first block in this chunk
@@ -97,21 +93,27 @@ namespace OutpostOmega.Game.Turf
         {
             get
             {
-                return blocks[lx, ly, lz];
+                return Blocks[lx, ly, lz];
             }
             set
             {
                 this.NeedsRender = true;
 
-                blocks[lx, ly, lz] = value;
+                Blocks[lx, ly, lz] = value;
 
                 //Raise changed event
-                Changed?.Invoke(this, lx, ly, lz, value, value.type != (byte)TurfTypeE.space);
+                Changed?.Invoke(this, lx, ly, lz, value, value.Type != (byte)TurfTypeE.space);
             }
         }
 
-        public RigidBody rigidBody { get; set; }
+        /// <summary>
+        /// Rigidbody of this chunk. Used to interact with phsyics
+        /// </summary>
+        public RigidBody RigidBody { get; private set; }
 
+        /// <summary>
+        /// Counts id's
+        /// </summary>
         static private int _IDCounter = 1;
 
         /// <summary>
@@ -119,32 +121,56 @@ namespace OutpostOmega.Game.Turf
         /// </summary>
         public Turf.Structure AssignedStructure { get; set; }
 
-        
+        /// <summary>
+        /// Initializes a new and empty chunk
+        /// </summary>
         public Chunk()
         {
-            blocks = new Block[SizeXYZ, SizeXYZ, SizeXYZ];
+            Blocks = new Block[SizeXYZ, SizeXYZ, SizeXYZ];
             this.Position = JVector.Zero;
 
-            _ID = _IDCounter.ToString();
+            ID = _IDCounter.ToString();
             _IDCounter++;
             NeedsRender = true;
         }
 
-        public Chunk(Block[, ,] blocks, JVector Position)
+        /// <summary>
+        /// Initializes a new chunk filled with given blocks at the given position
+        /// </summary>
+        /// <param name="Blocks">Blocks, this chunk should contain</param>
+        /// <param name="Position">Position, the chunk should be based at</param>
+        public Chunk(Block[, ,] Blocks, JVector Position)
         {
-            this.blocks = blocks;
+            this.Blocks = Blocks;
             this.Position = Position;
 
-            _ID = _IDCounter.ToString();
+            ID = _IDCounter.ToString();
             _IDCounter++;
             NeedsRender = true;
         }
 
+        /// <summary>
+        /// Handler for changes to this block
+        /// </summary>
+        /// <param name="sender">The chunk that sent the event (this)</param>
+        /// <param name="X">Local X-Coordinate (chunk-space)</param>
+        /// <param name="Y">Local Y-Coordinate (chunk-space)</param>
+        /// <param name="Z">Local Z-Coordinate (chunk-space)</param>
+        /// <param name="block">Copy of the changed block-instance</param>
+        /// <param name="Added">True if block got added, False if it got removed</param>
         public delegate void ChangedHandler(Chunk sender, int X, int Y, int Z, Block block, bool Added);
+
+        /// <summary>
+        /// Fires whenever changes were applied to the structure of this chunk
+        /// </summary>
         public event ChangedHandler Changed;
 
         private Jitter.Collision.Octree _octree;
         private Jitter.Collision.Shapes.TriangleMeshShape _shape;
+
+        /// <summary>
+        /// Creates the rigidbody for this chunk to be able to interact with jitter
+        /// </summary>
         public void CreatePhysics()
         {
             /*if (mesh.Vertices == null ||
@@ -152,34 +178,37 @@ namespace OutpostOmega.Game.Turf
                 return;*/
 
             var triList = new List<Jitter.Collision.TriangleVertexIndices>();
-			for(int i = 0; i < mesh.Triangles.Length; i += 3)
-                triList.Add(new Jitter.Collision.TriangleVertexIndices(mesh.Triangles[i+0], mesh.Triangles[i+2], mesh.Triangles[i+1]));
+			for(int i = 0; i < Mesh.Triangles.Length; i += 3)
+                triList.Add(new Jitter.Collision.TriangleVertexIndices(Mesh.Triangles[i+0], Mesh.Triangles[i+2], Mesh.Triangles[i+1]));
 
 
-            if (this.rigidBody == null)
+            if (this.RigidBody == null)
             {
-                _octree = new Jitter.Collision.Octree(new List<JVector>(mesh.Vertices), triList);
+                _octree = new Jitter.Collision.Octree(new List<JVector>(Mesh.Vertices), triList);
                 _octree.BuildOctree();
                 _shape = new Jitter.Collision.Shapes.TriangleMeshShape(_octree);
-                this.rigidBody = new RigidBody(_shape);
-                this.rigidBody.IsStatic = true;
-                this.rigidBody.AffectedByGravity = false;
-                this.rigidBody.EnableDebugDraw = true;
-                this.rigidBody.Material.KineticFriction = 0.3f;
-                this.rigidBody.Material.StaticFriction = 0.6f;
-                this.rigidBody.Material.Restitution = 0.1f;
-                this.rigidBody.Mass = 8000;
-                this.rigidBody.Position = this.Position;
+                this.RigidBody = new RigidBody(_shape);
+                this.RigidBody.IsStatic = true;
+                this.RigidBody.AffectedByGravity = false;
+                this.RigidBody.EnableDebugDraw = true;
+                this.RigidBody.Material.KineticFriction = 0.3f;
+                this.RigidBody.Material.StaticFriction = 0.6f;
+                this.RigidBody.Material.Restitution = 0.1f;
+                this.RigidBody.Mass = 8000;
+                this.RigidBody.Position = this.Position;
             }
             else
             {
-                _octree.SetTriangles(new List<JVector>(mesh.Vertices), triList);
+                _octree.SetTriangles(new List<JVector>(Mesh.Vertices), triList);
                 _octree.BuildOctree();
                 _shape.UpdateShape();
             }
         }
 
-        public struct Mesh
+        /// <summary>
+        /// Mesh struct for drawing the chunk
+        /// </summary>
+        public struct ChunkMesh
         {
             public JVector[] Vertices;
             public JVector[] Normals;
@@ -192,17 +221,19 @@ namespace OutpostOmega.Game.Turf
             public JVector[] BiTangents;
         }
 
-        public Mesh mesh;
-        public Mesh decMesh;
+        /// <summary>
+        /// This chunks mesh
+        /// </summary>
+        public ChunkMesh Mesh { get; private set; }
 
         /// <summary>
         /// Renders a mesh out of the blocks
         /// </summary>
         /// <returns>Mesh of this chunk</returns>
-        public Mesh Render(Func<Block, bool> condition = null, bool MainMesh = true)
+        public ChunkMesh Render(Func<Block, bool> condition = null, bool MainMesh = true)
         {
-            if (this.mesh.Vertices != null && !this.NeedsRender)
-                return this.mesh;
+            if (this.Mesh.Vertices != null && !this.NeedsRender)
+                return this.Mesh;
 
             List<JVector> vertices = new List<JVector>();
             List<JVector> normals = new List<JVector>();
@@ -218,7 +249,7 @@ namespace OutpostOmega.Game.Turf
                 for (int y = 0; y < SizeXYZ; y++)
                     for (int z = 0; z < SizeXYZ; z++)
                     {
-                        Block block = blocks[x, y, z];
+                        Block block = Blocks[x, y, z];
 
                         float xV = (float)x * BlockSize,
                             yV = (float)y * BlockSize,
@@ -381,7 +412,7 @@ namespace OutpostOmega.Game.Turf
                         #endregion
                     }
 
-            this.mesh = new Mesh()
+            this.Mesh = new ChunkMesh()
                 {
                     Vertices = vertices.ToArray(),
                     Triangles = triangles.ToArray(),
@@ -400,7 +431,7 @@ namespace OutpostOmega.Game.Turf
 
                 this.NeedsRender = false;
             }
-            return this.mesh;
+            return this.Mesh;
         }
 
         /*public Mesh RenderAtmos()
@@ -502,7 +533,7 @@ namespace OutpostOmega.Game.Turf
 
             List<JVector2> retList = new List<JVector2>();
             foreach (var Cable in Cables)
-                retList.AddRange(GetUV(datums.turf.Cable.GetUV(Cable)));
+                retList.AddRange(GetUV(Cable.GetUV()));
 
             return retList.ToArray();
         }
@@ -605,7 +636,7 @@ namespace OutpostOmega.Game.Turf
                     targX < SizeXYZ &&
                     targY < SizeXYZ &&
                     targZ < SizeXYZ)
-                    return !blocks[targX, targY, targZ].IsVisible;
+                    return !Blocks[targX, targY, targZ].IsVisible;
                 else
                     if (AssignedStructure != null)
                     {
@@ -634,7 +665,7 @@ namespace OutpostOmega.Game.Turf
                 targX < SizeXYZ &&
                 targY < SizeXYZ &&
                 targZ < SizeXYZ)
-                return !blocks[targX, targY, targZ].IsVisible;
+                return !Blocks[targX, targY, targZ].IsVisible;
             else
                 if (AssignedStructure != null)
                 {

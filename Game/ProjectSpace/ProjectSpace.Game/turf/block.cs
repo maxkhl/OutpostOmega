@@ -18,7 +18,7 @@ namespace OutpostOmega.Game.Turf
         /// <summary>
         /// Type of this turf. Check the turfType enumeration for further info
         /// </summary>
-        public byte type { get; private set; }
+        public byte Type { get; private set; }
 
         /// <summary>
         /// Determins if this block is indoor (can contain atmosphere)
@@ -62,10 +62,21 @@ namespace OutpostOmega.Game.Turf
 
         public Int16 UVBottom;
 
-        public byte[] Cables;
+        /// <summary>
+        /// Cables on this block
+        /// </summary>
+        public Properties.Cable[] Cables;
 
-        public byte[] Pipes;
+        /// <summary>
+        /// Pipes on  this block
+        /// </summary>
+        public Properties.Pipe[] Pipes;
 
+        /// <summary>
+        /// Returns whether this block has a decoy in the given direciton
+        /// </summary>
+        /// <param name="direction">Direction that should be checked</param>
+        /// <returns>True if decoy is present</returns>
         public bool HasDecoy(Structures.Direction direction)
         {
             if (GetCables( direction).Count == 0)
@@ -74,20 +85,27 @@ namespace OutpostOmega.Game.Turf
             return true;
         }
 
-        public bool SetCable(Structures.Direction direction, datums.turf.Cable.cableType cableType)
+        /// <summary>
+        /// Adds a cable of the given type to the given direction on this block
+        /// </summary>
+        /// <param name="direction">Direction, the cable should be added</param>
+        /// <param name="cableType">Type of the cable</param>
+        /// <returns>True if operation was successfull</returns>
+        public bool SetCable(Structures.Direction direction, Turf.Properties.Cable.CableType cableType, System.Drawing.Color Color)
         {
-            if (GetCables(direction).Contains(cableType))
-                return false;
+            foreach(var cable in GetCables(direction))
+                if(cable.Direction == direction)
+                    return false;
 
             int count = 0;
             if (this.Cables == null)
-                this.Cables = new byte[2];
+                this.Cables = new Properties.Cable[1];
             else
             {
                 bool exists = false;
                 for (int i = 0; i < this.Cables.Length; i += 2)
                 {
-                    if (this.Cables[i] == (byte)direction)
+                    if (this.Cables[i].Type == cableType)
                     {
                         count = i;
                         exists = true;
@@ -97,26 +115,30 @@ namespace OutpostOmega.Game.Turf
                 if (!exists)
                 {
                     count = this.Cables.Length;
-                    Array.Resize(ref this.Cables, this.Cables.Length + 2);
+                    Array.Resize(ref this.Cables, this.Cables.Length + 1);
                 }
             }
 
-            this.Cables[count] = (byte)direction;
-            count++;
-            this.Cables[count] = (byte)cableType;
+            this.Cables[count] = new Properties.Cable(cableType, direction, Color);
 
             return true;
         }
-        public List<datums.turf.Cable.cableType> GetCables(Structures.Direction direction)
+
+        /// <summary>
+        /// Returns a list of the cables used by this block on a given direction
+        /// </summary>
+        /// <param name="direction">Direction that should be checked</param>
+        /// <returns>List of found cabletypes</returns>
+        public List<Turf.Properties.Cable> GetCables(Structures.Direction direction)
         {
-            var ret = new List<datums.turf.Cable.cableType>();
+            var ret = new List<Turf.Properties.Cable>();
 
             if (this.Cables == null || this.Cables.Length == 0) return ret;
 
             for(int i = 0; i < this.Cables.Count(); i+=2)
             {
-                if ((Structures.Direction)this.Cables[i] == direction)
-                    ret.Add((datums.turf.Cable.cableType)this.Cables[i + 1]);
+                if (this.Cables[i].Direction == direction)
+                    ret.Add(this.Cables[i]);
             }
             return ret;
         }
@@ -191,22 +213,13 @@ namespace OutpostOmega.Game.Turf
         }
 
         /// <summary>
-        /// Every available turf type. Do not change the order!
-        /// </summary>
-        private static TurfType[] types = new TurfType[] 
-        {             
-            new Types.SpaceTurf(),
-            new Types.FloorTurf(),            
-        };
-
-        /// <summary>
         /// Returns the typeobject of the specific turf. Changing stuff there will apply to every turf of the same type
         /// </summary>
         public TurfType TurfType
         {
             get
             {
-                return types[this.type];
+                return TurfType.Types[this.Type];
             }
         }
 
@@ -218,7 +231,7 @@ namespace OutpostOmega.Game.Turf
         {
             return new Block()
             {
-                type = (byte)TurfType,
+                Type = (byte)TurfType,
                 X = X,
                 Y = Y,
                 Z = Z,

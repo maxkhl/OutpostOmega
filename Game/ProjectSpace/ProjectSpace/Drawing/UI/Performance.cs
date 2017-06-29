@@ -165,7 +165,7 @@ namespace OutpostOmega.Drawing.UI
                 int chunkCount = 0;
                 foreach(OutpostOmega.Game.Turf.Structure structure in gameScene.World.Structures)
                 {
-                    chunkCount += structure.chunks.Count;
+                    chunkCount += structure.Chunks.Count;
                 }
                 listBox.AddRow(string.Format("{0}: {1}\n", "Overall Chunk Count", chunkCount));
                 listBox.AddRow(string.Format("{0}: {1}\n", "Estimated Turf Count", chunkCount * Math.Pow(OutpostOmega.Game.Turf.Chunk.SizeXYZ, 3)));
